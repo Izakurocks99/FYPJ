@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public sealed class SceneManagerUser : MonoBehaviour {
 
+ 
+    
+
     [SerializeField]
     List<string> SceneNames = new List<string>();
 

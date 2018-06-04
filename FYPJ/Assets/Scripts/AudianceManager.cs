@@ -22,13 +22,10 @@ public static class MyExtension
 
 public sealed class AudianceManager : MonoBehaviour {
 
-
-
     [SerializeField]
-    Vector2 StageDimension = new Vector2(100, 100);
-    [SerializeField]
-    float MinRangeFromStage = 10;
-    
+    List<GameObject> Platforms = new List<GameObject>();
+
+       
 
     [SerializeField]
     [Range(0, 100)]
@@ -54,6 +51,11 @@ public sealed class AudianceManager : MonoBehaviour {
 
     [SerializeField]
     int currentlyActiveAmount = 0;
+
+
+    private List<Platforms> PlatformList = new List<Platforms>();
+
+    float SpawnChance = 0f;
     void Start()
     {
       /*  TempPosArray = new Vector3[10 * 10];
@@ -67,7 +69,7 @@ public sealed class AudianceManager : MonoBehaviour {
         */
 
         Debug.Assert(Member != null);
-        Quaternion q = new Quaternion();
+        //Quaternion q = new Quaternion();
         for (uint i = 0; i < MaxAudianceAmount; i++)
         {
             GameObject temp = GameObject.Instantiate(Member);
@@ -78,6 +80,26 @@ public sealed class AudianceManager : MonoBehaviour {
             temp.transform.parent = this.transform;
             _ObjectPool.Add(temp);
         }
+
+        this.transform.position = new Vector3(0,0,0);
+
+        Debug.Assert(Platforms.Count != 0);
+        for (int i = 0; i < Platforms.Count; i++)
+        {
+            GameObject temp =  GameObject.Instantiate(Platforms[i]);
+            temp.SetActive(true);
+
+            Platforms t = temp.GetComponent<Platforms>();
+            Debug.Assert(t);
+
+            SpawnChance += t.SpawnChance;
+            PlatformList.Add(t);
+        }
+
+       // stagePosition = new Vector2(MiddlePosition.x, MiddlePosition.y - (StageDimension.y / 2f));
+
+
+        //VerticalScale = StageDimension.x / (StageDimension.y * 2f);
     }
 
     // Update is called once per frame
@@ -106,26 +128,34 @@ public sealed class AudianceManager : MonoBehaviour {
                 {
                     if (_ObjectPool[i].activeInHierarchy != setActive)
                     {
-                        // calculate position for the object
-
-
                         _ObjectPool[i].SetActive(setActive);
                         count++;
                         currentlyActiveAmount = setActive ? currentlyActiveAmount + 1 : currentlyActiveAmount - 1;
 
                         if (setActive)
                         {
-                            float maxpos = (MaxAudianceAmount /  currentlyActiveAmount ) * StageDimension.y; // todo fix to correct scale
-                            maxpos = maxpos < MinRangeFromStage ? MinRangeFromStage : maxpos;
-                            float realpos = Random.Range(0f, maxpos);
-                            float axis = Random.Range(0f, Mathf.PI);
+                            float scale = (float)currentlyActiveAmount / (float)MaxAudianceAmount;
 
-                            
-                            float x = Mathf.Cos(axis) * realpos;
-                            float y = Mathf.Sin(axis) * realpos;
+                            float platformIndicator = Random.Range(0f, SpawnChance);
 
-                            _ObjectPool[i].transform.position = new Vector3(x,y,0);//
+                            float currentChance = 0;
+                            int i2 = 0;
+                            Platforms temp = null;
+                            while (true)
+                            {
+                                if (platformIndicator <= PlatformList[i2].SpawnChance + currentChance && platformIndicator <= currentChance)
+                                {
+
+                                    break;
+                                }
+                            }
+
+                            temp = PlatformList[0];
+
+                            _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);
+
                         }
+
                     }
                     if (++i == _ObjectPool.Count) // assert? 
                         break;
@@ -135,7 +165,12 @@ public sealed class AudianceManager : MonoBehaviour {
             }
         }
     }
+
+
 }
+
+
+
 
 // TODO 
 // where to spawn, and rotation
