@@ -143,17 +143,22 @@ public sealed class AudianceManager : MonoBehaviour {
                             Platforms temp = null;
                             while (true)
                             {
-                                if (platformIndicator <= PlatformList[i2].SpawnChance + currentChance && platformIndicator <= currentChance)
+                                if (platformIndicator <= PlatformList [i2].SpawnChance + currentChance && platformIndicator >= currentChance)
                                 {
 
+
+                                    temp = PlatformList[i2];
+                                    break;
+                                }
+                                else if (i2 >= PlatformList.Count)
+                                {
+                                    Debug.Assert(false);
+                                    temp = PlatformList[0];
                                     break;
                                 }
                             }
-
-                            temp = PlatformList[0];
-
+                            //temp = PlatformList[0];
                             _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);
-
                         }
 
                     }
