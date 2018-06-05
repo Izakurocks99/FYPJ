@@ -7,15 +7,20 @@ public static class MyExtension
 {
     public static void Shuffle<T>(this IList<T> list)
     {
-        for (var i = 0; i < list.Count; i++)
+        for (int i = 0; i < list.Count; i++)
             list.Swap(i, Random.Range(i, list.Count));
     }
 
     public static void Swap<T>(this IList<T> list, int i, int j)
     {
-        var temp = list[i];
+        T temp = list[i];
         list[i] = list[j];
         list[j] = temp;
+    }
+    public static void FastDelete<T>(this IList<T> list, int i) // wont keep the order
+    {
+        list.Swap(i , list.Count - 1);
+        list.RemoveAt(list.Count - 1);
     }
 }
 
@@ -159,6 +164,7 @@ public sealed class AudianceManager : MonoBehaviour {
                             }
                             //temp = PlatformList[0];
                             _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);
+                            temp.InsertToInnerStructure(_ObjectPool[i]);
                         }
 
                     }
@@ -173,9 +179,6 @@ public sealed class AudianceManager : MonoBehaviour {
 
 
 }
-
-
-
 
 // TODO 
 // where to spawn, and rotation

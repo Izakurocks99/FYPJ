@@ -23,7 +23,7 @@ public abstract class Platforms : MonoBehaviour {
     }
 
     public abstract Vector3 SpawnToPlatform(float scale);
-
+    public abstract void InsertToInnerStructure(GameObject obj);
     
 
 

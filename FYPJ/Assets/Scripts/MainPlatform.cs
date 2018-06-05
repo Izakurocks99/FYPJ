@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainPlatform : Platforms  {
-
-
-
+public class MainPlatform : Platforms  { // inhereted monobehaviour
 
     [SerializeField]
     Vector2 StageDimension = new Vector2(100, 100);
@@ -16,10 +13,20 @@ public class MainPlatform : Platforms  {
     private Vector2 stagePosition;
     private float VerticalScale = 0;
 
-	// Use this for initialization, 
+    [SerializeField]
+    GameObject CollisionGridPreFab = null;
+
+    private SpatialPartition Grid = null;
+    // Use this for initialization, 
 	void Start () {
 		stagePosition = new Vector2(base.Position.x, base.Position.y - (StageDimension.y / 2f));
         VerticalScale = StageDimension.x / (StageDimension.y * 2f);
+        Debug.Assert(CollisionGridPreFab);
+        GameObject temp = GameObject.Instantiate(CollisionGridPreFab);
+        Grid = temp.GetComponent<SpatialPartition>();
+        Debug.Assert(Grid);
+
+
 	}
 	
 	// Update is called once per frame
@@ -39,24 +46,33 @@ public class MainPlatform : Platforms  {
         float x = Mathf.Cos(axis) * realpos;
         float y = Mathf.Sin(axis) * realpos;
 
-        Vector3 pos = new Vector3(x * VerticalScale,y,0) ; //
-        pos += (Vector3)stagePosition; //
+        Vector3 pos = new Vector3(x * VerticalScale,0,y) ; //
+        pos += new Vector3(stagePosition.x, 0,stagePosition.y);
                             
 
         return pos;
     }
-
+    override public void InsertToInnerStructure(GameObject obj)
+    {
+        Grid.Insert(obj);
+    }
 
     void OnDrawGizmos()
     {
         Vector2 halfDims = StageDimension / 2f;
-        Gizmos.DrawLine(new Vector2( Position.x  - halfDims.x, Position.y - halfDims.y) , new Vector2(  Position.x - halfDims.x , Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector2( Position.x  - halfDims.x, Position.y + halfDims.y) , new Vector2(  Position.x + halfDims.x , Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector2( Position.x  + halfDims.x, Position.y + halfDims.y) , new Vector2(  Position.x + halfDims.x , Position.y - halfDims.y));
-        Gizmos.DrawLine(new Vector2( Position.x  + halfDims.x, Position.y - halfDims.y) , new Vector2(  Position.x - halfDims.x , Position.y - halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y + halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y + halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y - halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y - halfDims.y));
 
 
 
+        //List<Vector3> points = CollisionGrid.GetDrawPoints();
+
+        //for (int i = 0; i < points.Count; i += 2)
+        //{
+        //    Gizmos.DrawLine(points[i] , points[i+1]);
+        //}
 
         //Vector2[] points = new Vector2[4];
 

@@ -111,7 +111,7 @@ MonoBehaviour:
   Platforms:
   - {fileID: 1366103652653386, guid: c8ac9dc62bf77624dba766c1386dd6cc, type: 2}
   HypeMeter: 0
-  MaxAudianceAmount: 3000
+  MaxAudianceAmount: 1000
   Member: {fileID: 0}
   SpawnTime: 0
   Frequenzy: 0
