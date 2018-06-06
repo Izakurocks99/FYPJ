@@ -276,9 +276,9 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         temp.Object = obj;
 
         Colliders.Add(temp);
-        List<Collider> tempo = Grid[temp.X, temp.Y];
+        List<Collider> tempo = Grid[temp.Y , temp.Y];
         int k = tempo.Count;
-        Grid[temp.X, temp.Y].Add(temp);
+        Grid[temp.Y, temp.X].Add(temp);
     }
 
     void OnDrawGizmos()

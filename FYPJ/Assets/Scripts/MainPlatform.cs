@@ -28,11 +28,11 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
 
 
 	}
-	
-	// Update is called once per frame
-	//void Update () {}
 
+    // Update is called once per frame
+    //void Update () {}
 
+    int testpos = 0;
     public override Vector3 SpawnToPlatform(float scale)
     {
  
@@ -48,8 +48,10 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
 
         Vector3 pos = new Vector3(x * VerticalScale,0,y) ; //
         pos += new Vector3(stagePosition.x, 0,stagePosition.y);
-                            
 
+        pos.z = testpos++;
+        pos.x = 0;
+        pos.y = 0;
         return pos;
     }
     override public void InsertToInnerStructure(GameObject obj)

@@ -109,6 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldPos: {x: 0, y: 0, z: 0}
-  CharacterRadius: 8.88
+  CharacterRadius: 1.09
   StagePosition: {x: 0, y: 0}
   Friction: 0.99

@@ -110,8 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Platforms:
   - {fileID: 1366103652653386, guid: c8ac9dc62bf77624dba766c1386dd6cc, type: 2}
-  HypeMeter: 0
-  MaxAudianceAmount: 1000
+  HypeMeter: 100
+  MaxAudianceAmount: 10
   Member: {fileID: 0}
   SpawnTime: 0
   Frequenzy: 0
