@@ -109,5 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNames: []
-  AudianceManagerPrefab: {fileID: 0}
-  AudianceMemberPrefab: {fileID: 0}
+  AudianceManagerPrefab: {fileID: 1838489082716012, guid: 5901a51c9ae82d449893035c90096a1a,
+    type: 2}
+  AudianceMemberPrefab: {fileID: 1796218781485804, guid: 12ccbe70342a2fd489a2a4d4a71076c8,
+    type: 2}
