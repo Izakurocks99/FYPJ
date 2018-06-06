@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IsaacScene.unity
-    guid: a8aba86516759314b8aa400831e38b69
+    path: Assets/Park/MainScene.unity
+    guid: b88abed51b2d2454abab3ce71c0b5875
   m_configObjects: {}
