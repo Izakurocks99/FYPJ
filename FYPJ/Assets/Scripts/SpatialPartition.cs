@@ -18,11 +18,11 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 	// Use this for initialization
     [SerializeField]
     [Range (10 , 100)]
-    public const uint NumWidhtGrids = 10;
+    public const uint NumWidhtGrids = 100;
 
     [SerializeField]
     [Range (10 , 100)]
-    public const uint NumHeightGrids = 10;  // const cant be seriliazed(reeeeeeeeeeeee)
+    public const uint NumHeightGrids = 50;  // const cant be seriliazed(reeeeeeeeeeeee)
     [SerializeField]
     Vector3 WorldPos = new Vector3(0, 0, 0);
 
@@ -31,18 +31,21 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     float CharacterRadius = 1f;
 
     [SerializeField]
-    const float maxAcceleration = 0.1f;
+    const float maxAcceleration = 0.002f;
 
     [SerializeField]
     Vector2 StagePosition = new Vector2(0, 0);
 
     [SerializeField]
-    float Friction = 0.99f;
+    float Friction = 0.00f;
 
     //[SerializeField]
     //float Rotation = 0;
 
     float FastRadius = 0;
+
+    List<Collider> InActiveColliders = new List<Collider>(new Collider[10000]);
+
     // helper class so we can create reference array to this
     // prehaps move velocity and acceleration somewhere else?
     class Collider
@@ -52,12 +55,16 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         public int Y = 0;
         public Vector2 velocity = new Vector2( 0, 0); 
         public Vector2 acceleration = new Vector2( 0, 0);
+        public bool Active = false;
     }
 
     private List<Collider>[,] Grid = new List<Collider>[NumHeightGrids, NumWidhtGrids];
     List<Collider> Colliders = new List<Collider>();
 
-    void Start () {
+    void Awake () {
+        int hash = this.gameObject.GetHashCode();
+        Debug.Log(string.Format( "Spatial {0}", this.gameObject.GetHashCode()));
+
         FastRadius = CharacterRadius * CharacterRadius;
         for (int y = 0; y < NumHeightGrids; y++)
         {
@@ -66,6 +73,12 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
                 Grid[y, x] = new List<Collider>();
             }
         }
+        
+        //int teeest = InActiveColliders.Count;
+        for (int i = 0; i < InActiveColliders.Count; i++)
+        {
+            InActiveColliders[i] = new Collider();
+        }
 	}
 
     struct CollisionTable
@@ -73,24 +86,26 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         public Collider a;
         public Collider b;
     }
-    // Update is called once per frame
-
+    int numCollisionsChecked = 0;
     bool CircleCollisionXZPlane(GameObject a , GameObject b)
     {
+        numCollisionsChecked++;
         Vector2 dist = new Vector2(a.transform.position.x - b.transform.position.x, a.transform.position.z - b.transform.position.z);
         if (dist.SqrMagnitude() < FastRadius) return true;
         return false;
     }
 
+
     bool UpdatePosition(Collider coll) // if false position changed
     {
         IntVec2 newPos = GetPosition(coll.Object);
+        
         if (newPos.x != coll.X || newPos.y != coll.Y) // move position in grid
         {
 
             for (int i = 0; i < Grid[coll.Y, coll.X].Count; i++)
             {
-                if (Object.ReferenceEquals( Grid[coll.Y, coll.X][i] , coll.Object))
+                if (Object.ReferenceEquals(Grid[coll.Y, coll.X][i].Object, coll.Object))
                 {
                     Grid[coll.Y, coll.X].FastDelete(i);
                     break;
@@ -101,6 +116,10 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
                 coll.X = newPos.x;
                 coll.Y = newPos.y;
                 Grid[coll.Y, coll.X].Add(coll);
+            }
+            else
+            {
+                coll.Active = false;
             }
             return true;
         }
@@ -138,12 +157,17 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     }
 
 
+    List<IntVec2> checkedPositions = new List<IntVec2>();
 	void FixedUpdate () {
+        bool addposes = checkedPositions.Count == 0;
         // here update grid and construct the collision table 
+        Vector3 midpos = new Vector3(0, 0, 0);
         List<CollisionTable> CollisionBuffer = new List<CollisionTable>();
         for (int i = 0; i < Colliders.Count; i++ )// Collider current in Colliders) // construct Collision table
         {
             Collider current = Colliders[i];
+            midpos += current.Object.transform.position;
+                if (UpdatePosition(current) == true) continue; // if object gets new place in grid lets not check its collisions in this update
             for (int i2 = -1; i2 < 2; i2++)
             {
                 if (current.X - 1 < 0 || current.X >= NumWidhtGrids) continue;
@@ -155,8 +179,6 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
                 
                 if ((current.Y + i2 < 0 || current.Y + i2 >= NumHeightGrids) == true) continue;
 
-                if (UpdatePosition(current) == true) continue; // if object gets new place in grid lets not check its collisions in this update
-
                 if ((current.Y + i2 < 0 || current.X - 1 < 0 || current.Y + i2 >= NumHeightGrids || current.X >= NumWidhtGrids) == true)
                 {
                     Debug.Log("Dont be here");
@@ -164,11 +186,23 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
                 }
                 List<Collider> tempList = Grid[current.Y + i2, current.X - 1];
 
-
+                if (addposes)
+                {
+                IntVec2 t = new IntVec2();
+                t.x = current.X - 1;
+                t.y = current.Y + i2;
+                checkedPositions.Add(t);
+                }
                 for (int i3 = 0; i3 < tempList.Count; i3++)
                 {
                     if (!Object.ReferenceEquals(tempList[i3].Object, current.Object)  && CircleCollisionXZPlane(tempList[i3].Object, current.Object)) // collides?
                     {
+                        //if (!tempList[i3].Object.activeInHierarchy)
+                        //{
+                         //   tempList[i3].Active = false;
+                         //   tempList.FastDelete(i3);
+                         //   continue;
+                        //}
                         bool Handled = false;
                         for (int i4 = 0; i4 < CollisionBuffer.Count; i4++) // check if collision is already handled
                         {
@@ -196,10 +230,15 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 
                 if (current.Y + i2 < 0 || current.Y + i2 >= NumHeightGrids) continue;
 
-                if (UpdatePosition(current)) continue; // if object gets new place in grid lets not check its collisions in this update
 
                 List<Collider> tempList = Grid[current.Y + i2, current.X];
-
+                if (addposes)
+                {
+                IntVec2 t = new IntVec2();
+                t.x = current.X;
+                t.y = current.Y + i2;
+                checkedPositions.Add(t);
+                }
                 for (int i3 = 0; i3 < tempList.Count; i3++)
                 {
                     if (!Object.ReferenceEquals(tempList[i3].Object, current.Object)  && CircleCollisionXZPlane(tempList[i3].Object, current.Object)) // collides?
@@ -227,10 +266,15 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             } 
         }
 
+        if (midpos.x > 0 || midpos.z > 0)
+        {
+            midpos /= Colliders.Count;
+        }
         for(int i = 0; i < CollisionBuffer.Count; i++) //handle all collisions 
         {
             Vector2 dist1 = new Vector2( CollisionBuffer[i].a.Object.transform.position.x , CollisionBuffer[i].a.Object.transform.position.z )- StagePosition; 
             Vector2 dist2 = new Vector2( CollisionBuffer[i].b.Object.transform.position.x , CollisionBuffer[i].b.Object.transform.position.z )- StagePosition;
+            Vector2 fromMid = new Vector2(CollisionBuffer[i].a.Object.transform.position.x, CollisionBuffer[i].a.Object.transform.position.z) - new Vector2( midpos.x , midpos.z);
 
             if (dist1.SqrMagnitude() > dist2.SqrMagnitude()) // a should be closer and it pushes b
             {
@@ -246,22 +290,51 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             distvec.Normalize();
             distvec.x *= maxAcceleration;
             distvec.y *= maxAcceleration;
-
+            fromMid.Normalize();
+            
+            fromMid.x *= maxAcceleration * 0.4f;
+            fromMid.y *= maxAcceleration * 0.4f;
+            distvec += fromMid;
             CollisionBuffer[i].b.acceleration += distvec; 
         }
+
+
         for (int i = 0; i < Colliders.Count;i++) // update positions
         {
+            if ((Colliders[i].Active == false || Colliders[i].Object.activeInHierarchy == false) == true)
+            {
+                Collider t = Colliders.PopAt(i);
+                t.Active = false;
+                InActiveColliders.Add(t);
+                if (!t.Object.activeInHierarchy)
+                {
+                    // find it from the grid and remove it
+                    List<Collider> tempList = Grid[t.Y, t.X];
+                    for (int i2 = 0; i2 < tempList.Count; i2++)
+                    {
+                        if (!tempList[i2].Object.activeInHierarchy)
+                        {
+                             tempList.FastDelete(i2);
+                             break;
+                        }
+                    }
+                }
+                continue;
+            }
             Colliders[i].velocity += Colliders[i].acceleration;
             Colliders[i].velocity.x *= Friction;
             Colliders[i].velocity.y *= Friction;
             Colliders[i].Object.transform.position += new Vector3(Colliders[i].velocity.x , 0 , Colliders[i].velocity.y);
-             
+            Colliders[i].acceleration *= 0;
         }
+       // Debug.Log(string.Format("num checks {0} ", numCollisionsChecked));
+        numCollisionsChecked = 0;
 	}
 
     const float ADD_ON = 10000f;
     [SerializeField]
-    const float GRID_SCALE = 5f;
+    const float GRID_SCALE = 1.4f;
+    int debuginsertions = 0;
     public void Insert(GameObject obj)
     {
         IntVec2 GridPos = GetPosition(obj);
@@ -270,15 +343,16 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             Debug.Log("Object inserting is not inside spatial grid!");
             return;
         }
-        Collider temp = new Collider();
+        Collider temp = InActiveColliders.PopBack();//new Collider();
         temp.X = GridPos.x;
         temp.Y = GridPos.y;
         temp.Object = obj;
-
+        temp.Active = true;
         Colliders.Add(temp);
         List<Collider> tempo = Grid[temp.Y , temp.Y];
         int k = tempo.Count;
         Grid[temp.Y, temp.X].Add(temp);
+        debuginsertions++;
     }
 
     void OnDrawGizmos()
@@ -286,48 +360,39 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         float halfDimX = ((float)NumWidhtGrids  * CharacterRadius * GRID_SCALE) / 2f;
         float halfDimY = ((float)NumHeightGrids * CharacterRadius * GRID_SCALE) / 2f;
 
-        Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.y - halfDimY) , new Vector3(  WorldPos.x - halfDimX , WorldPos.y,WorldPos.z + halfDimY));
-        Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.y + halfDimY) , new Vector3(  WorldPos.x + halfDimX ,WorldPos.y, WorldPos.z + halfDimY));
-        Gizmos.DrawLine(new Vector3( WorldPos.x  + halfDimX, WorldPos.y,WorldPos.y + halfDimY) , new Vector3(  WorldPos.x + halfDimX ,WorldPos.y, WorldPos.z - halfDimY));
-        Gizmos.DrawLine(new Vector3( WorldPos.x  + halfDimX, WorldPos.y,WorldPos.y - halfDimY) , new Vector3(  WorldPos.x - halfDimX , WorldPos.y,WorldPos.y - halfDimY));
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.z - halfDimY) , new Vector3(  WorldPos.x - halfDimX , WorldPos.y,WorldPos.z + halfDimY));
+        Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.z + halfDimY) , new Vector3(  WorldPos.x + halfDimX ,WorldPos.y, WorldPos.z + halfDimY));
+        Gizmos.DrawLine(new Vector3( WorldPos.x  + halfDimX, WorldPos.y,WorldPos.z + halfDimY) , new Vector3(  WorldPos.x + halfDimX ,WorldPos.y, WorldPos.z - halfDimY));
+        Gizmos.DrawLine(new Vector3( WorldPos.x  + halfDimX, WorldPos.y,WorldPos.z - halfDimY) , new Vector3(  WorldPos.x - halfDimX , WorldPos.y,WorldPos.z - halfDimY));
 
         float oneGridWidht = CharacterRadius * GRID_SCALE;
 
         for (int i = 0; i < NumHeightGrids - 1; i++)
         {
             
-            Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.y - halfDimY + (oneGridWidht * (i  + 1))) , 
+            Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX, WorldPos.y,WorldPos.z - halfDimY + (oneGridWidht * (i  + 1))) , 
                 new Vector3(  WorldPos.x + halfDimX , WorldPos.y,WorldPos.z - halfDimY + (oneGridWidht * (i  + 1))));
         }
          for (int i = 0; i < NumWidhtGrids - 1; i++)
         {
             
-            Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX + (oneGridWidht * (i  + 1)) , WorldPos.y,WorldPos.y - halfDimY) , 
+            Gizmos.DrawLine(new Vector3( WorldPos.x  - halfDimX + (oneGridWidht * (i  + 1)) , WorldPos.y,WorldPos.z - halfDimY) , 
                 new Vector3(  WorldPos.x - halfDimX + (oneGridWidht * (i  + 1)), WorldPos.y,WorldPos.z + halfDimY ));
         }
+
+        Gizmos.color = Color.green;
+        Vector3 Corner = WorldPos - new Vector3(halfDimX ,0 , halfDimY);
+        for (int i = 0; i < checkedPositions.Count; i++)
+        {
+
+            Vector3 pos = Corner + new Vector3(oneGridWidht * checkedPositions[i].x + 0.5f, 0, oneGridWidht * checkedPositions[i].y + 0.5f);
+            Gizmos.DrawSphere(pos, 1f); 
+        }
+        checkedPositions.Clear();
     }
-    //public List<Vector3> GetDrawPoints()
-    //{
-    //    List<Vector3> points = new List<Vector3>();
-    //    // outer area 
-
-    //    Vector3[] p = new Vector3[4];
-    //    p[0] = new Vector3(WorldPos.x - halfDimX, WorldPos.y,WorldPos.y - halfDimY);
-    //    p[1] = new Vector3(WorldPos.x - halfDimX, WorldPos.y,WorldPos.y + halfDimY);
-    //    p[2] = new Vector3(WorldPos.x + halfDimX, WorldPos.y,WorldPos.y + halfDimY);
-    //    p[3] = new Vector3(WorldPos.x + halfDimX, WorldPos.y,WorldPos.y - halfDimY);
-
-    //    points.Add(p[0]);
-    //    points.Add(p[1]);
-    //    points.Add(p[1]);
-    //    points.Add(p[2]);
-    //    points.Add(p[2]);
-    //    points.Add(p[3]);
-    //    points.Add(p[3]);
-    //    points.Add(p[0]);
-
-    //    return points;
-    //}
+   
+    
 }
  // TODO 
  //do corrent axis

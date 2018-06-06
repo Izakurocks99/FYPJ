@@ -18,21 +18,23 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
 
     private SpatialPartition Grid = null;
     // Use this for initialization, 
-	void Start () {
+	void Awake () {                                                                 // awake vs start?
+        int hash = this.gameObject.GetHashCode();
 		stagePosition = new Vector2(base.Position.x, base.Position.y - (StageDimension.y / 2f));
         VerticalScale = StageDimension.x / (StageDimension.y * 2f);
         Debug.Assert(CollisionGridPreFab);
         GameObject temp = GameObject.Instantiate(CollisionGridPreFab);
+        temp.SetActive(true);
         Grid = temp.GetComponent<SpatialPartition>();
         Debug.Assert(Grid);
 
-
+        Debug.Log(string.Format( "Platform {0}", this.gameObject.GetHashCode()));
 	}
 
     // Update is called once per frame
     //void Update () {}
 
-    int testpos = 0;
+    float testpos = -10;
     public override Vector3 SpawnToPlatform(float scale)
     {
  
@@ -49,13 +51,15 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
         Vector3 pos = new Vector3(x * VerticalScale,0,y) ; //
         pos += new Vector3(stagePosition.x, 0,stagePosition.y);
 
-        pos.z = testpos++;
-        pos.x = 0;
-        pos.y = 0;
+        //pos.z = testpos;
+        //testpos += 0.5f;
+        //pos.x = 0;
+        //pos.y = 0;
         return pos;
     }
     override public void InsertToInnerStructure(GameObject obj)
     {
+        int hash = this.gameObject.GetHashCode();
         Grid.Insert(obj);
     }
 

@@ -22,6 +22,19 @@ public static class MyExtension
         list.Swap(i , list.Count - 1);
         list.RemoveAt(list.Count - 1);
     }
+    public static T PopBack<T>(this IList<T> list)
+    {
+        T ret = list[list.Count - 1];
+        list.RemoveAt(list.Count - 1);
+        return ret;
+    }
+    public static T PopAt<T>(this IList<T> list, int i)
+    {
+        T ret = list[i];
+        list.FastDelete(i);
+        return ret;
+    }
+
 }
 
 
@@ -63,15 +76,16 @@ public sealed class AudianceManager : MonoBehaviour {
     float SpawnChance = 0f;
     void Start()
     {
-      /*  TempPosArray = new Vector3[10 * 10];
-        for (uint y = 0; y < 10; y++)
-        {
-            for (uint x = 0; x < 10; x++)
-            {
-                TempPosArray[y * 10 + x] = new Vector3(y * 2, x * 2);  
-            }
-        }
-        */
+        /*  TempPosArray = new Vector3[10 * 10];
+          for (uint y = 0; y < 10; y++)
+          {
+              for (uint x = 0; x < 10; x++)
+              {
+                  TempPosArray[y * 10 + x] = new Vector3(y * 2, x * 2);  
+              }
+          }
+          */
+        Debug.Log(string.Format("AudianceManager {0}", this.gameObject.GetHashCode()));
 
         Debug.Assert(Member != null);
         //Quaternion q = new Quaternion();
