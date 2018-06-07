@@ -175,6 +175,8 @@ public sealed class AudianceManager : MonoBehaviour {
                                     temp = PlatformList[0];
                                     break;
                                 }
+                                currentChance += PlatformList[i2].SpawnChance; 
+                                i2++;
                             }
                             //temp = PlatformList[0];
                             _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);

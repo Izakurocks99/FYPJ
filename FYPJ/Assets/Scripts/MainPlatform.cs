@@ -19,7 +19,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     private SpatialPartition Grid = null;
     // Use this for initialization, 
 	void Awake () {                                                                 // awake vs start?
-        int hash = this.gameObject.GetHashCode();
+        //int hash = this.gameObject.GetHashCode();
 		stagePosition = new Vector2(base.Position.x, base.Position.y - (StageDimension.y / 2f));
         VerticalScale = StageDimension.x / (StageDimension.y * 2f);
         Debug.Assert(CollisionGridPreFab);
@@ -34,7 +34,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     // Update is called once per frame
     //void Update () {}
 
-    float testpos = -10;
+    //float testpos = -10;
     public override Vector3 SpawnToPlatform(float scale)
     {
  
@@ -59,7 +59,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     }
     override public void InsertToInnerStructure(GameObject obj)
     {
-        int hash = this.gameObject.GetHashCode();
+        //int hash = this.gameObject.GetHashCode();
         Grid.Insert(obj);
     }
 

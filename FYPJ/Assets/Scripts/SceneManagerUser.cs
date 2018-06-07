@@ -7,9 +7,9 @@ public sealed class SceneManagerUser : MonoBehaviour {
 
  
     
-
-    [SerializeField]
-    List<string> SceneNames = new List<string>();
+    // if different scenes use this
+    //[SerializeField]
+    //List<string> SceneNames = new List<string>();
 
     [SerializeField]
     GameObject AudianceManagerPrefab = null;

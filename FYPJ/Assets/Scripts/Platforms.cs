@@ -7,8 +7,8 @@ public abstract class Platforms : MonoBehaviour {
     [SerializeField]
     protected Vector3 Position = new Vector3(0,0,0);
 
-    [SerializeField]
-    protected Vector2 Rotations = new Vector2(0, 0);
+   // [SerializeField]
+   // protected Vector2 Rotations = new Vector2(0, 0);
 
     [SerializeField]
     float spawnChance = 10;

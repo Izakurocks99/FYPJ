@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//#define SPATIAL_DEBUG 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,7 +63,6 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     List<Collider> Colliders = new List<Collider>();
 
     void Awake () {
-        int hash = this.gameObject.GetHashCode();
         Debug.Log(string.Format( "Spatial {0}", this.gameObject.GetHashCode()));
 
         FastRadius = CharacterRadius * CharacterRadius;
@@ -86,10 +86,14 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         public Collider a;
         public Collider b;
     }
+#if (SPATIAL_DEBUG)
     int numCollisionsChecked = 0;
+#endif
     bool CircleCollisionXZPlane(GameObject a , GameObject b)
     {
+#if (SPATIAL_DEBUG)
         numCollisionsChecked++;
+#endif
         Vector2 dist = new Vector2(a.transform.position.x - b.transform.position.x, a.transform.position.z - b.transform.position.z);
         if (dist.SqrMagnitude() < FastRadius) return true;
         return false;
@@ -157,9 +161,13 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     }
 
 
+#if (SPATIAL_DEBUG)
     List<IntVec2> checkedPositions = new List<IntVec2>();
-	void FixedUpdate () {
+#endif
+    void FixedUpdate () {
+#if (SPATIAL_DEBUG)
         bool addposes = checkedPositions.Count == 0;
+#endif
         // here update grid and construct the collision table 
         Vector3 midpos = new Vector3(0, 0, 0);
         List<CollisionTable> CollisionBuffer = new List<CollisionTable>();
@@ -171,38 +179,39 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             for (int i2 = -1; i2 < 2; i2++)
             {
                 if (current.X - 1 < 0 || current.X >= NumWidhtGrids) continue;
+#if (SPATIAL_DEBUG)
                 if ((current.X - 1 < 0) == true)
                 {
                     Debug.Log("Dont be here");
-                    int error = 0;
+                    ///int error = 0;
                 }
+#endif
                 
                 if ((current.Y + i2 < 0 || current.Y + i2 >= NumHeightGrids) == true) continue;
 
+
+#if (SPATIAL_DEBUG)
                 if ((current.Y + i2 < 0 || current.X - 1 < 0 || current.Y + i2 >= NumHeightGrids || current.X >= NumWidhtGrids) == true)
                 {
                     Debug.Log("Dont be here");
-                    int error = 0;
+                    //int error = 0;
                 }
+#endif
                 List<Collider> tempList = Grid[current.Y + i2, current.X - 1];
 
+#if (SPATIAL_DEBUG)
                 if (addposes)
                 {
                 IntVec2 t = new IntVec2();
                 t.x = current.X - 1;
                 t.y = current.Y + i2;
-                checkedPositions.Add(t);
+                    checkedPositions.Add(t);
                 }
+#endif
                 for (int i3 = 0; i3 < tempList.Count; i3++)
                 {
                     if (!Object.ReferenceEquals(tempList[i3].Object, current.Object)  && CircleCollisionXZPlane(tempList[i3].Object, current.Object)) // collides?
                     {
-                        //if (!tempList[i3].Object.activeInHierarchy)
-                        //{
-                         //   tempList[i3].Active = false;
-                         //   tempList.FastDelete(i3);
-                         //   continue;
-                        //}
                         bool Handled = false;
                         for (int i4 = 0; i4 < CollisionBuffer.Count; i4++) // check if collision is already handled
                         {
@@ -232,13 +241,15 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 
 
                 List<Collider> tempList = Grid[current.Y + i2, current.X];
+#if (SPATIAL_DEBUG)
                 if (addposes)
                 {
                 IntVec2 t = new IntVec2();
                 t.x = current.X;
                 t.y = current.Y + i2;
-                checkedPositions.Add(t);
+                    checkedPositions.Add(t);
                 }
+#endif
                 for (int i3 = 0; i3 < tempList.Count; i3++)
                 {
                     if (!Object.ReferenceEquals(tempList[i3].Object, current.Object)  && CircleCollisionXZPlane(tempList[i3].Object, current.Object)) // collides?
@@ -327,8 +338,10 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             Colliders[i].Object.transform.position += new Vector3(Colliders[i].velocity.x , 0 , Colliders[i].velocity.y);
             Colliders[i].acceleration *= 0;
         }
-       // Debug.Log(string.Format("num checks {0} ", numCollisionsChecked));
+#if (SPATIAL_DEBUG)
+        Debug.Log(string.Format("num checks {0} ", numCollisionsChecked));
         numCollisionsChecked = 0;
+#endif
 	}
 
     const float ADD_ON = 10000f;
@@ -340,10 +353,13 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         IntVec2 GridPos = GetPosition(obj);
         if (GridPos.x == -1 && GridPos.y == -1)
         {
+
+#if (SPATIAL_DEBUG)
             Debug.Log("Object inserting is not inside spatial grid!");
+#endif
             return;
         }
-        Collider temp = InActiveColliders.PopBack();//new Collider();
+        Collider temp = InActiveColliders.PopBack();
         temp.X = GridPos.x;
         temp.Y = GridPos.y;
         temp.Object = obj;
@@ -381,6 +397,7 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
                 new Vector3(  WorldPos.x - halfDimX + (oneGridWidht * (i  + 1)), WorldPos.y,WorldPos.z + halfDimY ));
         }
 
+#if (SPATIAL_DEBUG)
         Gizmos.color = Color.green;
         Vector3 Corner = WorldPos - new Vector3(halfDimX ,0 , halfDimY);
         for (int i = 0; i < checkedPositions.Count; i++)
@@ -390,16 +407,13 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             Gizmos.DrawSphere(pos, 1f); 
         }
         checkedPositions.Clear();
+#endif
     }
-   
     
 }
  // TODO 
- //do corrent axis
- // how to refence box inside of the grid
  // todo rotation?
  // object pool for colliders?
  // GET ARENA FROM DRIVE
- // Test should i neg or add the friction
  // clean up comments  
  // fix checked area
