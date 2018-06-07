@@ -54,6 +54,6 @@ MonoBehaviour:
   Position: {x: 0, y: 0, z: 0}
   spawnChance: 10
   StageDimension: {x: 200, y: 100}
-  MinRangeFromStage: 10
+  MinRangeFromStage: 40
   CollisionGridPreFab: {fileID: 1731845422777424, guid: b955ef6058cfb5e4489b5216d83b9ddf,
     type: 2}

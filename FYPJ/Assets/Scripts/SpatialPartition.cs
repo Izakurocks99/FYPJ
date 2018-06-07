@@ -303,8 +303,8 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             distvec.y *= maxAcceleration;
             fromMid.Normalize();
             
-            fromMid.x *= maxAcceleration * 0.4f;
-            fromMid.y *= maxAcceleration * 0.4f;
+            fromMid.x *= maxAcceleration * 0.2f;
+            fromMid.y *= maxAcceleration * 0.2f;
             distvec += fromMid;
             CollisionBuffer[i].b.acceleration += distvec; 
         }
@@ -360,6 +360,10 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
             return;
         }
         Collider temp = InActiveColliders.PopBack();
+        temp.acceleration.x = 0;
+        temp.acceleration.y = 0;
+        temp.velocity.x = 0;
+        temp.velocity.y = 0;
         temp.X = GridPos.x;
         temp.Y = GridPos.y;
         temp.Object = obj;
@@ -413,7 +417,6 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 }
  // TODO 
  // todo rotation?
- // object pool for colliders?
  // GET ARENA FROM DRIVE
  // clean up comments  
  // fix checked area

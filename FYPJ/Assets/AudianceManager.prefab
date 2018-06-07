@@ -54,6 +54,7 @@ MonoBehaviour:
   Platforms:
   - {fileID: 1366103652653386, guid: c8ac9dc62bf77624dba766c1386dd6cc, type: 2}
   - {fileID: 1063378158390436, guid: 677d6a5659a10a742a9eec0eee93c411, type: 2}
+  - {fileID: 1993889513561390, guid: 910adaead1bf1a54b8fb905f6194a000, type: 2}
   HypeMeter: 0
   MaxAudianceAmount: 800
   Member: {fileID: 0}

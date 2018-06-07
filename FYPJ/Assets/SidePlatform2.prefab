@@ -9,49 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1063378158390436}
+  m_RootGameObject: {fileID: 1993889513561390}
   m_IsPrefabParent: 1
---- !u!1 &1063378158390436
+--- !u!1 &1993889513561390
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4522751956577198}
-  - component: {fileID: 114013736256940166}
+  - component: {fileID: 4325371551191586}
+  - component: {fileID: 114810624352384450}
   m_Layer: 0
-  m_Name: SidePlatform
+  m_Name: SidePlatform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4522751956577198
+--- !u!4 &4325371551191586
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063378158390436}
+  m_GameObject: {fileID: 1993889513561390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 21.497318, y: -492.61414, z: -0.6134043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114013736256940166
+--- !u!114 &114810624352384450
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063378158390436}
+  m_GameObject: {fileID: 1993889513561390}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f2143e3adfb4c4f826422ff8fd58f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 80, y: 20, z: 50}
+  Position: {x: -80, y: 20, z: 50}
   spawnChance: 2
   Dimensions: {x: 100, y: 10}
-  Rotation: 160
+  Rotation: 20

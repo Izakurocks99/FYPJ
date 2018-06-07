@@ -199,5 +199,4 @@ public sealed class AudianceManager : MonoBehaviour {
 // TODO 
 // where to spawn, and rotation
 // take asserts away
-// randomize despawn and spawn or the positions 
-// check the rounding error!
+// check the rounding error! gone? 
