@@ -109,10 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1964246172077282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
+  m_Script: {fileID: 11500000, guid: c33be27c45d6531428a4973a72468474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5
+  bulletLifeTime: 10
 --- !u!135 &135292007228281702
 SphereCollider:
   m_ObjectHideFlags: 1
