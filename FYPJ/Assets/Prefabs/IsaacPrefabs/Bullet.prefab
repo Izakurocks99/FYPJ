@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964246172077282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.373943, y: 1.91, z: 18.48}
+  m_LocalPosition: {x: 5.439531, y: 1, z: 1.0855088}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5
+  bulletLifeTime: 10
 --- !u!135 &135292007228281702
 SphereCollider:
   m_ObjectHideFlags: 1

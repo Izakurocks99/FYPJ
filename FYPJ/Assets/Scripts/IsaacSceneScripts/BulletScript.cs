@@ -17,7 +17,17 @@ public class BulletScript : MonoBehaviour {
         bulletLifeTime -= Time.deltaTime;
         if (bulletLifeTime <=0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
-	}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            VibrationScript vibrationScript = other.GetComponent<VibrationScript>();
+            vibrationScript.StartCoroutine(vibrationScript.Vibrate());
+        }
+        Destroy(gameObject);
+    }
 }
