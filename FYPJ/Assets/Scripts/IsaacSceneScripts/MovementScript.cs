@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 #if UNITY_PS4
 using UnityEngine.PS4;
@@ -26,13 +27,19 @@ public class MovementScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         hasMoveInput = CheckForInput();
-        
-        if(hasMoveInput && !isMovePressed)
+
+        if (hasMoveInput && !isMovePressed)
         {
             isMovePressed = true;
             //create icon
             if (!movementMarker.activeInHierarchy)
                 SpawnMarker();
+
+            //interact with UI
+            if (laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
+            {
+                laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
+            }
             
         }
         else if(!hasMoveInput && isMovePressed)
@@ -53,26 +60,6 @@ public class MovementScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton5))
         {
             player.transform.position = startingPos;
-        }
-
-        //check if line is colliding with anything
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (!CheckRayHitGround(hit)) //hits player
-            {
-                laserPointer.GetComponent<LineRenderer>().startColor = Color.red;
-                laserPointer.GetComponent<LineRenderer>().endColor = Color.red;
-            }
-            else
-            {
-                laserPointer.GetComponent<LineRenderer>().startColor = Color.green;
-                laserPointer.GetComponent<LineRenderer>().endColor = Color.green;
-            }
-        }
-        else //does not hit anything
-        {
-            laserPointer.GetComponent<LineRenderer>().startColor = Color.red;
-            laserPointer.GetComponent<LineRenderer>().endColor = Color.red;
         }
     }
 
