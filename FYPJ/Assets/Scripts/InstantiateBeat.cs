@@ -182,17 +182,17 @@ public class InstantiateBeat : MonoBehaviour {
         {
             case 1:
                 {
-                    _ftRandomRange = Random.Range(1.0f, 4.5f);
+                    _ftRandomRange = Random.Range(1.0f, 2.0f);
                     break;
                 }
             case 2:
                 {
-                    _ftRandomRange = Random.Range(2.5f, 5.5f);
+                    _ftRandomRange = Random.Range(0.2f, 1.0f);
                     break;
                 }
             default:
                 {
-                    _ftRandomRange = Random.Range(2.5f, 10.5f);
+                    _ftRandomRange = Random.Range(2.0f, 3.0f);
                     break;
                 }
         }

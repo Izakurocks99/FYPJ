@@ -33,13 +33,28 @@ public class BulletScript : MonoBehaviour {
                 && other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
             {
                 gameObject.transform.GetComponent<Renderer>().material = _materials[0];
-                vibrationScript.StartCoroutine(vibrationScript.Vibrate());
+                vibrationScript.StartCoroutine(vibrationScript.VibrateLeft());
+                return;
             }
-            else if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[2].name)
+            else if(gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[1].name)
+                && !other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[2].name)
                 && !other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
             {
                 gameObject.transform.GetComponent<Renderer>().material = _materials[0];
-                vibrationScript.StartCoroutine(vibrationScript.Vibrate());
+                vibrationScript.StartCoroutine(vibrationScript.VibrateRight());
+                return;
+            }
+            else if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[2].name)
+                && other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
+            {
+                Destroy(gameObject);
+                return;
             }
         }
         //Destroy(gameObject);
