@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 1063378158390436, guid: 677d6a5659a10a742a9eec0eee93c411, type: 2}
   - {fileID: 1993889513561390, guid: 910adaead1bf1a54b8fb905f6194a000, type: 2}
   HypeMeter: 0
-  MaxAudianceAmount: 800
+  MaxAudianceAmount: 100
   Member: {fileID: 0}
   SpawnTime: 0
   Frequenzy: 0
