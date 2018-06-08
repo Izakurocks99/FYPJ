@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114770876455842038}
   m_Layer: 0
   m_Name: AudianceManager
-  m_TagString: Untagged
+  m_TagString: AudienceManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
