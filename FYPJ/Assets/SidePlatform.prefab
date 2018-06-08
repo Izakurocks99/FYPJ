@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f2143e3adfb4c4f826422ff8fd58f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 80, y: 20, z: 50}
-  spawnChance: 2
-  Dimensions: {x: 100, y: 10}
-  Rotation: 160
+  Position: {x: 17, y: 4, z: 0}
+  spawnChance: 1
+  Dimensions: {x: 14, y: 2}
+  Rotation: 90

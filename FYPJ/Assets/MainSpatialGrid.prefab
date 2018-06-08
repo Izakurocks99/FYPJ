@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2759077caf96c499065e9997eeef33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldPos: {x: 0, y: 0, z: -20}
-  CharacterRadius: 1.2
+  WorldPos: {x: 0, y: -2.5, z: 7}
+  CharacterRadius: 1.28
   StagePosition: {x: 0, y: -200}
-  Friction: 0.95
+  Friction: 0.8

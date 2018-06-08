@@ -20,7 +20,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     // Use this for initialization, 
 	void Awake () {                                                                 // awake vs start?
         //int hash = this.gameObject.GetHashCode();
-		stagePosition = new Vector2(base.Position.x, base.Position.y - (StageDimension.y / 2f));
+		stagePosition = new Vector2(base.Position.x,base.Position.z - (StageDimension.y / 2f));
         VerticalScale = StageDimension.x / (StageDimension.y * 2f);
         Debug.Assert(CollisionGridPreFab);
         GameObject temp = GameObject.Instantiate(CollisionGridPreFab);
@@ -49,7 +49,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
         float y = Mathf.Sin(axis) * realpos;
 
         Vector3 pos = new Vector3(x * VerticalScale,0,y) ; //
-        pos += new Vector3(stagePosition.x, 0,stagePosition.y);
+        pos += new Vector3(stagePosition.x, base.Position.y,stagePosition.y);
 
         //pos.z = testpos;
         //testpos += 0.5f;
@@ -66,10 +66,10 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     void OnDrawGizmos()
     {
         Vector2 halfDims = StageDimension / 2f;
-        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y - halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y - halfDims.y));
+        Gizmos.DrawLine(new Vector3( base.Position.x  - halfDims.x, base.Position.y,base.Position.z - halfDims.y) , new Vector3(  base.Position.x - halfDims.x , base.Position.y,base.Position.z + halfDims.y));
+        Gizmos.DrawLine(new Vector3(base.Position.x - halfDims.x, base.Position.y, base.Position.z + halfDims.y), new Vector3(base.Position.x + halfDims.x, base.Position.y, base.Position.z + halfDims.y));
+        Gizmos.DrawLine(new Vector3( base.Position.x  + halfDims.x, base.Position.y,base.Position.z + halfDims.y) , new Vector3(  base.Position.x + halfDims.x ,base.Position.y, base.Position.z - halfDims.y));
+        Gizmos.DrawLine(new Vector3( base.Position.x  + halfDims.x, base.Position.y,base.Position.z - halfDims.y) , new Vector3(  base.Position.x - halfDims.x , base.Position.y,base.Position.z - halfDims.y));
 
 
 
