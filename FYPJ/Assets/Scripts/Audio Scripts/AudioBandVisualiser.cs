@@ -31,7 +31,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 				{
 					GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform, false);
 					go.transform.position += new Vector3(0, 0.5f, 0);
-					go.transform.localScale = new Vector3(0.125f, 0.125f, 0.125f);
+					go.transform.localScale = new Vector3(1f, 1f, 1f);
 					go.transform.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
 					go.name = "Test " + i;
 					go.SetActive(true);
