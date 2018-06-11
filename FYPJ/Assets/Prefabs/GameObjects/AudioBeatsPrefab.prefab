@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114216649685530636}
   - component: {fileID: 114167629831895420}
   m_Layer: 0
-  m_Name: AudioBeatsPrefab
+  m_Name: TestAudioBeatsPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

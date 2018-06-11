@@ -36,7 +36,7 @@ public class MovementScript : MonoBehaviour
                 SpawnMarker();
 
             //interact with UI
-            if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
+            if (laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
             {
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }

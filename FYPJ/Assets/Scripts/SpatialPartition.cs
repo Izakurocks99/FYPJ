@@ -16,14 +16,14 @@ public struct IntVec2
 
 public sealed class SpatialPartition : MonoBehaviour { // can we work without monobehaviour?
 
-    // Use this for initialization
+	// Use this for initialization
     [SerializeField]
-    [Range(10, 100)]
-    public const uint NumWidhtGrids = 20;
+    [Range (10 , 100)]
+    public const uint NumWidhtGrids = 100;
 
     [SerializeField]
-    [Range(10, 100)]
-    public const uint NumHeightGrids = 15;  // const cant be seriliazed(reeeeeeeeeeeee)
+    [Range (10 , 100)]
+    public const uint NumHeightGrids = 50;  // const cant be seriliazed(reeeeeeeeeeeee)
     [SerializeField]
     Vector3 WorldPos = new Vector3(0, 0, 0);
 
@@ -44,7 +44,7 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     //float Rotation = 0;
 
     float FastRadius = 0;
-    
+
     List<Collider> InActiveColliders = new List<Collider>(new Collider[10000]);
 
     // helper class so we can create reference array to this
@@ -275,31 +275,6 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 
 
             } 
-            if ((Colliders[i].Active == false || Colliders[i].Object.activeInHierarchy == false) == true)
-            {
-                Collider t = Colliders.PopAt(i);
-                t.Active = false;
-                InActiveColliders.Add(t);
-                if (!t.Object.activeInHierarchy)
-                {
-                    // find it from the grid and remove it
-                    List<Collider> tempList = Grid[t.Y, t.X];
-                    for (int i2 = 0; i2 < tempList.Count; i2++)
-                    {
-                        if (!tempList[i2].Object.activeInHierarchy)
-                        {
-                             tempList.FastDelete(i2);
-                             break;
-                        }
-                    }
-                }
-                continue;
-            }
-            Colliders[i].velocity += Colliders[i].acceleration;
-            Colliders[i].velocity.x *= Friction;
-            Colliders[i].velocity.y *= Friction;
-            Colliders[i].Object.transform.position += new Vector3(Colliders[i].velocity.x , 0 , Colliders[i].velocity.y);
-            Colliders[i].acceleration *= 0;
         }
 
         if (midpos.x > 0 || midpos.z > 0)
@@ -335,34 +310,34 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
         }
 
 
-        //for (int i = 0; i < Colliders.Count;i++) // update positions
-        //{
-        //    if ((Colliders[i].Active == false || Colliders[i].Object.activeInHierarchy == false) == true)
-        //    {
-        //        Collider t = Colliders.PopAt(i);
-        //        t.Active = false;
-        //        InActiveColliders.Add(t);
-        //        if (!t.Object.activeInHierarchy)
-        //        {
-        //            // find it from the grid and remove it
-        //            List<Collider> tempList = Grid[t.Y, t.X];
-        //            for (int i2 = 0; i2 < tempList.Count; i2++)
-        //            {
-        //                if (!tempList[i2].Object.activeInHierarchy)
-        //                {
-        //                     tempList.FastDelete(i2);
-        //                     break;
-        //                }
-        //            }
-        //        }
-        //        continue;
-        //    }
-        //    Colliders[i].velocity += Colliders[i].acceleration;
-        //    Colliders[i].velocity.x *= Friction;
-        //    Colliders[i].velocity.y *= Friction;
-        //    Colliders[i].Object.transform.position += new Vector3(Colliders[i].velocity.x , 0 , Colliders[i].velocity.y);
-        //    Colliders[i].acceleration *= 0;
-        //}
+        for (int i = 0; i < Colliders.Count;i++) // update positions
+        {
+            if ((Colliders[i].Active == false || Colliders[i].Object.activeInHierarchy == false) == true)
+            {
+                Collider t = Colliders.PopAt(i);
+                t.Active = false;
+                InActiveColliders.Add(t);
+                if (!t.Object.activeInHierarchy)
+                {
+                    // find it from the grid and remove it
+                    List<Collider> tempList = Grid[t.Y, t.X];
+                    for (int i2 = 0; i2 < tempList.Count; i2++)
+                    {
+                        if (!tempList[i2].Object.activeInHierarchy)
+                        {
+                             tempList.FastDelete(i2);
+                             break;
+                        }
+                    }
+                }
+                continue;
+            }
+            Colliders[i].velocity += Colliders[i].acceleration;
+            Colliders[i].velocity.x *= Friction;
+            Colliders[i].velocity.y *= Friction;
+            Colliders[i].Object.transform.position += new Vector3(Colliders[i].velocity.x , 0 , Colliders[i].velocity.y);
+            Colliders[i].acceleration *= 0;
+        }
 #if (SPATIAL_DEBUG)
         Debug.Log(string.Format("num checks {0} ", numCollisionsChecked));
         numCollisionsChecked = 0;
