@@ -12,7 +12,8 @@ public class AudioBandVisualiser : MonoBehaviour {
 	public Material[] _materials;
 	public float _ftWait = 0.5f;
 	public float _ftSpeed = 1f;
-	float floattime = 0f;
+	float[] _ftPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
+	float _ftTime = 0f;
 
 	void Update () {
 		for (int i = 0; i < _goAudioScales.Length; i++)
@@ -48,22 +49,43 @@ public class AudioBandVisualiser : MonoBehaviour {
 			}
 		}
 
-		if ((floattime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait)
+		if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait)
 		{
+			int _intCnt = 0;
 			for (int i = 0; i < _goAudioScales.Length; i++)
 			{
-				if (AudioSampler._ftMaxbuffer[i] == AudioSampler._ftMaxbuffer.Max())
+				if (_intCnt < 2)
 				{
-					GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform, false);
-					go.transform.position += new Vector3(0, 0.5f, 0);
-					go.transform.localScale = new Vector3(1f, 1f, 1f);
-					go.transform.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
-					go.name = "Test " + i;
-					go.SetActive(true);
-					break;
+					if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 1)
+					{
+						if ((AudioSampler._ftMaxbuffer[i] - _ftPrevBuffer[i]) > 0.4f)
+						{
+							GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform, false);
+							go.transform.position += new Vector3(0, 0.5f, 0);
+							go.transform.localScale = new Vector3(1f, 1f, 1f);
+							go.transform.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
+							go.name = "Test " + i;
+							go.SetActive(true);
+							_intCnt++;
+							_ftPrevBuffer[i] = AudioSampler._ftMaxbuffer[i];
+						}
+					}
+					if (AudioSampler._ftMaxbuffer[i] == AudioSampler._ftMaxbuffer.Max())
+					{
+						GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform, false);
+						go.transform.position += new Vector3(0, 0.5f, 0);
+						go.transform.localScale = new Vector3(1f, 1f, 1f);
+						go.transform.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
+						go.name = "Test " + i;
+						go.SetActive(true);
+						_intCnt++;
+						_ftPrevBuffer[i] = AudioSampler._ftMaxbuffer[i];
+					}
 				}
 			}
-			floattime = 0;
+			
+			_ftTime = 0;
 		}
+
 	}
 }
