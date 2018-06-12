@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 #if UNITY_PS4
 using UnityEngine.PS4;
@@ -14,25 +15,9 @@ public class DestroyerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Destructable")
+        if (Input.GetKeyDown(KeyCode.JoystickButton5))
         {
-            Destroy(other.gameObject);
-            StartCoroutine(Vibrate());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-
-    IEnumerator Vibrate()
-    {
-
-        PS4Input.MoveSetVibration(0, 1, 128);
-        PS4Input.MoveSetVibration(0, 0, 128);
-        yield return new WaitForSeconds(0.1f);
-        PS4Input.MoveSetVibration(0, 1, 0);
-        PS4Input.MoveSetVibration(0, 0, 0);
     }
 }
