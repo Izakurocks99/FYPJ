@@ -19,11 +19,11 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
 	// Use this for initialization
     [SerializeField]
     [Range (10 , 100)]
-    public const uint NumWidhtGrids = 100;
+    public const uint NumWidhtGrids = 20;
 
     [SerializeField]
     [Range (10 , 100)]
-    public const uint NumHeightGrids = 50;  // const cant be seriliazed(reeeeeeeeeeeee)
+    public const uint NumHeightGrids = 15;  // const cant be seriliazed(reeeeeeeeeeeee)
     [SerializeField]
     Vector3 WorldPos = new Vector3(0, 0, 0);
 

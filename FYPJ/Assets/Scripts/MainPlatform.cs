@@ -49,7 +49,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
         float y = Mathf.Sin(axis) * realpos;
 
         Vector3 pos = new Vector3(x * VerticalScale,0,y) ; //
-        pos += new Vector3(stagePosition.x, 0,stagePosition.y);
+        pos += new Vector3(stagePosition.x, Position.z,stagePosition.y);
 
         //pos.z = testpos;
         //testpos += 0.5f;
@@ -66,10 +66,10 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
     void OnDrawGizmos()
     {
         Vector2 halfDims = StageDimension / 2f;
-        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y + halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,0, Position.y - halfDims.y));
-        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, 0,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , 0,Position.y - halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, Position.z,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , Position.z,Position.y + halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  - halfDims.x, Position.z,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,Position.z, Position.y + halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, Position.z,Position.y + halfDims.y) , new Vector3(  Position.x + halfDims.x ,Position.z, Position.y - halfDims.y));
+        Gizmos.DrawLine(new Vector3( Position.x  + halfDims.x, Position.z,Position.y - halfDims.y) , new Vector3(  Position.x - halfDims.x , Position.z,Position.y - halfDims.y));
 
 
 
