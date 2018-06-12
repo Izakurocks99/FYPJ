@@ -649,6 +649,10 @@ Prefab:
       propertyPath: _txt
       value: 
       objectReference: {fileID: 1718912764}
+    - target: {fileID: 1407408248764056, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
@@ -726,10 +730,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 565189643}
---- !u!1 &585568061 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 34a4627c2a6bd674c8c025f69f4d404a, type: 3}
-  m_PrefabInternal: {fileID: 602134317}
 --- !u!1001 &602134317
 Prefab:
   m_ObjectHideFlags: 0
@@ -1088,7 +1088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7c2d1c072b3c642a8fca08178515b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goContainer: {fileID: 1122789533}
 --- !u!1 &895740480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,10 +1351,6 @@ Transform:
   m_Father: {fileID: 1526093351}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1165057176 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 34a4627c2a6bd674c8c025f69f4d404a, type: 3}
-  m_PrefabInternal: {fileID: 1177586215}
 --- !u!1001 &1174092824
 Prefab:
   m_ObjectHideFlags: 0
@@ -1719,10 +1714,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1344265170 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 34a4627c2a6bd674c8c025f69f4d404a, type: 3}
-  m_PrefabInternal: {fileID: 2126290616}
 --- !u!1 &1390574975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,27 +2075,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c248ae31d3f0946926bbb09c4035b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goPrefab:
-  - {fileID: 100000, guid: 8e9cfbe2f562b644c84a73f045417295, type: 3}
-  - {fileID: 1467603465521292, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
-  _goContainer:
-  - {fileID: 1454871102}
-  - {fileID: 1122789533}
-  _goBridges:
-  - {fileID: 1165057176}
-  - {fileID: 1344265170}
-  - {fileID: 2089424060}
-  - {fileID: 585568061}
-  _goPlayer: {fileID: 424733622}
-  _goAudio: {fileID: 836154593}
-  _materials:
-  - {fileID: 2100000, guid: 81b753a17d4353746a5061f21eec916a, type: 2}
-  - {fileID: 2100000, guid: 579edfab31cbcdb4888c17352c2baee1, type: 2}
-  - {fileID: 2100000, guid: 695a3a2c7197165459b70919bbda9ac8, type: 2}
-  _ftSpacing: 12
-  _ftBeatScale: 10
-  _ftBeatSpeed: 1.5
-  _ftDistanceCheck: 0.5
 --- !u!1 &1526980365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,10 +2720,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &2089424060 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 34a4627c2a6bd674c8c025f69f4d404a, type: 3}
-  m_PrefabInternal: {fileID: 1204524322}
 --- !u!1001 &2126290616
 Prefab:
   m_ObjectHideFlags: 0

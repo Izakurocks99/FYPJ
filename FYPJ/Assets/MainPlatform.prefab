@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6752cffad1b7ece4c9cbcba8b77c6a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 0, y: -2.5, z: 3.5}
+  Position: {x: 0, y: 4, z: -3}
   spawnChance: 10
-  StageDimension: {x: 40, y: 20}
+  StageDimension: {x: 40, y: 17}
   MinRangeFromStage: 10
   CollisionGridPreFab: {fileID: 1731845422777424, guid: b955ef6058cfb5e4489b5216d83b9ddf,
     type: 2}
