@@ -8,9 +8,10 @@ public class AudioBandVisualiser : MonoBehaviour {
 	public GameObject[] _goAudioScales;
 	public GameObject _goPrefab;
 	public GameObject _goAudio;
+	public GameObject _goPlayer;
 	public Material[] _materials;
-	public float floatwait = 0.5f;
-	public float floatspeed = 1f;
+	public float _ftWait = 0.5f;
+	public float _ftSpeed = 1f;
 	float floattime = 0f;
 
 	void Update () {
@@ -23,7 +24,31 @@ public class AudioBandVisualiser : MonoBehaviour {
 	}
 
 	void InstantiateBeat() {
-		if ((floattime += 1 * Time.deltaTime * floatspeed) >= floatwait)
+		switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty)
+		{
+			case 0: {
+				_ftWait = 1f;
+				break;
+			}
+			case 1: {
+				_ftWait = 0.75f;
+				break;
+			}
+			case 2: {
+				_ftWait = 0.345f;
+				break;
+			}
+			case 3: {
+				_ftWait = 0.2f;
+				break;
+			}
+			default: {
+				_ftWait = 0.345f;
+				break;
+			}
+		}
+
+		if ((floattime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait)
 		{
 			for (int i = 0; i < _goAudioScales.Length; i++)
 			{
@@ -35,6 +60,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 					go.transform.GetComponent<Renderer>().material = _materials[Random.Range(0, _materials.Length)];
 					go.name = "Test " + i;
 					go.SetActive(true);
+					break;
 				}
 			}
 			floattime = 0;
