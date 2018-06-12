@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4520948013142514}
   - component: {fileID: 33201941847704332}
   - component: {fileID: 23902369578499646}
-  - component: {fileID: 65571881202812266}
   - component: {fileID: 114867572603555434}
   - component: {fileID: 114484879221826976}
   - component: {fileID: 114201623626683126}
+  - component: {fileID: 65965509567448820}
   m_Layer: 0
   m_Name: AudioBeatsPrefab
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467603465521292}
-  m_Mesh: {fileID: 4300000, guid: 2f2925372772da54dbca998b493ff536, type: 3}
---- !u!65 &65571881202812266
+  m_Mesh: {fileID: 4300000, guid: e50812a80756d1f4cab1067f6fc1832d, type: 3}
+--- !u!65 &65965509567448820
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -97,7 +97,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.120355606, y: 0.10896393, z: 0.12035564}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114201623626683126
 MonoBehaviour:
@@ -110,10 +110,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _materials:
-  - {fileID: 2100000, guid: 81b753a17d4353746a5061f21eec916a, type: 2}
-  - {fileID: 2100000, guid: 579edfab31cbcdb4888c17352c2baee1, type: 2}
-  - {fileID: 2100000, guid: 695a3a2c7197165459b70919bbda9ac8, type: 2}
+  playerCam: {fileID: 0}
+  beats:
+  - color: 0
+    material: {fileID: 2100000, guid: 993d23554e9db904090abfd44c786905, type: 2}
+  - color: 1
+    material: {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
+  - color: 2
+    material: {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
+  - color: 3
+    material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
 --- !u!114 &114484879221826976
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destructable
   - Ground
+  - PlayerStick
   layers:
   - Default
   - TransparentFX

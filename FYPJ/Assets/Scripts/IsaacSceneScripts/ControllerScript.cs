@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_PS4
 using UnityEngine.PS4;
 #endif
@@ -18,137 +19,160 @@ public enum ControllerButtons
     Start,
 }
 
+public enum ControllerColor
+{
+    Red,
+    Pink,
+    Blue,
+    Gold
+}
+
+[System.Serializable]
+public class PlayerStick
+{
+    public ControllerColor color;
+    public Material material;
+}
+
 public class ControllerScript : MonoBehaviour
 {
-    //public bool isSecondaryMoveController = false;
+    public bool isSecondaryMoveController = false;
     public GameObject player;
-    public GameObject movementMarker;
+    public GameObject currStick;
     public LaserPointer laserPointer;
-    public MovementScript moveScript;
     public ControllerButtons resetButton;
+    public ControllerColor controllerColor;
+    public List<PlayerStick> playerSticks;
+    Dictionary<ControllerColor, Material> dicPlayerSticks;
+
     private RaycastHit hit;
     private Vector3 startingPos;
 
+    //move this into a new script
+
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         startingPos = player.transform.position;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(GetControllerKey(ControllerButtons.BackTrigger)))
+
+        //init dic
+        dicPlayerSticks = new Dictionary<ControllerColor, Material>();
+        foreach (PlayerStick var in playerSticks)
         {
+            dicPlayerSticks.Add(var.color, var.material);
+        }
+
+        //init controllerColor
+        if (isSecondaryMoveController)
+        {
+            controllerColor = ControllerColor.Red;
+            UpdateControllerMaterial(controllerColor);
+        }
+        else
+        {
+            controllerColor = ControllerColor.Blue;
+            UpdateControllerMaterial(controllerColor);
+        }
+    }
+
+    // Update is called once per frame
+    void Update() {
+        if (CheckForInput())
+        {
+            //switch color
+            if (isSecondaryMoveController)
+            {
+                controllerColor = ControllerColor.Pink;
+                UpdateControllerMaterial(controllerColor);
+            }
+            else
+            {
+                controllerColor = ControllerColor.Gold;
+                UpdateControllerMaterial(controllerColor);
+            }
+
             //interact with UI
             if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
             {
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }
-            else if (!movementMarker.activeInHierarchy) //create icon
-                SpawnMarker();
         }
-        else if(Input.GetKeyUp(GetControllerKey(ControllerButtons.BackTrigger)))
+        else if (!CheckForInput())
         {
-            //move player and remove icon
-            Move();
-        }
-
-        //update marker to controller forward
-        if (Input.GetKey(GetControllerKey(ControllerButtons.BackTrigger)) && movementMarker.activeInHierarchy)
-        {
-            movementMarker.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
+            //switch color
+            if (isSecondaryMoveController)
+            {
+                controllerColor = ControllerColor.Red;
+                UpdateControllerMaterial(controllerColor);
+            }
+            else
+            {
+                controllerColor = ControllerColor.Blue;
+                UpdateControllerMaterial(controllerColor);
+            }
         }
 
         //reset player position
         if (Input.GetKeyDown(GetControllerKey(resetButton)))
         {
-            player.transform.position = startingPos;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
     // Move controlelrs use an API for their analog button, DualShock 4 uses an axis name for R2
-    //    bool CheckForInput()
+    bool CheckForInput()
+    {
+#if UNITY_PS4
+
+        if (!isSecondaryMoveController)
+        {
+            return (PS4Input.MoveGetAnalogButton(0, 0) > 0 ? true : false);
+        }
+        else
+        {
+            return (PS4Input.MoveGetAnalogButton(0, 1) > 0 ? true : false);
+        }
+#else
+    		return Input.GetButton("Fire1");
+#endif
+    }
+
+    //Move to Location
+
+    // When fired the controller will vibrate for 0.1 seconds
+    //    IEnumerator Vibrate()
     //    {
     //#if UNITY_PS4
     //        if (isMoveController)
     //        {
-    //            if (!isSecondaryMoveController)
-    //            {
-    //                return (PS4Input.MoveGetAnalogButton(0, 0) > 0 ? true : false);
-    //            }
+    //            if (isSecondaryMoveController)
+    //                PS4Input.MoveSetVibration(0, 1, 128);
     //            else
-    //            {
-    //                return (PS4Input.MoveGetAnalogButton(0, 1) > 0 ? true : false);
-    //            }
+    //                PS4Input.MoveSetVibration(0, 0, 128);
     //        }
     //        else
     //        {
-    //            return (Input.GetAxisRaw("TriggerRight") > 0 ? true : false);
+    //            PS4Input.PadSetVibration(0, 0, 255);
     //        }
-    //#else
-    //		return Input.GetButton("Fire1");
+    //#endif
+
+    //        yield return new WaitForSeconds(0.1f);
+
+    //#if UNITY_PS4
+    //        if (isMoveController)
+    //        {
+    //            if (isSecondaryMoveController)
+    //                PS4Input.MoveSetVibration(0, 1, 0);
+    //            else
+    //                PS4Input.MoveSetVibration(0, 0, 0);
+    //        }
+    //        else
+    //        {
+    //            PS4Input.PadSetVibration(0, 0, 0);
+    //        }
     //#endif
     //    }
-
-    //Move to Location
-
-    void Move()
-    {
-        if (movementMarker.activeInHierarchy)
-        {
-            Vector3 height = new Vector3(0f, 0.5f, 0f); //set player height
-            player.transform.position = movementMarker.transform.position + height;//move player
-            
-            player.transform.forward = movementMarker.transform.forward; 
-            movementMarker.SetActive(false);
-        }
-    }
-
-    void SpawnMarker()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            if (hit.transform.gameObject.tag == "Ground") //hits te ground
-            {
-                movementMarker.SetActive(true); // create marker
-                movementMarker.transform.position = hit.point;
-            }
-        }
-    }
-
-    // When fired the controller will vibrate for 0.1 seconds
-//    IEnumerator Vibrate()
-//    {
-//#if UNITY_PS4
-//        if (isMoveController)
-//        {
-//            if (isSecondaryMoveController)
-//                PS4Input.MoveSetVibration(0, 1, 128);
-//            else
-//                PS4Input.MoveSetVibration(0, 0, 128);
-//        }
-//        else
-//        {
-//            PS4Input.PadSetVibration(0, 0, 255);
-//        }
-//#endif
-
-//        yield return new WaitForSeconds(0.1f);
-
-//#if UNITY_PS4
-//        if (isMoveController)
-//        {
-//            if (isSecondaryMoveController)
-//                PS4Input.MoveSetVibration(0, 1, 0);
-//            else
-//                PS4Input.MoveSetVibration(0, 0, 0);
-//        }
-//        else
-//        {
-//            PS4Input.PadSetVibration(0, 0, 0);
-//        }
-//#endif
-//    }
 
     KeyCode GetControllerKey(ControllerButtons button)
     {
@@ -181,6 +205,39 @@ public class ControllerScript : MonoBehaviour
                 return KeyCode.JoystickButton7;
             default:
                 return KeyCode.None;
+        }
+    }
+
+    void UpdateControllerMaterial(ControllerColor newColor)
+    {
+        Renderer mat = currStick.GetComponent<Renderer>();
+        switch (newColor)
+        {
+            case ControllerColor.Red:
+                mat.material = dicPlayerSticks[ControllerColor.Red];
+                return;
+            case ControllerColor.Pink:
+                mat.material = dicPlayerSticks[ControllerColor.Pink];
+                return;
+            case ControllerColor.Blue:
+                mat.material = dicPlayerSticks[ControllerColor.Blue];
+                return;
+            case ControllerColor.Gold:
+                mat.material = dicPlayerSticks[ControllerColor.Gold];
+                return;
+
+        }
+    }
+
+    public void VibrateController()
+    {
+        if(isSecondaryMoveController)
+        {
+            StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateLeft());
+        }
+        else
+        {
+            StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateRight());
         }
     }
 }
