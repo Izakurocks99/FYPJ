@@ -5,7 +5,6 @@ using UnityEngine;
 public class AudioSwap : MonoBehaviour {
 
     public GameObject[] _goContainers;
-    public GameObject _goContainer;
 
     void Start() {
     }
@@ -17,8 +16,7 @@ public class AudioSwap : MonoBehaviour {
         this.transform.GetComponent<AudioSource>().Stop();
 
         List<GameObject> listDelete = new List<GameObject>();
-        foreach (Transform child in _goContainer.transform)
-            listDelete.Add(child.gameObject);
+
         for (int j = 0; j < _goContainers.Length; j++)
         {
             GameObject go = _goContainers[j];
