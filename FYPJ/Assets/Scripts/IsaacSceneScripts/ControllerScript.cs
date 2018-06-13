@@ -15,7 +15,6 @@ public enum ControllerButtons
     Triangle,
     BackTrigger,
     MiddleButton,
-    TouchPad,
     Start,
 }
 
@@ -40,21 +39,26 @@ public class ControllerScript : MonoBehaviour
     public GameObject player;
     public GameObject currStick;
     public LaserPointer laserPointer;
-    public ControllerButtons resetButton;
     public ControllerColor controllerColor;
+    public ControllerButtons swapModeButton;
+    public ControllerButtons interactButton;
     public List<PlayerStick> playerSticks;
     Dictionary<ControllerColor, Material> dicPlayerSticks;
 
     private RaycastHit hit;
     private Vector3 startingPos;
+    private int controllerIndex = 0;
 
-    //move this into a new script
+    //button checks
+    private bool isMiddleButtonDown = false;
 
 
     // Use this for initialization
     void Start()
     {
         startingPos = player.transform.position;
+        if (isSecondaryMoveController)
+            controllerIndex = 1;
 
         //init dic
         dicPlayerSticks = new Dictionary<ControllerColor, Material>();
@@ -113,10 +117,15 @@ public class ControllerScript : MonoBehaviour
             }
         }
 
-        //reset player position
-        if (Input.GetKeyDown(GetControllerKey(resetButton)))
+        //swap modes
+        if (PS4Input.MoveGetButtons(0,controllerIndex) == (GetButtonIndex(swapModeButton)) && !isMiddleButtonDown)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            laserPointer.gameObject.SetActive(!laserPointer.gameObject.activeInHierarchy);
+            isMiddleButtonDown = true;
+        }
+        else if(PS4Input.MoveGetButtons(0, controllerIndex) == 0 && isMiddleButtonDown)
+        {
+            isMiddleButtonDown = false;
         }
     }
 
@@ -174,7 +183,7 @@ public class ControllerScript : MonoBehaviour
     //#endif
     //    }
 
-    KeyCode GetControllerKey(ControllerButtons button)
+    int GetButtonIndex(ControllerButtons button)
     {
         //FOR INPUT CONTROLLER 
         // * x                -0 
@@ -188,23 +197,21 @@ public class ControllerScript : MonoBehaviour
         switch (button)
         {
             case ControllerButtons.X:
-                return KeyCode.JoystickButton0;
+                return 64;
             case ControllerButtons.Circle:
-                return KeyCode.JoystickButton1;
+                return 32;
             case ControllerButtons.Square:
-                return KeyCode.JoystickButton2;
+                return 128;
             case ControllerButtons.Triangle:
-                return KeyCode.JoystickButton3;
+                return 16;
             case ControllerButtons.BackTrigger:
-                return KeyCode.JoystickButton4;
+                return 2;
             case ControllerButtons.MiddleButton:
-                return KeyCode.JoystickButton5;
-            case ControllerButtons.TouchPad:
-                return KeyCode.JoystickButton6;
+                return 4;
             case ControllerButtons.Start:
-                return KeyCode.JoystickButton7;
+                return 8;
             default:
-                return KeyCode.None;
+                return 0;
         }
     }
 
