@@ -338,8 +338,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 40961153}
-  - component: {fileID: 40961154}
   - component: {fileID: 40961151}
+  - component: {fileID: 40961154}
+  - component: {fileID: 40961157}
   m_Layer: 0
   m_Name: Move Controller Left
   m_TagString: Untagged
@@ -356,8 +357,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 40961155}
-  - component: {fileID: 40961156}
   - component: {fileID: 40961152}
+  - component: {fileID: 40961156}
+  - component: {fileID: 40961158}
   m_Layer: 0
   m_Name: Move Controller Right
   m_TagString: Untagged
@@ -380,8 +382,11 @@ MonoBehaviour:
   player: {fileID: 1690837442}
   currStick: {fileID: 207339958}
   laserPointer: {fileID: 1552781672}
-  resetButton: 5
+  movementScript: {fileID: 0}
+  pickupScript: {fileID: 0}
   controllerColor: 0
+  swapModeButton: 5
+  interactButton: 4
   playerSticks:
   - color: 0
     material: {fileID: 2100000, guid: be5189d94a366a747ad1abd3f19ef552, type: 2}
@@ -402,8 +407,11 @@ MonoBehaviour:
   player: {fileID: 1690837442}
   currStick: {fileID: 1907522378}
   laserPointer: {fileID: 51846981}
-  resetButton: 5
+  movementScript: {fileID: 0}
+  pickupScript: {fileID: 0}
   controllerColor: 0
+  swapModeButton: 5
+  interactButton: 4
   playerSticks:
   - color: 2
     material: {fileID: 2100000, guid: 32695e0a46ef7d347b2a9af385605ad8, type: 2}
@@ -479,6 +487,28 @@ MonoBehaviour:
   player: {fileID: 1690837442}
   movementMarker: {fileID: 198732, guid: 4eef6f5ff5915b4458bd1d4a4f7b261a, type: 2}
   laserPointer: {fileID: 51846981}
+--- !u!114 &40961157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 40961149}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d4012dab0df2c4b8efe4f8a7c16e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &40961158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 40961150}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d4012dab0df2c4b8efe4f8a7c16e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &45929493
 GameObject:
   m_ObjectHideFlags: 0

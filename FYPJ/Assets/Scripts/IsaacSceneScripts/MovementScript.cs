@@ -8,6 +8,11 @@ using UnityEngine.PS4;
 
 public class MovementScript : MonoBehaviour
 {
+    //Movement mode
+    //Cannot pick up items
+    //Select the ground and point a dir to move and face the direction
+
+
     public bool isMoveController = false;
     public bool isSecondaryMoveController = false;
     public GameObject player;
@@ -59,7 +64,7 @@ public class MovementScript : MonoBehaviour
         //reset player position
         if (Input.GetKeyDown(KeyCode.JoystickButton5))
         {
-            player.transform.position = startingPos;
+            //player.transform.position = startingPos;
         }
     }
 
