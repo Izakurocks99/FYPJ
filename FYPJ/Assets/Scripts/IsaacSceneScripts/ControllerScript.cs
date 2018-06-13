@@ -30,6 +30,12 @@ public enum ControllerColor
     Gold
 }
 
+public enum ControllerModes
+{
+    Movement,
+    Pickup,
+}
+
 [System.Serializable]
 public class PlayerStick
 {
@@ -41,14 +47,16 @@ public class ControllerScript : MonoBehaviour
 {
     //public
     public bool isSecondaryMoveController = false;
-    public GameObject player;
+    //public GameObject player;
     public GameObject currStick;
     public LaserPointer laserPointer;
     public MovementScript movementScript;
     public PickupScript pickupScript;
+    public ControllerModes controllerMode;
     public ControllerColor controllerColor;
     public ControllerButtons swapModeButton;
     public ControllerButtons interactButton;
+    public ControllerButtons resetPosButton;
     public List<PlayerStick> playerSticks;
     Dictionary<ControllerColor, Material> dicPlayerSticks;
 
@@ -60,12 +68,13 @@ public class ControllerScript : MonoBehaviour
     //button checks
     private bool buttonSwapModeDown = false;
     private bool buttonInteractDown = false;
+    private bool buttonResetPosDown = false;
 
 
     // Use this for initialization
     void Start()
     {
-        startingPos = player.transform.position; //add starting position, for resetting of position
+        //startingPos = player.transform.position; //add starting position, for resetting of position
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
@@ -81,6 +90,20 @@ public class ControllerScript : MonoBehaviour
         {
             controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
+        }
+
+        //setting conttroller mode
+        if(controllerMode == ControllerModes.Movement)
+        {
+            laserPointer.gameObject.SetActive(true);
+            movementScript.enabled = true;
+            pickupScript.enabled = false;
+        }
+        else if(controllerMode == ControllerModes.Pickup)
+        {
+            laserPointer.gameObject.SetActive(false);
+            movementScript.enabled = false;
+            pickupScript.enabled = true;
         }
     }
 
@@ -99,6 +122,12 @@ public class ControllerScript : MonoBehaviour
             {
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }
+            //Movement
+            if (controllerMode==ControllerModes.Movement)
+            {
+                movementScript.SpawnMarker();
+            }
+            
         }
         else if (!GetButtonDown(interactButton) && buttonInteractDown)
         {
@@ -106,17 +135,33 @@ public class ControllerScript : MonoBehaviour
             //switch color
             controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
+
+            if (controllerMode == ControllerModes.Movement)
+            {
+                movementScript.Move();
+            }
         }
 
         //swap modes
         if (GetButtonDown(swapModeButton) && !buttonSwapModeDown)
         {
             buttonSwapModeDown = true;
-            laserPointer.gameObject.SetActive(!laserPointer.gameObject.activeInHierarchy);
+            ToggleMode();
         }
         else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonSwapModeDown)
         {
             buttonSwapModeDown = false;
+        }
+
+        //reset pos
+        if (GetButtonDown(resetPosButton) && !buttonResetPosDown)
+        {
+            buttonResetPosDown = true;
+            ToggleMode();
+        }
+        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonResetPosDown)
+        {
+            buttonResetPosDown = false;
         }
     }
 
@@ -233,6 +278,21 @@ public class ControllerScript : MonoBehaviour
             return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
         else
             return CheckForInput();
+    }
+
+    void ToggleMode()
+    {
+        if (controllerMode == ControllerModes.Pickup)
+        {
+            controllerMode = ControllerModes.Movement;
+        }
+        else if (controllerMode == ControllerModes.Movement)
+        {
+            controllerMode = ControllerModes.Pickup;
+        }
+        laserPointer.gameObject.SetActive(!laserPointer.gameObject.activeInHierarchy);
+        movementScript.enabled = !movementScript.enabled;
+        pickupScript.enabled = !pickupScript.enabled;
     }
 
     public void VibrateController()
