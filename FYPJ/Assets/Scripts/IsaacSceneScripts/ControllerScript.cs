@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.PS4;
 #endif
 
+//Controls color of stick
+//checks for controller input
+
+
 public enum ControllerButtons
 {
     X,
@@ -35,32 +39,37 @@ public class PlayerStick
 
 public class ControllerScript : MonoBehaviour
 {
+    //public
     public bool isSecondaryMoveController = false;
     public GameObject player;
     public GameObject currStick;
     public LaserPointer laserPointer;
+    public MovementScript movementScript;
+    public PickupScript pickupScript;
     public ControllerColor controllerColor;
     public ControllerButtons swapModeButton;
     public ControllerButtons interactButton;
     public List<PlayerStick> playerSticks;
     Dictionary<ControllerColor, Material> dicPlayerSticks;
 
+    //private
     private RaycastHit hit;
     private Vector3 startingPos;
     private int controllerIndex = 0;
 
     //button checks
-    private bool isMiddleButtonDown = false;
+    private bool buttonSwapModeDown = false;
+    private bool buttonInteractDown = false;
 
 
     // Use this for initialization
     void Start()
     {
-        startingPos = player.transform.position;
-        if (isSecondaryMoveController)
+        startingPos = player.transform.position; //add starting position, for resetting of position
+        if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        //init dic
+        //init dic to switch controller color
         dicPlayerSticks = new Dictionary<ControllerColor, Material>();
         foreach (PlayerStick var in playerSticks)
         {
@@ -70,31 +79,20 @@ public class ControllerScript : MonoBehaviour
         //init controllerColor
         if (isSecondaryMoveController)
         {
-            controllerColor = ControllerColor.Red;
-            UpdateControllerMaterial(controllerColor);
-        }
-        else
-        {
-            controllerColor = ControllerColor.Blue;
+            controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
         }
     }
 
     // Update is called once per frame
-    void Update() {
-        if (CheckForInput())
+    void Update()
+    {
+        if (GetButtonDown(interactButton) && !buttonInteractDown)
         {
+            buttonInteractDown = true;
             //switch color
-            if (isSecondaryMoveController)
-            {
-                controllerColor = ControllerColor.Pink;
-                UpdateControllerMaterial(controllerColor);
-            }
-            else
-            {
-                controllerColor = ControllerColor.Gold;
-                UpdateControllerMaterial(controllerColor);
-            }
+            controllerColor = playerSticks[1].color;
+            UpdateControllerMaterial(controllerColor);
 
             //interact with UI
             if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
@@ -102,30 +100,23 @@ public class ControllerScript : MonoBehaviour
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }
         }
-        else if (!CheckForInput())
+        else if (!GetButtonDown(interactButton) && buttonInteractDown)
         {
+            buttonInteractDown = false;
             //switch color
-            if (isSecondaryMoveController)
-            {
-                controllerColor = ControllerColor.Red;
-                UpdateControllerMaterial(controllerColor);
-            }
-            else
-            {
-                controllerColor = ControllerColor.Blue;
-                UpdateControllerMaterial(controllerColor);
-            }
+            controllerColor = playerSticks[0].color;
+            UpdateControllerMaterial(controllerColor);
         }
 
         //swap modes
-        if (PS4Input.MoveGetButtons(0,controllerIndex) == (GetButtonIndex(swapModeButton)) && !isMiddleButtonDown)
+        if (GetButtonDown(swapModeButton) && !buttonSwapModeDown)
         {
+            buttonSwapModeDown = true;
             laserPointer.gameObject.SetActive(!laserPointer.gameObject.activeInHierarchy);
-            isMiddleButtonDown = true;
         }
-        else if(PS4Input.MoveGetButtons(0, controllerIndex) == 0 && isMiddleButtonDown)
+        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonSwapModeDown)
         {
-            isMiddleButtonDown = false;
+            buttonSwapModeDown = false;
         }
     }
 
@@ -236,9 +227,17 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
+    bool GetButtonDown(ControllerButtons button)
+    {
+        if (button != ControllerButtons.BackTrigger)
+            return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
+        else
+            return CheckForInput();
+    }
+
     public void VibrateController()
     {
-        if(isSecondaryMoveController)
+        if (isSecondaryMoveController)
         {
             StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateLeft());
         }
