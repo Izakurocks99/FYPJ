@@ -10,18 +10,6 @@ using UnityEngine.PS4;
 //Controls color of stick
 //checks for controller input
 
-
-public enum ControllerButtons
-{
-    X,
-    Circle,
-    Square,
-    Triangle,
-    BackTrigger,
-    MiddleButton,
-    Start,
-}
-
 public enum ControllerColor
 {
     Red,
@@ -34,6 +22,8 @@ public enum ControllerModes
 {
     Movement,
     Pickup,
+    Dance,
+    Calibrate
 }
 
 [System.Serializable]
@@ -50,15 +40,16 @@ public class ControllerScript : MonoBehaviour
     //public GameObject player;
     public GameObject currStick;
     public LaserPointer laserPointer;
-    public MovementScript movementScript;
-    public PickupScript pickupScript;
+    public PlayerControlsScript controlsScript;
     public ControllerModes controllerMode;
     public ControllerColor controllerColor;
-    public ControllerButtons swapModeButton;
-    public ControllerButtons interactButton;
-    public ControllerButtons resetPosButton;
     public List<PlayerStick> playerSticks;
     Dictionary<ControllerColor, Material> dicPlayerSticks;
+
+    //mode scripts
+    public MovementScript movementScript;
+    public PickupScript pickupScript;
+    public ControlCalibrationScript calibrateScript;
 
     //private
     private RaycastHit hit;
@@ -69,6 +60,7 @@ public class ControllerScript : MonoBehaviour
     private bool buttonSwapModeDown = false;
     private bool buttonInteractDown = false;
     private bool buttonResetPosDown = false;
+    private bool buttonResetSceneDown = false;
 
 
     // Use this for initialization
@@ -92,8 +84,16 @@ public class ControllerScript : MonoBehaviour
             UpdateControllerMaterial(controllerColor);
         }
 
+        //TODO: CHANGE THIS TO USE CONTROLLER MODE BASE CLASS INIT FUNC
         //setting conttroller mode
-        if(controllerMode == ControllerModes.Movement)
+        if (controllerMode == ControllerModes.Calibrate)
+        {
+            laserPointer.gameObject.SetActive(false);
+            movementScript.enabled = false;
+            pickupScript.enabled = true;
+            calibrateScript.enabled = true;
+        }
+        if (controllerMode == ControllerModes.Movement)
         {
             laserPointer.gameObject.SetActive(true);
             movementScript.enabled = true;
@@ -110,7 +110,10 @@ public class ControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetButtonDown(interactButton) && !buttonInteractDown)
+        //TODO: USE CONTROLLER MODE SCRIPT FUNCTS
+        //Inputs
+        //Interact
+        if (GetButtonDown(controlsScript.interactButton) && !buttonInteractDown)
         {
             buttonInteractDown = true;
             //switch color
@@ -127,9 +130,14 @@ public class ControllerScript : MonoBehaviour
             {
                 movementScript.SpawnMarker();
             }
+            //calibrate
+            if(controllerMode == ControllerModes.Calibrate)
+            {
+                calibrateScript.UnlockObject(isSecondaryMoveController);
+            }
             
         }
-        else if (!GetButtonDown(interactButton) && buttonInteractDown)
+        else if (!GetButtonDown(controlsScript.interactButton) && buttonInteractDown)
         {
             buttonInteractDown = false;
             //switch color
@@ -140,10 +148,15 @@ public class ControllerScript : MonoBehaviour
             {
                 movementScript.Move();
             }
+            //calibrate
+            if (controllerMode == ControllerModes.Calibrate)
+            {
+                calibrateScript.LockObject();
+            }
         }
 
         //swap modes
-        if (GetButtonDown(swapModeButton) && !buttonSwapModeDown)
+        if (GetButtonDown(controlsScript.swapModeButton) && !buttonSwapModeDown)
         {
             buttonSwapModeDown = true;
             ToggleMode();
@@ -154,14 +167,29 @@ public class ControllerScript : MonoBehaviour
         }
 
         //reset pos
-        if (GetButtonDown(resetPosButton) && !buttonResetPosDown)
+        if (GetButtonDown(controlsScript.resetPosButton) && !buttonResetPosDown)
         {
             buttonResetPosDown = true;
-            ToggleMode();
+
+            if (controllerMode == ControllerModes.Movement)
+            {
+                movementScript.ResetPlayerPos();
+            }
         }
         else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonResetPosDown)
         {
             buttonResetPosDown = false;
+        }
+        
+        //Reset scene
+        if (GetButtonDown(controlsScript.resetSceneButton) && !buttonResetSceneDown)
+        {
+            buttonResetSceneDown = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonResetSceneDown)
+        {
+            buttonResetSceneDown = false;
         }
     }
 
@@ -182,42 +210,6 @@ public class ControllerScript : MonoBehaviour
     		return Input.GetButton("Fire1");
 #endif
     }
-
-    //Move to Location
-
-    // When fired the controller will vibrate for 0.1 seconds
-    //    IEnumerator Vibrate()
-    //    {
-    //#if UNITY_PS4
-    //        if (isMoveController)
-    //        {
-    //            if (isSecondaryMoveController)
-    //                PS4Input.MoveSetVibration(0, 1, 128);
-    //            else
-    //                PS4Input.MoveSetVibration(0, 0, 128);
-    //        }
-    //        else
-    //        {
-    //            PS4Input.PadSetVibration(0, 0, 255);
-    //        }
-    //#endif
-
-    //        yield return new WaitForSeconds(0.1f);
-
-    //#if UNITY_PS4
-    //        if (isMoveController)
-    //        {
-    //            if (isSecondaryMoveController)
-    //                PS4Input.MoveSetVibration(0, 1, 0);
-    //            else
-    //                PS4Input.MoveSetVibration(0, 0, 0);
-    //        }
-    //        else
-    //        {
-    //            PS4Input.PadSetVibration(0, 0, 0);
-    //        }
-    //#endif
-    //    }
 
     int GetButtonIndex(ControllerButtons button)
     {
@@ -282,7 +274,12 @@ public class ControllerScript : MonoBehaviour
 
     void ToggleMode()
     {
-        if (controllerMode == ControllerModes.Pickup)
+        if(controllerMode == ControllerModes.Calibrate)
+        {
+            controllerMode = ControllerModes.Movement;
+            pickupScript.enabled = false;
+        }
+        else if (controllerMode == ControllerModes.Pickup)
         {
             controllerMode = ControllerModes.Movement;
         }
@@ -306,4 +303,5 @@ public class ControllerScript : MonoBehaviour
             StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateRight());
         }
     }
+    
 }
