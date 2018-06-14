@@ -136,7 +136,5 @@ public class AudioBandVisualiser : MonoBehaviour {
 		}
 
 		_ftAryDiffBuffer = _ftAryDiffBuffer.OrderByDescending(ft => ft).ToArray();
-		for (int g = 0; g < _ftAryDiffBuffer.Length; g++)
-		Debug.Log(g + " || " + _ftAryDiffBuffer[g]);
 	}
 }
