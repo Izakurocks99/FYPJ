@@ -9,7 +9,10 @@ public class AudioMotion : MonoBehaviour {
 	Transform _tfParent;
 	Transform _tfThis;
     public float _intShiftRate;
+	public float _ftRange;
+	float _ftX, _ftY, _ftZ;
 	int _intNumber;
+	Vector3 _vec3Area;
 
 	void Start() {
 		_tfThis = this.transform;
@@ -17,9 +20,16 @@ public class AudioMotion : MonoBehaviour {
 		_tfCamera = Camera.main.transform;
 
 		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+
+		_ftX = Random.Range(-1.2f, 1.2f);
+		_ftY = Random.Range(-1.2f, 1.2f);
+		_ftZ = Random.Range(-1.2f, 1.2f);
     }
 
 	void Update () {
+		_vec3Area = _tfCamera.position + new Vector3(_ftX,
+													 _ftY,
+													 _ftZ);
 		_tfThis.Rotate(_tfThis.up, 7.0f);
 		
 		BeatMotion();
@@ -31,9 +41,9 @@ public class AudioMotion : MonoBehaviour {
 	}
 
 	void TransitBeat() {
-		Vector3 _vec3Heading = _tfCamera.position - _tfThis.position;
+		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
 		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-			_tfThis.position = Vector3.MoveTowards(_tfThis.position, _tfCamera.position, 0.1f);
+			_tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.1f);
 		else
 			Destroy(_tfThis.gameObject);
 	}
