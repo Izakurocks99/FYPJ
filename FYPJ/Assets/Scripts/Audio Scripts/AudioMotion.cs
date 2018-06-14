@@ -21,16 +21,15 @@ public class AudioMotion : MonoBehaviour {
 
 		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
-		_ftX = Random.Range(-1.5f, 1.5f);
-		_ftY = Random.Range(-1.5f, 1.5f);
-		_ftZ = Random.Range(-1.5f, 1.5f);
+		_ftX = Random.Range(-1.2f, 1.2f);
+		_ftY = Random.Range(-1.2f, 1.2f);
+		_ftZ = Random.Range(-1.2f, 1.2f);
     }
 
 	void Update () {
 		_vec3Area = _tfCamera.position + new Vector3(_ftX,
 													 _ftY,
 													 _ftZ);
-		Debug.Log(_vec3Area);
 		_tfThis.Rotate(_tfThis.up, 7.0f);
 		
 		BeatMotion();
