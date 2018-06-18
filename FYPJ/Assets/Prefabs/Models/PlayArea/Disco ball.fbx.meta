@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 34a4627c2a6bd674c8c025f69f4d404a
+guid: ea29c23fa34bc1a41b62f5dee25fbf24
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: disco_ball
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCylinder1
+    4300000: polySurface1030
   externalObjects: {}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -40,7 +40,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

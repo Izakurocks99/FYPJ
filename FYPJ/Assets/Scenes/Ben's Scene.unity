@@ -455,18 +455,17 @@ MonoBehaviour:
   isSecondaryMoveController: 1
   currStick: {fileID: 207339958}
   laserPointer: {fileID: 1552781672}
-  movementScript: {fileID: 0}
-  pickupScript: {fileID: 0}
+  controlsScript: {fileID: 0}
   controllerMode: 0
   controllerColor: 0
-  swapModeButton: 0
-  interactButton: 0
-  resetPosButton: 0
   playerSticks:
   - color: 0
     material: {fileID: 2100000, guid: be5189d94a366a747ad1abd3f19ef552, type: 2}
   - color: 1
     material: {fileID: 2100000, guid: b118d8f18a10b0e438ef2f961fe01586, type: 2}
+  movementScript: {fileID: 0}
+  pickupScript: {fileID: 0}
+  calibrateScript: {fileID: 0}
 --- !u!114 &40961152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,18 +480,17 @@ MonoBehaviour:
   isSecondaryMoveController: 0
   currStick: {fileID: 1907522378}
   laserPointer: {fileID: 51846981}
-  movementScript: {fileID: 0}
-  pickupScript: {fileID: 0}
+  controlsScript: {fileID: 0}
   controllerMode: 0
   controllerColor: 0
-  swapModeButton: 0
-  interactButton: 0
-  resetPosButton: 0
   playerSticks:
   - color: 2
     material: {fileID: 2100000, guid: 32695e0a46ef7d347b2a9af385605ad8, type: 2}
   - color: 3
     material: {fileID: 2100000, guid: d0ed5e0fe0f243c419aa5bc497488ba4, type: 2}
+  movementScript: {fileID: 0}
+  pickupScript: {fileID: 0}
+  calibrateScript: {fileID: 0}
 --- !u!4 &40961153
 Transform:
   m_ObjectHideFlags: 0
@@ -2077,7 +2075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -11109,7 +11107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1786758621
 Transform:
   m_ObjectHideFlags: 0

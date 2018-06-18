@@ -1,20 +1,22 @@
 fileFormatVersion: 2
-guid: f49b39f8bdcba1240b67991c05eca7cc
+guid: 36cdea8e4c544f54784cb4883d188741
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
+    100000: polySurface380
+    100002: //RootNode
+    400000: polySurface380
+    400002: //RootNode
+    2100000: Stage
+    2300000: polySurface380
+    3300000: polySurface380
+    4300000: polySurface380
   externalObjects: {}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -40,7 +42,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 6.65
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
