@@ -115,6 +115,5 @@ public class ColorChanger : MonoBehaviour {
             NextScale = 0f;
         }
 
-    //public static float Lerp(float a, float b, float t);
 	}
 }
