@@ -5,25 +5,32 @@ using UnityEngine;
 
 public class AudioMotion : MonoBehaviour {
 
-	Transform _tfGrandParent;
+	Transform _tfCamera;
 	Transform _tfParent;
 	Transform _tfThis;
     public float _intShiftRate;
-	float _ftSmoothTIme;
-	Vector3 _vec3Velocity;
+	public float _ftRange;
+	float _ftX, _ftY, _ftZ;
+	int _intNumber;
+	Vector3 _vec3Area;
 
 	void Start() {
 		_tfThis = this.transform;
 		_tfParent = this.transform.parent.transform;
-		_tfGrandParent = _tfParent.parent.transform;
+		_tfCamera = Camera.main.transform;
 
-        if (_intShiftRate == 0)
-            _intShiftRate = 1.0f;
-		_ftSmoothTIme = 0.7f;
+		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+
+		_ftX = Random.Range(-1.2f, 1.2f);
+		_ftY = Random.Range(-1.2f, 1.2f);
+		_ftZ = Random.Range(-1.2f, 1.2f);
     }
 
 	void Update () {
-		_tfThis.Rotate(_tfThis.up, 5.0f);
+		_vec3Area = _tfCamera.position + new Vector3(_ftX,
+													 _ftY,
+													 _ftZ);
+		_tfThis.Rotate(_tfThis.up, 7.0f);
 		
 		BeatMotion();
 		TransitBeat();
@@ -34,9 +41,9 @@ public class AudioMotion : MonoBehaviour {
 	}
 
 	void TransitBeat() {
-		Vector3 _vec3Heading = _tfGrandParent.position - _tfThis.position;
+		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
 		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-			_tfThis.position = Vector3.MoveTowards(_tfThis.position, _tfGrandParent.position, 0.1f);
+			_tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.1f);
 		else
 			Destroy(_tfThis.gameObject);
 	}

@@ -8,100 +8,48 @@ using UnityEngine.PS4;
 
 public class MovementScript : MonoBehaviour
 {
-    public bool isMoveController = false;
-    public bool isSecondaryMoveController = false;
+    //Movement mode
+    //Cannot pick up items
+    //Select the ground and point a dir to move and face the direction
+
+        
     public GameObject player;
     public GameObject movementMarker;
-    public LaserPointer laserPointer;
     private RaycastHit hit;
-    private bool hasMoveInput = false;
-    private bool isMovePressed = false;
     private Vector3 startingPos;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         startingPos = player.transform.position;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        hasMoveInput = CheckForInput();
 
-        if (hasMoveInput && !isMovePressed)
-        {
-            isMovePressed = true;
-            //create icon
-            if (!movementMarker.activeInHierarchy)
-                SpawnMarker();
-
-            //interact with UI
-            if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
-            {
-                laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
-            }
-            
-        }
-        else if(!hasMoveInput && isMovePressed)
-        {
-            isMovePressed = false;
-            //move player and remove icon
-            Move();
-
-        }
-
+    // Update is called once per frame
+    void Update() {
         //update marker to controller forward
-        if (movementMarker && movementMarker.activeInHierarchy && isMovePressed)
+        if (movementMarker && movementMarker.activeInHierarchy)
         {
             movementMarker.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
         }
-
-        //reset player position
-        if (Input.GetKeyDown(KeyCode.JoystickButton5))
-        {
-            player.transform.position = startingPos;
-        }
-    }
-
-    // Move controlelrs use an API for their analog button, DualShock 4 uses an axis name for R2
-    bool CheckForInput()
-    {
-#if UNITY_PS4
-        if (isMoveController)
-        {
-            if (!isSecondaryMoveController)
-            {
-                return (PS4Input.MoveGetAnalogButton(0, 0) > 0 ? true : false);
-            }
-            else
-            {
-                return (PS4Input.MoveGetAnalogButton(0, 1) > 0 ? true : false);
-            }
-        }
-        else
-        {
-            return (Input.GetAxisRaw("TriggerRight") > 0 ? true : false);
-        }
-#else
-		return Input.GetButton("Fire1");
-#endif
     }
 
     //Move to Location
-    void Move()
+    public void Move()
     {
+        //move to marker
         if (movementMarker.activeInHierarchy)
         {
             player.transform.position = movementMarker.transform.position;//move player
-            
-            player.transform.forward = movementMarker.transform.forward; 
+
+            player.transform.forward = movementMarker.transform.forward;
             movementMarker.SetActive(false);
         }
     }
 
-    void SpawnMarker()
+    public void SpawnMarker()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        //spawn the marker
+        if (Physics.Raycast(transform.position, transform.forward, out hit) && !movementMarker.activeInHierarchy)
         {
             if (CheckRayHitGround(hit)) //hits te ground
             {
@@ -112,38 +60,9 @@ public class MovementScript : MonoBehaviour
         }
     }
 
-    // When fired the controller will vibrate for 0.1 seconds
-    IEnumerator Vibrate()
+    public void ResetPlayerPos()
     {
-#if UNITY_PS4
-        if (isMoveController)
-        {
-            if (isSecondaryMoveController)
-                PS4Input.MoveSetVibration(0, 1, 128);
-            else
-                PS4Input.MoveSetVibration(0, 0, 128);
-        }
-        else
-        {
-            PS4Input.PadSetVibration(0, 0, 255);
-        }
-#endif
-
-        yield return new WaitForSeconds(0.1f);
-
-#if UNITY_PS4
-        if (isMoveController)
-        {
-            if (isSecondaryMoveController)
-                PS4Input.MoveSetVibration(0, 1, 0);
-            else
-                PS4Input.MoveSetVibration(0, 0, 0);
-        }
-        else
-        {
-            PS4Input.PadSetVibration(0, 0, 0);
-        }
-#endif
+        player.transform.position = startingPos;
     }
 
     bool CheckRayHitGround(RaycastHit hit)

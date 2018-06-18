@@ -2,19 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour {
+public enum BeatColor
+{
+    Red,
+    Pink,
+    Blue,
+    Gold,
+}
+
+[System.Serializable]
+public class BeatVars
+{
+    public BeatColor color;
+    public Material material;
+}
+
+
+public class BulletScript : MonoBehaviour
+{
 
     //public float bulletSpeed = 5f;
     //public float bulletLifeTime = 10f;
     // Use this for initialization
-    public Material[] _materials;
+    [SerializeField]
+    public PlayerStats playerCam;
+    public List<BeatVars> beats;
+    BeatColor color;
+    Dictionary<Material, BeatColor> dicBeat;
 
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        playerCam = FindObjectOfType<PlayerStats>();
+        dicBeat = new Dictionary<Material, BeatColor>();
+        foreach (BeatVars beat in beats)
+        {
+            dicBeat.Add(beat.material, beat.color);
+        }
+        color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
+        //Debug.Log(gameObject.GetComponent<Renderer>().sharedMaterial);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //transform.position += transform.forward * Time.deltaTime * bulletSpeed;
         //bulletLifeTime -= Time.deltaTime;
         //if (bulletLifeTime <=0)
@@ -25,38 +55,77 @@ public class BulletScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PlayerStick")
         {
-            VibrationScript vibrationScript = other.GetComponent<VibrationScript>();
+            ControllerScript controller = other.gameObject.GetComponentInParent<ControllerScript>();
+            PlayerStats player = playerCam.GetComponent<PlayerStats>();
+            switch (color)
+            {
+                case BeatColor.Red:
+                    {
+                        if (controller.controllerColor == ControllerColor.Red)
+                        {
+                            controller.VibrateController();
+                            player.ModifyScore(10);
+                            //addscore
+                        }
+                        else
+                        {
+                            //lowerscore
+                            player.ModifyScore(-10);
+                        }
+                        break;
+                    }
 
-            if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[1].name)
-                && other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
-            {
-                gameObject.transform.GetComponent<Renderer>().material = _materials[0];
-                vibrationScript.StartCoroutine(vibrationScript.VibrateLeft());
-                return;
-            }
-            else if(gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[1].name)
-                && !other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
-            {
-                Destroy(gameObject);
-                return;
-            }
+                case BeatColor.Pink:
+                    {
+                        if (controller.controllerColor == ControllerColor.Pink)
+                        {
+                            controller.VibrateController();
+                            player.ModifyScore(10);
+                            //addscore
+                        }
+                        else
+                        {
+                            //lowerscore
+                            player.ModifyScore(-10);
+                        }
+                        break;
+                    }
 
-            if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[2].name)
-                && !other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
-            {
-                gameObject.transform.GetComponent<Renderer>().material = _materials[0];
-                vibrationScript.StartCoroutine(vibrationScript.VibrateRight());
-                return;
+                case BeatColor.Blue:
+                    {
+                        if (controller.controllerColor == ControllerColor.Blue)
+                        {
+                            controller.VibrateController();
+                            player.ModifyScore(10);
+                            //addscore
+                        }
+                        else
+                        {
+                            //lowerscore
+                            player.ModifyScore(-10);
+                        }
+                        break;
+                    }
+
+                case BeatColor.Gold:
+                    {
+                        if (controller.controllerColor == ControllerColor.Gold)
+                        {
+                            controller.VibrateController();
+                            player.ModifyScore(10);
+                            //addscore
+                        }
+                        else
+                        {
+                            //lowerscore
+                            player.ModifyScore(-10);
+                        }
+                        break;
+                    }
             }
-            else if (gameObject.transform.GetComponent<Renderer>().material.name.Contains(_materials[2].name)
-                && other.gameObject.GetComponentInParent<MovementScript>().isSecondaryMoveController)
-            {
-                Destroy(gameObject);
-                return;
-            }
+            Destroy(transform.gameObject);
         }
-        //Destroy(gameObject);
     }
 }
