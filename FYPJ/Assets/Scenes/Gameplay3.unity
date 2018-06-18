@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcea99b2ba58d5b429bde9896336b03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsScript: {fileID: 0}
   player: {fileID: 1690837442}
   movementMarker: {fileID: 460849241}
 --- !u!4 &40961155
@@ -479,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcea99b2ba58d5b429bde9896336b03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsScript: {fileID: 0}
   player: {fileID: 1690837442}
   movementMarker: {fileID: 460849241}
 --- !u!114 &40961157
@@ -492,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4012dab0df2c4b8efe4f8a7c16e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsScript: {fileID: 0}
 --- !u!114 &40961158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d4012dab0df2c4b8efe4f8a7c16e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsScript: {fileID: 0}
 --- !u!1 &45929493
 GameObject:
   m_ObjectHideFlags: 0
@@ -12000,10 +12004,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66989f2c071780044b504881a2c02289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsScript: {fileID: 0}
   playerCamera: {fileID: 760541045}
   calibrationObject: {fileID: 433307336}
   LeftController: {fileID: 40961153}
   RightController: {fileID: 40961155}
+  edges: {fileID: 1604767341888056, guid: 6dc78a1552b86f843b19e7b04a23b160, type: 2}
+  horizontalSize: 0
+  verticleSize: 0
+  distFromPlayer: 0
 --- !u!1 &1891317361
 GameObject:
   m_ObjectHideFlags: 0

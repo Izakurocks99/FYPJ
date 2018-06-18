@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_PS4
 using UnityEngine.PS4;
 #endif
 
-public class MovementScript : MonoBehaviour
+public class MovementScript : ControllerModesScript
 {
     //Movement mode
     //Cannot pick up items
@@ -18,8 +19,7 @@ public class MovementScript : MonoBehaviour
     private RaycastHit hit;
     private Vector3 startingPos;
 
-    // Use this for initialization
-    void Start()
+    private void Awake()
     {
         startingPos = player.transform.position;
     }
@@ -33,8 +33,32 @@ public class MovementScript : MonoBehaviour
         }
     }
 
+    public override void ButtonPressed(ControllerButtons button, bool isSecondaryController)
+    {
+        if (button == controlsScript.interactButton)
+        {
+            SpawnMarker();
+        }
+        else if(button == controlsScript.resetPosButton)
+        {
+            ResetPlayerPos();
+        }
+        else if (button == controlsScript.resetSceneButton)
+        {
+            ResetScene();
+        }
+    }
+
+    public override void ButtonReleased(ControllerButtons button, bool isSecondaryController)
+    {
+        if(button == controlsScript.interactButton)
+        {
+            Move();
+        }
+    }
+
     //Move to Location
-    public void Move()
+    void Move()
     {
         //move to marker
         if (movementMarker.activeInHierarchy)
@@ -46,7 +70,7 @@ public class MovementScript : MonoBehaviour
         }
     }
 
-    public void SpawnMarker()
+    void SpawnMarker()
     {
         //spawn the marker
         if (Physics.Raycast(transform.position, transform.forward, out hit) && !movementMarker.activeInHierarchy)
@@ -60,7 +84,11 @@ public class MovementScript : MonoBehaviour
         }
     }
 
-    public void ResetPlayerPos()
+    void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void ResetPlayerPos()
     {
         player.transform.position = startingPos;
     }
@@ -68,5 +96,10 @@ public class MovementScript : MonoBehaviour
     bool CheckRayHitGround(RaycastHit hit)
     {
         return hit.transform.gameObject.tag == "Ground";
+    }
+
+    public override void Init()
+    {
+        enabled = true;
     }
 }

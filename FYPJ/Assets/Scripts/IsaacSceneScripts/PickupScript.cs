@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.PS4;
 #endif
 
-public class PickupScript : MonoBehaviour
+public class PickupScript : ControllerModesScript
 {
     //Pickup Mode
     //Can interact with objects
