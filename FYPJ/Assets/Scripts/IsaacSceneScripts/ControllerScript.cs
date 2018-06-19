@@ -57,10 +57,14 @@ public class ControllerScript : MonoBehaviour
     private int controllerIndex = 0;
 
     //button checks
-    private bool buttonSwapModeDown = false;
-    private bool buttonInteractDown = false;
-    private bool buttonResetPosDown = false;
-    private bool buttonResetSceneDown = false;
+    private bool middleButtonDown = false;
+    private bool TriggerButtonDown = false;
+    private bool xButtonDown = false;
+    private bool circleButtonDown = false;
+    //private bool buttonSwapModeDown = false;
+    //private bool buttonInteractDown = false;
+    //private bool buttonResetPosDown = false;
+    //private bool buttonResetSceneDown = false;
 
 
     // Use this for initialization
@@ -110,12 +114,10 @@ public class ControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TODO: USE CONTROLLER MODE SCRIPT FUNCTS
         //Inputs
-        //Interact
-        if (GetButtonDown(controlsScript.interactButton) && !buttonInteractDown)
+        if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
         {
-            buttonInteractDown = true;
+            TriggerButtonDown = true;
             //switch color
             controllerColor = playerSticks[1].color;
             UpdateControllerMaterial(controllerColor);
@@ -125,71 +127,62 @@ public class ControllerScript : MonoBehaviour
             {
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }
-            //Movement
-            if (controllerMode==ControllerModes.Movement)
-            {
-                movementScript.SpawnMarker();
-            }
-            //calibrate
-            if(controllerMode == ControllerModes.Calibrate)
-            {
-                calibrateScript.UnlockObject(isSecondaryMoveController);
-            }
-            
+
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger,isSecondaryMoveController);
+
         }
-        else if (!GetButtonDown(controlsScript.interactButton) && buttonInteractDown)
+        else if (!GetButtonDown(ControllerButtons.BackTrigger) && TriggerButtonDown)
         {
-            buttonInteractDown = false;
+            TriggerButtonDown = false;
             //switch color
             controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
 
-            if (controllerMode == ControllerModes.Movement)
-            {
-                movementScript.Move();
-            }
-            //calibrate
-            if (controllerMode == ControllerModes.Calibrate)
-            {
-                calibrateScript.LockObject();
-            }
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger, isSecondaryMoveController);
         }
 
         //swap modes
-        if (GetButtonDown(controlsScript.swapModeButton) && !buttonSwapModeDown)
+        if (GetButtonDown(ControllerButtons.MiddleButton) && !middleButtonDown)
         {
-            buttonSwapModeDown = true;
+            middleButtonDown = true;
+
             ToggleMode();
+
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton, isSecondaryMoveController);
         }
-        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonSwapModeDown)
+        else if (!GetButtonDown(ControllerButtons.MiddleButton)&& middleButtonDown)
         {
-            buttonSwapModeDown = false;
+            middleButtonDown = false;
+
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton, isSecondaryMoveController);
         }
 
         //reset pos
-        if (GetButtonDown(controlsScript.resetPosButton) && !buttonResetPosDown)
+        if (GetButtonDown(ControllerButtons.X) && !xButtonDown)
         {
-            buttonResetPosDown = true;
+            xButtonDown = true;
 
-            if (controllerMode == ControllerModes.Movement)
-            {
-                movementScript.ResetPlayerPos();
-            }
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.X, isSecondaryMoveController);
+
         }
-        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonResetPosDown)
+        else if (!GetButtonDown(ControllerButtons.X) && xButtonDown)
         {
-            buttonResetPosDown = false;
+            xButtonDown = false;
+
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.X, isSecondaryMoveController);
         }
-        
-        //Reset scene
-        if (GetButtonDown(controlsScript.resetSceneButton) && !buttonResetSceneDown)
+
+        if (GetButtonDown(ControllerButtons.Circle) && !circleButtonDown)
         {
-            buttonResetSceneDown = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            circleButtonDown = true;
+
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Circle, isSecondaryMoveController);
         }
-        else if (PS4Input.MoveGetButtons(0, controllerIndex) == 0 && buttonResetSceneDown)
+        else if (!GetButtonDown(ControllerButtons.Circle) && circleButtonDown)
         {
-            buttonResetSceneDown = false;
+            circleButtonDown = false;
+
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Circle, isSecondaryMoveController);
         }
     }
 
@@ -270,6 +263,24 @@ public class ControllerScript : MonoBehaviour
             return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
         else
             return CheckForInput();
+    }
+
+    ControllerModesScript GetControllerMode(ControllerModes currMode)
+    {
+        switch (currMode)
+        {
+            case ControllerModes.Movement:
+                return movementScript;
+
+            case ControllerModes.Pickup:
+                return pickupScript;
+
+            case ControllerModes.Calibrate:
+                return calibrateScript;
+
+            default:
+                return null;
+        }
     }
 
     void ToggleMode()

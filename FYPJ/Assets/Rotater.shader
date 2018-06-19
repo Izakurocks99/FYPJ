@@ -1,4 +1,6 @@
-﻿Shader "Example/Rotater" {
+﻿// Upgrade NOTE: commented out 'float3 _WorldSpaceCameraPos', a built-in variable
+
+Shader "Example/Rotater" {
     Properties {
       //_Background ("BackTexture", 2D) = "white" {}
       //_Mountains ("MountainsTexture", 2D) = "white" {}
@@ -19,11 +21,13 @@
 
 	struct Input {
           float2 uv_CurrentTexture;
+		  //float2 newUv;
       };
 
 	  float _Amount;
 	  float _Rotation;
-      void vert (inout appdata_full v) {
+	  // float3 _WorldSpaceCameraPos;
+      void vert (inout appdata_full v, out Input o) {
           v.vertex.xyz += v.normal * _Amount;
 		  float cosr = cos(_Rotation);
 		  float sinr = sin(_Rotation);
@@ -32,6 +36,17 @@
 		  float z = v.vertex.x * (-sinr) + v.vertex.z * cosr;
 		  v.vertex.x = x;
 		  v.vertex.z = z;
+		  v.vertex.xyz -= _WorldSpaceCameraPos;
+		  o.uv_CurrentTexture = v.texcoord.xy;
+
+		  /*float speed1 = 0.000002;
+		  float speed2 = 0.0000001;
+		  float2 oldUVs = v.texcoord.xy - 0.5; // 0.5 ??
+		  o.newUv.x  = cos(_Time.x * speed1 + 0.5) * oldUVs.x + sin(_Time.x * speed1 + 0.5) * oldUVs.y;
+		  o.newUv.y = sin(_Time.x * speed1 + 0.5) * oldUVs.x - cos(_Time.x * speed1 + 0.5) * oldUVs.y;
+		  o.newUv = o.uv_CurrentTexture;
+		  o.newUv.y += _Time.x * 0.1;*/
+
       }
 
 	  //sampler2D _Background;
