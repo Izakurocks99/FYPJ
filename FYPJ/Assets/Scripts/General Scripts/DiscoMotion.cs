@@ -5,6 +5,7 @@ using UnityEngine;
 public class DiscoMotion : MonoBehaviour {
 
     public GameObject _goAudio;
+    public GameObject _goChild;
     Transform _transform;
     Vector3 _vec3Velocity;
     Vector3 _vec3Previous;
@@ -13,11 +14,11 @@ public class DiscoMotion : MonoBehaviour {
     bool _blFlip;
 
     void Start () {
+        _transform = this.transform;
         _vec3Previous = new Vector3(0, 6.45f, 2.75f);
         _floatTime = 0.0f;
         _floatWait = 2.0f;
         _blFlip = false;
-        _transform = this.transform;
     }
 	
 	void Update () {
@@ -30,9 +31,9 @@ public class DiscoMotion : MonoBehaviour {
                 _floatTime = 0;
             }
             if (_blFlip == true)
-            _transform.Rotate(new Vector3(5, 0, 5));
+                _goChild.transform.Rotate(new Vector3(7, 0, 7));
             else
-            _transform.Rotate(new Vector3(0, 5, 5));
+                _goChild.transform.Rotate(new Vector3(0, 7, 7));
         
             TransitDiscoBall();
         }
@@ -41,12 +42,10 @@ public class DiscoMotion : MonoBehaviour {
     void TransitDiscoBall()
     {
         if (_transform.position != _vec3Previous)
-        {
-            _transform.position = Vector3.SmoothDamp(_transform.position, _vec3Previous, ref _vec3Velocity, 0.5f);
-        }
+            _transform.position = Vector3.SmoothDamp(_transform.position, _vec3Previous, ref _vec3Velocity, 0.3f);
         else
         {
-            float _ftX = Random.Range(-4, 4);
+            float _ftX = Random.Range(-0.75f, 0.75f);
             float _ftY = Random.Range(6.45f, 7f);
             float _ftZ = Random.Range(2, 3.5f);
             Vector3 _vec3Current = new Vector3(_ftX, _ftY, _ftZ);

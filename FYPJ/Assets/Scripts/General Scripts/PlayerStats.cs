@@ -7,15 +7,15 @@ public class PlayerStats : MonoBehaviour
 {
 
     public Text _txt;
-
     public int _intPlayerScoring;
     public int _intPlayerDifficulty;
+    public int _intSpawnPoint;
 
     void Start()
     {
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
-
+        _intSpawnPoint = 1;
     }
 
     void Update()

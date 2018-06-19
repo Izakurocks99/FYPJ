@@ -65,70 +65,63 @@ public class AudioBandVisualiser : MonoBehaviour {
 	}
 
 	void InstantiateBeat() {
-		if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait) {
+		if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0) {
+			if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait) {
 
-			if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0) {
-				for (int i = _goAudioScales.Length - 1; i >= 0; i--) {
+				if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0) {
+					for (int i = _goAudioScales.Length - 1; i >= 0; i--) {
+						if (_intBeats < 2) {
+
+							for (int k = 0; k < 2; k++) {
+								if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
+
+									GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform.parent.transform, false);
+									
+									_intCurrentMaterial = Random.Range(0, _materials.Length);
+									if (_intCurrentMaterial == _intPreviousMaterial) {
+
+										if (_intPreviousMaterial != 0)
+											_intCurrentMaterial -= 1;
+										else if (_intPreviousMaterial == 0)
+											_intCurrentMaterial = _materials.Length - 1;
+									}
+									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
+									_intPreviousMaterial = _intCurrentMaterial;
+
+									go.name = "Beat " + i;
+									go.SetActive(true);
+									_intBeats++;
+				}	}	}	}	}
+
+				for (int j = _goAudioScales.Length - 1; j >= 0; j--) {
 					if (_intBeats < 2) {
+					
+						if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
+							GameObject go = Instantiate(_goPrefab, _goAudioScales[j].transform.parent.transform, false);
 
-						for (int k = 0; k < 2; k++)
-						{
-							if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
+							_intCurrentMaterial = Random.Range(0, _materials.Length);
+							if (_intCurrentMaterial == _intPreviousMaterial) {
 
-								GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform.parent.transform, false);
-								
-								_intCurrentMaterial = Random.Range(0, _materials.Length);
-								if (_intCurrentMaterial == _intPreviousMaterial)
-								{
-									if (_intPreviousMaterial != 0)
-										_intCurrentMaterial -= 1;
-									else if (_intPreviousMaterial == 0)
-										_intCurrentMaterial = _materials.Length - 1;
-								}
-								go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
-								_intPreviousMaterial = _intCurrentMaterial;
-
-								go.name = "Beat " + i;
-								go.SetActive(true);
-								_intBeats++;
+								if (_intPreviousMaterial != 0)
+									_intCurrentMaterial -= 1;
+								else if (_intPreviousMaterial == 0)
+									_intCurrentMaterial = _materials.Length - 1;
 							}
-						}
-					}
-				}
-			}
-			for (int j = _goAudioScales.Length - 1; j >= 0; j--) {
-				if (_intBeats < 2) {
-				
-					if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
-					{
-						GameObject go = Instantiate(_goPrefab, _goAudioScales[j].transform.parent.transform, false);
+							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
+							_intPreviousMaterial = _intCurrentMaterial;
 
-						_intCurrentMaterial = Random.Range(0, _materials.Length);
-						if (_intCurrentMaterial == _intPreviousMaterial)
-						{
-							if (_intPreviousMaterial != 0)
-								_intCurrentMaterial -= 1;
-							else if (_intPreviousMaterial == 0)
-								_intCurrentMaterial = _materials.Length - 1;
-						}
-						go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
-						_intPreviousMaterial = _intCurrentMaterial;
+							go.name = "Beat " + j;
+							go.SetActive(true);
+							_intBeats++;
+				}	}	}
 
-						go.name = "Beat " + j;
-						go.SetActive(true);
-						_intBeats++;
-					}
-				}
-			}
-
-			_intBeats = 0;
-			_ftTime = 0;
-		}
-	}
+				_intBeats = 0;
+				_ftTime = 0;
+	}	}	}
 
 	void GetDifference() {
-		for (int i = 0; i < _ftAryDiffBuffer.Length; i++)
-		{
+		for (int i = 0; i < _ftAryDiffBuffer.Length; i++) {
+			
 			float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
 			if (_ftDifference < 0)
 				_ftDifference *= -1;
