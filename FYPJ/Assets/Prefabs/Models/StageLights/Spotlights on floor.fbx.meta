@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: abedd996bc271644c90dcbb39ccfbf67
+guid: 0697428ff1d628e4687b69c0e9577fab
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: spotlight_on_floor
+    2100002: spotlight_on_floor_glass1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface120
+    4300000: polySurface982
   externalObjects: {}
   materials:
     importMaterials: 1

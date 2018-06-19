@@ -1,21 +1,28 @@
 fileFormatVersion: 2
-guid: 148f1e29e50368348b2df71a75d1e9e9
+guid: b3475da4e43d53e4ea07f658ab816cfc
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pasted__transform61
     400000: //RootNode
-    2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: polySurface120
+    400002: pasted__transform61
+    2100000: hand1
+    2300000: pasted__transform61
+    3300000: pasted__transform61
+    4300000: pasted__transform61
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hand1
+    second: {fileID: 2100000, guid: 4dfcba4b7fa42a34e8a43be1645aeb2d, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 1
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

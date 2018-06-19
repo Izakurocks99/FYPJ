@@ -1,20 +1,20 @@
 fileFormatVersion: 2
-guid: 295caad833dd8e449b913a924b020ce7
+guid: 2b0d37a4c384980439d89583871d9def
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: staff1
+    2100000: spotlight_stand_floor
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface53
+    4300000: spotlight_stand_floor2
   externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
