@@ -10,11 +10,11 @@ public class AudioBandVisualiser : MonoBehaviour {
 	public GameObject _goAudio;
 	public GameObject _goPlayer;
 	public Material[] _materials;
+	public float _ftTime;
 	public float _ftWait = 0.5f;
 	public float _ftSpeed = 1f;
 	float[] _ftAryPrevBuffer;
 	float[] _ftAryDiffBuffer;
-	float _ftTime;
 	int _intBeats;
 	int _intPreviousMaterial;
 	int _intCurrentMaterial;
@@ -121,7 +121,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 
 	void GetDifference() {
 		for (int i = 0; i < _ftAryDiffBuffer.Length; i++) {
-			
+
 			float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
 			if (_ftDifference < 0)
 				_ftDifference *= -1;
