@@ -22,12 +22,12 @@ public class ControllerModesScript : MonoBehaviour
 
     }
 
-    public virtual void ButtonPressed(ControllerButtons button, bool isSecondaryController)
+    public virtual void ButtonPressed(ControllerButtons button)
     {
 
     }
 
-    public virtual void ButtonReleased(ControllerButtons button, bool isSecondaryController)
+    public virtual void ButtonReleased(ControllerButtons button)
     {
 
     }
