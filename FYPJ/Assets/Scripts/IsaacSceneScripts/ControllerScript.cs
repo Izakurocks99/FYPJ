@@ -13,7 +13,7 @@ using UnityEngine.PS4;
 public enum ControllerColor
 {
     Red,
-    Pink,
+    Green,
     Blue,
     Gold
 }
@@ -82,7 +82,7 @@ public class ControllerScript : MonoBehaviour
         }
 
         //init controllerColor
-        if (isSecondaryMoveController)
+        if (isSecondaryMoveController && currStick)
         {
             controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
@@ -102,12 +102,14 @@ public class ControllerScript : MonoBehaviour
             laserPointer.gameObject.SetActive(true);
             movementScript.enabled = true;
             pickupScript.enabled = false;
+            calibrateScript.enabled = false;
         }
         else if(controllerMode == ControllerModes.Pickup)
         {
             laserPointer.gameObject.SetActive(false);
             movementScript.enabled = false;
             pickupScript.enabled = true;
+            calibrateScript.enabled = false;
         }
     }
 
@@ -119,8 +121,11 @@ public class ControllerScript : MonoBehaviour
         {
             TriggerButtonDown = true;
             //switch color
-            controllerColor = playerSticks[1].color;
-            UpdateControllerMaterial(controllerColor);
+            if (currStick)
+            {
+                controllerColor = playerSticks[1].color;
+                UpdateControllerMaterial(controllerColor);
+            }
 
             //interact with UI
             if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
@@ -135,8 +140,11 @@ public class ControllerScript : MonoBehaviour
         {
             TriggerButtonDown = false;
             //switch color
-            controllerColor = playerSticks[0].color;
-            UpdateControllerMaterial(controllerColor);
+            if (currStick)
+            {
+                controllerColor = playerSticks[0].color;
+                UpdateControllerMaterial(controllerColor);
+            }
 
             GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger, isSecondaryMoveController);
         }
@@ -244,8 +252,8 @@ public class ControllerScript : MonoBehaviour
             case ControllerColor.Red:
                 mat.material = dicPlayerSticks[ControllerColor.Red];
                 return;
-            case ControllerColor.Pink:
-                mat.material = dicPlayerSticks[ControllerColor.Pink];
+            case ControllerColor.Green:
+                mat.material = dicPlayerSticks[ControllerColor.Green];
                 return;
             case ControllerColor.Blue:
                 mat.material = dicPlayerSticks[ControllerColor.Blue];

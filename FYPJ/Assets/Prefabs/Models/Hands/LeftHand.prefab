@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4650563668587348}
   - component: {fileID: 95024969618760530}
   m_Layer: 0
-  m_Name: Left hand with no rig
+  m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

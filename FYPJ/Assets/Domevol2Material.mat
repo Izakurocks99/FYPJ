@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _skytex:
-        m_Texture: {fileID: 2800000, guid: 2a24eea6e48d71d4caf4241dd632c806, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49e36fca085699846a52e5bc45218874, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -75,7 +75,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - rotation: 0
+    - rotation: -2
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
