@@ -8,6 +8,7 @@
 	}
 	CGINCLUDE
 		#include "UnityCG.cginc"
+		#include "shader_noice_lib.cginc"
 
 		sampler2D _MainTex ,_SourceTex;
 		float4 _MainTex_TexelSize;

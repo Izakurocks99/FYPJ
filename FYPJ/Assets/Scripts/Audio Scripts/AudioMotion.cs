@@ -25,11 +25,11 @@ public class AudioMotion : MonoBehaviour {
         calibration = FindObjectOfType<ControlCalibrationScript>();
 		_ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
 		_ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-		_ftZ = Random.Range(-1.2f, 1.2f);
+		_ftZ = 1.2f;
     }
 
 	void Update () {
-		_vec3Area = _tfCamera.position + new Vector3(_ftX,
+		_vec3Area = (_tfCamera.position + _tfCamera.forward * 0.5f) + new Vector3(_ftX,
 													 _ftY,
 													 _ftZ);
 		_tfThis.Rotate(_tfThis.up, 7.0f);
