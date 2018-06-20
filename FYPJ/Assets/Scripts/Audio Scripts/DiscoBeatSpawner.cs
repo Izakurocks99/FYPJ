@@ -32,7 +32,6 @@ public class DiscoBeatSpawner : MonoBehaviour {
 				{
 					if ((_ftTime += 1 * Time.deltaTime) >= _ftWait)
 					{
-						Debug.Log(i + " / " + _intCount);
 						GameObject go = Instantiate(_goPrefab, this.transform, false);
 						go.name = "Test";
 						go.SetActive(true);
