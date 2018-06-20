@@ -5,7 +5,7 @@ using UnityEngine;
 public enum BeatColor
 {
     Red,
-    Pink,
+    Green,
     Blue,
     Gold,
 }
@@ -77,9 +77,9 @@ public class BulletScript : MonoBehaviour
                         break;
                     }
 
-                case BeatColor.Pink:
+                case BeatColor.Green:
                     {
-                        if (controller.controllerColor == ControllerColor.Pink)
+                        if (controller.controllerColor == ControllerColor.Green)
                         {
                             controller.VibrateController();
                             player.ModifyScore(10);

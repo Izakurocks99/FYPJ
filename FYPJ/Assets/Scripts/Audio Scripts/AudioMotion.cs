@@ -13,6 +13,7 @@ public class AudioMotion : MonoBehaviour {
 	float _ftX, _ftY, _ftZ;
 	int _intNumber;
 	Vector3 _vec3Area;
+    ControlCalibrationScript calibration;
 
 	void Start() {
 		_tfThis = this.transform;
@@ -21,8 +22,9 @@ public class AudioMotion : MonoBehaviour {
 
 		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
-		_ftX = Random.Range(-1.2f, 1.2f);
-		_ftY = Random.Range(-1.2f, 1.2f);
+        calibration = FindObjectOfType<ControlCalibrationScript>();
+		_ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
+		_ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
 		_ftZ = Random.Range(-1.2f, 1.2f);
     }
 

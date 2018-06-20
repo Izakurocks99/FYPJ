@@ -13,11 +13,16 @@ public class MovementScript : ControllerModesScript
     //Cannot pick up items
     //Select the ground and point a dir to move and face the direction
 
-        
+    public float playerHeight;    
     public GameObject player;
     public GameObject movementMarker;
+    public Transform stickSlot;
     private RaycastHit hit;
     private Vector3 startingPos;
+    private GameObject highlightedStick;
+    private ControllerButtons pressedButton;
+    private bool canPickup = true;
+    
 
     private void Awake()
     {
@@ -27,7 +32,7 @@ public class MovementScript : ControllerModesScript
     // Update is called once per frame
     void Update() {
         //update marker to controller forward
-        if (movementMarker && movementMarker.activeInHierarchy)
+        if (movementMarker && movementMarker.activeInHierarchy && pressedButton == controlsScript.interactButton)
         {
             movementMarker.transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized;
         }
@@ -35,9 +40,24 @@ public class MovementScript : ControllerModesScript
 
     public override void ButtonPressed(ControllerButtons button, bool isSecondaryController)
     {
+        pressedButton = button;
         if (button == controlsScript.interactButton)
         {
-            SpawnMarker();
+            if (highlightedStick && canPickup)//if overlapping a stick
+            {
+                //put stick in the hand's stick slot
+                highlightedStick.transform.parent = stickSlot;
+                highlightedStick.transform.position = stickSlot.position;
+                highlightedStick.transform.localScale = stickSlot.localScale;
+                highlightedStick.transform.rotation = stickSlot.rotation;
+                canPickup = false;
+            }
+            else
+                //set highlighted stick to null
+                //else
+                //spawn a marker
+                SpawnMarker();
+
         }
         else if(button == controlsScript.resetPosButton)
         {
@@ -51,8 +71,10 @@ public class MovementScript : ControllerModesScript
 
     public override void ButtonReleased(ControllerButtons button, bool isSecondaryController)
     {
-        if(button == controlsScript.interactButton)
+        pressedButton = ControllerButtons.NONE;
+        if (button == controlsScript.interactButton)
         {
+            //move the player
             Move();
         }
     }
@@ -63,7 +85,8 @@ public class MovementScript : ControllerModesScript
         //move to marker
         if (movementMarker.activeInHierarchy)
         {
-            player.transform.position = movementMarker.transform.position;//move player
+            Vector3 height = new Vector3(0f, playerHeight, 0f); //set marker height
+            player.transform.position = movementMarker.transform.position + height;//move player
 
             player.transform.forward = movementMarker.transform.forward;
             movementMarker.SetActive(false);
@@ -101,5 +124,38 @@ public class MovementScript : ControllerModesScript
     public override void Init()
     {
         enabled = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if other entered a sicks
+        if (other.gameObject.tag == "PlayerStick")
+        {
+            //set current stick as "highlighted"
+            highlightedStick = other.gameObject;
+            Debug.Log(highlightedStick.name);
+        }
+        if (other.gameObject.GetComponent<PlayerStickScript>())
+        {
+            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
+            stickScript.handle.SetActive(true);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //if other entered a sicks
+        if (other.gameObject.tag == "PlayerStick")
+        {
+            //set current stick as "highlighted"
+            highlightedStick = null;
+        }
+        if (other.gameObject.GetComponent<PlayerStickScript>())
+        {
+            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
+            stickScript.handle.SetActive(false);
+        }
+
     }
 }
