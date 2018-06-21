@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BeatColor
 {
-    Red,
+    Pink,
     Green,
     Blue,
     Gold,
@@ -57,15 +57,15 @@ public class BulletScript : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerStick")
         {
-            ControllerScript controller = other.gameObject.GetComponentInParent<ControllerScript>();
+            PlayerStickScript stick = other.gameObject.GetComponentInParent<PlayerStickScript>();
             PlayerStats player = playerCam.GetComponent<PlayerStats>();
             switch (color)
             {
-                case BeatColor.Red:
+                case BeatColor.Pink:
                     {
-                        if (controller.controllerColor == ControllerColor.Red)
+                        if (stick.currColor == ControllerColor.Pink)
                         {
-                            controller.VibrateController();
+                            stick.heldController.VibrateController();
                             player.ModifyScore(10);
                             //addscore
                         }
@@ -79,9 +79,9 @@ public class BulletScript : MonoBehaviour
 
                 case BeatColor.Green:
                     {
-                        if (controller.controllerColor == ControllerColor.Green)
+                        if (stick.currColor == ControllerColor.Green)
                         {
-                            controller.VibrateController();
+                            stick.heldController.VibrateController();
                             player.ModifyScore(10);
                             //addscore
                         }
@@ -95,9 +95,9 @@ public class BulletScript : MonoBehaviour
 
                 case BeatColor.Blue:
                     {
-                        if (controller.controllerColor == ControllerColor.Blue)
+                        if (stick.currColor == ControllerColor.Blue)
                         {
-                            controller.VibrateController();
+                            stick.heldController.VibrateController();
                             player.ModifyScore(10);
                             //addscore
                         }
@@ -111,9 +111,9 @@ public class BulletScript : MonoBehaviour
 
                 case BeatColor.Gold:
                     {
-                        if (controller.controllerColor == ControllerColor.Gold)
+                        if (stick.currColor == ControllerColor.Gold)
                         {
-                            controller.VibrateController();
+                            stick.heldController.VibrateController();
                             player.ModifyScore(10);
                             //addscore
                         }
