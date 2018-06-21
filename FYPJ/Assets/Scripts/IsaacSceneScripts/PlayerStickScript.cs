@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StickType
+{
+    Baton,
+    Staff,
+    Stick,
+    Fish
+}
+
 [System.Serializable]
 public class PlayerStick
 {
@@ -9,10 +17,12 @@ public class PlayerStick
     public Material material;
 }
 
+[ExecuteInEditMode]
 public class PlayerStickScript : MonoBehaviour
 {
     public GameObject handle;
 
+    public Mesh objectMesh;
     public ControllerScript heldController;
     public ControllerColor currColor;
     public List<PlayerStick> playerSticks; //needs to be moved into sticks script
@@ -27,6 +37,7 @@ public class PlayerStickScript : MonoBehaviour
             dicPlayerSticks.Add(var.color, var.material);
         }
 
+        GetComponent<MeshFilter>().mesh = objectMesh;
         ChangeStickColor(currColor);
     }
 
@@ -65,5 +76,10 @@ public class PlayerStickScript : MonoBehaviour
     public void Equip()
     {
         heldController = GetComponentInParent<ControllerScript>();
+    }
+
+    void InitModel()
+    {
+
     }
 }
