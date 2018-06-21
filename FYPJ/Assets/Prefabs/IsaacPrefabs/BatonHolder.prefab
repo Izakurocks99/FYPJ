@@ -64,22 +64,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4483697958616920
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
-  m_LocalRotation: {x: -0, y: -0.75448173, z: 0.6563211, w: 0}
-  m_LocalPosition: {x: 11.029047, y: 2.589, z: -1.979}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.345, y: 0.35, z: -7.334}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4564743456582238}
   - {fileID: 4852354826258694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 82.04, y: 179.99998, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4564743456582238
 Transform:
   m_ObjectHideFlags: 1
@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4483697958616920}
@@ -156,7 +156,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: e8ef0ec6580c6194ea12f29c8ff2c618, type: 2}
+  - {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,7 +189,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300002, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e5274cc986a71224e9766d0d44fac493, type: 3}
 --- !u!54 &54718248971780610
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -244,9 +244,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handle: {fileID: 1854539351217052}
+  RNGSticks: 1
   heldController: {fileID: 0}
-  objectMesh: 0
-  currColor: 0
+  objectMesh: 2
+  currColor: 2
   stickMeshes:
   - type: 0
     mesh: {fileID: 4300002, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}

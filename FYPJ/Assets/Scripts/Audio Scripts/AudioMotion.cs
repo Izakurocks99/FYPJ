@@ -25,7 +25,7 @@ public class AudioMotion : MonoBehaviour {
         calibration = FindObjectOfType<ControlCalibrationScript>();
 		_ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
 		_ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-		_ftZ = 1.2f;
+		_ftZ = 0;
     }
 
 	void Update () {
