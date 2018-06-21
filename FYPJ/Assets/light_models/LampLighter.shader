@@ -4,7 +4,7 @@
 		//_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		//_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		//_Metallic ("Metallic", Range(0,1)) = 0.0
-		_ColorModifier("Color Modifier",Range(1.0 , 100.0)) = 1.
+		_ColorModifier("Color Modifier",Range(1.0 , 100.0)) = 50.
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }

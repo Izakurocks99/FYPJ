@@ -93,7 +93,7 @@ public sealed class AudianceManager : MonoBehaviour {
         {
             GameObject temp = GameObject.Instantiate(Member);
             temp.SetActive(false);
-            AudianceMember tempCom = temp.GetComponent(typeof(AudianceMember)) as AudianceMember;
+            AudianceMember tempCom = temp.GetComponentInChildren(typeof(AudianceMember)) as AudianceMember;
             Debug.Assert(tempCom != null);
             tempCom.manager = this.gameObject;
             temp.transform.parent = this.transform;
