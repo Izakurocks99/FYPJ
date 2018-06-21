@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33237467514771700}
   - component: {fileID: 23057819529043058}
   - component: {fileID: 114895042204494098}
-  - component: {fileID: 114387335502813084}
+  - component: {fileID: 114674790636141962}
   m_Layer: 0
-  m_Name: DiscoBeatsPreafab
+  m_Name: SpeakerBeatsPreafab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761407923449524}
   m_Mesh: {fileID: 4300000, guid: e50812a80756d1f4cab1067f6fc1832d, type: 3}
---- !u!114 &114387335502813084
+--- !u!114 &114674790636141962
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,13 +93,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761407923449524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb9451f6527caf4aac21307570bec9c, type: 3}
+  m_Script: {fileID: 11500000, guid: f5cd19d62516a814f9b8eed612c27745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _intShiftRate: 0
+  _intShiftRate: 8
   _ftRange: 2
-  _vec3Area: {x: 0, y: 0, z: 0}
-  _vec3Shift: {x: 0, y: 0, z: 0}
 --- !u!114 &114895042204494098
 MonoBehaviour:
   m_ObjectHideFlags: 1
