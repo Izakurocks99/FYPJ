@@ -7,6 +7,7 @@ public enum StickType
     Baton,
     Staff,
     Stick,
+    MAX,
     //Fish
 }
 
@@ -31,6 +32,7 @@ public class StickMesh
 public class PlayerStickScript : MonoBehaviour
 {
     public GameObject handle;
+    public bool RNGSticks;
 
     public ControllerScript heldController;
     public StickType objectMesh;
@@ -43,6 +45,11 @@ public class PlayerStickScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(RNGSticks)
+        {
+            objectMesh = (StickType)Random.Range(0, (int)StickType.MAX);
+        }
+
         dicSticks= new Dictionary<StickType, StickMesh>();
         foreach (StickMesh var in stickMeshes)
         {
@@ -69,21 +76,6 @@ public class PlayerStickScript : MonoBehaviour
         currColor = newColor;
 
         Renderer mat = gameObject.GetComponent<Renderer>();
-        //switch (newColor)
-        //{
-        //    case ControllerColor.Pink:
-        //        mat.material = dicPlayerSticks[ControllerColor.Pink];
-        //        return;
-        //    case ControllerColor.Green:
-        //        mat.material = dicPlayerSticks[ControllerColor.Green];
-        //        return;
-        //    case ControllerColor.Blue:
-        //        mat.material = dicPlayerSticks[ControllerColor.Blue];
-        //        return;
-        //    case ControllerColor.Gold:
-        //        mat.material = dicPlayerSticks[ControllerColor.Gold];
-        //        return;
-        //}
         
         //swap mats
         mat.material = dicSticks[objectMesh].dicStickColors[newColor];
@@ -92,6 +84,12 @@ public class PlayerStickScript : MonoBehaviour
     public void Equip()
     {
         heldController = GetComponentInParent<ControllerScript>();
+        Debug.Log(heldController.gameObject.name);
+    }
+
+    public void Drop()
+    {
+        heldController = null;
     }
 
     void InitModel()
