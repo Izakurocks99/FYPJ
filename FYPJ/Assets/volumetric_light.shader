@@ -4,10 +4,10 @@
 		_Fresnel("Fresnel", Range (0., 10.)) = 10.
 		_AlphaOffset("Alpha Offset", Range(0., 1.)) = 1.
 		_NoiseSpeed("Noise Speed", Range(0., 1.)) = .5
-		_Ambient("Ambient", Range(0., 1.)) = .3
-		_Intensity("Intensity", Range(0., 1.5)) = .2
-		_Fade("Fade", Range(0., 10.)) = 3.
-		_Wind("Wind", Range(0., 1.)) = .014
+		_Ambient("Ambient", Range(0., 1.)) = .6
+		_Intensity("Intensity", Range(0., 1.5)) = .5
+		_Fade("Fade", Range(0., 10.)) = 1.
+		_Wind("Wind", Range(0., 1.)) = .05
 		_ColorScales("ColorScales",Vector) = (1.,1.,1.)
 	}
  

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 13618930}
   - component: {fileID: 2342386}
   - component: {fileID: 9594126}
-  - component: {fileID: 114164828598909366}
+  - component: {fileID: 114914510357452458}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162578}
   m_LocalRotation: {x: 0, y: -0.021037225, z: 0, w: 0.9997787}
-  m_LocalPosition: {x: -4.9171376, y: -7.2836194, z: -8.286949}
+  m_LocalPosition: {x: -4.6896524, y: -0.42396545, z: 1.1215057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 479846}
@@ -146,7 +146,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162578}
   m_IsPrefabParent: 1
---- !u!114 &114164828598909366
+--- !u!114 &114914510357452458
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

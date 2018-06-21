@@ -53,5 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudianceManagerPrefab: {fileID: 1838489082716012, guid: 5901a51c9ae82d449893035c90096a1a,
     type: 2}
-  AudianceMemberPrefab: {fileID: 1796218781485804, guid: 12ccbe70342a2fd489a2a4d4a71076c8,
-    type: 2}
+  AudianceMemberPrefab: {fileID: 162578, guid: c911a79a82c2f8e45982b06aeceffc6f, type: 2}

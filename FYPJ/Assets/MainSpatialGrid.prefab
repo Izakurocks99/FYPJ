@@ -52,6 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldPos: {x: 0, y: -2.5, z: 5}
-  CharacterRadius: 1.28
+  CharacterRadius: 1.37
   StagePosition: {x: 0, y: -200}
   Friction: 0.8
