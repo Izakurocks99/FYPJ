@@ -9081,11 +9081,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a934c5b55b4031546bb88250437efe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goSpeaker: {fileID: 0}
   _goAudio: {fileID: 0}
   _txt: {fileID: 0}
   _intPlayerScoring: 0
   _intPlayerDifficulty: 0
   _intSpawnPoint: 0
+  listGO: []
 --- !u!114 &114470145989701768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9114,12 +9116,8 @@ MonoBehaviour:
   laserPointer: {fileID: 114866730321320790}
   controlsScript: {fileID: 114623181571029796}
   controllerMode: 1
-  controllerColor: 0
-  playerSticks:
-  - color: 0
-    material: {fileID: 2100000, guid: 993d23554e9db904090abfd44c786905, type: 2}
-  - color: 1
-    material: {fileID: 2100000, guid: 481903388b025e746a0ea6c2b2f07863, type: 2}
+  pirmaryControllerColor: 2
+  secondaryControllerColor: 3
   movementScript: {fileID: 114282598458098878}
   calibrateScript: {fileID: 114953336194229814}
 --- !u!114 &114617341846930076
@@ -9138,12 +9136,8 @@ MonoBehaviour:
   laserPointer: {fileID: 114843024460090130}
   controlsScript: {fileID: 114623181571029796}
   controllerMode: 1
-  controllerColor: 0
-  playerSticks:
-  - color: 2
-    material: {fileID: 2100000, guid: 32695e0a46ef7d347b2a9af385605ad8, type: 2}
-  - color: 3
-    material: {fileID: 2100000, guid: d0ed5e0fe0f243c419aa5bc497488ba4, type: 2}
+  pirmaryControllerColor: 0
+  secondaryControllerColor: 1
   movementScript: {fileID: 114212509997317666}
   calibrateScript: {fileID: 114745526438096470}
 --- !u!114 &114623181571029796

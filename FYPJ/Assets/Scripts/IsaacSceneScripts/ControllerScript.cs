@@ -25,24 +25,16 @@ public enum ControllerModes
     Calibrate
 }
 
-[System.Serializable]
-public class PlayerStick
-{
-    public ControllerColor color;
-    public Material material;
-}
-
 public class ControllerScript : MonoBehaviour
 {
     //public
     public bool isSecondaryMoveController = false;
-    public GameObject currStick;
+    public PlayerStickScript currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;
     public ControllerModes controllerMode;
-    public ControllerColor controllerColor;
-    public List<PlayerStick> playerSticks; //needs to be moved into sticks script
-    Dictionary<ControllerColor, Material> dicPlayerSticks;
+    public ControllerColor pirmaryControllerColor;
+    public ControllerColor secondaryControllerColor;
 
     //mode scripts
     public MovementScript movementScript;
@@ -66,23 +58,9 @@ public class ControllerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //startingPos = player.transform.position; //add starting position, for resetting of position
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
-
-        //init dic to switch controller color
-        dicPlayerSticks = new Dictionary<ControllerColor, Material>();
-        foreach (PlayerStick var in playerSticks)
-        {
-            dicPlayerSticks.Add(var.color, var.material);
-        }
-
-        //init controllerColor
-        if (isSecondaryMoveController && currStick)
-        {
-            controllerColor = playerSticks[0].color;
-            UpdateControllerMaterial(controllerColor);
-        }
+        
     }
 
     // Update is called once per frame
@@ -96,8 +74,7 @@ public class ControllerScript : MonoBehaviour
             //switch color
             if (currStick)
             {
-                controllerColor = playerSticks[1].color;
-                UpdateControllerMaterial(controllerColor);
+                currStick.ChangeStickColor(secondaryControllerColor);
             }
 
             GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger);
@@ -109,8 +86,7 @@ public class ControllerScript : MonoBehaviour
             //switch color
             if (currStick)
             {
-                controllerColor = playerSticks[0].color;
-                UpdateControllerMaterial(controllerColor);
+                currStick.ChangeStickColor(pirmaryControllerColor);
             }
 
             GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger);
@@ -272,27 +248,6 @@ public class ControllerScript : MonoBehaviour
             default:
                 return 0;
         }
-    }
-
-    void UpdateControllerMaterial(ControllerColor newColor)
-    {
-        Renderer mat = currStick.GetComponent<Renderer>();
-        //switch (newColor)
-        //{
-        //    case ControllerColor.Pink:
-        //        mat.material = dicPlayerSticks[ControllerColor.Pink];
-        //        return;
-        //    case ControllerColor.Green:
-        //        mat.material = dicPlayerSticks[ControllerColor.Green];
-        //        return;
-        //    case ControllerColor.Blue:
-        //        mat.material = dicPlayerSticks[ControllerColor.Blue];
-        //        return;
-        //    case ControllerColor.Gold:
-        //        mat.material = dicPlayerSticks[ControllerColor.Gold];
-        //        return;
-        //}
-        mat.material = dicPlayerSticks[newColor];
     }
 
     bool GetButtonDown(ControllerButtons button)

@@ -14,9 +14,10 @@ public class MovementScript : ControllerModesScript
     //Moves player
     //TODO:
     //see if i can move some codes into MovementMarkerScript
-    //test transform set parent
     //a cancel movement button
     //fix the player facing direction after moving
+
+    public bool autoRot = true;
 
     public float playerHeight; // to set the height of the player after moving cann line cast to the ground to determine height instead
     public GameObject player; //to move the player can switch to transform instead
@@ -69,8 +70,7 @@ public class MovementScript : ControllerModesScript
         }
         else if (button == controlsScript.dropStickButton)
         {
-            highlightedStick.transform.parent = null;
-            canPickup = true;
+            DropStick();
         }
     }
 
@@ -117,16 +117,36 @@ public class MovementScript : ControllerModesScript
         if (highlightedStick && canPickup)//if overlapping a stick and is not holding
         {
             //put stick in the hand's stick slot
-
-            //highlightedStick.transform.SetParent(stickSlot);
             highlightedStick.transform.parent = stickSlot;
-            highlightedStick.transform.position = stickSlot.position;
             highlightedStick.transform.localScale = stickSlot.localScale;
-            highlightedStick.transform.rotation = stickSlot.rotation;
+            highlightedStick.transform.position = stickSlot.position;
+            if (autoRot)
+            {
+                highlightedStick.transform.rotation = stickSlot.rotation;
+            }
+            //set controller currstick
+            controller.currStick = highlightedStick.GetComponentInChildren<PlayerStickScript>();
+            controller.currStick.Equip();
+
+            //set player unable to pickup
             canPickup = false;
             return true;
         }
         return false;
+    }
+
+    void DropStick()
+    {
+        //if holding a stick
+        if (controller.currStick)
+        {
+            //remove from parent
+            controller.currStick.gameObject.transform.parent.parent= null;
+            //set currstick to null
+            controller.currStick = null;
+            //allow the player to pick up again
+            canPickup = true;
+        }
     }
 
     void ResetScene()
@@ -176,6 +196,5 @@ public class MovementScript : ControllerModesScript
             PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
             stickScript.handle.SetActive(false);
         }
-
     }
 }
