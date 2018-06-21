@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6752cffad1b7ece4c9cbcba8b77c6a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 0, y: 4, z: -3}
+  Position: {x: 0, y: 4, z: -2}
   spawnChance: 10
   StageDimension: {x: 40, y: 17}
   MinRangeFromStage: 10

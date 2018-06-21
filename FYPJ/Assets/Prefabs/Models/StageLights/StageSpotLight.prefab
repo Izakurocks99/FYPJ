@@ -386,3 +386,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sha: {fileID: 4800000, guid: 3df4d78e89f67c442a0fdc2ac4dd2e51, type: 3}
+  GlassShader: {fileID: 0}
