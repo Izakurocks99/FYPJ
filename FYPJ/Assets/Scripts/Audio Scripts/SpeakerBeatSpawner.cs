@@ -8,14 +8,6 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 	public GameObject _goPrefab;
 	public Material[] _material;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-	}
-
 	public void SpawnSpeakerBeat() {
 		int _intRandomContainer = Random.Range(1, 4);
 		float _ftRandomMaterial = (float)Random.Range(1f, 4f);

@@ -2,31 +2,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StickType
+{
+    Baton,
+    Staff,
+    Stick,
+    //Fish
+}
+
 [System.Serializable]
-public class PlayerStick
+public class StickColor
 {
     public ControllerColor color;
     public Material material;
 }
 
+[System.Serializable]
+public class StickMesh
+{
+    public StickType type;
+    public Mesh mesh;
+
+    public List<StickColor> stickColors;
+    public Dictionary<ControllerColor,Material> dicStickColors;
+}
+
+[ExecuteInEditMode]
 public class PlayerStickScript : MonoBehaviour
 {
     public GameObject handle;
 
     public ControllerScript heldController;
+    public StickType objectMesh;
     public ControllerColor currColor;
-    public List<PlayerStick> playerSticks; //needs to be moved into sticks script
-    Dictionary<ControllerColor, Material> dicPlayerSticks;
+    //public List<PlayerStick> playerSticks;
+    //Dictionary<ControllerColor, Material> dicPlayerSticks;
+    public List<StickMesh> stickMeshes;
+    Dictionary<StickType, StickMesh> dicSticks;
 
     // Use this for initialization
     void Start()
     {
-        dicPlayerSticks = new Dictionary<ControllerColor, Material>();
-        foreach (PlayerStick var in playerSticks)
+        dicSticks= new Dictionary<StickType, StickMesh>();
+        foreach (StickMesh var in stickMeshes)
         {
-            dicPlayerSticks.Add(var.color, var.material);
+            dicSticks.Add(var.type,var);
+
+            var.dicStickColors = new Dictionary<ControllerColor, Material>();
+            foreach (StickColor color in var.stickColors)
+                var.dicStickColors.Add(color.color, color.material);
         }
 
+        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
         ChangeStickColor(currColor);
     }
 
@@ -59,11 +86,16 @@ public class PlayerStickScript : MonoBehaviour
         //}
         
         //swap mats
-        mat.material = dicPlayerSticks[newColor];
+        mat.material = dicSticks[objectMesh].dicStickColors[newColor];
     }
 
     public void Equip()
     {
         heldController = GetComponentInParent<ControllerScript>();
+    }
+
+    void InitModel()
+    {
+
     }
 }

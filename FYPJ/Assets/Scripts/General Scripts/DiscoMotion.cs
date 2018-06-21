@@ -7,6 +7,7 @@ public class DiscoMotion : MonoBehaviour {
     public GameObject _goAudio;
     public GameObject _goChild;
     Transform _transform;
+    public Vector3 _vec3Spawn;
     Vector3 _vec3Velocity;
     Vector3 _vec3Previous;
     float _floatTime;
@@ -17,7 +18,7 @@ public class DiscoMotion : MonoBehaviour {
         _transform = this.transform;
         _vec3Previous = new Vector3(0, 6.45f, 2.75f);
         _floatTime = 0.0f;
-        _floatWait = 2.0f;
+        _floatWait = 1.0f;
         _blFlip = false;
     }
 	
@@ -36,13 +37,15 @@ public class DiscoMotion : MonoBehaviour {
                 _goChild.transform.Rotate(new Vector3(0, 7, 7));
         
             TransitDiscoBall();
+
+            _vec3Spawn = _goChild.transform.position;
         }
     }
 
     void TransitDiscoBall()
     {
-        if (_transform.position != _vec3Previous)
-            _transform.position = Vector3.SmoothDamp(_transform.position, _vec3Previous, ref _vec3Velocity, 0.3f);
+        if (_goChild.transform.position != _vec3Previous)
+            _goChild.transform.position = Vector3.SmoothDamp(_goChild.transform.position, _vec3Previous, ref _vec3Velocity, 0.3f);
         else
         {
             float _ftX = Random.Range(-0.75f, 0.75f);

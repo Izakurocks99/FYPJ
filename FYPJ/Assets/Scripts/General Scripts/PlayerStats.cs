@@ -18,11 +18,9 @@ public class PlayerStats : MonoBehaviour
     float _ftRNGTime;
     float _ftRNDWait;
     float _ftRNGWait;
-    public List<GameObject> listGO;
 
     void Start()
     {
-        listGO = new List<GameObject>();        
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
         _intSpawnPoint = 1;
@@ -83,8 +81,6 @@ public class PlayerStats : MonoBehaviour
             if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
                 float _ftRNG = (float)Random.Range(40f, 90f);
                 float _ftRandom = (float)Random.Range(1f, 100f);
-                Debug.Log(_ftRNG);
-                Debug.Log(_ftRandom);
 
                 if (_ftRNG < _ftRandom) {
                     _goSpeaker.GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
