@@ -12,7 +12,7 @@ using UnityEngine.PS4;
 
 public enum ControllerColor
 {
-    Red,
+    Pink,
     Green,
     Blue,
     Gold
@@ -20,9 +20,8 @@ public enum ControllerColor
 
 public enum ControllerModes
 {
+    NONE,
     Movement,
-    Pickup,
-    Dance,
     Calibrate
 }
 
@@ -37,18 +36,16 @@ public class ControllerScript : MonoBehaviour
 {
     //public
     public bool isSecondaryMoveController = false;
-    //public GameObject player;
     public GameObject currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;
     public ControllerModes controllerMode;
     public ControllerColor controllerColor;
-    public List<PlayerStick> playerSticks;
+    public List<PlayerStick> playerSticks; //needs to be moved into sticks script
     Dictionary<ControllerColor, Material> dicPlayerSticks;
 
     //mode scripts
     public MovementScript movementScript;
-    public PickupScript pickupScript;
     public ControlCalibrationScript calibrateScript;
 
     //private
@@ -61,11 +58,10 @@ public class ControllerScript : MonoBehaviour
     private bool TriggerButtonDown = false;
     private bool xButtonDown = false;
     private bool circleButtonDown = false;
-    //private bool buttonSwapModeDown = false;
-    //private bool buttonInteractDown = false;
-    //private bool buttonResetPosDown = false;
-    //private bool buttonResetSceneDown = false;
+    private bool triangleButtonDown = false;
+    private bool squareButtonDown = false;
 
+    private bool swapModeButtonDown = false;
 
     // Use this for initialization
     void Start()
@@ -87,36 +83,13 @@ public class ControllerScript : MonoBehaviour
             controllerColor = playerSticks[0].color;
             UpdateControllerMaterial(controllerColor);
         }
-
-        //TODO: CHANGE THIS TO USE CONTROLLER MODE BASE CLASS INIT FUNC
-        //setting conttroller mode
-        if (controllerMode == ControllerModes.Calibrate)
-        {
-            laserPointer.gameObject.SetActive(false);
-            movementScript.enabled = false;
-            pickupScript.enabled = true;
-            calibrateScript.enabled = true;
-        }
-        if (controllerMode == ControllerModes.Movement)
-        {
-            laserPointer.gameObject.SetActive(true);
-            movementScript.enabled = true;
-            pickupScript.enabled = false;
-            calibrateScript.enabled = false;
-        }
-        else if(controllerMode == ControllerModes.Pickup)
-        {
-            laserPointer.gameObject.SetActive(false);
-            movementScript.enabled = false;
-            pickupScript.enabled = true;
-            calibrateScript.enabled = false;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         //Inputs
+        //back trigger
         if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
         {
             TriggerButtonDown = true;
@@ -127,13 +100,7 @@ public class ControllerScript : MonoBehaviour
                 UpdateControllerMaterial(controllerColor);
             }
 
-            //interact with UI
-            if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
-            {
-                laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
-            }
-
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger,isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger);
 
         }
         else if (!GetButtonDown(ControllerButtons.BackTrigger) && TriggerButtonDown)
@@ -146,51 +113,114 @@ public class ControllerScript : MonoBehaviour
                 UpdateControllerMaterial(controllerColor);
             }
 
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger);
         }
 
-        //swap modes
+        //middle button
         if (GetButtonDown(ControllerButtons.MiddleButton) && !middleButtonDown)
         {
             middleButtonDown = true;
+            laserPointer.gameObject.SetActive(true); //move this to cali script
 
-            ToggleMode();
-
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton);
         }
         else if (!GetButtonDown(ControllerButtons.MiddleButton)&& middleButtonDown)
         {
             middleButtonDown = false;
+            //interact with UI 
+            if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
+            {
+                laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
+            }
+            laserPointer.gameObject.SetActive(false);            //move this to cali script
 
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton);
         }
 
-        //reset pos
+        // X button
         if (GetButtonDown(ControllerButtons.X) && !xButtonDown)
         {
             xButtonDown = true;
 
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.X, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.X);
 
         }
         else if (!GetButtonDown(ControllerButtons.X) && xButtonDown)
         {
             xButtonDown = false;
 
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.X, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.X);
         }
 
+        //Circle button
         if (GetButtonDown(ControllerButtons.Circle) && !circleButtonDown)
         {
             circleButtonDown = true;
 
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Circle, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Circle);
         }
         else if (!GetButtonDown(ControllerButtons.Circle) && circleButtonDown)
         {
             circleButtonDown = false;
 
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Circle, isSecondaryMoveController);
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Circle);
+        }
+
+        //Triangle button
+        if (GetButtonDown(ControllerButtons.Triangle) && !triangleButtonDown)
+        {
+            triangleButtonDown = true;
+
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Triangle);
+        }
+        else if (!GetButtonDown(ControllerButtons.Triangle) && triangleButtonDown)
+        {
+            triangleButtonDown = false;
+
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Triangle);
+        }
+
+        //Square button
+        if (GetButtonDown(ControllerButtons.Square) && !squareButtonDown)
+        {
+            squareButtonDown = true;
+
+            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Square);
+        }
+        else if (!GetButtonDown(ControllerButtons.Square) && squareButtonDown)
+        {
+            squareButtonDown = false;
+
+            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Square);
+        }
+
+        //Test
+        //swapmode
+        if (GetButtonDown(controlsScript.swapModeButton) && !swapModeButtonDown)
+        {
+            Debug.Log("SwitchMode");
+            swapModeButtonDown = true;
+            if(controllerMode == ControllerModes.Movement)
+            {
+                movementScript.Exit();
+                movementScript.enabled = false;
+                calibrateScript.enabled = true;
+                calibrateScript.Init();
+                controllerMode = ControllerModes.Calibrate;
+            }
+            else
+            {
+                calibrateScript.Exit();
+                calibrateScript.enabled = false;
+                movementScript.enabled = true;
+                movementScript.Init();
+                controllerMode = ControllerModes.Movement;
+            }
+        }
+        else if (!GetButtonDown(controlsScript.swapModeButton) && swapModeButtonDown)
+        {
+            swapModeButtonDown = false;
+            
         }
     }
 
@@ -247,22 +277,22 @@ public class ControllerScript : MonoBehaviour
     void UpdateControllerMaterial(ControllerColor newColor)
     {
         Renderer mat = currStick.GetComponent<Renderer>();
-        switch (newColor)
-        {
-            case ControllerColor.Red:
-                mat.material = dicPlayerSticks[ControllerColor.Red];
-                return;
-            case ControllerColor.Green:
-                mat.material = dicPlayerSticks[ControllerColor.Green];
-                return;
-            case ControllerColor.Blue:
-                mat.material = dicPlayerSticks[ControllerColor.Blue];
-                return;
-            case ControllerColor.Gold:
-                mat.material = dicPlayerSticks[ControllerColor.Gold];
-                return;
-
-        }
+        //switch (newColor)
+        //{
+        //    case ControllerColor.Pink:
+        //        mat.material = dicPlayerSticks[ControllerColor.Pink];
+        //        return;
+        //    case ControllerColor.Green:
+        //        mat.material = dicPlayerSticks[ControllerColor.Green];
+        //        return;
+        //    case ControllerColor.Blue:
+        //        mat.material = dicPlayerSticks[ControllerColor.Blue];
+        //        return;
+        //    case ControllerColor.Gold:
+        //        mat.material = dicPlayerSticks[ControllerColor.Gold];
+        //        return;
+        //}
+        mat.material = dicPlayerSticks[newColor];
     }
 
     bool GetButtonDown(ControllerButtons button)
@@ -280,35 +310,12 @@ public class ControllerScript : MonoBehaviour
             case ControllerModes.Movement:
                 return movementScript;
 
-            case ControllerModes.Pickup:
-                return pickupScript;
-
             case ControllerModes.Calibrate:
                 return calibrateScript;
 
             default:
                 return null;
         }
-    }
-
-    void ToggleMode()
-    {
-        if(controllerMode == ControllerModes.Calibrate)
-        {
-            controllerMode = ControllerModes.Movement;
-            pickupScript.enabled = false;
-        }
-        else if (controllerMode == ControllerModes.Pickup)
-        {
-            controllerMode = ControllerModes.Movement;
-        }
-        else if (controllerMode == ControllerModes.Movement)
-        {
-            controllerMode = ControllerModes.Pickup;
-        }
-        laserPointer.gameObject.SetActive(!laserPointer.gameObject.activeInHierarchy);
-        movementScript.enabled = !movementScript.enabled;
-        pickupScript.enabled = !pickupScript.enabled;
     }
 
     public void VibrateController()

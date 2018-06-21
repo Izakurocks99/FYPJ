@@ -6,13 +6,12 @@ public class ControlCalibrationScript : ControllerModesScript
 {
     //adjust calibration area from headdevice to controllers
 
-    //TODO use transform instead of gameobject
-    public Transform playerCamera;
-    public Transform calibrationObject;
-    public Transform LeftController;
-    public Transform RightController;
+    public GameObject calibrationObject;
+    private CalibrationObjectScript calibrationObjectScript;
 
-    public GameObject edges;
+    public Transform playerCamera;
+
+    //public GameObject edges;
 
     public float horizontalSize;
     public float verticleSize;
@@ -21,52 +20,52 @@ public class ControlCalibrationScript : ControllerModesScript
     private bool isLocked; //is calibrating?
     private bool followSecondary;
     private Transform currController;
+    private ControllerScript controller;
 
     // Use this for initialization
     void Awake()
     {
         isLocked = true;
+        controller = gameObject.GetComponent<ControllerScript>();
+        calibrationObjectScript = calibrationObject.GetComponent<CalibrationObjectScript>();
+        currController = gameObject.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isLocked)
+        if (!isLocked && calibrationObjectScript.controlledBySecondary == controller.isSecondaryMoveController)
         {
-            //get average dist of controllers
-            if (followSecondary)
-                currController = LeftController;
-            else
-                currController = RightController;
-
             //move cali obj
-            calibrationObject.position = new Vector3(calibrationObject.position.x, calibrationObject.position.y, currController.position.z);
+            calibrationObject.transform.position = new Vector3(calibrationObject.transform.position.x, calibrationObject.transform.position.y, currController.position.z);
 
             //scale cali obj
-            Vector3 distance = (currController.position - calibrationObject.position);
-            calibrationObject.localScale = new Vector3(distance.x * 2, distance.y * 2, calibrationObject.localScale.z);//keep y pos
+            Vector3 distance = (currController.position - calibrationObject.transform.position);
+            calibrationObject.transform.localScale = new Vector3(distance.x * 2, distance.y * 2, calibrationObject.transform.localScale.z);//keep y pos
         }
     }
 
     public override void Init() //when this mode is entered
     {
-
+        calibrationObject.SetActive(true);
+        controller.laserPointer.gameObject.SetActive(false);
     }
 
     public override void Exit() //when this mode is exited
     {
-
+        calibrationObject.SetActive(false);
+        controller.laserPointer.gameObject.SetActive(true);
     }
 
-    public override void ButtonPressed(ControllerButtons button, bool isSecondaryController)
+    public override void ButtonPressed(ControllerButtons button)
     {
         if(button == controlsScript.interactButton)
         {
-            UnlockObject(isSecondaryController);
+            UnlockObject();
         }
     }
 
-    public override void ButtonReleased(ControllerButtons button, bool isSecondaryController)
+    public override void ButtonReleased(ControllerButtons button)
     {
         if (button == controlsScript.interactButton)
         {
@@ -76,29 +75,31 @@ public class ControlCalibrationScript : ControllerModesScript
 
     void LockObject()
     {
-        isLocked = true;
-        //set variables
-        distFromPlayer = (calibrationObject.position - playerCamera.position).magnitude;
-        horizontalSize = Mathf.Abs(calibrationObject.localScale.y * 0.5f);
-        verticleSize = Mathf.Abs(calibrationObject.localScale.x * 0.5f);
-
+        if (calibrationObjectScript.controlledBySecondary == controller.isSecondaryMoveController)
+        {
+            isLocked = true;
+            //set variables
+            distFromPlayer = (calibrationObject.transform.position - playerCamera.position).magnitude;
+            horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.y * 0.5f);
+            verticleSize = Mathf.Abs(calibrationObject.transform.localScale.x * 0.5f);
+        }
         //DEBUG
         ////Debug.Log(horizontalSize + " : " + verticleSize);
         //Vector3 debugPoints = new Vector3(horizontalSize, verticleSize, 0);
         ////spawn debug spheres
-        //GameObject TR = Instantiate(edges, calibrationObject.transform.position + debugPoints, calibrationObject.rotation);
+        //GameObject TR = Instantiate(edges, calibrationObject.transform.transform.position + debugPoints, calibrationObject.transform.rotation);
         //Debug.Log(TR.transform.position);
-        //GameObject BL = Instantiate(edges, calibrationObject.transform.position - debugPoints, calibrationObject.rotation);
+        //GameObject BL = Instantiate(edges, calibrationObject.transform.transform.position - debugPoints, calibrationObject.transform.rotation);
         //Debug.Log(BL.transform.position);
 
     }
 
-    void UnlockObject(bool isSecondary)
+    void UnlockObject()
     {
         if (isLocked)
         {
             isLocked = false;
-            followSecondary = isSecondary;
+            calibrationObjectScript.controlledBySecondary = controller.isSecondaryMoveController;
         }
     }
 }

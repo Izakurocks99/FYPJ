@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum BeatColor
 {
-    Red,
+    Pink,
     Green,
     Blue,
     Gold,
@@ -61,9 +61,9 @@ public class BulletScript : MonoBehaviour
             PlayerStats player = playerCam.GetComponent<PlayerStats>();
             switch (color)
             {
-                case BeatColor.Red:
+                case BeatColor.Pink:
                     {
-                        if (controller.controllerColor == ControllerColor.Red)
+                        if (controller.controllerColor == ControllerColor.Pink)
                         {
                             controller.VibrateController();
                             player.ModifyScore(10);

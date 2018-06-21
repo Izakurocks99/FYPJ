@@ -20,4 +20,6 @@ public class PlayerControlsScript : MonoBehaviour
     public ControllerButtons interactButton;
     public ControllerButtons resetPosButton;
     public ControllerButtons resetSceneButton;
+    public ControllerButtons dropStickButton;
+    public ControllerButtons togglePointerButton;
 }
