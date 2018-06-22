@@ -25,8 +25,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
 
 	void Update () {
 		if (_intCount == 0)
-			// _intCount = Random.Range(11, 35);
-			_intCount = 12;
+			_intCount = Random.Range(11, 35);
 
 		_ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
 
