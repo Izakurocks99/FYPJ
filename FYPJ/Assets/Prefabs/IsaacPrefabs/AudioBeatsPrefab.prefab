@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4520948013142514
 Transform:
   m_ObjectHideFlags: 1
@@ -112,9 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
   beats:
-  - color: 0
-    material: {fileID: 2100000, guid: 993d23554e9db904090abfd44c786905, type: 2}
   - color: 1
+    material: {fileID: 2100000, guid: 2bbc1017368aab545b94738fa118fa90, type: 2}
+  - color: 0
     material: {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
   - color: 2
     material: {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 6
+  _ftRange: 0
 --- !u!114 &114867572603555434
 MonoBehaviour:
   m_ObjectHideFlags: 1

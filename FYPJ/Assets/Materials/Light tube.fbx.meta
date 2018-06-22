@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 38084daa65a0d4b44b575b695af48ef0
+guid: 7260667fcc8eede438986b87d81f465f
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: baton1
-    2100002: baton_pink_left_hand_baton1
+    2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface30
-    4300002: baton_pink_left_hand:polySurface30
+    4300000: pCone3
   externalObjects: {}
   materials:
     importMaterials: 1

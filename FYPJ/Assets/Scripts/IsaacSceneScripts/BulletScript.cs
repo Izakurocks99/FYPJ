@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BeatColor
-{
-    Pink,
-    Green,
-    Blue,
-    Gold,
-}
+//public enum BeatColor
+//{
+//    Pink,
+//    Green,
+//    Blue,
+//    Gold,
+//}
 
 [System.Serializable]
 public class BeatVars
 {
-    public BeatColor color;
+    public ControllerColor color;
     public Material material;
 }
 
@@ -27,13 +27,13 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     public PlayerStats playerCam;
     public List<BeatVars> beats;
-    BeatColor color;
-    Dictionary<Material, BeatColor> dicBeat;
+    ControllerColor color;
+    Dictionary<Material, ControllerColor> dicBeat;
 
     void Start()
     {
         playerCam = FindObjectOfType<PlayerStats>();
-        dicBeat = new Dictionary<Material, BeatColor>();
+        dicBeat = new Dictionary<Material, ControllerColor>();
         foreach (BeatVars beat in beats)
         {
             dicBeat.Add(beat.material, beat.color);
@@ -55,75 +55,87 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PlayerStick")
+        if (other.gameObject.GetComponentInParent<PlayerStickScript>())
         {
             PlayerStickScript stick = other.gameObject.GetComponentInParent<PlayerStickScript>();
             PlayerStats player = playerCam.GetComponent<PlayerStats>();
-            switch (color)
+            //switch (color)
+            //{
+            //    case BeatColor.Pink:
+            //        {
+            //            if (stick.currColor == ControllerColor.Pink)
+            //            {
+            //                stick.heldController.VibrateController();
+            //                player.ModifyScore(10);
+            //                //addscore
+            //            }
+            //            else
+            //            {
+            //                //lowerscore
+            //                player.ModifyScore(-10);
+            //            }
+            //            break;
+            //        }
+
+            //    case BeatColor.Green:
+            //        {
+            //            if (stick.currColor == ControllerColor.Green)
+            //            {
+            //                stick.heldController.VibrateController();
+            //                player.ModifyScore(10);
+            //                //addscore
+            //            }
+            //            else
+            //            {
+            //                //lowerscore
+            //                player.ModifyScore(-10);
+            //            }
+            //            break;
+            //        }
+
+            //    case BeatColor.Blue:
+            //        {
+            //            if (stick.currColor == ControllerColor.Blue)
+            //            {
+            //                stick.heldController.VibrateController();
+            //                player.ModifyScore(10);
+            //                //addscore
+            //            }
+            //            else
+            //            {
+            //                //lowerscore
+            //                player.ModifyScore(-10);
+            //            }
+            //            break;
+            //        }
+
+            //    case BeatColor.Gold:
+            //        {
+            //            if (stick.currColor == ControllerColor.Gold)
+            //            {
+            //                stick.heldController.VibrateController();
+            //                player.ModifyScore(10);
+            //                //addscore
+            //            }
+            //            else
+            //            {
+            //                //lowerscore
+            //                player.ModifyScore(-10);
+            //            }
+            //            break;
+            //        }
+            //}
+
+            if (stick.currColor == color)
             {
-                case BeatColor.Pink:
-                    {
-                        if (stick.currColor == ControllerColor.Pink)
-                        {
-                            stick.heldController.VibrateController();
-                            player.ModifyScore(10);
-                            //addscore
-                        }
-                        else
-                        {
-                            //lowerscore
-                            player.ModifyScore(-10);
-                        }
-                        break;
-                    }
-
-                case BeatColor.Green:
-                    {
-                        if (stick.currColor == ControllerColor.Green)
-                        {
-                            stick.heldController.VibrateController();
-                            player.ModifyScore(10);
-                            //addscore
-                        }
-                        else
-                        {
-                            //lowerscore
-                            player.ModifyScore(-10);
-                        }
-                        break;
-                    }
-
-                case BeatColor.Blue:
-                    {
-                        if (stick.currColor == ControllerColor.Blue)
-                        {
-                            stick.heldController.VibrateController();
-                            player.ModifyScore(10);
-                            //addscore
-                        }
-                        else
-                        {
-                            //lowerscore
-                            player.ModifyScore(-10);
-                        }
-                        break;
-                    }
-
-                case BeatColor.Gold:
-                    {
-                        if (stick.currColor == ControllerColor.Gold)
-                        {
-                            stick.heldController.VibrateController();
-                            player.ModifyScore(10);
-                            //addscore
-                        }
-                        else
-                        {
-                            //lowerscore
-                            player.ModifyScore(-10);
-                        }
-                        break;
-                    }
+                stick.heldController.VibrateController();
+                player.ModifyScore(10);
+                //addscore
+            }
+            else
+            {
+                //lowerscore
+                player.ModifyScore(-10);
             }
             Destroy(transform.gameObject);
         }

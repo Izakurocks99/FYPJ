@@ -1703,6 +1703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001506475761584}
   - component: {fileID: 114623181571029796}
+  - component: {fileID: 114847137220433202}
   m_Layer: 0
   m_Name: PlayerVR 1
   m_TagString: Untagged
@@ -9034,6 +9035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsScript: {fileID: 114623181571029796}
+  autoRot: 0
   playerHeight: 0.5
   player: {fileID: 1581039253198954}
   movementMarker: {fileID: 1671201429358966}
@@ -9066,6 +9068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsScript: {fileID: 114623181571029796}
+  autoRot: 0
   playerHeight: 0.5
   player: {fileID: 1581039253198954}
   movementMarker: {fileID: 1671201429358966}
@@ -9201,6 +9204,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   max_distance: 100
+--- !u!114 &114847137220433202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581039253198954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67de8376af971c4c9381034bdf76610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114866730321320790
 MonoBehaviour:
   m_ObjectHideFlags: 1

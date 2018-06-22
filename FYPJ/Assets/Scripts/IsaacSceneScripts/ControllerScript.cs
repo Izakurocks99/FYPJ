@@ -96,7 +96,6 @@ public class ControllerScript : MonoBehaviour
         if (GetButtonDown(ControllerButtons.MiddleButton) && !middleButtonDown)
         {
             middleButtonDown = true;
-            laserPointer.gameObject.SetActive(true); //move this to cali script
 
             GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton);
         }
@@ -104,11 +103,10 @@ public class ControllerScript : MonoBehaviour
         {
             middleButtonDown = false;
             //interact with UI 
-            if (laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
+            if (laserPointer && laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
             {
                 laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
             }
-            laserPointer.gameObject.SetActive(false);            //move this to cali script
 
             GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton);
         }
@@ -277,11 +275,11 @@ public class ControllerScript : MonoBehaviour
     {
         if (isSecondaryMoveController)
         {
-            StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateLeft());
+            StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateLeft());
         }
         else
         {
-            StartCoroutine(currStick.GetComponent<VibrationScript>().VibrateRight());
+            StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateRight());
         }
     }
     

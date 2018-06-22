@@ -117,8 +117,7 @@ public class MovementScript : ControllerModesScript
         if (highlightedStick && canPickup)//if overlapping a stick and is not holding
         {
             //put stick in the hand's stick slot
-            highlightedStick.transform.parent = stickSlot;
-            highlightedStick.transform.localScale = stickSlot.localScale;
+            highlightedStick.transform.SetParent(stickSlot);
             highlightedStick.transform.position = stickSlot.position;
             if (autoRot)
             {
@@ -140,6 +139,8 @@ public class MovementScript : ControllerModesScript
         //if holding a stick
         if (controller.currStick)
         {
+            //drop
+            controller.currStick.Drop();
             //remove from parent
             controller.currStick.gameObject.transform.parent.parent= null;
             //set currstick to null

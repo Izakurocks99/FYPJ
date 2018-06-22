@@ -17,7 +17,8 @@ public class ControlCalibrationScript : ControllerModesScript
     public float verticleSize;
     public float distFromPlayer;
 
-    private bool isLocked; //is calibrating?
+    private bool isLocked;
+    private bool calibrateMode = true;
     private bool followSecondary;
     private Transform currController;
     private ControllerScript controller;
@@ -63,6 +64,11 @@ public class ControlCalibrationScript : ControllerModesScript
         {
             UnlockObject();
         }
+        if (button == controlsScript.togglePointerButton)
+        {
+            controller.laserPointer.gameObject.SetActive(true);
+            calibrateMode = false;
+        }
     }
 
     public override void ButtonReleased(ControllerButtons button)
@@ -70,6 +76,10 @@ public class ControlCalibrationScript : ControllerModesScript
         if (button == controlsScript.interactButton)
         {
             LockObject();
+        }
+        if (button == controlsScript.togglePointerButton)
+        {
+            controller.laserPointer.gameObject.SetActive(false);
         }
     }
 
@@ -96,7 +106,7 @@ public class ControlCalibrationScript : ControllerModesScript
 
     void UnlockObject()
     {
-        if (isLocked)
+        if (isLocked && calibrateMode)
         {
             isLocked = false;
             calibrationObjectScript.controlledBySecondary = controller.isSecondaryMoveController;

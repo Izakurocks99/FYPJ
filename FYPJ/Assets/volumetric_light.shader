@@ -7,7 +7,7 @@
 		_Ambient("Ambient", Range(0., 1.)) = .6
 		_Intensity("Intensity", Range(0., 1.5)) = .5
 		_Fade("Fade", Range(0., 10.)) = 1.
-		_Wind("Wind", Range(0., 1.)) = .05
+		_Wind("Wind", Range(0., 1.)) = .02
 		_ColorScales("ColorScales",Vector) = (1.,1.,1.)
 	}
  
