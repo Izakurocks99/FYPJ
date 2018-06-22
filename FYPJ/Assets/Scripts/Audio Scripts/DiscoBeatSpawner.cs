@@ -25,8 +25,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
 
 	void Update () {
 		if (_intCount == 0)
-			// _intCount = Random.Range(15, 35);
-			_intCount = 11;
+			_intCount = Random.Range(11, 35);
 
 		_ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
 
@@ -37,8 +36,12 @@ public class DiscoBeatSpawner : MonoBehaviour {
 	}
 
 	void GenerateDrag() {
+		Vector3 _vec3View = Camera.main.transform.position + Camera.main.transform.forward * 0.5f;
+
 		if (_intCount % 2 == 1)
 			_ftXIncrement = 0.5f / (_intCount / 2);
+		else if (_intCount % 2 == 0)
+			_ftXIncrement = 0.5f / (((float)_intCount / 2.0f) + 0.5f);
 
 		if ((_ftTime += 1 * Time.deltaTime) >= _ftWait) {
 			if (_intCurrent < _intCount) {
@@ -50,8 +53,10 @@ public class DiscoBeatSpawner : MonoBehaviour {
 				go.transform.position = this.GetComponent<DiscoMotion>()._vec3Spawn;
 				float _ftX = _ftXIncrement * _intCurrent;
 				go.GetComponent<DiscoBeatMotion>()._vec3Shift = new Vector3(_ftX, _ftY, 0);
+				go.GetComponent<DiscoBeatMotion>()._vec3Target = _vec3View;
 				
 				_intCurrent += 1;
+				_goBandVisualiser.GetComponent<AudioBandVisualiser>()._ftTime -= 0.1f;
 			}
 			else
 			{

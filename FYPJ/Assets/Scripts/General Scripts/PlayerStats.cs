@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
 
-    public GameObject _goSpeaker;
+    public GameObject[] _goSpeaker;
     public GameObject _goAudio;
     public Text _txt;
     public int _intPlayerScoring;
@@ -83,7 +83,7 @@ public class PlayerStats : MonoBehaviour
                 float _ftRandom = (float)Random.Range(1f, 100f);
 
                 if (_ftRNG < _ftRandom) {
-                    _goSpeaker.GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
+                    _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
                 }
 
                 _ftRNGTime = 0.0f;
