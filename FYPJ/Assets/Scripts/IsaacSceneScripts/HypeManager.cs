@@ -9,9 +9,10 @@ public class HypeManager : MonoBehaviour {
 
     private float playerScore = 0;
     private float scoreHypeRatio = 0.1f;
+    private int hype;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -24,7 +25,11 @@ public class HypeManager : MonoBehaviour {
 		if (playerScore != player.GetComponent<PlayerStats>()._intPlayerScoring)
         {
             playerScore = player.GetComponent<PlayerStats>()._intPlayerScoring;
-            audienceManager.GetComponent<AudianceManager>().HypeMeter = Mathf.RoundToInt(playerScore * scoreHypeRatio);
+            hype = Mathf.RoundToInt(playerScore * scoreHypeRatio);
+            if (hype > 0)
+            {
+                audienceManager.GetComponent<AudianceManager>().HypeMeter = hype;
+            }
         }
 	}
 }
