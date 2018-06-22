@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114895042204494098}
   - component: {fileID: 114674790636141962}
   m_Layer: 0
-  m_Name: SpeakerBeatsPreafab 1
+  m_Name: SpeakerBeatsPreafab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 8
-  _ftRange: 2
 --- !u!114 &114895042204494098
 MonoBehaviour:
   m_ObjectHideFlags: 1
