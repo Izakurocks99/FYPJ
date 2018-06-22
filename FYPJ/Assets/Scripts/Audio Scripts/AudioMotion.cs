@@ -9,7 +9,6 @@ public class AudioMotion : MonoBehaviour {
 	Transform _tfParent;
 	Transform _tfThis;
     public float _intShiftRate;
-	public float _ftRange;
 	float _ftX, _ftY, _ftZ;
 	int _intNumber;
 	Vector3 _vec3Area;
