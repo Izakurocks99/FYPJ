@@ -10,19 +10,19 @@ using UnityEngine.PS4;
 //Controls color of stick
 //checks for controller input
 
+public enum ControllerModes
+{
+    NONE,
+    Movement,
+    Calibrate
+}
+
 public enum ControllerColor
 {
     Pink,
     Green,
     Blue,
     Gold
-}
-
-public enum ControllerModes
-{
-    NONE,
-    Movement,
-    Calibrate
 }
 
 public class ControllerScript : MonoBehaviour
@@ -36,6 +36,7 @@ public class ControllerScript : MonoBehaviour
     public ControllerColor pirmaryControllerColor;
     public ControllerColor secondaryControllerColor;
 
+    public GameObject otherScript;
     //mode scripts
     public MovementScript movementScript;
     public ControlCalibrationScript calibrateScript;
@@ -170,12 +171,14 @@ public class ControllerScript : MonoBehaviour
 
         //Test
         //swapmode
-        if (GetButtonDown(controlsScript.swapModeButton) && !swapModeButtonDown)
+        if (GetKeyDown(controlsScript.swapModeButton)&& !swapModeButtonDown)
         {
             Debug.Log("SwitchMode");
             swapModeButtonDown = true;
             if(controllerMode == ControllerModes.Movement)
             {
+                //GetComponentInParent<ModeManagerScript>().ChangeMode(ControllerModes.Calibrate);
+
                 movementScript.Exit();
                 movementScript.enabled = false;
                 calibrateScript.enabled = true;
@@ -245,6 +248,38 @@ public class ControllerScript : MonoBehaviour
                 return 8;
             default:
                 return 0;
+        }
+    }
+
+    bool GetKeyDown(ControllerButtons button)
+    {
+        //FOR INPUT CONTROLLER 
+        // * x                -0 
+        // * Circle           -1 
+        // * Square           -2
+        // * Triangle         -3
+        // * BackTrigger      -4
+        // * MiddleButton     -5
+        // * TouchPad         -6
+        // * Start         -7
+        switch (button)
+        {
+            case ControllerButtons.X:
+                return Input.GetKeyDown(KeyCode.JoystickButton0);
+            case ControllerButtons.Circle:
+                return Input.GetKeyDown(KeyCode.JoystickButton1);
+            case ControllerButtons.Square:
+                return Input.GetKeyDown(KeyCode.JoystickButton2);
+            case ControllerButtons.Triangle:
+                return Input.GetKeyDown(KeyCode.JoystickButton3);
+            case ControllerButtons.BackTrigger:
+                return Input.GetKeyDown(KeyCode.JoystickButton4);
+            case ControllerButtons.MiddleButton:
+                return Input.GetKeyDown(KeyCode.JoystickButton5);
+            case ControllerButtons.Start:
+                return Input.GetKeyDown(KeyCode.JoystickButton7);
+            default:
+                return false;
         }
     }
 
