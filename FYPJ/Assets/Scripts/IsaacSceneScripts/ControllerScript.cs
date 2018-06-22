@@ -22,7 +22,8 @@ public enum ControllerColor
     Pink,
     Green,
     Blue,
-    Gold
+    Gold,
+    Rainbow,
 }
 
 public class ControllerScript : MonoBehaviour
@@ -35,8 +36,7 @@ public class ControllerScript : MonoBehaviour
     public ControllerModes controllerMode;
     public ControllerColor pirmaryControllerColor;
     public ControllerColor secondaryControllerColor;
-
-    public GameObject otherScript;
+    
     //mode scripts
     public MovementScript movementScript;
     public ControlCalibrationScript calibrateScript;

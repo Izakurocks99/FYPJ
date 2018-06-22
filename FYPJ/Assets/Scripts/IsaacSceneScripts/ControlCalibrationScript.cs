@@ -18,7 +18,6 @@ public class ControlCalibrationScript : ControllerModesScript
     public float distFromPlayer;
 
     private bool isLocked;
-    private bool calibrateMode = true;
     private bool followSecondary;
     private Transform currController;
     private ControllerScript controller;
@@ -67,7 +66,7 @@ public class ControlCalibrationScript : ControllerModesScript
         if (button == controlsScript.togglePointerButton)
         {
             controller.laserPointer.gameObject.SetActive(true);
-            calibrateMode = false;
+            calibrationObjectScript.calibrateMode = false;
         }
     }
 
@@ -106,7 +105,7 @@ public class ControlCalibrationScript : ControllerModesScript
 
     void UnlockObject()
     {
-        if (isLocked && calibrateMode)
+        if (isLocked && calibrationObjectScript.calibrateMode)
         {
             isLocked = false;
             calibrationObjectScript.controlledBySecondary = controller.isSecondaryMoveController;

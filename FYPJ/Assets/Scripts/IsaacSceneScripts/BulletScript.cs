@@ -126,7 +126,7 @@ public class BulletScript : MonoBehaviour
             //        }
             //}
 
-            if (stick.currColor == color)
+            if (stick.currColor == color || color == ControllerColor.Rainbow)
             {
                 stick.heldController.VibrateController();
                 player.ModifyScore(10);
@@ -137,6 +137,7 @@ public class BulletScript : MonoBehaviour
                 //lowerscore
                 player.ModifyScore(-10);
             }
+
             Destroy(transform.gameObject);
         }
     }
