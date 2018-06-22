@@ -24,7 +24,6 @@ public class BulletScript : MonoBehaviour
     //public float bulletSpeed = 5f;
     //public float bulletLifeTime = 10f;
     // Use this for initialization
-    [SerializeField]
     public PlayerStats playerCam;
     public List<BeatVars> beats;
     ControllerColor color;

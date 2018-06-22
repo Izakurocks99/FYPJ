@@ -11,11 +11,12 @@ public class ControlCalibrationScript : ControllerModesScript
 
     public Transform playerCamera;
 
-    //public GameObject edges;
+    public GameObject edges;
 
     public float horizontalSize;
     public float verticleSize;
     public float distFromPlayer;
+    public float areaScale;
 
     private bool isLocked;
     private bool followSecondary;
@@ -29,6 +30,10 @@ public class ControlCalibrationScript : ControllerModesScript
         controller = gameObject.GetComponent<ControllerScript>();
         calibrationObjectScript = calibrationObject.GetComponent<CalibrationObjectScript>();
         currController = gameObject.transform;
+
+        verticleSize = Mathf.Abs(calibrationObject.transform.localScale.y * areaScale);
+        horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.x * areaScale);
+        distFromPlayer = (calibrationObject.transform.position - playerCamera.position).magnitude;
     }
 
     // Update is called once per frame
@@ -37,7 +42,7 @@ public class ControlCalibrationScript : ControllerModesScript
         if (!isLocked && calibrationObjectScript.controlledBySecondary == controller.isSecondaryMoveController)
         {
             //move cali obj
-            calibrationObject.transform.position = new Vector3(calibrationObject.transform.position.x, calibrationObject.transform.position.y, currController.position.z);
+            calibrationObject.transform.position = new Vector3(calibrationObject.transform.position.x, playerCamera.position.y, currController.position.z);
 
             //scale cali obj
             Vector3 distance = (currController.position - calibrationObject.transform.position);
@@ -89,11 +94,11 @@ public class ControlCalibrationScript : ControllerModesScript
             isLocked = true;
             //set variables
             distFromPlayer = (calibrationObject.transform.position - playerCamera.position).magnitude;
-            horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.y * 0.5f);
-            verticleSize = Mathf.Abs(calibrationObject.transform.localScale.x * 0.5f);
+            verticleSize = Mathf.Abs(calibrationObject.transform.localScale.y * areaScale);
+            horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.x * areaScale);
         }
         //DEBUG
-        ////Debug.Log(horizontalSize + " : " + verticleSize);
+        //Debug.Log(horizontalSize + " : " + verticleSize);
         //Vector3 debugPoints = new Vector3(horizontalSize, verticleSize, 0);
         ////spawn debug spheres
         //GameObject TR = Instantiate(edges, calibrationObject.transform.transform.position + debugPoints, calibrationObject.transform.rotation);

@@ -4253,21 +4253,15 @@ Prefab:
       propertyPath: _goContainers.Array.data[7]
       value: 
       objectReference: {fileID: 97927504}
-    - target: {fileID: 4383115854199128, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
+    - target: {fileID: 114956288234413014, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: areaScale
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 4326175157397368, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4579854091157990, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1106015399901586, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114427599000826744, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: areaScale
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
@@ -4793,12 +4787,12 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c86bf4f5cd3db4e4cbe6fad7b92113cb, type: 2}
+      objectReference: {fileID: 2100000, guid: aa0855d705e6eeb49b8abd2416cd036c, type: 2}
     - target: {fileID: 33562207372836792, guid: 5865e3ab679ef2f439e63240cfaae288,
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 9bd7f6d45d312f4438e8e7a1340ca7a7, type: 3}
+      objectReference: {fileID: 4300002, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}
     - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
         type: 2}
       propertyPath: objectMesh
@@ -5139,6 +5133,10 @@ Prefab:
     - target: {fileID: 4520948013142514, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837424794855918, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1467603465521292, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
       propertyPath: m_IsActive

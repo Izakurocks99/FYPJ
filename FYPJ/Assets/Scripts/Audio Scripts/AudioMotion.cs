@@ -13,8 +13,11 @@ public class AudioMotion : MonoBehaviour {
 	int _intNumber;
 	Vector3 _vec3Area;
     ControlCalibrationScript calibration;
+    PlayerStats playerStats;
 
-	void Start() {
+    public Transform endPoint;
+
+    void Start() {
 		_tfThis = this.transform;
 		_tfParent = this.transform.parent.transform;
 		_tfCamera = Camera.main.transform;
@@ -24,16 +27,22 @@ public class AudioMotion : MonoBehaviour {
         calibration = FindObjectOfType<ControlCalibrationScript>();
 		_ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
 		_ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-		_ftZ = 0;
+		_ftZ = -calibration.distFromPlayer;
+
+        playerStats = FindObjectOfType<PlayerStats>();
+        _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
+                                             _ftY,
+                                             _ftZ);
     }
 
 	void Update () {
-		_vec3Area = (_tfCamera.position + _tfCamera.forward * 0.5f) + new Vector3(_ftX,
-													 _ftY,
-													 _ftZ);
+		//_vec3Area = (_tfCamera.position + _tfCamera.forward * 0.5f) + new Vector3(_ftX,
+		//											 _ftY,
+		//											 _ftZ);
 		_tfThis.Rotate(_tfThis.up, 7.0f);
-		
-		BeatMotion();
+
+        endPoint.position = _vec3Area;
+        BeatMotion();
 		TransitBeat();
 	}
 
@@ -43,9 +52,12 @@ public class AudioMotion : MonoBehaviour {
 
 	void TransitBeat() {
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
-		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-			_tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.1f);
-		else
-			Destroy(_tfThis.gameObject);
+        if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
+            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.1f);
+        else
+        {
+            playerStats.ModifyScore(-1);
+            Destroy(_tfThis.gameObject);
+        }
 	}
 }

@@ -329,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1111167671954756
 GameObject:
   m_ObjectHideFlags: 1
@@ -657,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1235151331113654
 GameObject:
   m_ObjectHideFlags: 1
@@ -4048,7 +4048,7 @@ Transform:
   m_GameObject: {fileID: 1230345193009564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.01}
+  m_LocalScale: {x: 3, y: 2, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4493086199940256}
   m_RootOrder: 3
@@ -9332,9 +9332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryController: {fileID: 4023597115986606}
   secondaryController: {fileID: 4433692009796266}
-  illuminatedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114308148537980674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9378,6 +9375,7 @@ MonoBehaviour:
   controlsScript: {fileID: 114924607819376842}
   calibrationObject: {fileID: 1230345193009564}
   playerCamera: {fileID: 4409044695247246}
+  edges: {fileID: 1604767341888056, guid: 6dc78a1552b86f843b19e7b04a23b160, type: 2}
   horizontalSize: 0
   verticleSize: 0
   distFromPlayer: 0
@@ -9412,6 +9410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f4564d0dacdda44986d3a04b488214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beatScale: {x: 0.5, y: 0.5, z: 0.5}
   _goAudioScales:
   - {fileID: 0}
   - {fileID: 0}
@@ -9531,6 +9530,7 @@ MonoBehaviour:
   controlsScript: {fileID: 114924607819376842}
   calibrationObject: {fileID: 1230345193009564}
   playerCamera: {fileID: 4409044695247246}
+  edges: {fileID: 1604767341888056, guid: 6dc78a1552b86f843b19e7b04a23b160, type: 2}
   horizontalSize: 0
   verticleSize: 0
   distFromPlayer: 0

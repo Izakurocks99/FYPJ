@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour {
 
-	public GameObject[] _goAudioScales;
+    public Vector3 beatScale;
+    public GameObject[] _goAudioScales;
 	public GameObject _goPrefab;
 	public GameObject _goAudio;
 	public GameObject _goPlayer;
@@ -76,7 +77,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 								if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
 
 									GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform.parent.transform, false);
-									
+                                    go.transform.localScale = beatScale;
 									_intCurrentMaterial = Random.Range(0, _materials.Length);
 									if (_intCurrentMaterial == _intPreviousMaterial) {
 
@@ -106,8 +107,9 @@ public class AudioBandVisualiser : MonoBehaviour {
 					
 						if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
 							GameObject go = Instantiate(_goPrefab, _goAudioScales[j].transform.parent.transform, false);
+                            go.transform.localScale = beatScale;
 
-							_intCurrentMaterial = Random.Range(0, _materials.Length);
+                            _intCurrentMaterial = Random.Range(0, _materials.Length);
 							if (_intCurrentMaterial == _intPreviousMaterial) {
 
 								if (_intPreviousMaterial != 0)
