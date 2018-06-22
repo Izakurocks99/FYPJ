@@ -10,7 +10,6 @@ public class DiscoBeatMotion : MonoBehaviour {
 	Transform _tfParent;
 	Transform _tfThis;
     public float _intShiftRate;
-	public float _ftRange;
 	public Vector3 _vec3Area;
 	public Vector3 _vec3Shift;
 

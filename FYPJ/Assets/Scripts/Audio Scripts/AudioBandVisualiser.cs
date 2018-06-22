@@ -83,7 +83,15 @@ public class AudioBandVisualiser : MonoBehaviour {
 										if (_intPreviousMaterial != 0)
 											_intCurrentMaterial -= 1;
 										else if (_intPreviousMaterial == 0)
-											_intCurrentMaterial = _materials.Length - 1;
+												 _intCurrentMaterial = _materials.Length - 1;
+									}
+									if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
+										_intCurrentMaterial == _intPreviousMaterial + 2)
+									{
+										if (_intCurrentMaterial != 0)
+											_intCurrentMaterial -= 1;
+										else if (_intCurrentMaterial == 0)
+												 _intCurrentMaterial = _materials.Length - 1;
 									}
 									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 									_intPreviousMaterial = _intCurrentMaterial;
@@ -105,7 +113,15 @@ public class AudioBandVisualiser : MonoBehaviour {
 								if (_intPreviousMaterial != 0)
 									_intCurrentMaterial -= 1;
 								else if (_intPreviousMaterial == 0)
-									_intCurrentMaterial = _materials.Length - 1;
+										 _intCurrentMaterial = _materials.Length - 1;
+							}
+							if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
+								_intCurrentMaterial == _intPreviousMaterial + 2)
+							{
+								if (_intCurrentMaterial != 0)
+									_intCurrentMaterial -= 1;
+								else if (_intCurrentMaterial == 0)
+										 _intCurrentMaterial = _materials.Length - 1;
 							}
 							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 							_intPreviousMaterial = _intCurrentMaterial;
