@@ -22,8 +22,8 @@ public class AudioMotion : MonoBehaviour {
 		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
-		_ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
-		_ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
+		// _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
+		// _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
 		_ftZ = 0;
     }
 

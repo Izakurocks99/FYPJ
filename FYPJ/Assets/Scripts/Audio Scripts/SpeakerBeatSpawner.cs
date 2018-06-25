@@ -9,7 +9,7 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 	public Material[] _material;
 
 	void Update () {
-		this.transform.LookAt(Camera.main.transform);
+		// this.transform.LookAt(Camera.main.transform);
 	}
 
 	public void SpawnSpeakerBeat() {
