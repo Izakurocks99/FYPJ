@@ -5,8 +5,7 @@ using UnityEngine;
 public class SpeakerBeatSpawner : MonoBehaviour {
 
 	public GameObject[] _goContainer;
-	public GameObject _goPrefab;
-	public Material[] _material;
+	public GameObject[] _goPrefab;
 
 	void Update () {
 		this.transform.parent.transform.LookAt(Camera.main.transform);
@@ -14,17 +13,22 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 
 	public void SpawnSpeakerBeat() {
 		int _intRandomContainer = Random.Range(0, _goContainer.Length);
-		float _ftRandomMaterial = Random.value;
+		float _ftRandomPrefab = Random.value;
 
-		GameObject go = Instantiate(_goPrefab, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
-		go.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+		if (_ftRandomPrefab < 0.6f) {
+			GameObject go = Instantiate(_goPrefab[0], _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
+			go.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+			
+			go.name = "Test";
+			go.SetActive(true);
+		}
 		
-		if (_ftRandomMaterial <= 0.6f)
-			go.GetComponent<Renderer>().material = _material[1];
-		else
-			go.GetComponent<Renderer>().material = _material[0];
-		
-		go.name = "Test";
-		go.SetActive(true);
+		else {
+			GameObject go = Instantiate(_goPrefab[1], _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
+			go.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+			
+			go.name = "Test";
+			go.SetActive(true);
+		}
 	}
 }
