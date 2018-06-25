@@ -5,7 +5,8 @@ Shader "Example/DomeVol2"
 	Properties
 	{
 		_skytex ("sky tex", 2D) = "white" {}
-		rotation("rotation rate", Range(-2.0 , 2.0)) = 0.1
+		changeSpeed("change speed", Range(0. , 100.)) = 1. 
+		distortionScale("wind distortion", Range(0. , 100.)) = 1.
 	}
 	SubShader
 	{
@@ -18,31 +19,102 @@ Shader "Example/DomeVol2"
 
 		struct Input 
 		{
-			float2	uv_skytex;
-			float2  newUv;
-			float2	distortion;
+			//float2	uv_skytex;
+			float4	UVs;
+			float	alphalerp;	
 		};
 
-	  float rotation;
+	  float changeSpeed;
+	  float distortionScale;
 	   void vert (inout appdata_full v, out Input o) 
 	   {
 		//v.vertex.y += 8.f;
-			o.uv_skytex = v.texcoord.xy;
-			o.newUv =  o.uv_skytex;//v.texcoord.xy - 0.5; // 0.5 ??
+			//o.uv_skytex = v.texcoord.xy;
+			//o.newUv =  o.uv_skytex;//v.texcoord.xy - 0.5; // 0.5 ??
 			//float2 oldUVs = o.uv_skytex;
 			//o.newUv.y += _Time.x * rotation * 0.0001f;
 			//o.newUv += v.tangent.xy * 0.00001f;
 			float2 distortion = float2(0,0);
 			float3 windDir = float3(0,0,1);
 			
-			distortion.x = dot(windDir , normalize(v.tangent.xyz)) * 0.0001f;
+			distortion.x = dot(windDir , normalize(v.tangent.xyz)) ;
 			//distortion.x +=  _Time;
 
 			float3 binormal = cross(v.tangent.xyz,normalize(v.normal.xyz) ) ;
-			distortion.y = dot(windDir , binormal) + 1.f;	 
+			distortion.y = dot(windDir , binormal) ;	 
+
+
+			
+
+			distortion *= distortionScale;
+			
+
+			float freq1 = frac(changeSpeed * _Time.y);
+			float freq2 = frac(changeSpeed * _Time.y + 0.5f);
+			float pos1 = freq1 * distortionScale;
+			float pos2 = freq2 * distortionScale;
+			
+			const float PI = 3.14159265f;
+
+			o.alphalerp = 1 -sin((PI / 2.f)  * freq1 * 2) ;  // todo test if i need the second alpha value
+
+			o.UVs.xy = v.texcoord.xy + pos1;
+			o.UVs.zw = v.texcoord.xy + pos2;
+
+
+			//float windscale = windstrenght * _Time;	
+			//float windtemp = frac(windscale + 0.5f);
+			//windscale = frac(windscale);
+
+			//float2 dist1 = distortion * windtemp;
+			//float2 dist2 = distortion * windscale;
+
+			//o.UVs.xy = v.texcoord.xy + dist1;
+			//o.UVs.zw = v.texcoord.xy + dist2;
+
+
+			//float crossfade = cos(windscale * PI) * (0.5f) + 0.5;
+
+			//o.alphalerp = crossfade;
+
+
+
+
+
+			#if 0
+			//float alpha1 = (cos(frac(windstrenght * _Time))/2.f) + 0.5f;
+			//float alpha2 = (sin((frac(windstrenght * _Time + 0.5f)))/2.f) + 0.5f;
+
+			//float2 firstPos = v.texcoord.xy + (distortion * distortionScale * frac(windstrenght * _Time));
+			//float2 second = v.texcoord.xy + (distortion * distortionScale * (frac(windstrenght * _Time) + 0.5f) );
+
+			//o.alphalerp = alpha1;
+			//o.UVs.xy = firstPos;
+			//o.UVs.zw = second;
+			#endif
+
+			//float cosrange = (cos(windstrenght * _Time) / 2.f) + 0.5f;
+
+
+
+			//o.secondUV = o.uv_skytex + (distortion * cosrange);
+			//o.lerpVal = cosrange;
+
+			//const float PI = 3.14159265f;
+			//o.lerpVal = cos(frac(windstrenght * _Time) * PI) * (-0.5f) + 0.5f;
 			// normalize(distortion);
 
-			o.distortion = distortion;
+			//float alpha1 = cos(_Time * rotation) / 2.f + 0.5f; // create positive curve
+			//float alpha2 = sin(_Time * rotation + 0.5f) / 2.f + 0.5f; // create positive curve and move it bit up
+
+			//o.distortion1 = distortion * rotation * alpha1;
+			//o.distortion2 = distortion * rotation * alpha2;
+			//o.alpha1 = alpha1;
+			//o.alpha2 = alpha2;
+
+
+
+			
 			//v.vertex.y += 10.f;
 			//float strenght = 0.02f;
 			//o.newUv += distortion * strenght * _Time;
@@ -64,12 +136,20 @@ Shader "Example/DomeVol2"
 		sampler2D	_skytex;
 		void surf (Input IN, inout SurfaceOutput o)	
 		{
-			o.Albedo.rgb += tex2D(_skytex,IN.newUv + IN.distortion.xy * _Time * 0.02f).rgb * 0.0001f;
-			o.Albedo.rg += IN.distortion;
+			float4 first = tex2D(_skytex, IN.UVs.xy ).rgba  ;
+			float4 second = tex2D(_skytex, IN.UVs.zw ).rgba ;
+			float4 endcolor = lerp(first.rgba, second.rgba, IN.alphalerp);
+			o.Albedo.rgb = endcolor.rgb;
+			o.Alpha = endcolor.a;//lerp(org.a, second.a, IN.lerpVal);
+
+
+			//float4 second = tex2D(_skytex,IN.secondUV).rgba;
+			//o.Albedo.rgb += tex2D(_skytex,IN.newUv + IN.distortion1).rgb * IN.alpha1;
+			//o.Albedo.rgb += tex2D(_skytex,IN.newUv + IN.distortion2).rgb * IN.alpha2;
+			//o.Albedo.rg += IN.distortion;
 			//o.Albedo.b *= 0.001f;
 
 			//o.Albedo.rg += IN.newUv ;
-			o.Alpha =  tex2D(_skytex,IN.newUv).a; 
 		}
 		ENDCG
 

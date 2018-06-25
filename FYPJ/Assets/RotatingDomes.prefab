@@ -77,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4411188977475260
 Transform:
   m_ObjectHideFlags: 1
@@ -124,8 +124,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599929840749138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 4646353062414384}
   - {fileID: 4437064925575452}
@@ -276,20 +276,20 @@ MonoBehaviour:
   CloudLayer: {fileID: 1070027776400480}
   MountainLayer: {fileID: 1105151514619980}
   SpaceTextures:
-  - {fileID: 2800000, guid: 6c3c89fd13fa52f4dabce223ef9a514b, type: 3}
-  - {fileID: 2800000, guid: 6c3c89fd13fa52f4dabce223ef9a514b, type: 3}
-  - {fileID: 2800000, guid: 6c3c89fd13fa52f4dabce223ef9a514b, type: 3}
-  - {fileID: 2800000, guid: 6c3c89fd13fa52f4dabce223ef9a514b, type: 3}
-  CloudTextures:
-  - {fileID: 2800000, guid: d94a2a0af7080114fb0d1b2bea0f8c9d, type: 3}
   - {fileID: 2800000, guid: d1bffac3ae6fc6548b9f2af805c19fe7, type: 3}
-  - {fileID: 2800000, guid: 3d91e19c3de33f3499e6931bf86ebb85, type: 3}
+  - {fileID: 2800000, guid: d94a2a0af7080114fb0d1b2bea0f8c9d, type: 3}
   - {fileID: 2800000, guid: 99686ec987811db4f8721b5319853e6c, type: 3}
+  - {fileID: 2800000, guid: 3d91e19c3de33f3499e6931bf86ebb85, type: 3}
+  CloudTextures:
+  - {fileID: 2800000, guid: b1891156fa60a1840a27891ded62f861, type: 3}
+  - {fileID: 2800000, guid: 3bbc68c30442da84a995b2fddd8c8c30, type: 3}
+  - {fileID: 2800000, guid: bbc3a204994da9447a83d9532aff8bc2, type: 3}
+  - {fileID: 2800000, guid: e306e544eeb2f06408d617cb62b5d324, type: 3}
   MountainTextures:
-  - {fileID: 2800000, guid: 5949ecbc13c9acc4aa90fecf57b2b4a4, type: 3}
   - {fileID: 2800000, guid: ab265b0be21ffff4ea5834d2e8b7556d, type: 3}
-  - {fileID: 2800000, guid: ff2d9fce2830e7f4bb528705277c70ec, type: 3}
+  - {fileID: 2800000, guid: 5949ecbc13c9acc4aa90fecf57b2b4a4, type: 3}
   - {fileID: 2800000, guid: a0de3e73bc00a68489c01c2a14a7ab72, type: 3}
+  - {fileID: 2800000, guid: ff2d9fce2830e7f4bb528705277c70ec, type: 3}
   RotationRate: 0.05
   SpaceRate: -0.02
   MountainRate: -0.01

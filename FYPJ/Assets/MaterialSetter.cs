@@ -17,6 +17,8 @@ public class MaterialSetter : MonoBehaviour {
         Debug.Assert(colors.Count != 0);
         m.SetColor("_Color",colors[Random.Range(0,colors.Count -1)]);
         colors = null;
+        float test = Mathf.Lerp(10f, 20f, 0.5f);
+        int k;
 	}
 	
 }
