@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour
             _goAudio.GetComponent<AudioSource>().isPlaying == true) {
             
             if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-                float _ftRNG = (float)Random.Range(40f, 90f);
+                float _ftRNG = (float)Random.Range(50f, 85f);
                 float _ftRandom = (float)Random.Range(1f, 100f);
 
                 if (_ftRNG < _ftRandom) {

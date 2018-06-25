@@ -36,19 +36,19 @@ public class AudioBandVisualiser : MonoBehaviour {
 		switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty)
 		{
 			case 0: {
-				_ftWait = 1.5f;
+				_ftWait = 1.25f;
 				break;
 			}
 			case 1: {
-				_ftWait = 1.0f;
+				_ftWait = 0.975f;
 				break;
 			}
 			case 2: {
-				_ftWait = 0.9f;
+				_ftWait = 0.85f;
 				break;
 			}
 			case 3: {
-				_ftWait = 0.75f;
+				_ftWait = 0.65f;
 				break;
 			}
 			default: {
@@ -69,9 +69,12 @@ public class AudioBandVisualiser : MonoBehaviour {
 		if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0) {
 			if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait) {
 
+
 				if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0) {
+					float _ftSpawn = Random.value;
+					int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
 					for (int i = _goAudioScales.Length - 1; i >= 0; i--) {
-						if (_intBeats < 2) {
+						if (_intBeats < _intMax) {
 
 							for (int k = 0; k < 2; k++) {
 								if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
