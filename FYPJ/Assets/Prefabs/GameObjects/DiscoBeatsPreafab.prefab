@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: e50812a80756d1f4cab1067f6fc1832d, type: 3}
+  - {fileID: 2100000, guid: 6bcb90b02587ae845bad3b47d8bc5673, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,9 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 0
-  _ftRange: 2
-  _vec3Area: {x: 0, y: 0, z: 0}
   _vec3Shift: {x: 0, y: 0, z: 0}
+  _vec3Target: {x: 0, y: 0, z: 0}
 --- !u!114 &114895042204494098
 MonoBehaviour:
   m_ObjectHideFlags: 1

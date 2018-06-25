@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
 
-    public GameObject _goSpeaker;
+    public GameObject[] _goSpeaker;
     public GameObject _goAudio;
     public Text _txt;
     public int _intPlayerScoring;
@@ -23,13 +23,13 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
-        _intSpawnPoint = 1;
+        _intSpawnPoint = 0;
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
-        _ftRNGWait = 4.0f;
+        _ftRNGWait = 1.0f;
     }
 
     void Update()
@@ -79,11 +79,11 @@ public class PlayerStats : MonoBehaviour
             _goAudio.GetComponent<AudioSource>().isPlaying == true) {
             
             if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-                float _ftRNG = (float)Random.Range(40f, 90f);
+                float _ftRNG = (float)Random.Range(50f, 85f);
                 float _ftRandom = (float)Random.Range(1f, 100f);
 
                 if (_ftRNG < _ftRandom) {
-                    _goSpeaker.GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
+                    _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
                 }
 
                 _ftRNGTime = 0.0f;

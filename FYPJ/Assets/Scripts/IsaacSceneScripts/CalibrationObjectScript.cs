@@ -5,6 +5,7 @@ using UnityEngine;
 public class CalibrationObjectScript : MonoBehaviour {
 
     public bool controlledBySecondary;
+    public bool calibrateMode = true;
     // Use this for initialization
     void Start () {
 		

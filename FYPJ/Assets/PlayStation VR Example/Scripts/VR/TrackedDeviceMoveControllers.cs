@@ -11,7 +11,7 @@ using UnityEngine.PS4.VR;
 public class TrackedDeviceMoveControllers : MonoBehaviour {
 	public Transform primaryController;
 	public Transform secondaryController;
-    public Renderer[] illuminatedComponents;
+    //public Renderer[] illuminatedComponents;
 #if UNITY_PS4
 	private int m_primaryHandle = -1;
 	private int m_secondaryHandle = -1;
@@ -137,15 +137,15 @@ public class TrackedDeviceMoveControllers : MonoBehaviour {
             yield return null;
         }
 
-        PlayStationVRTrackingColor trackedColor;
-        Tracker.GetTrackedDeviceLedColor(m_primaryHandle, out trackedColor);
-        illuminatedComponents[0].material.color = GetUnityColor(trackedColor);
+        //PlayStationVRTrackingColor trackedColor;
+        //Tracker.GetTrackedDeviceLedColor(m_primaryHandle, out trackedColor);
+        //illuminatedComponents[0].material.color = GetUnityColor(trackedColor);
 
-        if (secondaryController)
-        {
-            Tracker.GetTrackedDeviceLedColor(m_secondaryHandle, out trackedColor);
-            illuminatedComponents[1].material.color = GetUnityColor(trackedColor);
-        }
+        //if (secondaryController)
+        //{
+        //    Tracker.GetTrackedDeviceLedColor(m_secondaryHandle, out trackedColor);
+        //    illuminatedComponents[1].material.color = GetUnityColor(trackedColor);
+        //}
     }
 
 	// Remove the registered devices from tracking and reset the transform

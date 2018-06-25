@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour {
 
-	public GameObject[] _goAudioScales;
+    public Vector3 beatScale;
+    public GameObject[] _goAudioScales;
 	public GameObject _goPrefab;
 	public GameObject _goAudio;
 	public GameObject _goPlayer;
@@ -35,19 +36,19 @@ public class AudioBandVisualiser : MonoBehaviour {
 		switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty)
 		{
 			case 0: {
-				_ftWait = 1.5f;
+				_ftWait = 1.25f;
 				break;
 			}
 			case 1: {
-				_ftWait = 1.0f;
+				_ftWait = 0.975f;
 				break;
 			}
 			case 2: {
-				_ftWait = 0.75f;
+				_ftWait = 0.85f;
 				break;
 			}
 			case 3: {
-				_ftWait = 0.35f;
+				_ftWait = 0.65f;
 				break;
 			}
 			default: {
@@ -68,22 +69,33 @@ public class AudioBandVisualiser : MonoBehaviour {
 		if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0) {
 			if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait) {
 
+
 				if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0) {
+					float _ftSpawn = Random.value;
+					int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
 					for (int i = _goAudioScales.Length - 1; i >= 0; i--) {
-						if (_intBeats < 2) {
+						if (_intBeats < _intMax) {
 
 							for (int k = 0; k < 2; k++) {
 								if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
 
 									GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform.parent.transform, false);
-									
+                                    go.transform.localScale = beatScale;
 									_intCurrentMaterial = Random.Range(0, _materials.Length);
 									if (_intCurrentMaterial == _intPreviousMaterial) {
 
 										if (_intPreviousMaterial != 0)
 											_intCurrentMaterial -= 1;
 										else if (_intPreviousMaterial == 0)
-											_intCurrentMaterial = _materials.Length - 1;
+												 _intCurrentMaterial = _materials.Length - 1;
+									}
+									if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
+										_intCurrentMaterial == _intPreviousMaterial + 2)
+									{
+										if (_intCurrentMaterial != 0)
+											_intCurrentMaterial -= 1;
+										else if (_intCurrentMaterial == 0)
+												 _intCurrentMaterial = _materials.Length - 1;
 									}
 									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 									_intPreviousMaterial = _intCurrentMaterial;
@@ -98,14 +110,23 @@ public class AudioBandVisualiser : MonoBehaviour {
 					
 						if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
 							GameObject go = Instantiate(_goPrefab, _goAudioScales[j].transform.parent.transform, false);
+                            go.transform.localScale = beatScale;
 
-							_intCurrentMaterial = Random.Range(0, _materials.Length);
+                            _intCurrentMaterial = Random.Range(0, _materials.Length);
 							if (_intCurrentMaterial == _intPreviousMaterial) {
 
 								if (_intPreviousMaterial != 0)
 									_intCurrentMaterial -= 1;
 								else if (_intPreviousMaterial == 0)
-									_intCurrentMaterial = _materials.Length - 1;
+										 _intCurrentMaterial = _materials.Length - 1;
+							}
+							if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
+								_intCurrentMaterial == _intPreviousMaterial + 2)
+							{
+								if (_intCurrentMaterial != 0)
+									_intCurrentMaterial -= 1;
+								else if (_intCurrentMaterial == 0)
+										 _intCurrentMaterial = _materials.Length - 1;
 							}
 							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 							_intPreviousMaterial = _intCurrentMaterial;
