@@ -24,7 +24,6 @@ public class BulletScript : MonoBehaviour
     //public float bulletSpeed = 5f;
     //public float bulletLifeTime = 10f;
     // Use this for initialization
-    [SerializeField]
     public PlayerStats playerCam;
     public List<BeatVars> beats;
     ControllerColor color;
@@ -126,7 +125,7 @@ public class BulletScript : MonoBehaviour
             //        }
             //}
 
-            if (stick.currColor == color)
+            if (stick.currColor == color || color == ControllerColor.Rainbow)
             {
                 stick.heldController.VibrateController();
                 player.ModifyScore(10);
@@ -137,6 +136,7 @@ public class BulletScript : MonoBehaviour
                 //lowerscore
                 player.ModifyScore(-10);
             }
+
             Destroy(transform.gameObject);
         }
     }
