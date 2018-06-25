@@ -12,13 +12,12 @@ public class DiscoBeatMotion : MonoBehaviour {
     public float _intShiftRate;
 	public Vector3 _vec3Shift;
 	public Vector3 _vec3Target;
-	Vector3 _vec3Area;
+	public Vector3 _vec3Area;
 
 	void Start() {
 		_tfThis = this.transform;
 		_tfParent = this.transform.parent.transform;
 		_tfCamera = Camera.main.transform;
-		_vec3Area = new Vector3(-0.5f, 0, 0);
     }
 
 	void Update () {		
