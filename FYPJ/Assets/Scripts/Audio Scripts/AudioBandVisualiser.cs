@@ -44,11 +44,11 @@ public class AudioBandVisualiser : MonoBehaviour {
 				break;
 			}
 			case 2: {
-				_ftWait = 0.75f;
+				_ftWait = 0.9f;
 				break;
 			}
 			case 3: {
-				_ftWait = 0.35f;
+				_ftWait = 0.75f;
 				break;
 			}
 			default: {

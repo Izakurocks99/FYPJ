@@ -35,7 +35,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
 		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
 			_tfThis.position = Vector3.MoveTowards(_tfThis.position,
 												   _vec3Area,
-												   0.1f);
+												   0.055f);
 		else
 			Destroy(_tfThis.gameObject);
 	}

@@ -23,13 +23,13 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
-        _intSpawnPoint = 1;
+        _intSpawnPoint = 0;
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
-        _ftRNGWait = 4.0f;
+        _ftRNGWait = 1.0f;
     }
 
     void Update()
