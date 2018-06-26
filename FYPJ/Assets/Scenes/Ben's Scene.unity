@@ -3777,6 +3777,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &619526570
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467092277044462, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a8518599b5003074395a95e7c726a12e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &629434692
 GameObject:
   m_ObjectHideFlags: 0
@@ -18473,7 +18515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b9b67e490a8ae4c8b536b77ec33dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goPrefab: {fileID: 1761407923449524, guid: f8be0be861597144589dc45a3233aeed, type: 2}
+  _goPrefab: {fileID: 1245887945193710, guid: a8518599b5003074395a95e7c726a12e, type: 2}
   _goPlayer: {fileID: 760541044}
   _goAudio: {fileID: 1242725444}
   _goBandVisualiser: {fileID: 892868163}
