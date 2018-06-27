@@ -22,6 +22,7 @@ Shader "Example/DomeVol2"
 			//float2	uv_skytex;
 			float4	UVs;
 			float	alphalerp;	
+			float2  debug;
 		};
 
 	  float changeSpeed;
@@ -35,15 +36,15 @@ Shader "Example/DomeVol2"
 			//o.newUv.y += _Time.x * rotation * 0.0001f;
 			//o.newUv += v.tangent.xy * 0.00001f;
 			float2 distortion = float2(0,0);
-			float3 windDir = float3(0,0,1);
+			float3 windDir = float3(0,0,-1);
 			
-			distortion.x = dot(windDir , normalize(v.tangent.xyz)) ;
+			distortion.x = dot(windDir , v.tangent.xyz);
 			//distortion.x +=  _Time;
 
-			float3 binormal = cross(v.tangent.xyz,normalize(v.normal.xyz) ) ;
-			distortion.y = dot(windDir , binormal) ;	 
+			float3 binormal = cross(v.tangent.xyz,v.normal.xyz);
+			distortion.y = dot(windDir , binormal);//* 0.5 + 0.5;	 
 
-
+			o.debug = distortion;
 			
 
 			distortion *= distortionScale;
@@ -51,8 +52,8 @@ Shader "Example/DomeVol2"
 
 			float freq1 = frac(changeSpeed * _Time.y);
 			float freq2 = frac(changeSpeed * _Time.y + 0.5f);
-			float pos1 = freq1 * distortionScale;
-			float pos2 = freq2 * distortionScale;
+			float2 pos1 = distortion * freq1 * distortionScale;
+			float2 pos2 = distortion * freq2 * distortionScale;
 			
 			const float PI = 3.14159265f;
 
@@ -139,8 +140,9 @@ Shader "Example/DomeVol2"
 			float4 first = tex2D(_skytex, IN.UVs.xy ).rgba  ;
 			float4 second = tex2D(_skytex, IN.UVs.zw ).rgba ;
 			float4 endcolor = lerp(first.rgba, second.rgba, IN.alphalerp);
-			o.Albedo.rgb = endcolor.rgb;
-			o.Alpha = endcolor.a;//lerp(org.a, second.a, IN.lerpVal);
+			o.Albedo.rgb = endcolor.rgb
+			;//* 0.0001f + float3( IN.debug.x * 0.001f,IN.debug.y,0);
+			o.Alpha = 1;//endcolor.a;//lerp(org.a, second.a, IN.lerpVal);
 
 
 			//float4 second = tex2D(_skytex,IN.secondUV).rgba;

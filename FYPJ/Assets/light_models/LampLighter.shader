@@ -1,6 +1,7 @@
 ﻿Shader "Example/LampLighter" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
+		Scale ("scale",Range(1,10)) = 1.0
 		//_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		//_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		//_Metallic ("Metallic", Range(0,1)) = 0.0
@@ -59,9 +60,9 @@
 			}
 			fixed4 _Color;
 			float _ColorModifier;
-
+			float Scale;
 			fixed4 frag (v2f i) : SV_Target{
-				float4 col = float4(_Color.x * _ColorModifier,_Color.y * _ColorModifier,_Color.z * _ColorModifier ,1.) ;
+				float4 col = float4(_Color.x * _ColorModifier,_Color.y * _ColorModifier,_Color.z * _ColorModifier ,1.) * Scale;
 				//col += float4(10,10,10,10);
 				return col;
 			}
