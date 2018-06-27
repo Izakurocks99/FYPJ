@@ -28,8 +28,6 @@ public class SpeakerDiscEffect : MonoBehaviour {
 			if (((_ftBandMax / 45) * 0.25f) < 0.2f)
 				_goDisc[i].transform.localScale = new Vector3(1, 1, 1) +
 												  new Vector3(1, 1, 1) * ((_ftBandMax / 45) * 0.25f);
-
-			Debug.Log(_goDisc[i].transform.localScale + " || " + i);
 		}
 	}
 
