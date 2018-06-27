@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
-        _intSpawnPoint = 0;
+        _intSpawnPoint = 1;
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;
@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour
             _goAudio.GetComponent<AudioSource>().isPlaying == true) {
             
             if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-                float _ftRNG = (float)Random.Range(50f, 85f);
+                float _ftRNG = (float)Random.Range(80f, 85f);
                 float _ftRandom = (float)Random.Range(1f, 100f);
 
                 if (_ftRNG < _ftRandom) {
