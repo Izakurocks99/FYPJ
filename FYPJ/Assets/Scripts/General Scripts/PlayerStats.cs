@@ -83,7 +83,8 @@ public class PlayerStats : MonoBehaviour
                 float _ftRandom = (float)Random.Range(1f, 100f);
 
                 if (_ftRNG < _ftRandom) {
-                    _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
+                    if(_goSpeaker.Length > 0)
+                        _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
                 }
 
                 _ftRNGTime = 0.0f;

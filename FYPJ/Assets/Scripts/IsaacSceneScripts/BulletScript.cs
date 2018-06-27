@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#define BEAT_POOL
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +30,13 @@ public class BulletScript : MonoBehaviour
     ControllerColor color;
     Dictionary<Material, ControllerColor> dicBeat;
 
+#if (BEAT_POOL)
+    public void PoolInit()
+    {
+#else
     void Start()
     {
+#endif
         playerCam = FindObjectOfType<PlayerStats>();
         dicBeat = new Dictionary<Material, ControllerColor>();
         foreach (BeatVars beat in beats)
@@ -139,5 +145,13 @@ public class BulletScript : MonoBehaviour
 
             Destroy(transform.gameObject);
         }
+    }
+#if (BEAT_POOL)
+    void OnReturn()
+#else
+    void OnDestroy()
+#endif
+    {
+
     }
 }
