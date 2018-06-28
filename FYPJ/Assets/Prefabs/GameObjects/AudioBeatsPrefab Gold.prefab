@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1470233774822446
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1567534268587382
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,13 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9277b5e58f6bd3e47bd32dc0a93fd295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _material:
-  - {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
-  - {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
-  - {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
-  - {fileID: 2100000, guid: 2bbc1017368aab545b94738fa118fa90, type: 2}
   _intShiftRate: 6
   endPoint: {fileID: 4570928790380784}
+  dissolveTime: 1
 --- !u!114 &114962147558127712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5394,7 +5390,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -9433,8 +9429,8 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 292a6f0018c92264494de181b6068119, type: 2}
-  - {fileID: 2100000, guid: 292a6f0018c92264494de181b6068119, type: 2}
+  - {fileID: 2100000, guid: 4f66dac1b3f1916469d3eb67f75fae00, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9454,7 +9450,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 4
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -9468,7 +9464,7 @@ ParticleSystemRenderer:
   m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

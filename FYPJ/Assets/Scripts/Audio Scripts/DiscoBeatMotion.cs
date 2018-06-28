@@ -16,6 +16,7 @@ public class DiscoBeatMotion : MonoBehaviour {
 
 	void Start() {
 		_tfThis = this.transform;
+		if (this.transform.parent.transform != null)
 		_tfParent = this.transform.parent.transform;
 		_tfCamera = Camera.main.transform;
     }
