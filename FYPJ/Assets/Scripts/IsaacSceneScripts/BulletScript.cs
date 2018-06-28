@@ -14,7 +14,7 @@ using UnityEngine;
 [System.Serializable]
 public class BeatVars
 {
-    public ControllerColor color;
+    public GameColors color;
     public Material material;
 }
 
@@ -27,8 +27,8 @@ public class BulletScript : MonoBehaviour
     // Use this for initialization
     public PlayerStats playerCam;
     public List<BeatVars> beats;
-    ControllerColor color;
-    Dictionary<Material, ControllerColor> dicBeat;
+    GameColors color;
+    Dictionary<Material, GameColors> dicBeat;
 
 #if (BEAT_POOL)
     public void PoolInit()
@@ -39,7 +39,7 @@ public class BulletScript : MonoBehaviour
     {
 #endif
         playerCam = FindObjectOfType<PlayerStats>();
-        dicBeat = new Dictionary<Material, ControllerColor>();
+        dicBeat = new Dictionary<Material, GameColors>();
         foreach (BeatVars beat in beats)
         {
             dicBeat.Add(beat.material, beat.color);
@@ -69,7 +69,7 @@ public class BulletScript : MonoBehaviour
             //{
             //    case BeatColor.Pink:
             //        {
-            //            if (stick.currColor == ControllerColor.Pink)
+            //            if (stick.currColor == GameColors.Pink)
             //            {
             //                stick.heldController.VibrateController();
             //                player.ModifyScore(10);
@@ -85,7 +85,7 @@ public class BulletScript : MonoBehaviour
 
             //    case BeatColor.Green:
             //        {
-            //            if (stick.currColor == ControllerColor.Green)
+            //            if (stick.currColor == GameColors.Green)
             //            {
             //                stick.heldController.VibrateController();
             //                player.ModifyScore(10);
@@ -101,7 +101,7 @@ public class BulletScript : MonoBehaviour
 
             //    case BeatColor.Blue:
             //        {
-            //            if (stick.currColor == ControllerColor.Blue)
+            //            if (stick.currColor == GameColors.Blue)
             //            {
             //                stick.heldController.VibrateController();
             //                player.ModifyScore(10);
@@ -117,7 +117,7 @@ public class BulletScript : MonoBehaviour
 
             //    case BeatColor.Gold:
             //        {
-            //            if (stick.currColor == ControllerColor.Gold)
+            //            if (stick.currColor == GameColors.Gold)
             //            {
             //                stick.heldController.VibrateController();
             //                player.ModifyScore(10);
@@ -132,9 +132,9 @@ public class BulletScript : MonoBehaviour
             //        }
             //}
 
-            if (stick.currColor == color || color == ControllerColor.Rainbow)
+            if (stick.currColor == color || color == GameColors.Rainbow)
             {
-                stick.heldController.VibrateController();
+                //stick.heldController.VibrateController();
                 player.ModifyScore(10);
                 //addscore
             }

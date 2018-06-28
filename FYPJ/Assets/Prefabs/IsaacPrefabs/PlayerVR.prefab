@@ -9291,7 +9291,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816367430886880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcea99b2ba58d5b429bde9896336b03e, type: 3}
   m_Name: 
@@ -9301,7 +9301,6 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
-  stickSlot: {fileID: 4141476589320908}
 --- !u!114 &114158375274430462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9367,7 +9366,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945234538084296}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66989f2c071780044b504881a2c02289, type: 3}
   m_Name: 
@@ -9379,6 +9378,7 @@ MonoBehaviour:
   horizontalSize: 0
   verticleSize: 0
   distFromPlayer: 0
+  areaScale: 0.3
 --- !u!114 &114586944168575742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9394,7 +9394,8 @@ MonoBehaviour:
   currStick: {fileID: 0}
   laserPointer: {fileID: 114098055825778266}
   controlsScript: {fileID: 114924607819376842}
-  controllerMode: 1
+  stickSlot: {fileID: 4141476589320908}
+  controllerMode: 2
   pirmaryControllerColor: 2
   secondaryControllerColor: 3
   movementScript: {fileID: 114114683555578130}
@@ -9423,6 +9424,9 @@ MonoBehaviour:
   _goPrefab: {fileID: 1467603465521292, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
   _goAudio: {fileID: 1835898338515164}
   _goPlayer: {fileID: 1494724157195762}
+  DissolveShader: {fileID: 0}
+  RoughnessBeatTex: {fileID: 0}
+  MetallicBeatTex: {fileID: 0}
   _materials:
   - {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
   - {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
@@ -9431,6 +9435,7 @@ MonoBehaviour:
   _ftTime: 0
   _ftWait: 0.5
   _ftSpeed: 1
+  beatPrefabs: []
 --- !u!114 &114646166800814170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9457,7 +9462,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945234538084296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcea99b2ba58d5b429bde9896336b03e, type: 3}
   m_Name: 
@@ -9467,7 +9472,6 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
-  stickSlot: {fileID: 4330204640165168}
 --- !u!114 &114849903904624266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9483,7 +9487,8 @@ MonoBehaviour:
   currStick: {fileID: 0}
   laserPointer: {fileID: 114040640277075014}
   controlsScript: {fileID: 114924607819376842}
-  controllerMode: 1
+  stickSlot: {fileID: 4330204640165168}
+  controllerMode: 2
   pirmaryControllerColor: 0
   secondaryControllerColor: 1
   movementScript: {fileID: 114693331640450212}
@@ -9510,19 +9515,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447e7fe098e3f9842b2c34a782be7ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swapModeButton: 3
+  swapModeButton: 1
+  clickButton: 6
   interactButton: 5
-  resetPosButton: 1
   resetSceneButton: 2
   dropStickButton: 4
-  togglePointerButton: 6
+  togglePointerButton: 1
+  calibrateButton: 3
 --- !u!114 &114956288234413014
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816367430886880}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66989f2c071780044b504881a2c02289, type: 3}
   m_Name: 
@@ -9534,6 +9540,7 @@ MonoBehaviour:
   horizontalSize: 0
   verticleSize: 0
   distFromPlayer: 0
+  areaScale: 0.3
 --- !u!120 &120653863801427056
 LineRenderer:
   m_ObjectHideFlags: 1
