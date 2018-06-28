@@ -14,7 +14,7 @@ public enum StickType
 [System.Serializable]
 public class StickColor
 {
-    public ControllerColor color;
+    public GameColors color;
     public Material material;
 }
 
@@ -25,7 +25,7 @@ public class StickMesh
     public Mesh mesh;
 
     public List<StickColor> stickColors;
-    public Dictionary<ControllerColor,Material> dicStickColors;
+    public Dictionary<GameColors,Material> dicStickColors;
 }
 
 [ExecuteInEditMode]
@@ -36,11 +36,13 @@ public class PlayerStickScript : MonoBehaviour
 
     public ControllerScript heldController;
     public StickType objectMesh;
-    public ControllerColor currColor;
+    public GameColors currColor;
     //public List<PlayerStick> playerSticks;
     //Dictionary<ControllerColor, Material> dicPlayerSticks;
     public List<StickMesh> stickMeshes;
     Dictionary<StickType, StickMesh> dicSticks;
+
+    public List<BatonCapsuleFollower> BatonFollowers;
 
     // Use this for initialization
     void Start()
@@ -55,7 +57,7 @@ public class PlayerStickScript : MonoBehaviour
         {
             dicSticks.Add(var.type,var);
 
-            var.dicStickColors = new Dictionary<ControllerColor, Material>();
+            var.dicStickColors = new Dictionary<GameColors, Material>();
             foreach (StickColor color in var.stickColors)
                 var.dicStickColors.Add(color.color, color.material);
         }
@@ -70,7 +72,7 @@ public class PlayerStickScript : MonoBehaviour
 
     }
 
-    public void ChangeStickColor(ControllerColor newColor)
+    public void ChangeStickColor(GameColors newColor)
     {
         //update var
         currColor = newColor;
