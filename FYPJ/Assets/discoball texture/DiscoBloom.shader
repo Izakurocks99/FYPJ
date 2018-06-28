@@ -4,9 +4,12 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Normal ("Normal texture", 2D) = "white" {}
 		_EmissiveTex("Emissive texture",2D) = "white"{}
+		_EmissiveTexAdd("Emissive texture add",2D) = "white" {}
+		_EmissiveTexAdd2("Emissive texture add 2",2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Roughness ("Roughness", Range(0,1)) = 0.5
 		_EmissiveScale("Emisissive scale", Range(0.0 , 200.0)) = 0.0
+		_LerpVal("Lerp",Range(0.0,1.0)) = 0
 		//[HDR]col("ffff",Color) = (.34, .85, .92, 1) 
 	}
 	SubShader {
@@ -23,8 +26,11 @@
 		sampler2D _MainTex;
 		sampler2D _Normal;
 		sampler2D _EmissiveTex;
+		sampler2D _EmissiveTexAdd;
+		sampler2D _EmissiveTexAdd2;
 		float	  _Roughness;
 		float	  _EmissiveScale;
+		float	  _LerpVal;
 
 		struct Input {
 			float2 uv_MainTex;
@@ -43,9 +49,11 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = c.rgb + (tex2D(_EmissiveTex,IN.uv_MainTex).rgb * _EmissiveScale);
+			o.Albedo = c.rgb ;
+			o.Emission = tex2D(_EmissiveTex,IN.uv_MainTex).rgb + lerp(tex2D(_EmissiveTexAdd,IN.uv_MainTex).rgb * _EmissiveScale * (1 -_LerpVal),
+			tex2D(_EmissiveTexAdd2,IN.uv_MainTex).rgb * _EmissiveScale * _LerpVal,_LerpVal);
 			// Metallic and smoothness come from slider variables
-			o.Metallic = 1.f;
+			o.Metallic = 0.f;
 			o.Smoothness = _Glossiness;
 			o.Normal = UnpackNormal (tex2D (_Normal, IN.uv_MainTex));
 			o.Alpha = c.a;

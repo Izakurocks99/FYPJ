@@ -33,6 +33,7 @@ public class BulletScript : MonoBehaviour
 #if (BEAT_POOL)
     public void PoolInit()
     {
+        this.enabled = true;
 #else
     void Start()
     {
@@ -143,7 +144,9 @@ public class BulletScript : MonoBehaviour
                 player.ModifyScore(-10);
             }
 
-            Destroy(transform.gameObject);
+            //Destroy(transform.gameObject);
+            this.GetComponent<AudioMotion>().Die();
+            this.enabled = false;
         }
     }
 #if (BEAT_POOL)
