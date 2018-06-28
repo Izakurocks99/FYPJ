@@ -1,9 +1,9 @@
 ﻿Shader "Example/Disintegrate" {
 	Properties {
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_Emissive ("Emissive",2D) = "white" {}
 		_MetallicTex ("Metallic Tex", 2D) = "white" {}
 		_RoughnessTex ("Roughness Tex",2D) = "white" {}
-		_Emissive ("Emissive",2D) = "white" {}
 		_TreshHold ("Treshold", Range(0,1)) = 0.0
 		_EdgeWidth("Edge Width",Range(0 , 0.5)) = 0.1
 		[HDR]_EdgeColor("EdgeColor",Color) = (1,1,1)

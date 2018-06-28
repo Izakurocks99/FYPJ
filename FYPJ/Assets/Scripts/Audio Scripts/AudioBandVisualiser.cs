@@ -9,10 +9,10 @@ public class AudioBandVisualiser : MonoBehaviour {
 
     public Vector3 beatScale;
     public GameObject[] _goAudioScales;
-	public GameObject _goPrefab;
-	public GameObject _goAudio;
-	public GameObject _goPlayer;
-#if BEAT_POOL
+    public GameObject _goPrefab;
+    public GameObject _goAudio;
+    public GameObject _goPlayer;
+#if (BEAT_POOL)
     public Shader DissolveShader = null;
     List<Material> DissolveMaterialPool = null;
     const uint MaterialPoolSize = 6;
@@ -21,17 +21,19 @@ public class AudioBandVisualiser : MonoBehaviour {
 #endif
     public Material[] _materials;
     public float _ftTime;
-	public float _ftWait = 0.5f;
-	public float _ftSpeed = 1f;
-	float[] _ftAryPrevBuffer;
-	float[] _ftAryDiffBuffer;
-	int _intBeats;
-	int _intPreviousMaterial;
-	int _intCurrentMaterial;
+    public float _ftWait = 0.5f;
+    public float _ftSpeed = 1f;
+    float[] _ftAryPrevBuffer;
+    float[] _ftAryDiffBuffer;
+    int _intBeats;
+    int _intPreviousMaterial;
+    int _intCurrentMaterial;
 #if (BEAT_POOL)
-  List<GameObject> _beatPool = null;
+    [SerializeField]
+    List<GameObject> beatPrefabs = new List<GameObject>();
+    List<List<GameObject>> _beatPool = null;
     [Range(50,500)]
-    uint _maxBeats = 200;
+    uint _maxBeats = 50;
 #endif 
     void Start() {
 		_ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
@@ -54,11 +56,16 @@ public class AudioBandVisualiser : MonoBehaviour {
                 NoiseTexGenerator.GetTexture((float)i, (float)i));
             DissolveMaterialPool.Add(temp);
         }
-        _beatPool = new List<GameObject>();
-        for (int i = 0; i < _maxBeats; i++)
+        //for(int i = 0)
+        _beatPool = new List<List<GameObject>>();
+        for (int i = 0; i < beatPrefabs.Count; i++)
         {
-            _beatPool.Add( Instantiate(_goPrefab));
-            _beatPool[i].SetActive(false);
+            _beatPool.Add(new List<GameObject>());
+            for (int i2 = 0; i2 < _maxBeats; i2++)
+            {
+                _beatPool[i].Add( Instantiate(beatPrefabs[i]));
+                _beatPool[i][i2].SetActive(false);
+            }
         }
 #endif
     }
@@ -118,9 +125,11 @@ public class AudioBandVisualiser : MonoBehaviour {
                                     else
                                         _intStore = i;
 #if (BEAT_POOL)
-                                    GameObject go = _beatPool.PopBack();
-                                    go.transform.parent = _goAudioScales[i].transform.parent.transform;
-                                    go.transform.position = _goAudioScales[i].transform.parent.position;
+                                    GameObject go = GetObjectFromPool(0, _goAudioScales[i]);
+                                   
+                                    //_beatPool.PopBack();
+                                    //go.transform.parent = _goAudioScales[i].transform.parent.transform;
+                                    //go.transform.position = _goAudioScales[i].transform.parent.position;
 #else
                                      GameObject go = Instantiate(_goPrefab, _goAudioScales[i].transform.parent.transform, false);
 #endif 
@@ -148,7 +157,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 									go.SetActive(true);
 									_intBeats++;
 #if (BEAT_POOL)
-                                    InitPoolObject(go);
+                                    InitPoolObject(go,0);
 #endif
                                 }	}	}	}	}
 
@@ -157,9 +166,11 @@ public class AudioBandVisualiser : MonoBehaviour {
 					
 						if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
 #if (BEAT_POOL)
-                            GameObject go = _beatPool.PopBack();
-                            go.transform.parent = _goAudioScales[j].transform.parent.transform;
-                            go.transform.position = _goAudioScales[j].transform.parent.position;
+                            GameObject go = GetObjectFromPool(0, _goAudioScales[j]);
+                            //GameObject go = 
+                            //_beatPool.PopBack();
+                            //go.transform.parent = _goAudioScales[j].transform.parent.transform;
+                            //go.transform.position = _goAudioScales[j].transform.parent.position;
                             //InitPoolObject(go,_goAudioScales[j].transform.parent.transform); 
 #else
                             GameObject go = Instantiate(_goPrefab, _goAudioScales[j].transform.parent.transform, false);
@@ -189,7 +200,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 							go.SetActive(true);
 							_intBeats++;
 #if (BEAT_POOL)
-                             InitPoolObject(go);
+                             InitPoolObject(go, 0);
 #endif
 				}	}	}
 
@@ -197,11 +208,18 @@ public class AudioBandVisualiser : MonoBehaviour {
 				_ftTime = 0;
 	}	}	}
 #if (BEAT_POOL)
-    void InitPoolObject(GameObject go)
+    GameObject GetObjectFromPool(int index,GameObject parent)
+    {
+        GameObject go = _beatPool[index].PopBack();
+        go.transform.parent = parent.transform.parent.transform;
+        go.transform.position = parent.transform.parent.position;
+        return go;
+    }
+    void InitPoolObject(GameObject go,int poolsindex)
     {
         go.SetActive(true);
         //go.transform.position = new Vector3(0, 0, 0);
-        go.GetComponent<AudioMotion>().PoolInit(_beatPool); // responsible for returing the object
+        go.GetComponent<AudioMotion>().PoolInit(_beatPool[poolsindex],DissolveMaterialPool); // responsible for returing the object
         go.GetComponent<BulletScript>().PoolInit();
     }
 #endif
