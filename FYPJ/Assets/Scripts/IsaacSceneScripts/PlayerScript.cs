@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
 
-    public int comboMeter = 0;
+    private int comboMeter = 0;
     ControllerScript[] controllers;
 
     private void Start()
@@ -26,13 +26,14 @@ public class PlayerScript : MonoBehaviour {
 
         foreach (ControllerScript controller in controllers) //for each controllers
         {
-            List<BatonCapsuleFollower> followers = controller.currStick.BatonFollowers;
-            foreach (BatonCapsuleFollower follower in followers)//for each baton followers
+            if (controller.currStick)
             {
-                follower.gameObject.GetComponent<Rigidbody>().mass = comboMeter + 1;
+                List<BatonCapsuleFollower> followers = controller.currStick.BatonFollowers;
+                foreach (BatonCapsuleFollower follower in followers)//for each baton followers
+                {
+                    follower.gameObject.GetComponent<Rigidbody>().mass = comboMeter + 1;
+                }
             }
         }
-
-        Debug.Log(comboMeter);
     }
 }

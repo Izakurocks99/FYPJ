@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HypeManager : MonoBehaviour {
 
-    public GameObject player;
-    public GameObject audienceManager;
+    PlayerStats player;
+    AudianceManager audienceManager;
 
     private float playerScore = 0;
     private float scoreHypeRatio = 0.1f;
@@ -13,22 +13,23 @@ public class HypeManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        player = FindObjectOfType<PlayerStats>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if(audienceManager == null)
         {
-            audienceManager = FindObjectOfType<AudianceManager>().gameObject;
+            audienceManager = FindObjectOfType<AudianceManager>();
         }
-		if (playerScore != player.GetComponent<PlayerStats>()._intPlayerScoring)
+		if (playerScore != player._intPlayerScoring)
         {
             playerScore = player.GetComponent<PlayerStats>()._intPlayerScoring;
             hype = Mathf.RoundToInt(playerScore * scoreHypeRatio);
-            if (hype > 0)
+            if (hype >= 0)
             {
-                audienceManager.GetComponent<AudianceManager>().HypeMeter = hype;
+                audienceManager.HypeMeter = hype;
             }
         }
 	}

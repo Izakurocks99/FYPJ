@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BatonCapsuleFollower : MonoBehaviour {
-    private BatonCapsule _batonFollower;
+    public BatonCapsule _batonFollower;
     private Rigidbody _rigidbody;
     private Vector3 _velocity;
 

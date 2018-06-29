@@ -8,19 +8,22 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject[] _goSpeaker;
     public GameObject _goAudio;
-    public Text _txt;
     public int _intPlayerScoring;
     public int _intPlayerDifficulty;
     public int _intSpawnPoint;
     int _intCounter;
+    int _intCombo;
     float _ftProbablity;
     float _ftRNDTime;
     float _ftRNGTime;
     float _ftRNDWait;
     float _ftRNGWait;
 
+    ControllerScript[] _controllers;
+
     void Start()
     {
+        _intCombo = 0;
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
         _intSpawnPoint = 0;
@@ -30,15 +33,15 @@ public class PlayerStats : MonoBehaviour
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
         _ftRNGWait = 1.0f;
+
+
+        _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
     }
 
     void Update()
     {
-        if (_txt.text != _intPlayerScoring.ToString())
-            _txt.text = _intPlayerScoring.ToString();
-
         ProbablityRandomDistribution();
-        ProbablityRandomGeneration();
+        //ProbablityRandomGeneration();
     }
 
     public void DifficultyChange(int _intDifficultyLevel)
@@ -48,7 +51,27 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyScore(int score)
     {
-        _intPlayerScoring += score / (_intPlayerDifficulty +1);
+        _intPlayerScoring += (score / (_intPlayerDifficulty +1)) * _intCombo;
+    }
+
+    public void ModifyCombo(bool hit)
+    {
+        if (hit)
+            _intCombo++;
+        else
+            _intCombo = 0;
+
+        foreach (ControllerScript controller in _controllers) //for each controllers
+        {
+            if (controller.currStick)
+            {
+                List<BatonCapsuleFollower> followers = controller.currStick.BatonFollowers;
+                foreach (BatonCapsuleFollower follower in followers)//for each baton followers
+                {
+                    follower.gameObject.GetComponent<Rigidbody>().mass = _intCombo + 1;
+                }
+            }
+        }
     }
 
     void ProbablityRandomDistribution() {

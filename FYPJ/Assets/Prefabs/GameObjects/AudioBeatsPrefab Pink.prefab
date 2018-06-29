@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4225348744041242}
   - component: {fileID: 198768725648684846}
   - component: {fileID: 199375204568634144}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Glow Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4756536289938814}
   - component: {fileID: 198286271982203772}
   - component: {fileID: 199262567673502498}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Twinkle Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 33155095534243810}
   - component: {fileID: 23640682489818950}
   - component: {fileID: 135872592346405312}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CaliEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,8 @@ GameObject:
   - component: {fileID: 114085804272706330}
   - component: {fileID: 114469234394282094}
   - component: {fileID: 65741018349792600}
-  m_Layer: 0
+  - component: {fileID: 54237039072584310}
+  m_Layer: 11
   m_Name: AudioBeatsPrefab Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +224,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950594217325028}
   m_Mesh: {fileID: 4300000, guid: e50812a80756d1f4cab1067f6fc1832d, type: 3}
+--- !u!54 &54237039072584310
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950594217325028}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!65 &65741018349792600
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -273,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 10
   playerCam: {fileID: 0}
   beats:
   - color: 1
