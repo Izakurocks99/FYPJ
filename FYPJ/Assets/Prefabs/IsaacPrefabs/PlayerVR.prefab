@@ -5355,7 +5355,7 @@ Camera:
   m_GameObject: {fileID: 1494724157195762}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -9356,7 +9356,6 @@ MonoBehaviour:
   _goSpeaker:
   - {fileID: 0}
   _goAudio: {fileID: 1835898338515164}
-  _txt: {fileID: 0}
   _intPlayerScoring: 0
   _intPlayerDifficulty: 0
   _intSpawnPoint: 0
@@ -9411,7 +9410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f4564d0dacdda44986d3a04b488214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatScale: {x: 0.5, y: 0.5, z: 0.5}
+  beatScale: {x: 1, y: 1, z: 1}
   _goAudioScales:
   - {fileID: 0}
   - {fileID: 0}
@@ -9421,12 +9420,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _goPrefab: {fileID: 1467603465521292, guid: cfe95ef483eebdc478deb5ee735e51bf, type: 2}
-  _goAudio: {fileID: 1835898338515164}
-  _goPlayer: {fileID: 1494724157195762}
-  DissolveShader: {fileID: 0}
-  RoughnessBeatTex: {fileID: 0}
-  MetallicBeatTex: {fileID: 0}
+  _goPrefab:
+  - {fileID: 1767929173467982, guid: e11ea8619dca2be4f980411fb073a308, type: 2}
+  - {fileID: 1022804703494430, guid: 55e5ec664037ddd48bfc895d11873685, type: 2}
+  - {fileID: 1882934912556806, guid: 5a4a97eb0c2c03345912a8856fb376e3, type: 2}
+  - {fileID: 1950594217325028, guid: 52a345088ef56a2489670d843d279154, type: 2}
+  _goAudio: {fileID: 0}
+  _goPlayer: {fileID: 0}
+  DissolveShader: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
+  RoughnessBeatTex: {fileID: 2800000, guid: 6e292b41be4343847b900ca42f9a8e72, type: 3}
+  MetallicBeatTex: {fileID: 2800000, guid: 5cc830d128bbbc242a1fadb81dc217ae, type: 3}
   _materials:
   - {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
   - {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
@@ -9435,7 +9438,11 @@ MonoBehaviour:
   _ftTime: 0
   _ftWait: 0.5
   _ftSpeed: 1
-  beatPrefabs: []
+  listGOPrefab:
+  - {fileID: 1767929173467982, guid: e11ea8619dca2be4f980411fb073a308, type: 2}
+  - {fileID: 1022804703494430, guid: 55e5ec664037ddd48bfc895d11873685, type: 2}
+  - {fileID: 1882934912556806, guid: 5a4a97eb0c2c03345912a8856fb376e3, type: 2}
+  - {fileID: 1950594217325028, guid: 52a345088ef56a2489670d843d279154, type: 2}
 --- !u!114 &114646166800814170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9456,6 +9463,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b42ac9d8310fa544a7ca4d2de265aee, type: 3}
   - {fileID: 8300000, guid: 7c8cdf9cfd450fc459f83fd052a79f98, type: 3}
   - {fileID: 8300000, guid: 4942ab7b09d21ff4d9a6d13c20d3623c, type: 3}
+  - {fileID: 8300000, guid: 68898549b57a289439671874d254399f, type: 3}
 --- !u!114 &114693331640450212
 MonoBehaviour:
   m_ObjectHideFlags: 1
