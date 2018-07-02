@@ -51,7 +51,12 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyScore(int score)
     {
-        _intPlayerScoring += (score / (_intPlayerDifficulty +1)) * _intCombo;
+        int multiplier = 1;
+        if(score > 0)
+        {
+            multiplier = _intCombo;
+        }
+        _intPlayerScoring += score * multiplier;
     }
 
     public void ModifyCombo(bool hit)

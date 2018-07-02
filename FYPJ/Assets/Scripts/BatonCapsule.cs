@@ -15,8 +15,9 @@ public class BatonCapsule : MonoBehaviour {
 
     private void SpawnBatCapsuleFollower()
     {
-        var follower = Instantiate(_batonCapsuleFollowerPrefab,gameObject.transform);
+        var follower = Instantiate(_batonCapsuleFollowerPrefab);
         follower.transform.position = transform.position;
+        follower.transform.localScale = transform.lossyScale;
         follower.SetFollowTarget(this);
         thisStick.BatonFollowers.Add(follower);
     }
