@@ -356,8 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbf4d53303cce0468b7f4ecd90552a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 760541044}
-  audienceManager: {fileID: 0}
 --- !u!4 &45929495
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1112,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114622503614521782, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: _goAudio
+      value: 
+      objectReference: {fileID: 1876414391}
+    - target: {fileID: 114622503614521782, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: _goPlayer
+      value: 
+      objectReference: {fileID: 760541044}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
@@ -2782,7 +2790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fxaaShader: {fileID: 4800000, guid: 61347d2ed36dbb949b1d108048445626, type: 3}
   luminanceShader: {fileID: 4800000, guid: fc2423d2907bf504d907257f33b572a4, type: 3}
-  luminanceSource: 2
+  luminanceSource: 1
   contrastThreshold: 0.0511
   relativeThreshold: 0.166
   subpixelBlending: 0.75
