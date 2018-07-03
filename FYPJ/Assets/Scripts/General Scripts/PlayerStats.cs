@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
         _intCombo = 0;
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 0;
-        _intSpawnPoint = 1;
+        _intSpawnPoint = 0;
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;

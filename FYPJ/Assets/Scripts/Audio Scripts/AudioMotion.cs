@@ -16,6 +16,7 @@ public class AudioMotion : MonoBehaviour {
     ControlCalibrationScript calibration;
     PlayerStats PlayerStats;
 
+    public float speed = 10;
     public Transform endPoint;
 
 #if (BEAT_POOL)
@@ -77,7 +78,7 @@ public class AudioMotion : MonoBehaviour {
 	void TransitBeat() {
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.05f);
+            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
         else
         {
 #if (BEAT_POOL)
