@@ -170,23 +170,23 @@ public class TrackedDeviceMoveControllers : MonoBehaviour {
 		}
 	}
 
-    Color GetUnityColor(PlayStationVRTrackingColor trackingColor)
-    {
-        switch (trackingColor)
-        {
-            case PlayStationVRTrackingColor.Blue:
-                return Color.blue;
-            case PlayStationVRTrackingColor.Green:
-                return Color.green;
-            case PlayStationVRTrackingColor.Magenta:
-                return Color.magenta;
-            case PlayStationVRTrackingColor.Red:
-                return Color.red;
-            case PlayStationVRTrackingColor.Yellow:
-                return Color.yellow;
-            default:
-                return Color.black;
-        }
-    }
+    //Color GetUnityColor(PlayStationVRTrackingColor trackingColor)
+    //{
+    //    switch (trackingColor)
+    //    {
+    //        case PlayStationVRTrackingColor.Blue:
+    //            return Color.blue;
+    //        case PlayStationVRTrackingColor.Green:
+    //            return Color.green;
+    //        case PlayStationVRTrackingColor.Magenta:
+    //            return Color.magenta;
+    //        case PlayStationVRTrackingColor.Red:
+    //            return Color.red;
+    //        case PlayStationVRTrackingColor.Yellow:
+    //            return Color.yellow;
+    //        default:
+    //            return Color.black;
+    //    }
+    //}
 #endif
 }

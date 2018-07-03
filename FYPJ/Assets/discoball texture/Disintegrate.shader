@@ -6,7 +6,7 @@
 		_RoughnessTex ("Roughness Tex",2D) = "white" {}
 		_TreshHold ("Treshold", Range(0,1)) = 0.0
 		_EdgeWidth("Edge Width",Range(0 , 0.5)) = 0.1
-		[HDR]_EdgeColor("EdgeColor",Color) = (1,1,1)
+		[HDR]_EdgeColor("EdgeColor",Color) = (30,30,30)
 		NoiseTex("Noise",2D) = "white" {}
 	}
 	SubShader {
@@ -54,7 +54,7 @@
 
 			float val = tex2D(NoiseTex,IN.uv_MainTex).a;
 			o.Alpha = lerp(1,0, _TreshHold > val);
-			o.Albedo =  lerp(c.rgb ,  _EdgeColor, 
+			o.Albedo =  lerp(c.rgb ,  _EdgeColor.rgb, 
 				(_TreshHold + _EdgeWidth) > val ); 
 		}
 		ENDCG

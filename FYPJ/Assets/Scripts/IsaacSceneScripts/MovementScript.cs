@@ -25,11 +25,8 @@ public class MovementScript : ControllerModesScript
     public GameObject movementMarker; //to move the marker, and set it active/inactive
     private MovementMarkerScript markerScript; //to lock the other controller from modifying the marker
 
-    public Transform stickSlot; //the transform of where the equipped stick will be after picking it up
     private RaycastHit hit; // to get the point on the ground the player wants to move
     private Vector3 startingPos; // for the player to reset the position
-    private GameObject highlightedStick; //indicate which stick is selected/where to grab the stick to equip
-    private bool canPickup = true; //check if hand is alread grabbing a stick
     private ControllerScript controller; //to get which controller this script is
 
 
@@ -54,23 +51,9 @@ public class MovementScript : ControllerModesScript
     {
         if (button == controlsScript.interactButton)
         {
-            //if there is no stick to pickup
-            if(!PickUpStick())          
-                //spawn a movement marker
-                SpawnMarker();
+            //spawn a movement marker
+            SpawnMarker();
 
-        }
-        else if (button == controlsScript.resetPosButton)
-        {
-            ResetPlayerPos();
-        }
-        else if (button == controlsScript.resetSceneButton)
-        {
-            ResetScene();
-        }
-        else if (button == controlsScript.dropStickButton)
-        {
-            DropStick();
         }
     }
 
@@ -89,7 +72,9 @@ public class MovementScript : ControllerModesScript
         //move to marker
         if (movementMarker.activeInHierarchy)
         {
-            Vector3 height = new Vector3(0f, playerHeight, 0f); //set marker height
+            RaycastHit heightcheck;
+            Physics.Raycast(player.transform.position, -player.transform.up, out heightcheck);
+            Vector3 height = player.transform.position - heightcheck.point; //set marker height
             player.transform.position = movementMarker.transform.position + height;//move player
 
             player.transform.forward = movementMarker.transform.forward;
@@ -100,63 +85,15 @@ public class MovementScript : ControllerModesScript
     void SpawnMarker()
     {
         //spawn the marker
-        if (Physics.Raycast(transform.position, transform.forward, out hit) && !movementMarker.activeInHierarchy)
+        if (controller.laserPointer && Physics.Raycast(transform.position, transform.forward, out hit) && !movementMarker.activeInHierarchy)
         {
             if (CheckRayHitGround(hit)) //hits te ground
             {
                 movementMarker.SetActive(true); // create marker
-                Vector3 height = new Vector3(0f, 0.5f, 0f); //set marker height
-                movementMarker.transform.position = hit.point + height;
+                movementMarker.transform.position = hit.point;
                 markerScript.controlledBySecondary = controller.isSecondaryMoveController;
             }
         }
-    }
-
-    bool PickUpStick()
-    {
-        if (highlightedStick && canPickup)//if overlapping a stick and is not holding
-        {
-            //put stick in the hand's stick slot
-            highlightedStick.transform.SetParent(stickSlot);
-            highlightedStick.transform.position = stickSlot.position;
-            if (autoRot)
-            {
-                highlightedStick.transform.rotation = stickSlot.rotation;
-            }
-            //set controller currstick
-            controller.currStick = highlightedStick.GetComponentInChildren<PlayerStickScript>();
-            controller.currStick.Equip();
-
-            //set player unable to pickup
-            canPickup = false;
-            return true;
-        }
-        return false;
-    }
-
-    void DropStick()
-    {
-        //if holding a stick
-        if (controller.currStick)
-        {
-            //drop
-            controller.currStick.Drop();
-            //remove from parent
-            controller.currStick.gameObject.transform.parent.parent= null;
-            //set currstick to null
-            controller.currStick = null;
-            //allow the player to pick up again
-            canPickup = true;
-        }
-    }
-
-    void ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    void ResetPlayerPos()
-    {
-        player.transform.position = startingPos;
     }
 
     bool CheckRayHitGround(RaycastHit hit)
@@ -166,36 +103,6 @@ public class MovementScript : ControllerModesScript
 
     public override void Init()
     {
-        enabled = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //if other entered a sicks
-        if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-        {
-            //set current stick as "highlighted"
-            highlightedStick = other.gameObject;
-        }
-        if (other.gameObject.GetComponent<PlayerStickScript>() && !other.transform.parent.parent)
-        {
-            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
-            stickScript.handle.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //if other entered a sicks
-        if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-        {
-            //set current stick as "highlighted"
-            highlightedStick = null;
-        }
-        if (other.gameObject.GetComponent<PlayerStickScript>() && !other.transform.parent.parent)
-        {
-            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
-            stickScript.handle.SetActive(false);
-        }
-    }
 }

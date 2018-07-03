@@ -24,7 +24,7 @@ public class ControlCalibrationScript : ControllerModesScript
     private ControllerScript controller;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         isLocked = true;
         controller = gameObject.GetComponent<ControllerScript>();
@@ -64,26 +64,17 @@ public class ControlCalibrationScript : ControllerModesScript
 
     public override void ButtonPressed(ControllerButtons button)
     {
-        if(button == controlsScript.interactButton)
+        if (button == controlsScript.calibrateButton)
         {
             UnlockObject();
-        }
-        if (button == controlsScript.togglePointerButton)
-        {
-            controller.laserPointer.gameObject.SetActive(true);
-            calibrationObjectScript.calibrateMode = false;
         }
     }
 
     public override void ButtonReleased(ControllerButtons button)
     {
-        if (button == controlsScript.interactButton)
+        if (button == controlsScript.calibrateButton)
         {
             LockObject();
-        }
-        if (button == controlsScript.togglePointerButton)
-        {
-            controller.laserPointer.gameObject.SetActive(false);
         }
     }
 
@@ -96,6 +87,7 @@ public class ControlCalibrationScript : ControllerModesScript
             distFromPlayer = (calibrationObject.transform.position - playerCamera.position).magnitude;
             verticleSize = Mathf.Abs(calibrationObject.transform.localScale.y * areaScale);
             horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.x * areaScale);
+            calibrationObject.SetActive(false);
         }
         //DEBUG
         //Debug.Log(horizontalSize + " : " + verticleSize);
@@ -114,6 +106,7 @@ public class ControlCalibrationScript : ControllerModesScript
         {
             isLocked = false;
             calibrationObjectScript.controlledBySecondary = controller.isSecondaryMoveController;
+            calibrationObject.SetActive(true);
         }
     }
 }

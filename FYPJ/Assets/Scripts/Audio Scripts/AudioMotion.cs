@@ -42,7 +42,8 @@ public class AudioMotion : MonoBehaviour {
 		_tfParent = this.transform.parent.transform;
 		_tfCamera = Camera.main.transform;
 
-		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+        _die = false;
+        _intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
@@ -93,8 +94,8 @@ public class AudioMotion : MonoBehaviour {
         string main = "_MainTex";
         string emis = "_Emissive";
         temp.SetTexture(main, current.GetTexture(main));
-        temp.SetTexture(emis, current.GetTexture(emis));
-        temp.SetFloat("_Treshold", 0f);
+        temp.SetTexture(emis, current.GetTexture("_EmissionMap"));
+        temp.SetFloat("_TreshHold", 0f);
         this.GetComponent<Renderer>().material = temp;
         myDissolveMaterial = temp;
     }
@@ -108,14 +109,16 @@ public class AudioMotion : MonoBehaviour {
         }
         else
         {
-            myDissolveMaterial.SetFloat("_Treshold", currentTime);
+            myDissolveMaterial.SetFloat("_TreshHold", currentTime);
         }
     }
 #if (BEAT_POOL)
     void OnReturn()
     {
+            this.transform.parent = null;
             this.gameObject.SetActive(false);
             _home.Add(this.gameObject);
+        _materials.Add(myDissolveMaterial);
 #else
     void OnDestroy()
     {

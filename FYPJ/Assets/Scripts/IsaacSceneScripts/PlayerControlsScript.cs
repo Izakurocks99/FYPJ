@@ -17,9 +17,10 @@ public enum ControllerButtons
 public class PlayerControlsScript : MonoBehaviour
 {
     public ControllerButtons swapModeButton;
+    public ControllerButtons clickButton;
     public ControllerButtons interactButton;
-    public ControllerButtons resetPosButton;
     public ControllerButtons resetSceneButton;
     public ControllerButtons dropStickButton;
     public ControllerButtons togglePointerButton;
+    public ControllerButtons calibrateButton;
 }
