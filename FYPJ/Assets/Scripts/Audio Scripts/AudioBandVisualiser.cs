@@ -149,10 +149,10 @@ public class AudioBandVisualiser : MonoBehaviour {
                                     //go.transform.parent = _goAudioScales[i].transform.parent.transform;
                                     //go.transform.position = _goAudioScales[i].transform.parent.position;
 #else
-                                     GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
+                                    GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
+									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif 
                                     go.transform.localScale = beatScale;
-									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 									_intPreviousMaterial = _intCurrentMaterial;
 
 									go.name = "Beat " + i;
@@ -194,9 +194,9 @@ public class AudioBandVisualiser : MonoBehaviour {
                             //InitPoolObject(go,_goAudioScales[j].transform.parent.transform); 
 #else
                             GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
+							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
                             go.transform.localScale = beatScale;
-							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 							_intPreviousMaterial = _intCurrentMaterial;
 
 							go.name = "Beat " + j;
@@ -210,16 +210,17 @@ public class AudioBandVisualiser : MonoBehaviour {
 				_intBeats = 0;
 				_ftTime = 0;
 	}	}	}
+	
 #if (BEAT_POOL)
-    GameObject GetObjectFromPool(int index, GameObject parent)
-    {
+    GameObject GetObjectFromPool(int index, GameObject parent) {
         GameObject go = listGOBeatPool[index].PopBack();
         go.transform.parent = parent.transform.parent.transform;
         go.transform.position = parent.transform.position;
         return go;
     }
-    void InitPoolObject(GameObject go, int poolsindex)
-    {
+
+    void InitPoolObject(GameObject go, int poolsindex) {
+
         go.SetActive(true);
         //go.transform.position = new Vector3(0, 0, 0);
         go.GetComponent<AudioMotion>().PoolInit(listGOBeatPool[poolsindex],DissolveMaterialPool); // responsible for returing the object

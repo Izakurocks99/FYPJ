@@ -24,7 +24,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
     }
 
 	void Update () {
-		_tfThis.Rotate(_tfThis.up, 7.0f);
+		// _tfThis.Rotate(_tfThis.forward, 7.0f);
 		
 		BeatMotion();
 		TransitBeat();
@@ -39,7 +39,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
 		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
 			_tfThis.position = Vector3.MoveTowards(_tfThis.position,
 												   _vec3Area + _vec3Shift,
-												   0.055f);
+												   0.05f);
 		else
 			Destroy(_tfThis.gameObject);
 	}

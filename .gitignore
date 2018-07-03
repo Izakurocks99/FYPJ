@@ -34,3 +34,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+FYPJ/Assets/stan_prefabs/RainbowBeatParticles.unitypackage.meta
+FYPJ/Assets/stan_prefabs/CrowdParticles.unitypackage.meta
+FYPJ/Assets/stan_prefabs/Crowd.unitypackage.meta
