@@ -27,6 +27,7 @@ public class AudioMotion : MonoBehaviour {
     [Range(0.1f, 1.5f)]
     float dissolveTime = 1f;
     Material myDissolveMaterial = null;
+    Material myDefaultMaterial = null;
     float dissolveTimer = 0;
     public void PoolInit(List<GameObject> home,List<Material> mat)
         {
@@ -93,6 +94,7 @@ public class AudioMotion : MonoBehaviour {
         _die = true;
         Material temp = _materials.PopBack();
         Material current = this.GetComponent<Renderer>().material;
+        myDefaultMaterial = current; 
         string main = "_MainTex";
         string emis = "_Emissive";
         temp.SetTexture(main, current.GetTexture(main));
@@ -121,6 +123,8 @@ public class AudioMotion : MonoBehaviour {
     {
             this.transform.parent = null;
             this.gameObject.SetActive(false);
+            this.GetComponent<Renderer>().material = myDefaultMaterial;
+
             _home.Add(this.gameObject);
         _materials.Add(myDissolveMaterial);
 #else
