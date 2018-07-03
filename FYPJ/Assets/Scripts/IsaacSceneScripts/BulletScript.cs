@@ -22,10 +22,11 @@ public class BulletScript : MonoBehaviour
     Dictionary<Material, GameColors> dicBeat;
     Rigidbody rb;
 
+    float life = 0;
 #if (BEAT_POOL)
     public void PoolInit()
     {
-        lifeTime = 10f;
+        life = lifeTime;
         this.enabled = true;
         isHit = false;
         gameObject.GetComponent<Collider>().enabled = true;
@@ -47,8 +48,8 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
+        life -= Time.deltaTime;
+        if (life <= 0)
         {
             this.GetComponent<AudioMotion>().Die();
             this.enabled = false;

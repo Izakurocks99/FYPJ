@@ -15,8 +15,8 @@
 			Interpolators VertexProgram(appdata_full v)
 			{
 				Interpolators i;
-				i.uv.xy = v.texcoord.xy;
-				i.pos = UnityObjectToClipPos(v.vertex);
+				i.uv.xy = (float2)v.texcoord.xy;
+				i.pos = (float4)UnityObjectToClipPos(v.vertex);
 				return i;
 			}
 	ENDCG
