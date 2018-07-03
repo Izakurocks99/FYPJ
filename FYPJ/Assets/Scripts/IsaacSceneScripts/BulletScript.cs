@@ -18,7 +18,7 @@ public class BulletScript : MonoBehaviour
     public PlayerStats playerCam;
     public List<BeatVars> beats;
     public bool isHit = false;
-    GameColors color;
+    GameColors color = GameColors.NONE;
     Dictionary<Material, GameColors> dicBeat;
     Rigidbody rb;
 
@@ -35,12 +35,19 @@ public class BulletScript : MonoBehaviour
     {
 #endif
         playerCam = FindObjectOfType<PlayerStats>();
-        dicBeat = new Dictionary<Material, GameColors>();
-        foreach (BeatVars beat in beats)
+
+        if (dicBeat == null)
         {
-            dicBeat.Add(beat.material, beat.color);
+            dicBeat = new Dictionary<Material, GameColors>();
+            foreach (BeatVars beat in beats)
+            {
+                dicBeat.Add(beat.material, beat.color);
+            }
         }
-        color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
+
+        if (color == GameColors.NONE)
+            color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
+
         rb = gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
     }

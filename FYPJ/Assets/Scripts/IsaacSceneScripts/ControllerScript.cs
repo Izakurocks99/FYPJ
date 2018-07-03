@@ -24,6 +24,7 @@ public enum GameColors
     Blue,
     Gold,
     Rainbow,
+    NONE,
 }
 
 public class ControllerScript : MonoBehaviour

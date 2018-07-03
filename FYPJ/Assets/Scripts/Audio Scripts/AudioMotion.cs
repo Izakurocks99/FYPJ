@@ -123,6 +123,7 @@ public class AudioMotion : MonoBehaviour {
     {
             this.transform.parent = null;
             this.gameObject.SetActive(false);
+            if(_die)
             this.GetComponent<Renderer>().material = myDefaultMaterial;
 
             _home.Add(this.gameObject);
