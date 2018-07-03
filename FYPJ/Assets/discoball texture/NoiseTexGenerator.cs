@@ -8,7 +8,7 @@ public static class NoiseTexGenerator {
     static uint widht = 800;
     static uint height = 600;
 
-    static float Scale = 100f;
+    static float Scale = 30f;
 
     static byte[] NoiseData = null;
     

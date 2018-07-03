@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.845, y: 2.589, z: -1.979}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4564743456582238}
@@ -591,6 +591,7 @@ MonoBehaviour:
       material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
     - color: 3
       material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
+  BatonFollowers: []
 --- !u!114 &114383208978904600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -604,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
+  thisStick: {fileID: 0}
 --- !u!114 &114468277787093250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -617,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
+  thisStick: {fileID: 0}
 --- !u!114 &114610937618645948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -630,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
+  thisStick: {fileID: 0}
 --- !u!114 &114638015035281946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
+  thisStick: {fileID: 0}
 --- !u!135 &135687004430711472
 SphereCollider:
   m_ObjectHideFlags: 1

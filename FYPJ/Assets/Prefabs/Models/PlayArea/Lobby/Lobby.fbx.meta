@@ -9,7 +9,18 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: polySurface83
-  externalObjects: {}
+    4300002: lobby20
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lobby
+    second: {instanceID: 0}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lobby
+    second: {fileID: 2100000, guid: 3af96db308a91d54a81bcac0cc0b0e23, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

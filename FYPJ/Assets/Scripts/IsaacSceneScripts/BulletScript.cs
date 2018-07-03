@@ -18,14 +18,16 @@ public class BulletScript : MonoBehaviour
     public PlayerStats playerCam;
     public List<BeatVars> beats;
     public bool isHit = false;
-    GameColors color;
+    GameColors color = GameColors.NONE;
     Dictionary<Material, GameColors> dicBeat;
     Rigidbody rb;
+
+    public float life;
 
 #if (BEAT_POOL)
     public void PoolInit()
     {
-        lifeTime = 10f;
+        life = lifeTime;
         this.enabled = true;
         isHit = false;
         gameObject.GetComponent<Collider>().enabled = true;
@@ -34,23 +36,35 @@ public class BulletScript : MonoBehaviour
     {
 #endif
         playerCam = FindObjectOfType<PlayerStats>();
-        dicBeat = new Dictionary<Material, GameColors>();
-        foreach (BeatVars beat in beats)
+
+        if (dicBeat == null)
         {
-            dicBeat.Add(beat.material, beat.color);
+            dicBeat = new Dictionary<Material, GameColors>();
+            foreach (BeatVars beat in beats)
+            {
+                dicBeat.Add(beat.material, beat.color);
+            }
         }
-        color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
+
+        if (color == GameColors.NONE)
+            color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
+
         rb = gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+
+        //Debug.Log(GetComponent<Renderer>().material.GetTexture("_EmissionMap"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        lifeTime -= Time.deltaTime;
-        if (lifeTime <= 0)
+        life -= Time.deltaTime;
+        if (life <= 0)
         {
-            this.GetComponent<AudioMotion>().Die();
+            if (gameObject.GetComponent<AudioMotion>())
+                this.GetComponent<AudioMotion>().Die();
+
             this.enabled = false;
             if (!isHit)
                 playerCam.ModifyCombo(false);
@@ -59,32 +73,37 @@ public class BulletScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponentInParent<BatonCapsuleFollower>())
+        if (!isHit)
         {
-            BatonCapsuleFollower follower = other.gameObject.GetComponentInParent<BatonCapsuleFollower>();
-            PlayerStickScript stick = follower._batonFollower.thisStick;
-            PlayerStats player = playerCam.GetComponent<PlayerStats>();
-
-            if (stick.currColor == color || color == GameColors.Rainbow)
+            if (other.gameObject.GetComponentInParent<BatonCapsuleFollower>())
             {
-                //stick.heldController.VibrateController();
-                player.ModifyScore(1);
-                playerCam.ModifyCombo(true);
-                //addscore
-            }
-            else
-            {
-                //lowerscore
-                player.ModifyScore(-10);
-                playerCam.ModifyCombo(false);
-            }
+                BatonCapsuleFollower follower = other.gameObject.GetComponentInParent<BatonCapsuleFollower>();
+                PlayerStickScript stick = follower._batonFollower.thisStick;
+                PlayerStats player = playerCam.GetComponent<PlayerStats>();
 
-            //Destroy(transform.gameObject);
-            //this.GetComponent<AudioMotion>().Die();
-            //this.enabled = false;
-            isHit = true;
-            rb.useGravity = true;
-            gameObject.GetComponent<Collider>().enabled = false;
+                if (stick.currColor == color || color == GameColors.Rainbow)
+                {
+                    stick.heldController.VibrateController();
+                    player.ModifyScore(1);
+                    playerCam.ModifyCombo(true);
+                    //addscore
+                }
+                else
+                {
+                    //lowerscore
+                    player.ModifyScore(-10);
+                    playerCam.ModifyCombo(false);
+                }
+
+                //Destroy(transform.gameObject);
+                if(gameObject.GetComponent<AudioMotion>())
+                    gameObject.GetComponent<AudioMotion>().Die();
+
+                this.enabled = false;
+                isHit = true;
+                rb.useGravity = true;
+                gameObject.GetComponent<Collider>().enabled = false;
+            }
         }
     }
 #if (BEAT_POOL)

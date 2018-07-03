@@ -15,7 +15,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
     List<Material> DissolveMaterialPool = null;
-    const uint MaterialPoolSize = 6;
+    const uint MaterialPoolSize = 12;
     public Texture2D RoughnessBeatTex = null;
     public Texture2D MetallicBeatTex = null;
 #endif
@@ -186,7 +186,7 @@ public class AudioBandVisualiser : MonoBehaviour {
     GameObject GetObjectFromPool(int index, GameObject parent) {
         GameObject go = listGOBeatPool[index].PopBack();
         go.transform.parent = parent.transform.parent.transform;
-        go.transform.position = parent.transform.parent.position;
+        go.transform.position = parent.transform.position;
         return go;
     }
 

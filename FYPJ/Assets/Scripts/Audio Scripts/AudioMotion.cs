@@ -16,6 +16,7 @@ public class AudioMotion : MonoBehaviour {
     ControlCalibrationScript calibration;
     PlayerStats PlayerStats;
 
+    public float speed = 10;
     public Transform endPoint;
 
 #if (BEAT_POOL)
@@ -27,6 +28,7 @@ public class AudioMotion : MonoBehaviour {
     [Range(0.1f, 1.5f)]
     float dissolveTime = 1f;
     Material myDissolveMaterial = null;
+    Material myDefaultMaterial = null;
     float dissolveTimer = 0;
     public void PoolInit(List<GameObject> home,List<Material> mat)
         {
@@ -42,7 +44,8 @@ public class AudioMotion : MonoBehaviour {
 		_tfParent = this.transform.parent.transform;
 		_tfCamera = Camera.main.transform;
 
-		_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+        _die = false;
+        _intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
@@ -75,7 +78,7 @@ public class AudioMotion : MonoBehaviour {
 	void TransitBeat() {
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.04f);
+            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
         else
         {
 #if (BEAT_POOL)
@@ -89,14 +92,17 @@ public class AudioMotion : MonoBehaviour {
 
     public void Die()
     {
+        if (_die) return;
         _die = true;
         Material temp = _materials.PopBack();
         Material current = this.GetComponent<Renderer>().material;
+        myDefaultMaterial = current; 
         string main = "_MainTex";
         string emis = "_Emissive";
+
         temp.SetTexture(main, current.GetTexture(main));
-        temp.SetTexture(emis, current.GetTexture(emis));
-        temp.SetFloat("_Treshold", 0f);
+        temp.SetTexture(emis, current.GetTexture("_EmissionMap"));
+        temp.SetFloat("_TreshHold", 0f);
         this.GetComponent<Renderer>().material = temp;
         myDissolveMaterial = temp;
     }
@@ -111,15 +117,25 @@ public class AudioMotion : MonoBehaviour {
         }
         else
         {
-            myDissolveMaterial.SetFloat("_Treshold", currentTime);
+            myDissolveMaterial.SetFloat("_TreshHold", currentTime);
         }
     }
 
 #if (BEAT_POOL)
     void OnReturn()
     {
+            this.transform.parent = null;
             this.gameObject.SetActive(false);
-            _home.Add(this.gameObject);
+            //if(_die)
+            //this.GetComponent<Renderer>().material = myDefaultMaterial;
+
+        if (myDefaultMaterial)
+        {
+            this.GetComponent<Renderer>().material = myDefaultMaterial;
+            myDefaultMaterial = null;
+            _materials.Add(myDissolveMaterial);
+        }
+        _home.Add(this.gameObject);
 #else
     void OnDestroy()
     {
