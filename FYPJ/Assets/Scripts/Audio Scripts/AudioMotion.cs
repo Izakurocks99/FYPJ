@@ -58,7 +58,7 @@ public class AudioMotion : MonoBehaviour {
 	void Update () {
 		_tfThis.Rotate(_tfThis.up, 5.0f);
 
-        _vec3Area = new Vector3(0, 0, -7.0f);
+        // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
 		BeatMotion();
