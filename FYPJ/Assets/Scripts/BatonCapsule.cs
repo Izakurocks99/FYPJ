@@ -5,7 +5,7 @@ using UnityEngine;
 public class BatonCapsule : MonoBehaviour {
     [SerializeField]
     private BatonCapsuleFollower _batonCapsuleFollowerPrefab;
-    private PlayerStickScript thisStick;
+    public PlayerStickScript thisStick;
 
     private void Start()
     {
@@ -17,6 +17,7 @@ public class BatonCapsule : MonoBehaviour {
     {
         var follower = Instantiate(_batonCapsuleFollowerPrefab);
         follower.transform.position = transform.position;
+        follower.transform.localScale = transform.lossyScale;
         follower.SetFollowTarget(this);
         thisStick.BatonFollowers.Add(follower);
     }

@@ -3,14 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public enum BeatColor
-//{
-//    Pink,
-//    Green,
-//    Blue,
-//    Gold,
-//}
-
 [System.Serializable]
 public class BeatVars
 {
@@ -21,19 +13,22 @@ public class BeatVars
 
 public class BulletScript : MonoBehaviour
 {
-
-    //public float bulletSpeed = 5f;
-    //public float bulletLifeTime = 10f;
     // Use this for initialization
+    public float lifeTime = 10f;
     public PlayerStats playerCam;
     public List<BeatVars> beats;
+    public bool isHit = false;
     GameColors color;
     Dictionary<Material, GameColors> dicBeat;
+    Rigidbody rb;
 
 #if (BEAT_POOL)
     public void PoolInit()
     {
+        lifeTime = 10f;
         this.enabled = true;
+        isHit = false;
+        gameObject.GetComponent<Collider>().enabled = true;
 #else
     void Start()
     {
@@ -45,108 +40,51 @@ public class BulletScript : MonoBehaviour
             dicBeat.Add(beat.material, beat.color);
         }
         color = dicBeat[gameObject.GetComponent<Renderer>().sharedMaterial];
-        //Debug.Log(gameObject.GetComponent<Renderer>().sharedMaterial);
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.useGravity = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.position += transform.forward * Time.deltaTime * bulletSpeed;
-        //bulletLifeTime -= Time.deltaTime;
-        //if (bulletLifeTime <=0)
-        //{
-        //    Destroy(gameObject);
-        //}
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0)
+        {
+            this.GetComponent<AudioMotion>().Die();
+            this.enabled = false;
+            if (!isHit)
+                playerCam.ModifyCombo(false);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponentInParent<PlayerStickScript>())
+        if (other.gameObject.GetComponentInParent<BatonCapsuleFollower>())
         {
-            PlayerStickScript stick = other.gameObject.GetComponentInParent<PlayerStickScript>();
+            BatonCapsuleFollower follower = other.gameObject.GetComponentInParent<BatonCapsuleFollower>();
+            PlayerStickScript stick = follower._batonFollower.thisStick;
             PlayerStats player = playerCam.GetComponent<PlayerStats>();
-            //switch (color)
-            //{
-            //    case BeatColor.Pink:
-            //        {
-            //            if (stick.currColor == GameColors.Pink)
-            //            {
-            //                stick.heldController.VibrateController();
-            //                player.ModifyScore(10);
-            //                //addscore
-            //            }
-            //            else
-            //            {
-            //                //lowerscore
-            //                player.ModifyScore(-10);
-            //            }
-            //            break;
-            //        }
-
-            //    case BeatColor.Green:
-            //        {
-            //            if (stick.currColor == GameColors.Green)
-            //            {
-            //                stick.heldController.VibrateController();
-            //                player.ModifyScore(10);
-            //                //addscore
-            //            }
-            //            else
-            //            {
-            //                //lowerscore
-            //                player.ModifyScore(-10);
-            //            }
-            //            break;
-            //        }
-
-            //    case BeatColor.Blue:
-            //        {
-            //            if (stick.currColor == GameColors.Blue)
-            //            {
-            //                stick.heldController.VibrateController();
-            //                player.ModifyScore(10);
-            //                //addscore
-            //            }
-            //            else
-            //            {
-            //                //lowerscore
-            //                player.ModifyScore(-10);
-            //            }
-            //            break;
-            //        }
-
-            //    case BeatColor.Gold:
-            //        {
-            //            if (stick.currColor == GameColors.Gold)
-            //            {
-            //                stick.heldController.VibrateController();
-            //                player.ModifyScore(10);
-            //                //addscore
-            //            }
-            //            else
-            //            {
-            //                //lowerscore
-            //                player.ModifyScore(-10);
-            //            }
-            //            break;
-            //        }
-            //}
 
             if (stick.currColor == color || color == GameColors.Rainbow)
             {
                 //stick.heldController.VibrateController();
-                player.ModifyScore(10);
+                player.ModifyScore(1);
+                playerCam.ModifyCombo(true);
                 //addscore
             }
             else
             {
                 //lowerscore
                 player.ModifyScore(-10);
+                playerCam.ModifyCombo(false);
             }
 
             //Destroy(transform.gameObject);
-            this.GetComponent<AudioMotion>().Die();
-            this.enabled = false;
+            //this.GetComponent<AudioMotion>().Die();
+            //this.enabled = false;
+            isHit = true;
+            rb.useGravity = true;
+            gameObject.GetComponent<Collider>().enabled = false;
         }
     }
 #if (BEAT_POOL)

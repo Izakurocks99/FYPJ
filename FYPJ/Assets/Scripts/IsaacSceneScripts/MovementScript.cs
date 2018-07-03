@@ -72,7 +72,9 @@ public class MovementScript : ControllerModesScript
         //move to marker
         if (movementMarker.activeInHierarchy)
         {
-            Vector3 height = new Vector3(0f, playerHeight, 0f); //set marker height
+            RaycastHit heightcheck;
+            Physics.Raycast(player.transform.position, -player.transform.up, out heightcheck);
+            Vector3 height = player.transform.position - heightcheck.point; //set marker height
             player.transform.position = movementMarker.transform.position + height;//move player
 
             player.transform.forward = movementMarker.transform.forward;
@@ -88,8 +90,7 @@ public class MovementScript : ControllerModesScript
             if (CheckRayHitGround(hit)) //hits te ground
             {
                 movementMarker.SetActive(true); // create marker
-                Vector3 height = new Vector3(0f, 0.5f, 0f); //set marker height
-                movementMarker.transform.position = hit.point + height;
+                movementMarker.transform.position = hit.point;
                 markerScript.controlledBySecondary = controller.isSecondaryMoveController;
             }
         }
