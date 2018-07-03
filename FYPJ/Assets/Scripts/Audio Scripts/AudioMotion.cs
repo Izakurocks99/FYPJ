@@ -56,8 +56,9 @@ public class AudioMotion : MonoBehaviour {
     }
 
 	void Update () {
-		_tfThis.Rotate(_tfThis.up, 7.0f);
+		_tfThis.Rotate(_tfThis.up, 5.0f);
 
+        _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
 		BeatMotion();
@@ -74,7 +75,7 @@ public class AudioMotion : MonoBehaviour {
 	void TransitBeat() {
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.1f);
+            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.05f);
         else
         {
 #if (BEAT_POOL)
@@ -85,6 +86,7 @@ public class AudioMotion : MonoBehaviour {
             PlayerStats.ModifyScore(-1);
         }
 	}
+
     public void Die()
     {
         _die = true;
@@ -98,6 +100,7 @@ public class AudioMotion : MonoBehaviour {
         this.GetComponent<Renderer>().material = temp;
         myDissolveMaterial = temp;
     }
+
     void dissolve()
     {
         dissolveTimer += Time.deltaTime;
@@ -111,6 +114,7 @@ public class AudioMotion : MonoBehaviour {
             myDissolveMaterial.SetFloat("_Treshold", currentTime);
         }
     }
+
 #if (BEAT_POOL)
     void OnReturn()
     {
@@ -120,6 +124,5 @@ public class AudioMotion : MonoBehaviour {
     void OnDestroy()
     {
 #endif
-
     }
 }
