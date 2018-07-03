@@ -91,12 +91,14 @@ public class AudioMotion : MonoBehaviour {
 
     public void Die()
     {
+        if (_die) return;
         _die = true;
         Material temp = _materials.PopBack();
         Material current = this.GetComponent<Renderer>().material;
         myDefaultMaterial = current; 
         string main = "_MainTex";
         string emis = "_Emissive";
+
         temp.SetTexture(main, current.GetTexture(main));
         temp.SetTexture(emis, current.GetTexture("_EmissionMap"));
         temp.SetFloat("_TreshHold", 0f);
@@ -123,11 +125,16 @@ public class AudioMotion : MonoBehaviour {
     {
             this.transform.parent = null;
             this.gameObject.SetActive(false);
-            if(_die)
-            this.GetComponent<Renderer>().material = myDefaultMaterial;
+            //if(_die)
+            //this.GetComponent<Renderer>().material = myDefaultMaterial;
 
-            _home.Add(this.gameObject);
-        _materials.Add(myDissolveMaterial);
+        if (myDefaultMaterial)
+        {
+            this.GetComponent<Renderer>().material = myDefaultMaterial;
+            myDefaultMaterial = null;
+            _materials.Add(myDissolveMaterial);
+        }
+        _home.Add(this.gameObject);
 #else
     void OnDestroy()
     {

@@ -14,7 +14,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
     List<Material> DissolveMaterialPool = null;
-    const uint MaterialPoolSize = 6;
+    const uint MaterialPoolSize = 12;
     public Texture2D RoughnessBeatTex = null;
     public Texture2D MetallicBeatTex = null;
 #endif
