@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 114382366464404744}
   - component: {fileID: 114459736468352040}
   - component: {fileID: 114962147558127712}
-  - component: {fileID: 65424885046909354}
   - component: {fileID: 54306370217401626}
+  - component: {fileID: 135882165208524170}
   m_Layer: 11
   m_Name: AudioBeatsPrefab Gold
   m_TagString: Untagged
@@ -231,7 +231,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1022804703494430}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -239,18 +239,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &65424885046909354
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022804703494430}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.120355606, y: 0.10896393, z: 0.12035564}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114382366464404744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 6
+  speed: 10
   endPoint: {fileID: 4570928790380784}
   dissolveTime: 1
 --- !u!114 &114962147558127712
@@ -301,6 +290,7 @@ MonoBehaviour:
   - color: 3
     material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
   isHit: 0
+  life: 0
 --- !u!135 &135798556437121418
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -312,6 +302,18 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135882165208524170
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022804703494430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06017782
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198515384863601372
 ParticleSystem:
