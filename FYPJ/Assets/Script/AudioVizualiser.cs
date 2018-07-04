@@ -13,7 +13,6 @@ public class AudioVizualiser : MonoBehaviour {
     Material _mt;
     public Gradient _colorGradient;
 
-
 	void Start ()
     {
         _direction = _direction.normalized;
