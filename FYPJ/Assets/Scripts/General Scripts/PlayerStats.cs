@@ -41,7 +41,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         ProbablityRandomDistribution();
-        //ProbablityRandomGeneration();
+        ProbablityRandomGeneration();
     }
 
     public void DifficultyChange(int _intDifficultyLevel)

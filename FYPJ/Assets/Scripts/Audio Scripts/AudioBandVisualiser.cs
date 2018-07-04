@@ -149,7 +149,7 @@ public class AudioBandVisualiser : MonoBehaviour {
 							go.transform.localScale = beatScale;
 							_intPreviousMaterial = _intCurrentMaterial;
 
-							go.name = "Beat " + " || " + _intBeatCounts + " || " + p;
+							go.name = "Beat " + p;
 							go.SetActive(true);
 #if (BEAT_POOL)
 							InitPoolObject(go, _intCurrentMaterial);
