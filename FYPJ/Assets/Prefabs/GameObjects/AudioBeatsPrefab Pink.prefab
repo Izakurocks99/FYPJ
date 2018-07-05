@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 3
   playerCam: {fileID: 0}
   beats:
   - color: 1
@@ -331,6 +331,7 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
   - color: 3
     material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
+  isHit: 0
 --- !u!135 &135872592346405312
 SphereCollider:
   m_ObjectHideFlags: 1
