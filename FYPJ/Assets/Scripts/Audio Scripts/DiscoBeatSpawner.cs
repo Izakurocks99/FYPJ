@@ -32,7 +32,8 @@ public class DiscoBeatSpawner : MonoBehaviour {
 			_ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
 
 		if (_goAudio.GetComponent<AudioSource>().clip != null &&
-			_goAudio.GetComponent<AudioSource>().isPlaying == true)
+			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
+		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f))
 			if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 1)
 				GenerateDrag();
 	}

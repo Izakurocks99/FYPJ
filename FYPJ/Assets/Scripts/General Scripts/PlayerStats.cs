@@ -44,8 +44,12 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        ProbablityRandomDistribution();
-        ProbablityRandomGeneration();
+        if (_goAudio.GetComponent<AudioSource>().clip != null &&
+			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
+		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f)) {
+            ProbablityRandomDistribution();
+            //ProbablityRandomGeneration();
+        }
     }
 
     public void DifficultyChange(int _intDifficultyLevel)
@@ -90,43 +94,35 @@ public class PlayerStats : MonoBehaviour
     }
 
     void ProbablityRandomDistribution() {
-        if (_goAudio.GetComponent<AudioSource>().clip != null &&
-            _goAudio.GetComponent<AudioSource>().isPlaying == true) {
+        if ((_ftRNDTime += 1 * Time.deltaTime) >= _ftRNDWait) {
+            float _ftRND = (float)Random.Range(10f, 100f);
+            _ftProbablity = 0.25f + Mathf.Pow(_intCounter, 2);
 
-            if ((_ftRNDTime += 1 * Time.deltaTime) >= _ftRNDWait) {
-                float _ftRND = (float)Random.Range(10f, 100f);
-                _ftProbablity = 0.25f + Mathf.Pow(_intCounter, 2);
+            if (_ftRND < _ftProbablity) {
+                if (_intSpawnPoint == 1) _intSpawnPoint = 0;
+                else                     _intSpawnPoint = 1;
 
-                if (_ftRND < _ftProbablity) {
-                    if (_intSpawnPoint == 1) _intSpawnPoint = 0;
-                    else                     _intSpawnPoint = 1;
-
-                    _ftProbablity = 0;
-                    _intCounter = 0;
-                }
-                else
-                    _intCounter++;
-
-                _ftRNDTime = 0.0f;
+                _ftProbablity = 0;
+                _intCounter = 0;
             }
+            else
+                _intCounter++;
+
+            _ftRNDTime = 0.0f;
         }
     }
 
-    void ProbablityRandomGeneration() {
-        if (_goAudio.GetComponent<AudioSource>().clip != null &&
-            _goAudio.GetComponent<AudioSource>().isPlaying == true) {
-            
-            if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-                float _ftRNG = (float)Random.Range(80f, 85f);
-                float _ftRandom = (float)Random.Range(1f, 100f);
+    void ProbablityRandomGeneration() {            
+        if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
+            float _ftRNG = (float)Random.Range(80f, 85f);
+            float _ftRandom = (float)Random.Range(1f, 100f);
 
-                if (_ftRNG < _ftRandom) {
-                    if(_goSpeaker.Length > 0)
-                        _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
-                }
-
-                _ftRNGTime = 0.0f;
+            if (_ftRNG < _ftRandom) {
+                if(_goSpeaker.Length > 0)
+                    _goSpeaker[Random.Range(0, _goSpeaker.Length)].GetComponent<SpeakerBeatSpawner>().SpawnSpeakerBeat();
             }
+
+            _ftRNGTime = 0.0f;
         }
     }
 }

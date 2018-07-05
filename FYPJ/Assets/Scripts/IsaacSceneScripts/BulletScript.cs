@@ -52,7 +52,6 @@ public class BulletScript : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.velocity = Vector3.zero;
-
         //Debug.Log(GetComponent<Renderer>().material.GetTexture("_EmissionMap"));
     }
 
@@ -62,8 +61,7 @@ public class BulletScript : MonoBehaviour
         life -= Time.deltaTime;
         if (life <= 0)
         {
-            if (gameObject.GetComponent<AudioMotion>())
-                this.GetComponent<AudioMotion>().Die();
+            this.GetComponent<AudioMotion>().Die();
 
             this.enabled = false;
             if (!isHit)
@@ -83,7 +81,7 @@ public class BulletScript : MonoBehaviour
 
                 if (stick.currColor == color || color == GameColors.Rainbow)
                 {
-                    stick.heldController.VibrateController();
+                    //stick.heldController.VibrateController();
                     player.ModifyScore(1);
                     playerCam.ModifyCombo(true);
                     //addscore
@@ -96,12 +94,12 @@ public class BulletScript : MonoBehaviour
                 }
 
                 //Destroy(transform.gameObject);
-                if(gameObject.GetComponent<AudioMotion>())
-                    gameObject.GetComponent<AudioMotion>().Die();
+                //if(gameObject.GetComponent<AudioMotion>())
+                gameObject.GetComponent<AudioMotion>().Die();
 
                 this.enabled = false;
                 isHit = true;
-                rb.useGravity = true;
+                //rb.useGravity = true;
                 gameObject.GetComponent<Collider>().enabled = false;
             }
         }
