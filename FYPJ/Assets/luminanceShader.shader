@@ -34,7 +34,7 @@
 			float4 FragmentProgram(Interpolators i) : SV_Target
 			{
 				float4 sample = (float4)tex2D(_MainTex, i.uv);
-				sample.a =  (float)LinearRgbToLuminance(saturate(sample.rgb));
+				sample.a = (float)LinearRgbToLuminance(saturate(sample.rgb));
 				return sample;
 			}
 			ENDCG

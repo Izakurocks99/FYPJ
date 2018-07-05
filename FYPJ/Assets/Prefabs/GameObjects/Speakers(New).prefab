@@ -1158,6 +1158,7 @@ MonoBehaviour:
   _goPrefab:
   - {fileID: 1761407923449524, guid: c403fe3a4eb9cfd429837618733cc0c1, type: 2}
   - {fileID: 1761407923449524, guid: a8d7bd35723777347809ea2567e375f3, type: 2}
+  _vec3Scale: {x: 2, y: 2, z: 2}
 --- !u!114 &114411507006736646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1175,6 +1176,7 @@ MonoBehaviour:
   _goPrefab:
   - {fileID: 1761407923449524, guid: c403fe3a4eb9cfd429837618733cc0c1, type: 2}
   - {fileID: 1761407923449524, guid: a8d7bd35723777347809ea2567e375f3, type: 2}
+  _vec3Scale: {x: 2, y: 2, z: 2}
 --- !u!114 &114417697141931526
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,7 +20,9 @@ public class PlayerStats : MonoBehaviour
     float _ftRNGWait;
 
     ControllerScript[] _controllers;
-
+    [SerializeField]
+    GameObject cam = null;
+    WaveEffect Wave = null;
     void Start()
     {
         _intCombo = 0;
@@ -36,6 +38,8 @@ public class PlayerStats : MonoBehaviour
 
 
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
+        Debug.Assert(cam);
+        Wave = cam.GetComponent<WaveEffect>();
     }
 
     void Update()
@@ -44,7 +48,7 @@ public class PlayerStats : MonoBehaviour
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f)) {
             ProbablityRandomDistribution();
-            ProbablityRandomGeneration();
+            //ProbablityRandomGeneration();
         }
     }
 
@@ -52,13 +56,19 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerDifficulty = _intDifficultyLevel;
     }
-
+    int numHitsToPulse = 10;
     public void ModifyScore(int score)
     {
         int multiplier = 1;
-        if(score > 0)
+        if (score > 0)
         {
             multiplier = _intCombo;
+            numHitsToPulse--;
+            if (numHitsToPulse == 0)
+            {
+                Wave.Pulse();
+                numHitsToPulse = 10;
+            }
         }
         _intPlayerScoring += score * multiplier;
     }

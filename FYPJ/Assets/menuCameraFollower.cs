@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class menuCameraFollofer : MonoBehaviour {
+public class menuCameraFollower : MonoBehaviour {
 
 
     [SerializeField]

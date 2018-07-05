@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 23057819529043058}
   - component: {fileID: 114895042204494098}
   - component: {fileID: 114674790636141962}
+  - component: {fileID: 114941438010196090}
   m_Layer: 0
   m_Name: BlackBeatPrefab
   m_TagString: Untagged
@@ -172,6 +173,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _intColor: 1
   _intDirection: 0
+--- !u!114 &114941438010196090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761407923449524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f04e27b4741b1e41bdbdc5ad9edb0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 10
+  playerCam: {fileID: 0}
+  isHit: 0
+  life: 0
 --- !u!198 &198185560914763844
 ParticleSystem:
   m_ObjectHideFlags: 1

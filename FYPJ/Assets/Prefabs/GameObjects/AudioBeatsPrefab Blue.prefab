@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4215351834697888}
   - component: {fileID: 33324068700600164}
   - component: {fileID: 23364065326802774}
-  - component: {fileID: 135898605283425770}
   m_Layer: 11
   m_Name: CaliEdge
   m_TagString: Untagged
@@ -290,6 +289,7 @@ MonoBehaviour:
   _intShiftRate: 6
   speed: 10
   endPoint: {fileID: 4215351834697888}
+  _die: 0
   dissolveTime: 1
 --- !u!135 &135238925341500474
 SphereCollider:
@@ -302,18 +302,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.06017782
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135898605283425770
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724823591100868}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198612172406713738
 ParticleSystem:
