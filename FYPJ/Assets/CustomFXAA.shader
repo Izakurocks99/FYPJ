@@ -246,11 +246,6 @@
 				uv.x += e.pixelStep * finalBlend;
 			}
 			return float4(Sample(uv).rgb, l.m);
-
-
-
-
-
 			//return e.isHorizontal? float4(1, 0, 0, 0) : 1; // return middle one 
 		}
 	ENDCG

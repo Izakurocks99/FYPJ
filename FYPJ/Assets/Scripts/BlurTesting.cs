@@ -21,7 +21,6 @@ public class BlurTesting : MonoBehaviour {
     [Range(0, 2)]
     public float softTreshold = 0.5f;
 
-
     [SerializeField]
     bool DebugBuffer = false;
 

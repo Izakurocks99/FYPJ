@@ -1,5 +1,7 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Unlit/WaveShader"
 {
 	Properties
@@ -7,6 +9,11 @@ Shader "Unlit/WaveShader"
 		_MainTex ("Texture", 2D) = "white" {}
 		_EffectPosition("Effect Pos",Vector) = (0,0,0)
 		_Ray("Ray",Float) = 2
+		_Thicc("Thicc boi",Float) = 2
+		_EffectColor("effect color",Color) = (1,1,1,1)
+		_EffectColor2("effect color",Color) = (1,1,1,1)
+		_EffectColor3("effect color",Color) = (1,1,1,1)
+		
 	}
 	SubShader
 	{
@@ -44,6 +51,18 @@ Shader "Unlit/WaveShader"
 			sampler2D _CameraDepthTexture;
 			float3 _EffectPosition;
 			float _Ray;
+			float _Thicc;
+			float4 	_MainTex_TexelSize;
+			half4 _EffectColor;
+			half4 _EffectColor2;
+			half4 _EffectColor3;
+
+			float4 horizBars(float2 p)
+			{
+				return 1 - saturate(round(abs(frac(p.y * 100) * 2)));
+			}
+
+
 			v2f vert (appdata v)
 			{
 				//v2f o;
@@ -54,6 +73,10 @@ Shader "Unlit/WaveShader"
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv.xy;
 
+				#if UNITY_UV_STARTS_AT_TOP
+				if (_MainTex_TexelSize.y < 0)
+					o.uv.y = 1 - o.uv.y;
+				#endif		
 
 				o.lerpRay = v.ray;
 
@@ -67,15 +90,37 @@ Shader "Unlit/WaveShader"
 				float rawDepth = DecodeFloatRG(tex2D(_CameraDepthTexture, i.uv));
 				float linearDepth = Linear01Depth(rawDepth);
 				float4 worldSpaceDir = linearDepth * i.lerpRay; // from camera to plane
-				float3 worldSpacePos = _WorldSpaceCameraPos + wsDir; // w space pos
+				float3 worldSpacePos = _WorldSpaceCameraPos + worldSpaceDir; // w space pos
 
-				float3 dist = worldSpacePos - _EffectPosition; 
+				//float3 dist = worldSpacePos - _EffectPosition; 
 				
 
-				half4 rcol = tex2D(_MainTex, i.uv);
-				half4 scol = half4(0,0,0,1);
-				half4 col = lerp(rcol, scol , 0 );
-				return col;
+				half4 col = tex2D(_MainTex, i.uv);
+				//half4 scol = half4(0,0,0,1);
+				float d = distance(worldSpacePos,_EffectPosition);
+				//half4 col = lerp(rcol, scol , d < _Ray && d > _Ray - _Thicc);
+
+				half4 efCol = half4(0,0,0,0);
+
+				//if (dist < _ScanDistance && dist > _ScanDistance - _ScanWidth && linearDepth < 1)
+
+				if(d < _Ray && d > _Ray - _Thicc && linearDepth < 1)
+				{
+					float diff = 1 - (_Ray - d) / _Thicc;
+					//efCol = _EffectColor * diff;
+
+					half4 scannerCol = lerp(_EffectColor, _EffectColor2, diff) + horizBars(i.uv) * _EffectColor3;
+
+
+					efCol = scannerCol * diff * 0.4;
+				}
+
+				//if(d < _Ray)
+				//{
+				//	return scol;//
+				
+				//}
+				return col + efCol;
 				//float rawDepth = tex2D(_CameraDepthTexture,i.uv).r;  
 
 				//float colr =  tex2D(_CameraDepthTexture,i.uv).r; 

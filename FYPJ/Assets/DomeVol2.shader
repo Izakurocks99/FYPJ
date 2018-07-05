@@ -67,7 +67,7 @@ Shader "Example/DomeVol2"
 			float4 endcolor = lerp(first.rgba, second.rgba, IN.alphalerp);
 			o.Albedo.rgb = endcolor.rgb
 			;//* 0.0001f + float3( IN.debug.x * 0.001f,IN.debug.y,0);
-			o.Alpha = endcolor.a;//lerp(org.a, second.a, IN.lerpVal);
+			o.Alpha = endcolor.a * 0.5;//lerp(org.a, second.a, IN.lerpVal);
 
 		}
 		ENDCG
