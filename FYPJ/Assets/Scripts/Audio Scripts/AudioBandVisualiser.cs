@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour {
@@ -14,18 +15,18 @@ public class AudioBandVisualiser : MonoBehaviour {
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
     List<Material> DissolveMaterialPool = null;
-    const uint MaterialPoolSize = 6;
+    const uint MaterialPoolSize = 12;
     public Texture2D RoughnessBeatTex = null;
     public Texture2D MetallicBeatTex = null;
 #endif
-    public Material[] _materials;
+    public Material[] _matsPrimary;
+    public Material[] _matsSecondary;
     public float _ftTime;
     public float _ftWait = 0.5f;
     public float _ftSpeed = 1f;
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
 	public static int _intBeatCounts;
-    int _intBeats;
     int _intPreviousMaterial;
     int _intCurrentMaterial;
 #if (BEAT_POOL)
@@ -40,7 +41,6 @@ public class AudioBandVisualiser : MonoBehaviour {
 		_ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
 		_ftTime = 0f;
 		_intBeatCounts = 0;
-		_intBeats = 0;
 		_intPreviousMaterial = 0;
 		_intCurrentMaterial = 10;
 #if (BEAT_POOL)
@@ -111,105 +111,76 @@ public class AudioBandVisualiser : MonoBehaviour {
 		if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0) {
 			if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait) {
 
+				float _ftSpawn = Random.value;
+				int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
+
 				if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0) {
-					float _ftSpawn = Random.value;
-					int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
-                    int _intStore = 0;
-                    for (int i = _goAudioScales.Length - 1; i >= 0; i--) {
-						if (_intBeats < _intMax) {
+					int p = 9;
+					int _intFst = 9;
+					int _intSnd = 9;
+					for (int j = 0; j < 2; j++) {
+						for (int k = 0; k < AudioSampler._ftMaxbuffer.Length; k++) {
+							if ((AudioSampler._ftMaxbuffer[k] - _ftAryPrevBuffer[k]) == _ftAryDiffBuffer[j]) {
+								if (j == 0) _intFst = k;
+								else {
+									if (k != _intFst) _intSnd = k;
+									else {if (Random.value < 0.5f) _intSnd = k - 1;
+										else _intSnd = k + 1;}}
+								continue;
+							}	}	}
 
-							for (int k = 0; k < 2; k++) {
-								if ((AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i]) == _ftAryDiffBuffer[k]) {
-                                    if (_intStore == i)
-                                        continue;
-                                    else
-                                        _intStore = i;
-
-									_intCurrentMaterial = Random.Range(0, _materials.Length);
-									if (_intCurrentMaterial == _intPreviousMaterial) {
-
-										if (_intPreviousMaterial != 0)
-											_intCurrentMaterial -= 1;
-										else if (_intPreviousMaterial == 0)
-												 _intCurrentMaterial = _materials.Length - 1;
-									}
-									if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
-										_intCurrentMaterial == _intPreviousMaterial + 2) {
-
-										if (_intCurrentMaterial != 0)
-											_intCurrentMaterial -= 1;
-										else if (_intCurrentMaterial == 0)
-												 _intCurrentMaterial = _materials.Length - 1;
-									}
-
-#if (BEAT_POOL)
-                                    GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[i]);
-                                   
-                                    //_beatPool.PopBack();
-                                    //go.transform.parent = _goAudioScales[i].transform.parent.transform;
-                                    //go.transform.position = _goAudioScales[i].transform.parent.position;
-#else
-                                    GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
-									go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
-#endif 
-                                    go.transform.localScale = beatScale;
-									_intPreviousMaterial = _intCurrentMaterial;
-
-									go.name = "Beat " + i;
-									go.SetActive(true);
-									_intBeats++;
-#if (BEAT_POOL)
-                                    InitPoolObject(go, _intCurrentMaterial);
-#endif
-                                }	}	}	}	}
-
-				for (int j = _goAudioScales.Length - 1; j >= 0; j--) {
-					if (_intBeats < 2) {
+							for (int i = 0; i < _intMax; i++) {
+								if (i == 0) {
+									p = _intFst;
+									_intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+								}
+								else {
+									p = _intSnd;
+									_intCurrentMaterial = Random.Range(0, _matsSecondary.Length);
+								}
 					
-						if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
-
-							_intCurrentMaterial = Random.Range(0, _materials.Length);
-							if (_intCurrentMaterial == _intPreviousMaterial) {
-
-								if (_intPreviousMaterial != 0)
-									_intCurrentMaterial -= 1;
-								else if (_intPreviousMaterial == 0)
-										 _intCurrentMaterial = _materials.Length - 1;
-							}
-							if (_intCurrentMaterial == _intPreviousMaterial - 2 ||
-								_intCurrentMaterial == _intPreviousMaterial + 2) {
-
-								if (_intCurrentMaterial != 0)
-									_intCurrentMaterial -= 1;
-								else if (_intCurrentMaterial == 0)
-										 _intCurrentMaterial = _materials.Length - 1;
-							}
-
 #if (BEAT_POOL)
-                            GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
-                            //GameObject go = 
-                            //_beatPool.PopBack();
-                            //go.transform.parent = _goAudioScales[j].transform.parent.transform;
-                            //go.transform.position = _goAudioScales[j].transform.parent.position;
-                            //InitPoolObject(go,_goAudioScales[j].transform.parent.transform); 
+							if (i == 1) _intCurrentMaterial += 2;
+							GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[p]);
 #else
-                            GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
+							GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
 							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
-#endif
-                            go.transform.localScale = beatScale;
+#endif 
+							go.transform.localScale = beatScale;
 							_intPreviousMaterial = _intCurrentMaterial;
 
-							go.name = "Beat " + j;
+							go.name = "Beat " + p;
 							go.SetActive(true);
-							_intBeats++;
 #if (BEAT_POOL)
-                             InitPoolObject(go, _intCurrentMaterial);
+							InitPoolObject(go, _intCurrentMaterial);
 #endif
-				}	}	}
+							_intBeatCounts++;
+					}
+				}
 
-				_intBeats = 0;
+				else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty == 0) {
+					for (int j = _goAudioScales.Length - 1; j >= 0; j--) {
+							if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
+
+								_intCurrentMaterial = Random.Range(0, _matsPrimary.Length + 1);
+								if (_intCurrentMaterial == 2) _intCurrentMaterial += Random.Range(0, _matsSecondary.Length);
+#if (BEAT_POOL)
+								GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
+#else
+								GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
+								go.transform.GetComponent<Renderer>().material = _matsPrimary[_intCurrentMaterial];
+#endif
+								go.transform.localScale = beatScale;
+								_intPreviousMaterial = _intCurrentMaterial;
+
+								go.name = "Beat " + j;
+								go.SetActive(true);
+#if (BEAT_POOL)
+								InitPoolObject(go, _intCurrentMaterial);
+#endif
+					}	}	}
 				_ftTime = 0;
-	}	}	}
+	}	}	}	
 	
 #if (BEAT_POOL)
     GameObject GetObjectFromPool(int index, GameObject parent) {

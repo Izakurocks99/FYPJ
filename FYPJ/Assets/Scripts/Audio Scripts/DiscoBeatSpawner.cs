@@ -63,9 +63,9 @@ public class DiscoBeatSpawner : MonoBehaviour {
 				float _ftX = _ftXIncrement * _intCurrent;
 
 				if (_blFlip == true)
-					go.GetComponent<DiscoBeatMotion>()._vec3Area = new Vector3(0.75f, 0.0f, 0.0f);
+					go.GetComponent<DiscoBeatMotion>()._vec3Area = new Vector3(0.5f, 0.0f, 0.0f);
 				else
-					go.GetComponent<DiscoBeatMotion>()._vec3Area = new Vector3(-0.75f, 0.0f, 0.0f);
+					go.GetComponent<DiscoBeatMotion>()._vec3Area = new Vector3(-0.5f, 0.0f, 0.0f);
 
 				go.GetComponent<DiscoBeatMotion>()._vec3Shift = new Vector3(_ftX, _ftY, 0);
 				go.GetComponent<DiscoBeatMotion>()._vec3Target = _vec3View;

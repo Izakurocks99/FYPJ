@@ -16,6 +16,7 @@ public class AudioMotion : MonoBehaviour {
     ControlCalibrationScript calibration;
     PlayerStats PlayerStats;
 
+    public float speed = 10;
     public Transform endPoint;
 
 #if (BEAT_POOL)
@@ -58,7 +59,7 @@ public class AudioMotion : MonoBehaviour {
     }
 
 	void Update () {
-		_tfThis.Rotate(_tfThis.up, 5.0f);
+		_tfThis.Rotate(_tfThis.up, 4.0f);
 
         // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
@@ -77,7 +78,7 @@ public class AudioMotion : MonoBehaviour {
 	void TransitBeat() {
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, 0.05f);
+            _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
         else
         {
 #if (BEAT_POOL)
@@ -91,12 +92,14 @@ public class AudioMotion : MonoBehaviour {
 
     public void Die()
     {
+        if (_die) return;
         _die = true;
         Material temp = _materials.PopBack();
         Material current = this.GetComponent<Renderer>().material;
         myDefaultMaterial = current; 
         string main = "_MainTex";
         string emis = "_Emissive";
+
         temp.SetTexture(main, current.GetTexture(main));
         temp.SetTexture(emis, current.GetTexture("_EmissionMap"));
         temp.SetFloat("_TreshHold", 0f);
@@ -123,11 +126,16 @@ public class AudioMotion : MonoBehaviour {
     {
             this.transform.parent = null;
             this.gameObject.SetActive(false);
-            if(_die)
-            this.GetComponent<Renderer>().material = myDefaultMaterial;
+            //if(_die)
+            //this.GetComponent<Renderer>().material = myDefaultMaterial;
 
-            _home.Add(this.gameObject);
-        _materials.Add(myDissolveMaterial);
+        if (myDefaultMaterial)
+        {
+            this.GetComponent<Renderer>().material = myDefaultMaterial;
+            myDefaultMaterial = null;
+            _materials.Add(myDissolveMaterial);
+        }
+        _home.Add(this.gameObject);
 #else
     void OnDestroy()
     {
