@@ -13,6 +13,7 @@ public class DiscoBeatMotion : MonoBehaviour {
 	public Vector3 _vec3Shift;
 	public Vector3 _vec3Target;
 	public Vector3 _vec3Area;
+    public int speed;
 
 	void Start() {
 		_tfThis = this.transform;
@@ -37,7 +38,7 @@ public class DiscoBeatMotion : MonoBehaviour {
 		if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
 			_tfThis.position = Vector3.MoveTowards(_tfThis.position,
 												   _vec3Area + _vec3Shift + _vec3Target,
-			 									   0.04f);
+			 									   speed * Time.deltaTime);
 		else
 			Destroy(_tfThis.gameObject);
 	}
