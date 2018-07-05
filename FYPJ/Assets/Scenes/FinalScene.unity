@@ -1122,6 +1122,16 @@ Prefab:
       propertyPath: _goPlayer
       value: 
       objectReference: {fileID: 760541044}
+    - target: {fileID: 20270706446588574, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: m_RenderingPath
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20270706446588574, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: far clip plane
+      value: 38.53
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
@@ -2766,12 +2776,37 @@ GameObject:
   m_PrefabParentObject: {fileID: 1494724157195762, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
     type: 2}
   m_PrefabInternal: {fileID: 201855184}
+--- !u!114 &760541045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760541044}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cf9b4c66286b848a9c33c7fe6c2e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveShader: {fileID: 4800000, guid: bb7cbefcb403a3b4f95b7c19a1287d5d, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  ray: 2
 --- !u!114 &760541046 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114419325811002024, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
     type: 2}
   m_PrefabInternal: {fileID: 201855184}
   m_Script: {fileID: 11500000, guid: a934c5b55b4031546bb88250437efe5b, type: 3}
+--- !u!114 &760541047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760541044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8b2717bf7d8534a98dce8f84651438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &760541050 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20270706446588574, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
