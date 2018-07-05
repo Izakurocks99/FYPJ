@@ -100,8 +100,10 @@ public class AudioBandVisualiser : MonoBehaviour {
 		}
 		
 		if (_goAudio.GetComponent<AudioSource>().clip != null &&
-			_goAudio.GetComponent<AudioSource>().isPlaying == true)
+			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
+		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f))
 		{
+			Debug.Log(_goAudio.GetComponent<AudioSource>().time + " / " + _goAudio.GetComponent<AudioSource>().clip.length);
 			GetDifference();
 			InstantiateBeat();
 		}
