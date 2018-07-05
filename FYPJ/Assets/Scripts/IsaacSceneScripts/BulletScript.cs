@@ -81,7 +81,7 @@ public class BulletScript : MonoBehaviour
 
                 if (stick.currColor == color || color == GameColors.Rainbow)
                 {
-                    //stick.heldController.VibrateController();
+                    stick.heldController.VibrateController();
                     player.ModifyScore(1);
                     playerCam.ModifyCombo(true);
                     //addscore

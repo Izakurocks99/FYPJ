@@ -162,7 +162,7 @@ MonoBehaviour:
   _vec3Shift: {x: 0, y: 0, z: 0}
   _vec3Target: {x: 0, y: 0, z: 0}
   _vec3Area: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 5
 --- !u!114 &114708976350925924
 MonoBehaviour:
   m_ObjectHideFlags: 1
