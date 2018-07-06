@@ -559,7 +559,7 @@ MonoBehaviour:
   currColor: 2
   stickMeshes:
   - type: 0
-    mesh: {fileID: 4300002, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}
+    mesh: {fileID: 4300004, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}
     stickColors:
     - color: 0
       material: {fileID: 2100000, guid: e8ef0ec6580c6194ea12f29c8ff2c618, type: 2}
@@ -582,6 +582,17 @@ MonoBehaviour:
       material: {fileID: 2100000, guid: b20f5d0f01f6eb24ca872edbb6ebe917, type: 2}
   - type: 2
     mesh: {fileID: 4300000, guid: e5274cc986a71224e9766d0d44fac493, type: 3}
+    stickColors:
+    - color: 0
+      material: {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
+    - color: 1
+      material: {fileID: 2100000, guid: 03b660543125ea04987721febf6a1587, type: 2}
+    - color: 2
+      material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
+    - color: 3
+      material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
+  - type: 3
+    mesh: {fileID: 4300000, guid: 9c6f27773e47faf42bd2e608eee832ec, type: 3}
     stickColors:
     - color: 0
       material: {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
