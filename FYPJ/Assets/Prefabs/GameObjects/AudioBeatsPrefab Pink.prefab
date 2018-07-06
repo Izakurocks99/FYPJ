@@ -252,7 +252,7 @@ MonoBehaviour:
   _intShiftRate: 6
   speed: 7
   endPoint: {fileID: 4529317930299496}
-  dissolveTime: 1
+  dissolveTime: 0.5
 --- !u!114 &114308454689829124
 MonoBehaviour:
   m_ObjectHideFlags: 1

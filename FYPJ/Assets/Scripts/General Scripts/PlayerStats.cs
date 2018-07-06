@@ -27,7 +27,7 @@ public class PlayerStats : MonoBehaviour
     {
         _intCombo = 0;
         _intPlayerScoring = 0;
-        _intPlayerDifficulty = 0;
+        _intPlayerDifficulty = 1;
         _intSpawnPoint = 0;
         _intCounter = 0;
         _ftProbablity = 0.0f;
@@ -56,27 +56,22 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerDifficulty = _intDifficultyLevel;
     }
-    int numHitsToPulse = 10;
+    //int numHitsToPulse = 10;
     public void ModifyScore(int score)
     {
-        int multiplier = 1;
-        if (score > 0)
-        {
-            multiplier = _intCombo;
-            numHitsToPulse--;
-            if (numHitsToPulse == 0)
-            {
-                Wave.Pulse();
-                numHitsToPulse = 10;
-            }
-        }
-        _intPlayerScoring += score * multiplier;
+        _intPlayerScoring += score;
     }
 
     public void ModifyCombo(bool hit)
     {
         if (hit)
+        {
             _intCombo++;
+            if(_intCombo % 10 == 0)
+            {
+                Wave.Pulse();
+            }
+        }
         else
             _intCombo = 0;
 
@@ -87,7 +82,7 @@ public class PlayerStats : MonoBehaviour
                 List<BatonCapsuleFollower> followers = controller.currStick.BatonFollowers;
                 foreach (BatonCapsuleFollower follower in followers)//for each baton followers
                 {
-                    follower.gameObject.GetComponent<Rigidbody>().mass = _intCombo + 1;
+                    follower.gameObject.GetComponent<Rigidbody>().mass = (_intCombo * 0.5f) + 1;
                 }
             }
         }
@@ -95,7 +90,7 @@ public class PlayerStats : MonoBehaviour
 
     void ProbablityRandomDistribution() {
         if ((_ftRNDTime += 1 * Time.deltaTime) >= _ftRNDWait) {
-            float _ftRND = (float)Random.Range(10f, 100f);
+            float _ftRND = (float)Random.Range(50f, 100f);
             _ftProbablity = 0.25f + Mathf.Pow(_intCounter, 2);
 
             if (_ftRND < _ftProbablity) {
