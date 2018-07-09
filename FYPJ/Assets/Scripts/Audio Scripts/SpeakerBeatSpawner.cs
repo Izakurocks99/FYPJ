@@ -20,6 +20,26 @@ public class SpeakerBeatSpawner : MonoBehaviour {
         for (int i1 = 0; i1 < _goPrefab.Length; i1++)
         {
             listGOBeatPool.Add(new List<GameObject>());
+            for (int i2 = 0; i2 < 10; i2++)
+            {
+                GameObject go;
+                go = Instantiate(_goPrefab[i1], this.transform, false);
+                listGOBeatPool[i1].Add(go);
+                listGOBeatPool[i1][i2].SetActive(false);
+
+                Material temp = new Material(dissolveShader);
+                Material goMat = go.GetComponent<Renderer>().material;
+
+                temp.SetTexture("_MainTex", goMat.GetTexture("_MainTex"));
+                temp.SetTexture("_Emissive", goMat.GetTexture("_EmissionMap"));
+                temp.SetTexture("_RoughnessTex", goMat.GetTexture("_SpecGlossMap"));
+                temp.SetTexture("_MetallicTex", goMat.GetTexture("_MetallicGlossMap"));
+
+                temp.SetTexture("NoiseTex",
+                    NoiseTexGenerator.GetTexture(dissolveMaterialPool.Count, dissolveMaterialPool.Count));
+                dissolveMaterialPool.Add(temp);
+
+            }
         }
     }
 
