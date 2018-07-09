@@ -7,6 +7,7 @@ public enum StickType
     Baton,
     Staff,
     Stick,
+    Wakizashi,
     MAX,
     //Fish
 }

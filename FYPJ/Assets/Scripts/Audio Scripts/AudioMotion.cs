@@ -50,7 +50,7 @@ public class AudioMotion : MonoBehaviour {
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-        _ftZ = -calibration.distFromPlayer;
+        _ftZ = - Mathf.Abs(calibration.distFromPlayer);
 
         PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
@@ -86,7 +86,7 @@ public class AudioMotion : MonoBehaviour {
 #else
             Destroy(_tfThis.gameObject);
 #endif
-            PlayerStats.ModifyScore(-1);
+            //PlayerStats.ModifyScore(-1);
         }
 	}
 

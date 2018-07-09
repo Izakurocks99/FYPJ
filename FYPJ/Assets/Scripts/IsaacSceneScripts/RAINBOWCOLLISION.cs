@@ -57,14 +57,13 @@ public class RAINBOWCOLLISION : MonoBehaviour
                 if (stick.currColor == color || color == GameColors.Rainbow)
                 {
                     stick.heldController.VibrateController();
-                    player.ModifyScore(1);
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
                     //addscore
                 }
                 else
                 {
                     //lowerscore
-                    player.ModifyScore(-10);
                     playerCam.ModifyCombo(false);
                 }
 
@@ -72,7 +71,7 @@ public class RAINBOWCOLLISION : MonoBehaviour
                 if(gameObject.GetComponent<AudioMotion>())
                     gameObject.GetComponent<AudioMotion>().Die();
 
-                life = 1;
+                life = 0.3f;
                 gameObject.GetComponent<DiscoBeatMotion>().enabled = false;
                 isHit = true;
                 rb.useGravity = true;
