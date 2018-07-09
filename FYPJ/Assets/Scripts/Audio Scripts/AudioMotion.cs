@@ -11,7 +11,9 @@ public class AudioMotion : MonoBehaviour
     Transform _tfParent;
     Transform _tfThis;
     public float _intShiftRate;
+    public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
+    float _ftTime;
     int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
@@ -41,6 +43,7 @@ public class AudioMotion : MonoBehaviour
     void Start() 
         {
 #endif
+        _ftTime = 0.0f;
         _tfThis = this.transform;
         _tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
@@ -80,9 +83,11 @@ public class AudioMotion : MonoBehaviour
 
     void TransitBeat()
     {
+        _ftTime = Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
             _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
+            // _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else
         {
 #if (BEAT_POOL)
