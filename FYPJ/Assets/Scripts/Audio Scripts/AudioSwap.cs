@@ -28,7 +28,8 @@ public class AudioSwap : MonoBehaviour {
             DestroyImmediate(listDelete[i]);
 
         this.transform.GetComponent<AudioSource>().clip = this.transform.GetComponent<AudioSampler>()._audioclips[_intTrack];
-        this.transform.GetComponent<AudioSource>().Play();
+        // this.transform.GetComponent<AudioSource>().Play();
+        this.transform.GetComponent<AudioSource>().PlayDelayed(1.0f);
 
     }
 }
