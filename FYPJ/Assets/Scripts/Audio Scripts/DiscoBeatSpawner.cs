@@ -16,8 +16,17 @@ public class DiscoBeatSpawner : MonoBehaviour {
 	int _intCurrent;
 	bool _blFlip;
 
-	void Start() {
-		_ftTime = 0.0f;
+    //ObjectPooling
+    public Shader dissolveShader;
+    List<Material> dissolveMaterialPool;
+    List<GameObject> discobeatPool;
+
+	void Start()
+    {
+        dissolveMaterialPool = new List<Material>();
+        discobeatPool = new List<GameObject>();
+
+        _ftTime = 0.0f;
 		_ftWait = 0.25f;
 		_ftXIncrement = 0.0f;
 		_intCount = 0;
@@ -56,8 +65,10 @@ public class DiscoBeatSpawner : MonoBehaviour {
 		if ((_ftTime += 1 * Time.deltaTime) >= _ftWait) {
 			if (_intCurrent < _intCount) {
 
-				GameObject go = Instantiate(_goPrefab, this.transform, false);
-				go.name = "Test " + _intCurrent;
+                //GameObject go = Instantiate(_goPrefab, this.transform, false);
+                GameObject go = InitPoolObject(this.transform);
+
+                go.name = "Test " + _intCurrent;
 				go.SetActive(true);
 
 				go.transform.position = this.GetComponent<DiscoMotion>()._vec3Spawn;
@@ -89,4 +100,39 @@ public class DiscoBeatSpawner : MonoBehaviour {
 			_ftTime = 0.0f;
 		}
 	}
+
+    GameObject InitPoolObject(Transform parent)
+    {
+        GameObject go;
+        //if there is objects in the pool
+        if(discobeatPool.Count > 0)
+        {
+            go = discobeatPool.PopBack();
+            go.transform.parent = parent;
+            //go.transform.position
+        }
+        else
+        {
+            //create a new GO
+            go = Instantiate(_goPrefab, this.transform, false);
+
+            Material temp = new Material(dissolveShader);
+            Material goMat = go.GetComponent<Renderer>().material;
+
+            temp.SetTexture("_MainTex", goMat.GetTexture("_MainTex"));
+            temp.SetTexture("_Emissive", goMat.GetTexture("_EmissionMap"));
+            temp.SetTexture("_RoughnessTex", goMat.GetTexture("_SpecGlossMap"));
+            temp.SetTexture("_MetallicTex", goMat.GetTexture("_SpecGlossMap"));
+
+            temp.SetTexture("NoiseTex",
+                NoiseTexGenerator.GetTexture(dissolveMaterialPool.Count, dissolveMaterialPool.Count));
+            dissolveMaterialPool.Add(temp);
+        }
+
+        go.SetActive(true);
+        //go.transform.position = new Vector3(0, 0, 0);
+        go.GetComponent<DiscoBeatMotion>().PoolInit(discobeatPool, dissolveMaterialPool); // responsible for returing the object
+        go.GetComponent<DiscoBeatCollisionScript>().PoolInit();
+        return go;
+    }
 }
