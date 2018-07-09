@@ -9,13 +9,27 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
     public float lifeTime = 10f;
     public PlayerStats playerCam;
     public bool isHit = false;
-    GameColors color = GameColors.BLACK;
+    [SerializeField]
+    GameColors color;
     Rigidbody rb;
 
     public float life;
     bool isCollided = false;
 
-    void Start()
+    //void Start()
+    //{
+    //    playerCam = FindObjectOfType<PlayerStats>();
+    //    isCollided = false;
+    //    life = lifeTime;
+    //    this.enabled = true;
+    //    isHit = false;
+    //    gameObject.GetComponent<Collider>().enabled = true;
+    //    rb = gameObject.GetComponent<Rigidbody>();
+    //    rb.useGravity = false;
+    //    rb.velocity = Vector3.zero;
+    //}
+
+    public void PoolInit()
     {
         playerCam = FindObjectOfType<PlayerStats>();
         isCollided = false;
@@ -34,6 +48,7 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
         life -= Time.deltaTime;
         if (life <= 0)
         {
+            this.GetComponent<SpeakerBeatMotion>().Die();
 
             this.enabled = false;
             if (!isHit)
@@ -43,23 +58,32 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!isCollided)
+        if (!isHit)
         {
-            isCollided = true;
             if (other.gameObject.GetComponentInParent<BatonCapsuleFollower>())
             {
                 BatonCapsuleFollower follower = other.gameObject.GetComponentInParent<BatonCapsuleFollower>();
                 PlayerStickScript stick = follower._batonFollower.thisStick;
                 PlayerStats player = playerCam.GetComponent<PlayerStats>();
 
-                //lowerscore
-                player.ModifyScore(-10);
-                playerCam.ModifyCombo(false);
+                if (stick.currColor == color || color == GameColors.Rainbow)
+                {
+                    if (stick.heldController)
+                        stick.heldController.VibrateController();
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
+                    playerCam.ModifyCombo(true);
+                    //addscore
+                }
+                else
+                {
+                    //lowerscore
+                    playerCam.ModifyCombo(false);
+                }
+                
+                gameObject.GetComponent<SpeakerBeatMotion>().Die();
 
-                life = 1;
-                gameObject.GetComponent<DiscoBeatMotion>().enabled = false;
+                this.enabled = false;
                 isHit = true;
-                rb.useGravity = true;
                 gameObject.GetComponent<Collider>().enabled = false;
             }
         }

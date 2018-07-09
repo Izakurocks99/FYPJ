@@ -32,7 +32,31 @@ public class DiscoBeatSpawner : MonoBehaviour {
 		_intCount = 0;
 		_intCurrent = 0;
 		_blFlip = false;
-	}
+
+        //if there is objects in the pool
+        for (int i = 0; i < 25; i++)
+        {
+            GameObject go;
+            //create a new GO
+            go = Instantiate(_goPrefab, this.transform, false);
+            discobeatPool.Add(go);
+            go.SetActive(false);
+
+            Material temp = new Material(dissolveShader);
+            Material goMat = go.GetComponent<Renderer>().material;
+
+            temp.SetTexture("_MainTex", goMat.GetTexture("_MainTex"));
+            temp.SetTexture("_Emissive", goMat.GetTexture("_EmissionMap"));
+            temp.SetTexture("_RoughnessTex", goMat.GetTexture("_SpecGlossMap"));
+            temp.SetTexture("_MetallicTex", goMat.GetTexture("_MetallicGlossMap"));
+
+            temp.SetTexture("NoiseTex",
+                NoiseTexGenerator.GetTexture(dissolveMaterialPool.Count, dissolveMaterialPool.Count));
+            dissolveMaterialPool.Add(temp);
+            //go.transform.position
+
+        }
+    }
 
 	void Update () {
 		if (_intCount == 0)
@@ -104,17 +128,11 @@ public class DiscoBeatSpawner : MonoBehaviour {
     GameObject InitPoolObject(Transform parent)
     {
         GameObject go;
-        //if there is objects in the pool
-        if(discobeatPool.Count > 0)
+        if(discobeatPool.Count == 0)
         {
-            go = discobeatPool.PopBack();
-            go.transform.parent = parent;
-            //go.transform.position
-        }
-        else
-        {
-            //create a new GO
             go = Instantiate(_goPrefab, this.transform, false);
+            discobeatPool.Add(go);
+            go.SetActive(false);
 
             Material temp = new Material(dissolveShader);
             Material goMat = go.GetComponent<Renderer>().material;
@@ -122,12 +140,16 @@ public class DiscoBeatSpawner : MonoBehaviour {
             temp.SetTexture("_MainTex", goMat.GetTexture("_MainTex"));
             temp.SetTexture("_Emissive", goMat.GetTexture("_EmissionMap"));
             temp.SetTexture("_RoughnessTex", goMat.GetTexture("_SpecGlossMap"));
-            temp.SetTexture("_MetallicTex", goMat.GetTexture("_SpecGlossMap"));
+            temp.SetTexture("_MetallicTex", goMat.GetTexture("_MetallicGlossMap"));
 
             temp.SetTexture("NoiseTex",
                 NoiseTexGenerator.GetTexture(dissolveMaterialPool.Count, dissolveMaterialPool.Count));
             dissolveMaterialPool.Add(temp);
         }
+
+        go = discobeatPool.PopBack();
+        go.transform.parent = parent;
+        go.transform.position = parent.transform.position;
 
         go.SetActive(true);
         //go.transform.position = new Vector3(0, 0, 0);

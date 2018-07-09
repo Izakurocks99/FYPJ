@@ -40,6 +40,7 @@ public class DiscoBeatMotion : MonoBehaviour
         dissolveTimer = 0;
         _home = home;
         _materials = mat;
+        _die = false;
 
         _tfThis = this.transform;
         if (this.transform.parent.transform != null)

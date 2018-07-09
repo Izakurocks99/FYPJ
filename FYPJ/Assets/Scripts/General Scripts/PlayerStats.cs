@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
         _intCombo = 0;
         _intPlayerScoring = 0;
         _intPlayerDifficulty = 1;
-        _intSpawnPoint = 0;
+        _intSpawnPoint = 1;
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;
@@ -48,7 +48,7 @@ public class PlayerStats : MonoBehaviour
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             ProbablityRandomDistribution();
-            //ProbablityRandomGeneration();
+            ProbablityRandomGeneration();
         }
     }
 
