@@ -57,7 +57,7 @@ public class AudioBandVisualiser : MonoBehaviour {
                 NoiseTexGenerator.GetTexture((float)i, (float)i));
             DissolveMaterialPool.Add(temp);
         }
-        //for(int i = 0)
+
         listGOBeatPool = new List<List<GameObject>>();
         for (int i1 = 0; i1 < listGOPrefab.Count; i1++)
         {
@@ -94,14 +94,14 @@ public class AudioBandVisualiser : MonoBehaviour {
 				break;
 			}
 			default: {
-				_ftWait = 1.5f;
+				_ftWait = 1.25f;
 				break;
 			}
 		}
 		
 		if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
-		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f))
+		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f))
 		{
 			//Debug.Log(_goAudio.GetComponent<AudioSource>().time + " / " + _goAudio.GetComponent<AudioSource>().clip.length);
 			GetDifference();
@@ -156,31 +156,35 @@ public class AudioBandVisualiser : MonoBehaviour {
 #if (BEAT_POOL)
 							InitPoolObject(go, _intCurrentMaterial);
 #endif
-							_intBeatCounts++;
+							// _intBeatCounts++;
 					}
 				}
 
 				else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty == 0) {
+					int _intTemp = 0;
 					for (int j = _goAudioScales.Length - 1; j >= 0; j--) {
+						if (_intTemp < _intMax) {
+
 							if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max()) {
 
-								_intCurrentMaterial = Random.Range(0, _matsPrimary.Length + 1);
-								if (_intCurrentMaterial == 2) _intCurrentMaterial += Random.Range(0, _matsSecondary.Length);
+								_intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+								_intCurrentMaterial = (_intCurrentMaterial == 1) ? 3 : 0;
+
 #if (BEAT_POOL)
 								GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
 #else
 								GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
-								go.transform.GetComponent<Renderer>().material = _matsPrimary[_intCurrentMaterial];
+								// go.transform.GetComponent<Renderer>().material = _matsPrimary[_intCurrentMaterial];
 #endif
 								go.transform.localScale = beatScale;
-								_intPreviousMaterial = _intCurrentMaterial;
 
 								go.name = "Beat " + j;
 								go.SetActive(true);
 #if (BEAT_POOL)
 								InitPoolObject(go, _intCurrentMaterial);
 #endif
-					}	}	}
+								_intTemp++;
+					}	}	}	}
 				_ftTime = 0;
 	}	}	}	
 	

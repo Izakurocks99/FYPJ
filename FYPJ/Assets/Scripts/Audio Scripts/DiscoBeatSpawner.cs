@@ -33,7 +33,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
 
 		if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
-		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.9f))
+		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f))
 			if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 1)
 				GenerateDrag();
 	}
