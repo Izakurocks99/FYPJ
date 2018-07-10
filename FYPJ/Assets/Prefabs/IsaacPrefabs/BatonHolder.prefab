@@ -188,14 +188,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0.2, z: -10.3}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4564743456582238}
   - {fileID: 4852354826258694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4492642610500456
 Transform:
   m_ObjectHideFlags: 1
@@ -382,7 +382,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c86bf4f5cd3db4e4cbe6fad7b92113cb, type: 2}
+  - {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +499,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300000, guid: 9bd7f6d45d312f4438e8e7a1340ca7a7, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
 --- !u!33 &33687570696518278
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -553,9 +553,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handle: {fileID: 1854539351217052}
-  RNGSticks: 1
+  RNGSticks: 0
   heldController: {fileID: 0}
-  objectMesh: 1
+  objectMesh: 4
   currColor: 2
   stickMeshes:
   - type: 0
@@ -602,6 +602,17 @@ MonoBehaviour:
       material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
     - color: 3
       material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
+  - type: 4
+    mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    stickColors:
+    - color: 0
+      material: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - color: 1
+      material: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - color: 2
+      material: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - color: 3
+      material: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
   BatonFollowers: []
 --- !u!114 &114383208978904600
 MonoBehaviour:

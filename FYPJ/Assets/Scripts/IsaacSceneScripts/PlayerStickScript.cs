@@ -8,6 +8,7 @@ public enum StickType
     Staff,
     Stick,
     Wakizashi,
+    Candy,
     MAX,
     //Fish
 }
