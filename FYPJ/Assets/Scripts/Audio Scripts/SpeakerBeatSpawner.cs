@@ -64,7 +64,7 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 		
 		else {
 			//GameObject go = Instantiate(_goPrefab[1], _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
-            GameObject go = InitPoolObject(0, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
+            GameObject go = InitPoolObject(1, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
             go.transform.localScale = _vec3Scale;
 			
 			go.name = "Test";

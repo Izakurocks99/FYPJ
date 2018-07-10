@@ -1497,6 +1497,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 19832534, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}
   m_IsPrefabParent: 0
@@ -2017,6 +2021,10 @@ Prefab:
     - target: {fileID: 417138, guid: 34d7c53d4a51de44aa44dbf4ad246ea0, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 19840494, guid: 34d7c53d4a51de44aa44dbf4ad246ea0, type: 2}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34d7c53d4a51de44aa44dbf4ad246ea0, type: 2}
@@ -3253,6 +3261,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 19840494, guid: 34d7c53d4a51de44aa44dbf4ad246ea0, type: 2}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34d7c53d4a51de44aa44dbf4ad246ea0, type: 2}
   m_IsPrefabParent: 0
@@ -4486,6 +4498,56 @@ Prefab:
       propertyPath: dissolveShader
       value: 
       objectReference: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
+    - target: {fileID: 114185480032597360, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560634727001392, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95360352610585024, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198696494116047004, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198769010816184890, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198579508456976398, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198423515191780192, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95999979396590420, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8dad51769797c943aea61cba335d3d8, type: 2}
   m_IsPrefabParent: 0
@@ -5966,6 +6028,10 @@ Prefab:
     - target: {fileID: 152902, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}
       propertyPath: m_Name
       value: ConfettiFalls (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 19832534, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}
+      propertyPath: useRigidbodyForVelocity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}

@@ -20,11 +20,13 @@ public class DiscoBeatSpawner : MonoBehaviour {
     public Shader dissolveShader;
     List<Material> dissolveMaterialPool;
     List<GameObject> discobeatPool;
+    List<GameObject> trashBin;
 
 	void Start()
     {
         dissolveMaterialPool = new List<Material>();
         discobeatPool = new List<GameObject>();
+        trashBin = new List<GameObject>();
 
         _ftTime = 0.0f;
 		_ftWait = 0.25f;
@@ -64,11 +66,27 @@ public class DiscoBeatSpawner : MonoBehaviour {
 
 			_ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
 
-		if (_goAudio.GetComponent<AudioSource>().clip != null &&
-			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
-		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f))
-			if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 1)
-				GenerateDrag();
+        if (_goAudio.GetComponent<AudioSource>().clip != null &&
+            _goAudio.GetComponent<AudioSource>().isPlaying == true &&
+           (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f))
+        {
+            if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 1)
+            {
+                GenerateDrag();
+            }
+            else
+            {
+                if(trashBin.Count>0)
+                { 
+                    for (int i = 0; i < trashBin.Count; ++i)
+                    {
+                        discobeatPool.Add(trashBin[i]);
+                    }
+                    //discobeatPool = trashBin;
+                    trashBin.Clear();
+                }
+            }
+        }
 	}
 
 	void GenerateDrag() {
@@ -151,9 +169,10 @@ public class DiscoBeatSpawner : MonoBehaviour {
         go.transform.parent = parent;
         go.transform.position = parent.transform.position;
 
-        go.SetActive(true);
+        if (go)
+            go.SetActive(true);
         //go.transform.position = new Vector3(0, 0, 0);
-        go.GetComponent<DiscoBeatMotion>().PoolInit(discobeatPool, dissolveMaterialPool); // responsible for returing the object
+        go.GetComponent<DiscoBeatMotion>().PoolInit(trashBin, dissolveMaterialPool); // responsible for returing the object
         go.GetComponent<DiscoBeatCollisionScript>().PoolInit();
         return go;
     }
