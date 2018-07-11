@@ -7,10 +7,12 @@ ModelImporter:
     400000: //RootNode
     2100000: baton1
     2100002: baton_pink_left_hand_baton1
+    2100004: baton
     2300000: //RootNode
     3300000: //RootNode
     4300000: polySurface30
     4300002: baton_pink_left_hand:polySurface30
+    4300004: baton30
   externalObjects: {}
   materials:
     importMaterials: 1

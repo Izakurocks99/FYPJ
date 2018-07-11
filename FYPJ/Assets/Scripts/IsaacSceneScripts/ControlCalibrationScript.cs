@@ -34,6 +34,7 @@ public class ControlCalibrationScript : ControllerModesScript
         verticleSize = Mathf.Abs(calibrationObject.transform.localScale.y * areaScale);
         horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.x * areaScale);
         distFromPlayer = (calibrationObject.transform.position - playerCamera.position).magnitude;
+        calibrationObject.SetActive(false);
     }
 
     // Update is called once per frame

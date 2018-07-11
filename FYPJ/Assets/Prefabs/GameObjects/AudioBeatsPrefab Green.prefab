@@ -250,10 +250,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 6
-  speed: 10
+  _ftTimeToTravel: 1
+  speed: 7
   endPoint: {fileID: 4352759193182030}
-  _die: 0
-  dissolveTime: 1
+  dissolveTime: 0.5
 --- !u!114 &114550759878323334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,7 +318,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0
@@ -4849,7 +4849,7 @@ ParticleSystem:
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
-  useRigidbodyForVelocity: 1
+  useRigidbodyForVelocity: 0
   startDelay:
     serializedVersion: 2
     minMaxState: 0

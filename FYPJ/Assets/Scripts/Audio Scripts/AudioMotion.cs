@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class AudioMotion : MonoBehaviour {
+public class AudioMotion : MonoBehaviour
+{
 
     Transform _tfCamera;
     Transform _tfParent;
     Transform _tfThis;
     public float _intShiftRate;
+    public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
+    float _ftTime;
     int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
@@ -30,8 +33,8 @@ public class AudioMotion : MonoBehaviour {
     Material myDissolveMaterial = null;
     Material myDefaultMaterial = null;
     float dissolveTimer = 0;
-    public void PoolInit(List<GameObject> home,List<Material> mat)
-        {
+    public void PoolInit(List<GameObject> home, List<Material> mat)
+    {
 
         dissolveTimer = 0;
         _home = home;
@@ -40,9 +43,10 @@ public class AudioMotion : MonoBehaviour {
     void Start() 
         {
 #endif
-		_tfThis = this.transform;
-		_tfParent = this.transform.parent.transform;
-		_tfCamera = Camera.main.transform;
+        _ftTime = 0.0f;
+        _tfThis = this.transform;
+        _tfParent = this.transform.parent.transform;
+        _tfCamera = Camera.main.transform;
 
         _die = false;
         _intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
@@ -50,7 +54,7 @@ public class AudioMotion : MonoBehaviour {
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-        _ftZ = -calibration.distFromPlayer;
+        _ftZ = -Mathf.Abs(calibration.distFromPlayer);
 
         PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
@@ -58,27 +62,32 @@ public class AudioMotion : MonoBehaviour {
                                                      _ftZ);
     }
 
-	void Update () {
-		_tfThis.Rotate(_tfThis.up, 4.0f);
+    void Update()
+    {
+        _tfThis.Rotate(_tfThis.up, 4.0f);
 
         // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
-		BeatMotion();
-        if(!_die)
-		    TransitBeat();
+        BeatMotion();
+        if (!_die)
+            TransitBeat();
         else
             dissolve();
-	}
+    }
 
-	void BeatMotion() {
-		_tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _intShiftRate) * Time.deltaTime, 0);
-	}
+    void BeatMotion()
+    {
+        _tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _intShiftRate) * Time.deltaTime, 0);
+    }
 
-	void TransitBeat() {
-		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
+    void TransitBeat()
+    {
+        _ftTime = Time.deltaTime / _ftTimeToTravel;
+        Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
             _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
+            // _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else
         {
 #if (BEAT_POOL)
@@ -86,9 +95,9 @@ public class AudioMotion : MonoBehaviour {
 #else
             Destroy(_tfThis.gameObject);
 #endif
-            PlayerStats.ModifyScore(-1);
+            //PlayerStats.ModifyScore(-1);
         }
-	}
+    }
 
     public void Die()
     {
@@ -96,7 +105,7 @@ public class AudioMotion : MonoBehaviour {
         _die = true;
         Material temp = _materials.PopBack();
         Material current = this.GetComponent<Renderer>().material;
-        myDefaultMaterial = current; 
+        myDefaultMaterial = current;
         string main = "_MainTex";
         string emis = "_Emissive";
 
@@ -124,10 +133,10 @@ public class AudioMotion : MonoBehaviour {
 #if (BEAT_POOL)
     void OnReturn()
     {
-            this.transform.parent = null;
-            this.gameObject.SetActive(false);
-            //if(_die)
-            //this.GetComponent<Renderer>().material = myDefaultMaterial;
+        this.transform.parent = null;
+        this.gameObject.SetActive(false);
+        //if(_die)
+        //this.GetComponent<Renderer>().material = myDefaultMaterial;
 
         if (myDefaultMaterial)
         {

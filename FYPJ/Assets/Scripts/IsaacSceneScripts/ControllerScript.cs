@@ -24,7 +24,7 @@ public enum GameColors
     Blue,
     Gold,
     Rainbow,
-    BLACK,
+    Black,
     NONE,
 }
 

@@ -40,7 +40,9 @@ GameObject:
   - component: {fileID: 23057819529043058}
   - component: {fileID: 114895042204494098}
   - component: {fileID: 114714823335265476}
-  - component: {fileID: 114237903517642464}
+  - component: {fileID: 114027140837720212}
+  - component: {fileID: 135720156067500176}
+  - component: {fileID: 54187658856511514}
   m_Layer: 0
   m_Name: RainbowBeatPrefab
   m_TagString: Untagged
@@ -117,7 +119,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761407923449524}
   m_Mesh: {fileID: 4300000, guid: e50812a80756d1f4cab1067f6fc1832d, type: 3}
---- !u!114 &114237903517642464
+--- !u!54 &54187658856511514
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761407923449524}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &114027140837720212
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,12 +142,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761407923449524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d57f29dfe97494ca0960fe8ad37865, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f04e27b4741b1e41bdbdc5ad9edb0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 10
   playerCam: {fileID: 0}
   isHit: 0
+  color: 4
   life: 0
 --- !u!114 &114714823335265476
 MonoBehaviour:
@@ -144,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 8
+  dissolveTime: 1
 --- !u!114 &114895042204494098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +176,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _intColor: 1
   _intDirection: 0
+--- !u!135 &135720156067500176
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761407923449524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06017782
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198936119251941046
 ParticleSystem:
   m_ObjectHideFlags: 1
