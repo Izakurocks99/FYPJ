@@ -43,7 +43,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
             go = Instantiate(_goPrefab, this.transform, false);
             discobeatPool.Add(go);
             go.SetActive(false);
-
+            Debug.Assert(dissolveShader);
             Material temp = new Material(dissolveShader);
             Material goMat = go.GetComponent<Renderer>().material;
 
