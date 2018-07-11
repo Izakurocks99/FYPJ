@@ -31,6 +31,13 @@ public class StickMesh
     public Dictionary<GameColors, List<Material>> dicStickColors;
 }
 
+[System.Serializable]
+public class TrailColor
+{
+    public GameColors gamecolor;
+    public Color[] color;
+}
+
 [ExecuteInEditMode]
 public class PlayerStickScript : MonoBehaviour
 {
@@ -43,6 +50,9 @@ public class PlayerStickScript : MonoBehaviour
     //public List<PlayerStick> playerSticks;
     //Dictionary<ControllerColor, Material> dicPlayerSticks;
     public List<StickMesh> stickMeshes;
+    Dictionary<GameColors, Color[]> dicTrail;
+
+    public List<TrailColor> trailList;
     Dictionary<StickType, StickMesh> dicSticks;
 
     public List<BatonCapsuleFollower> BatonFollowers;
@@ -65,6 +75,12 @@ public class PlayerStickScript : MonoBehaviour
                 var.dicStickColors.Add(color.color, color.material);
         }
 
+        dicTrail = new Dictionary<GameColors, Color[]>();
+        foreach (TrailColor var in trailList)
+        {
+            dicTrail.Add(var.gamecolor, var.color);
+        }
+
         GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
         ChangeStickColor(currColor);
     }
@@ -79,12 +95,11 @@ public class PlayerStickScript : MonoBehaviour
     {
         //update var
         currColor = newColor;
-
         Renderer mat = gameObject.GetComponent<Renderer>();
-        
         //swap mats
-
         mat.materials = dicSticks[objectMesh].dicStickColors[newColor].ToArray();
+
+        gameObject.GetComponent<MeleeWeaponTrail>()._colors = dicTrail[currColor];
     }
 
     public void Equip()
