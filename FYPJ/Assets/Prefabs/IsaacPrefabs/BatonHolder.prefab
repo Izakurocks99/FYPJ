@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.2, z: -10.3}
+  m_LocalPosition: {x: 0.2, y: 0.2, z: -10.3}
   m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.1}
   m_Children:
   - {fileID: 4564743456582238}
@@ -382,7 +382,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+  - {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +499,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1448dd2201dec9b49875ecaebad578fb, type: 3}
 --- !u!33 &33687570696518278
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -555,75 +555,73 @@ MonoBehaviour:
   handle: {fileID: 1854539351217052}
   RNGSticks: 0
   heldController: {fileID: 0}
-  objectMesh: 5
+  objectMesh: 0
   currColor: 1
   stickMeshes:
   - type: 0
     mesh: {fileID: 4300000, guid: 1448dd2201dec9b49875ecaebad578fb, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: 5f97898977c5c6049ab6bcc5046d232b, type: 2}
+      material:
+      - {fileID: 2100000, guid: 5f97898977c5c6049ab6bcc5046d232b, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
+      material:
+      - {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: 7c16cb1c5a5d6cf43b2984759497dedc, type: 2}
+      material:
+      - {fileID: 2100000, guid: 7c16cb1c5a5d6cf43b2984759497dedc, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: f7e174d14a40baa478db49c09c3f7e78, type: 2}
+      material:
+      - {fileID: 2100000, guid: f7e174d14a40baa478db49c09c3f7e78, type: 2}
   - type: 1
-    mesh: {fileID: 4300000, guid: 9bd7f6d45d312f4438e8e7a1340ca7a7, type: 3}
-    stickColors:
-    - color: 0
-      material: {fileID: 2100000, guid: 98d385b33c6bf7a4787fafd7e7a47f56, type: 2}
-    - color: 1
-      material: {fileID: 2100000, guid: b20009c73a4a8e14ab5ffb5d2b3034eb, type: 2}
-    - color: 2
-      material: {fileID: 2100000, guid: c86bf4f5cd3db4e4cbe6fad7b92113cb, type: 2}
-    - color: 3
-      material: {fileID: 2100000, guid: b20f5d0f01f6eb24ca872edbb6ebe917, type: 2}
-  - type: 2
-    mesh: {fileID: 4300000, guid: e5274cc986a71224e9766d0d44fac493, type: 3}
-    stickColors:
-    - color: 0
-      material: {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
-    - color: 1
-      material: {fileID: 2100000, guid: 03b660543125ea04987721febf6a1587, type: 2}
-    - color: 2
-      material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
-    - color: 3
-      material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
-  - type: 3
     mesh: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+      material:
+      - {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+      material:
+      - {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+      material:
+      - {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
-  - type: 4
+      material:
+      - {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+  - type: 2
     mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+      material:
+      - {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+      material:
+      - {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+      material:
+      - {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
-  - type: 5
+      material:
+      - {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+  - type: 3
     mesh: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+      material:
+      - {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+      material:
+      - {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+      material:
+      - {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+      material:
+      - {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
   BatonFollowers: []
 --- !u!114 &114383208978904600
 MonoBehaviour:

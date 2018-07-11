@@ -5,8 +5,8 @@ using UnityEngine;
 public enum StickType
 {
     Baton,
-    Staff,
-    Stick,
+    //Staff,
+    //Stick,
     Wakizashi,
     Candy,
     Bat,
@@ -18,7 +18,7 @@ public enum StickType
 public class StickColor
 {
     public GameColors color;
-    public Material material;
+    public List<Material> material;
 }
 
 [System.Serializable]
@@ -28,7 +28,7 @@ public class StickMesh
     public Mesh mesh;
 
     public List<StickColor> stickColors;
-    public Dictionary<GameColors,Material> dicStickColors;
+    public Dictionary<GameColors, List<Material>> dicStickColors;
 }
 
 [ExecuteInEditMode]
@@ -60,7 +60,7 @@ public class PlayerStickScript : MonoBehaviour
         {
             dicSticks.Add(var.type,var);
 
-            var.dicStickColors = new Dictionary<GameColors, Material>();
+            var.dicStickColors = new Dictionary<GameColors, List<Material>>();
             foreach (StickColor color in var.stickColors)
                 var.dicStickColors.Add(color.color, color.material);
         }
@@ -83,7 +83,8 @@ public class PlayerStickScript : MonoBehaviour
         Renderer mat = gameObject.GetComponent<Renderer>();
         
         //swap mats
-        mat.material = dicSticks[objectMesh].dicStickColors[newColor];
+
+        mat.materials = dicSticks[objectMesh].dicStickColors[newColor].ToArray();
     }
 
     public void Equip()
@@ -104,7 +105,7 @@ public class PlayerStickScript : MonoBehaviour
         {
             objectMesh = StickType.Baton;
         }
-
+        
         GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
         ChangeStickColor(currColor);
     }
