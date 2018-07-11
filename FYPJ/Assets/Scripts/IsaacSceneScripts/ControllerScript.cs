@@ -341,7 +341,17 @@ public class ControllerScript : MonoBehaviour
             ResetScene();
         }
 
-        if(button == controlsScript.clickButton)
+        if (button == controlsScript.swapSticksButton)
+        {
+            currStick.SwapStick();
+        }
+
+        if (button == controlsScript.resetScoreButton)
+        {
+            transform.parent.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
+        }
+
+        if (button == controlsScript.clickButton)
         {
             //interact with UI 
             if (laserPointer && laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())

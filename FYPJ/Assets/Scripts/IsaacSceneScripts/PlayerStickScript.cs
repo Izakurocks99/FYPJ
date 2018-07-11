@@ -9,6 +9,7 @@ public enum StickType
     Stick,
     Wakizashi,
     Candy,
+    Bat,
     MAX,
     //Fish
 }
@@ -96,8 +97,16 @@ public class PlayerStickScript : MonoBehaviour
         heldController = null;
     }
 
-    void InitModel()
+    public void SwapStick()
     {
+        objectMesh = (StickType)((int)objectMesh + 1);
+        if(objectMesh == StickType.MAX)
+        {
+            objectMesh = StickType.Baton;
+        }
 
+        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
+        ChangeStickColor(currColor);
     }
+
 }
