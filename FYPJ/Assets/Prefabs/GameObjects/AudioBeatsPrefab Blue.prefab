@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
+  lifeTime: 1
   playerCam: {fileID: 0}
   beats:
   - color: 1
@@ -289,7 +289,6 @@ MonoBehaviour:
   _intShiftRate: 6
   speed: 10
   endPoint: {fileID: 4215351834697888}
-  _die: 0
   dissolveTime: 1
 --- !u!135 &135238925341500474
 SphereCollider:
