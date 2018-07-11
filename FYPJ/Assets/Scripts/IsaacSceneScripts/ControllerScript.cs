@@ -348,7 +348,7 @@ public class ControllerScript : MonoBehaviour
 
         if (button == controlsScript.resetScoreButton)
         {
-            transform.parent.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
+            transform.root.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
         }
 
         if (button == controlsScript.clickButton)
