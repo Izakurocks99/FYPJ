@@ -125,7 +125,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
 				go.GetComponent<DiscoBeatMotion>()._vec3Target = _vec3View;
 				
 				_intCurrent += 1;
-				_goBandVisualiser.GetComponent<AudioBandVisualiser>()._ftTime -= 0.1f;
+				// _goBandVisualiser.GetComponent<AudioBandVisualiser>()._ftTime -= 0.1f;
 			}
 				
 			else {
