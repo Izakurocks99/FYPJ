@@ -40,6 +40,7 @@ Shader "Custom/BillBoarder"
         struct v2g {
 			float4 pos : SV_POSITION;
 			float2 uv : TEXCOORD0;
+			float3 norm : NORMAL;
 			//float4 col : COLOR;
         };
 
@@ -54,6 +55,7 @@ Shader "Custom/BillBoarder"
             v2g o;
             o.pos = v.vertex;//mul(unity_ObjectToWorld, v.vertex);//v.v;//UnityObjectToClipPos(v.v);
 			o.uv = v.texcoord.xy;
+			o.norm = v.normal;
 			//o.col = v.color;
             return o;
         }
@@ -114,8 +116,13 @@ Shader "Custom/BillBoarder"
 			//float linearHeight = ((pnoise( noisepos , float3(1,1,1))  + 1) / 2.f); 
 			float linearHeight = ((cnoise( noisepos )  + 1) / 2.f); 
 			float height = linearHeight  * _DistortionAmount;
-			float3 right = float3(1,0,0);
+
+
+
+
+
 			float3 up = float3(0,1,0);
+			float3 right = cross(up, IN[0].norm);//float3(1,0,0);
 
 
 

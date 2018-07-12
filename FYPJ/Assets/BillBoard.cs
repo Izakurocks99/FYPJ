@@ -49,6 +49,29 @@ public class BillBoard : MonoBehaviour {
     [SerializeField]
     float scale2 = 1;
 
+
+    [SerializeField]
+    float curve = 0.5f;
+
+    [SerializeField]
+    float curveRange = 180f;
+
+    float GetHeight(int x)
+    {
+        float height = 0;
+        if (x < w / 2)
+        {
+            height = Mathf.Lerp(0, curve, (float)x / ((float)w / 2f));
+        }
+        else
+        {
+            x = w - x;
+            height = Mathf.Lerp(0, curve, (float)x  / ((float)w / 2f));
+        }
+
+        return height;
+    }
+
     void Start () {
         Debug.Assert(sha);
         Debug.Assert(tex);
@@ -61,19 +84,48 @@ public class BillBoard : MonoBehaviour {
         Vector2[] uvs = new Vector2[w * h];
         int[] inds = new int[w * h];
         int i = 0;
+        Vector3[] normals = new Vector3[w * h];
+
+        //float midpoint = (float)w / 2f;
+        float singleDegree =  curveRange / (float)w;
+
+        //float distAdd = 180f / curveRange;
+        float circleArea = w * dist * (360f / curveRange);
+
+
+
+        float r = Mathf.Sqrt(circleArea / Mathf.PI);
+
+        //todo lerp just the z value of the curve
+        // and the the normal can calculate froms neighbours
+
        // Color[] cols = new Color[w * h];
+       Vector2 axis = new Vector2(-r,0);
         for (int y = 0; y < h; y++)
         {
             for (int x = 0; x < w; x++)
             {
-                verts[w * y + x] = new Vector3(x * dist, y * dist, 0);
+                float angle = singleDegree * x;
+
+                float rcos = Mathf.Cos(Mathf.Deg2Rad * angle);
+                float rsin = Mathf.Sin(Mathf.Deg2Rad * angle);
+
+                //float height = GetHeight(x);//x < w / 2 ? Mathf.Lerp(0, curve, w * (dist / 2) / x * (dist / 2)) : Mathf.Lerp(curve, 0 , w * (dist / 2) / x * (dist / 2));
+
+
+                Vector2 ans = new Vector2(rcos * (float)axis.x + rsin* (float)axis.y, -rsin * (float)axis.x + rcos * (float)axis.y);
+                //ans = new Vector2(midpoint , 0) + ans;
+
+                verts[w * y + x] = new Vector3(ans.x * dist , y * dist, ans.y * dist);// ans.y * dist );
+                Vector2 norm = ans.normalized * -1f;
+                normals[w * y + x] = new Vector3(norm.x, 0, norm.y);
                 uvs[w * y + x] = new Vector2((float)x / (float)w, ((float)y / (float)h) / 10.0f);
                 inds[w * y + x] = i++;
-              //  cols[w * y + x] = colors.GetRandom();
             }
         }
         points.vertices = verts;
-       // points.colors = cols;
+        // points.colors = cols;
+        points.normals = normals;
         points.uv = uvs;
         
         points.SetIndices(inds,MeshTopology.Points,0);

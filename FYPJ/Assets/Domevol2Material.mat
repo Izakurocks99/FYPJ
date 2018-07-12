@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _skytex:
-        m_Texture: {fileID: 2800000, guid: 5f5ffce750da7df449777d4e275001cb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53049f9755590e54d91e693a83b1f348, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
