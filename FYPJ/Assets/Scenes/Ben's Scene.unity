@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276917, g: 0.21589252, b: 0.29782748, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366789, g: 0.48427236, b: 0.56452113, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4858,6 +4858,7 @@ MonoBehaviour:
   _goPlayer: {fileID: 760541044}
   _goAudio: {fileID: 1876414391}
   _goBandVisualiser: {fileID: 203052108}
+  dissolveShader: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
 --- !u!1001 &1383149696
 Prefab:
   m_ObjectHideFlags: 0
