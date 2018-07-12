@@ -262,8 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9277b5e58f6bd3e47bd32dc0a93fd295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _intShiftRate: 6
-  _ftTimeToTravel: 1
+  _intShiftRate: 8
+  _ftTimeToTravel: 2
   speed: 7
   endPoint: {fileID: 4570928790380784}
   dissolveTime: 0.5

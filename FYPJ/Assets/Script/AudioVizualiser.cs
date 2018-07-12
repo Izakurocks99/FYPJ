@@ -4,14 +4,16 @@ using System.Collections;
 public class AudioVizualiser : MonoBehaviour {
 
     public GameObject _SampleCubePrefab;
-    GameObject[] _sampleCube = new GameObject[Audio._barLenght];
+    GameObject[] _sampleCube = new GameObject[Audio1._barLenght];
     public float _height, _minimumHeight;
     public Vector3 _direction;
     public float _stepDistance;
     public float _scale;
     Vector3 _position;
     Material _mt;
-    public Gradient _colorGradient;
+	public Gradient _colorGradient;
+	public Audio1 audio1;
+
 
 	void Start ()
     {
@@ -37,8 +39,8 @@ public class AudioVizualiser : MonoBehaviour {
         {
             if (_sampleCube != null)
             {
-                _sampleCube[i].transform.localScale = new Vector3(_scale, (Audio._bandBuffer[i] * _height) + _minimumHeight, _scale);
-                Color _color = _colorGradient.Evaluate(Audio._bandBuffer[i]);
+                _sampleCube[i].transform.localScale = new Vector3(_scale, (audio1.GetComponent<Audio1>()._bandBuffer[i] * _height) + _minimumHeight, _scale);
+                Color _color = _colorGradient.Evaluate(audio1.GetComponent<Audio1>()._bandBuffer[i]);
                 _mt = _sampleCube[i].GetComponentInChildren<MeshRenderer>().materials[0];
                 _mt.SetColor("_EmissionColor", _color);
             }

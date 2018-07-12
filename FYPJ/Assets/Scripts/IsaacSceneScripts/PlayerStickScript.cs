@@ -5,10 +5,11 @@ using UnityEngine;
 public enum StickType
 {
     Baton,
-    Staff,
-    Stick,
+    //Staff,
+    //Stick,
     Wakizashi,
     Candy,
+    Bat,
     MAX,
     //Fish
 }
@@ -17,7 +18,7 @@ public enum StickType
 public class StickColor
 {
     public GameColors color;
-    public Material material;
+    public List<Material> material;
 }
 
 [System.Serializable]
@@ -27,7 +28,14 @@ public class StickMesh
     public Mesh mesh;
 
     public List<StickColor> stickColors;
-    public Dictionary<GameColors,Material> dicStickColors;
+    public Dictionary<GameColors, List<Material>> dicStickColors;
+}
+
+[System.Serializable]
+public class TrailColor
+{
+    public GameColors gamecolor;
+    public Color[] color;
 }
 
 [ExecuteInEditMode]
@@ -42,6 +50,9 @@ public class PlayerStickScript : MonoBehaviour
     //public List<PlayerStick> playerSticks;
     //Dictionary<ControllerColor, Material> dicPlayerSticks;
     public List<StickMesh> stickMeshes;
+    Dictionary<GameColors, Color[]> dicTrail;
+
+    public List<TrailColor> trailList;
     Dictionary<StickType, StickMesh> dicSticks;
 
     public List<BatonCapsuleFollower> BatonFollowers;
@@ -59,9 +70,15 @@ public class PlayerStickScript : MonoBehaviour
         {
             dicSticks.Add(var.type,var);
 
-            var.dicStickColors = new Dictionary<GameColors, Material>();
+            var.dicStickColors = new Dictionary<GameColors, List<Material>>();
             foreach (StickColor color in var.stickColors)
                 var.dicStickColors.Add(color.color, color.material);
+        }
+
+        dicTrail = new Dictionary<GameColors, Color[]>();
+        foreach (TrailColor var in trailList)
+        {
+            dicTrail.Add(var.gamecolor, var.color);
         }
 
         GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
@@ -78,11 +95,11 @@ public class PlayerStickScript : MonoBehaviour
     {
         //update var
         currColor = newColor;
-
         Renderer mat = gameObject.GetComponent<Renderer>();
-        
         //swap mats
-        mat.material = dicSticks[objectMesh].dicStickColors[newColor];
+        mat.materials = dicSticks[objectMesh].dicStickColors[newColor].ToArray();
+
+        gameObject.GetComponent<MeleeWeaponTrail>()._colors = dicTrail[currColor];
     }
 
     public void Equip()
@@ -96,8 +113,16 @@ public class PlayerStickScript : MonoBehaviour
         heldController = null;
     }
 
-    void InitModel()
+    public void SwapStick()
     {
-
+        objectMesh = (StickType)((int)objectMesh + 1);
+        if(objectMesh == StickType.MAX)
+        {
+            objectMesh = StickType.Baton;
+        }
+        
+        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
+        ChangeStickColor(currColor);
     }
+
 }

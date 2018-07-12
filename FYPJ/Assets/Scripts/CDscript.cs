@@ -9,7 +9,7 @@ public class CDscript : MonoBehaviour {
 	public Text Title;
 	public Text Description;
 	public GameObject platform, player;
-	public GameObject audioSource;
+	public GameObject audioSource, loadingScreen;
 	Vector3 originalScale;
 
 
@@ -17,11 +17,12 @@ public class CDscript : MonoBehaviour {
 	void Start ()
 	{
 		Title = GameObject.Find("Decor/Screen/Canvas/Title").GetComponent<Text>();
-
+		Description = GameObject.Find("Decor/Screen/Canvas/Description").GetComponent<Text>();
 		platform = GameObject.Find("Decor/platform");
 		player = GameObject.Find("Player");
 		audioSource = GameObject.Find("SongsSelection/Audio Source");
 		originalScale = new Vector3(.65f, .65f, .65f);
+		loadingScreen = GameObject.Find("Player/MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -33,6 +34,7 @@ public class CDscript : MonoBehaviour {
 		if (transform.position.z >2.9f)
 		{
 			Title.text = song.title;
+			Description.text = song.description;
 			if (song.audioClip != null)
 				audioSource.GetComponent<AudioSource>().clip = song.audioClip;
 			if (audioSource.GetComponent<AudioSource>().isPlaying == false)
@@ -58,6 +60,8 @@ public class CDscript : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0) && transform.position.z >2.9f)
 		{
 			StartCoroutine(LaunchSong(song));
+			loadingScreen.GetComponent<SceneSwitch>().LoadScene();
+
 		}
 
 	}

@@ -66,7 +66,7 @@ public class AudioMotion : MonoBehaviour
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
 
-        // _vec3Area = new Vector3(0, 0, -7.0f);
+        //_vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
         BeatMotion();
@@ -83,7 +83,7 @@ public class AudioMotion : MonoBehaviour
 
     void TransitBeat()
     {
-        _ftTime = Time.deltaTime / _ftTimeToTravel;
+        _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
             _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);

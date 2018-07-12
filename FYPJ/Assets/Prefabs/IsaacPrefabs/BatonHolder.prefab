@@ -23,8 +23,24 @@ GameObject:
   - component: {fileID: 23341311728906072}
   - component: {fileID: 114126485155196972}
   - component: {fileID: 65574413837760506}
+  - component: {fileID: 114089734086464896}
   m_Layer: 0
   m_Name: baton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1174787115349396
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4205863685901526}
+  m_Layer: 0
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,6 +150,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1709284401425392
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4135279834739522}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1854539351217052
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +195,32 @@ Transform:
   m_Father: {fileID: 4377261236560124}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4135279834739522
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709284401425392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4564743456582238}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4205863685901526
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1174787115349396}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.7, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 0.99999964, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 4564743456582238}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4377261236560124
 Transform:
   m_ObjectHideFlags: 1
@@ -189,13 +246,13 @@ Transform:
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: 0.2, z: -10.3}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.1}
   m_Children:
   - {fileID: 4564743456582238}
   - {fileID: 4852354826258694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4492642610500456
 Transform:
   m_ObjectHideFlags: 1
@@ -216,10 +273,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4377261236560124}
+  - {fileID: 4135279834739522}
+  - {fileID: 4205863685901526}
   m_Father: {fileID: 4483697958616920}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,7 +441,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+  - {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +558,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1448dd2201dec9b49875ecaebad578fb, type: 3}
 --- !u!33 &33687570696518278
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -541,6 +600,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.83074415, y: 5.969033, z: 0.830745}
   m_Center: {x: 0.0000015944242, y: 2.984512, z: -0.00000018066032}
+--- !u!114 &114089734086464896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164987087485424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ceb339997c8304e9354d4ce5ddc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emit: 1
+  _emitTime: 0
+  _material: {fileID: 2100000, guid: 5f402d1520e5fa74fa21e08f85b71370, type: 2}
+  _lifeTime: 0.1
+  _colors:
+  - {r: 0.061076403, g: 1, b: 0, a: 1}
+  _sizes: []
+  _minVertexDistance: 0.01
+  _maxVertexDistance: 1
+  _maxAngle: 0
+  _autoDestruct: 0
+  subdivisions: 4
+  _base: {fileID: 4135279834739522}
+  _tip: {fileID: 4205863685901526}
 --- !u!114 &114126485155196972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -555,64 +639,86 @@ MonoBehaviour:
   handle: {fileID: 1854539351217052}
   RNGSticks: 0
   heldController: {fileID: 0}
-  objectMesh: 4
-  currColor: 2
+  objectMesh: 0
+  currColor: 1
   stickMeshes:
   - type: 0
-    mesh: {fileID: 4300004, guid: 38084daa65a0d4b44b575b695af48ef0, type: 3}
+    mesh: {fileID: 4300000, guid: 1448dd2201dec9b49875ecaebad578fb, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: e8ef0ec6580c6194ea12f29c8ff2c618, type: 2}
+      material:
+      - {fileID: 2100000, guid: 5f97898977c5c6049ab6bcc5046d232b, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: 663c04b6bdade5a4296b6e81f3a0149a, type: 2}
+      material:
+      - {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: aa0855d705e6eeb49b8abd2416cd036c, type: 2}
+      material:
+      - {fileID: 2100000, guid: 7c16cb1c5a5d6cf43b2984759497dedc, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: 6d304ffe18a01224b9bbc5da1475001a, type: 2}
+      material:
+      - {fileID: 2100000, guid: f7e174d14a40baa478db49c09c3f7e78, type: 2}
   - type: 1
-    mesh: {fileID: 4300000, guid: 9bd7f6d45d312f4438e8e7a1340ca7a7, type: 3}
+    mesh: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: 98d385b33c6bf7a4787fafd7e7a47f56, type: 2}
+      material:
+      - {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: b20009c73a4a8e14ab5ffb5d2b3034eb, type: 2}
+      material:
+      - {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: c86bf4f5cd3db4e4cbe6fad7b92113cb, type: 2}
+      material:
+      - {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: b20f5d0f01f6eb24ca872edbb6ebe917, type: 2}
+      material:
+      - {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
   - type: 2
-    mesh: {fileID: 4300000, guid: e5274cc986a71224e9766d0d44fac493, type: 3}
-    stickColors:
-    - color: 0
-      material: {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
-    - color: 1
-      material: {fileID: 2100000, guid: 03b660543125ea04987721febf6a1587, type: 2}
-    - color: 2
-      material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
-    - color: 3
-      material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
-  - type: 3
-    mesh: {fileID: 4300000, guid: 9c6f27773e47faf42bd2e608eee832ec, type: 3}
-    stickColors:
-    - color: 0
-      material: {fileID: 2100000, guid: f2bf01d9edf87ed48849b9f6dd1004d6, type: 2}
-    - color: 1
-      material: {fileID: 2100000, guid: 03b660543125ea04987721febf6a1587, type: 2}
-    - color: 2
-      material: {fileID: 2100000, guid: 000e66007405cc6408785b342d0cd7f9, type: 2}
-    - color: 3
-      material: {fileID: 2100000, guid: abf52475f97f10945863eaca6180dd60, type: 2}
-  - type: 4
     mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
     stickColors:
     - color: 0
-      material: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+      material:
+      - {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 1
-      material: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+      material:
+      - {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 2
-      material: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+      material:
+      - {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
     - color: 3
-      material: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+      material:
+      - {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+      - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+  - type: 3
+    mesh: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    stickColors:
+    - color: 0
+      material:
+      - {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - color: 1
+      material:
+      - {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - color: 2
+      material:
+      - {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - color: 3
+      material:
+      - {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+  trailList:
+  - gamecolor: 0
+    color:
+    - {r: 1, g: 0, b: 0.8160777, a: 1}
+  - gamecolor: 1
+    color:
+    - {r: 0.061076403, g: 1, b: 0, a: 1}
+  - gamecolor: 2
+    color:
+    - {r: 0, g: 0.11642933, b: 1, a: 1}
+  - gamecolor: 3
+    color:
+    - {r: 0.7816731, g: 0.7924528, b: 0, a: 1}
   BatonFollowers: []
 --- !u!114 &114383208978904600
 MonoBehaviour:
