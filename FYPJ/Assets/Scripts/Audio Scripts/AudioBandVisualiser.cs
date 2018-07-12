@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour
 {
-
     public Vector3 beatScale;
     public GameObject[] _goAudioScales;
     public GameObject[] _goPrefab;
     public GameObject _goAudio;
     public GameObject _goPlayer;
+
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
     List<Material> DissolveMaterialPool = null;
@@ -20,6 +20,7 @@ public class AudioBandVisualiser : MonoBehaviour
     public Texture2D RoughnessBeatTex = null;
     public Texture2D MetallicBeatTex = null;
 #endif
+
     public Material[] _matsPrimary;
     public Material[] _matsSecondary;
     public float _ftTime;
@@ -28,15 +29,17 @@ public class AudioBandVisualiser : MonoBehaviour
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
     public static int _intBeatCounts;
-    int _intPreviousMaterial;
-    int _intCurrentMaterial;
+    int _intPreviousMaterial, _intCurrentMaterial;
+    int _intMatColorL, _intMatColorR;
+
 #if (BEAT_POOL)
     [SerializeField]
     List<GameObject> listGOPrefab = new List<GameObject>();
     List<List<GameObject>> listGOBeatPool = null;
     [Range(50, 500)]
     uint _maxBeats = 10;
-#endif 
+#endif
+
     void Start()
     {
         _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
@@ -45,30 +48,30 @@ public class AudioBandVisualiser : MonoBehaviour
         _intBeatCounts = 0;
         _intPreviousMaterial = 0;
         _intCurrentMaterial = 10;
+        _intMatColorL = 0;
+        _intMatColorR = 0;
+
 #if (BEAT_POOL)
         Debug.Assert(DissolveShader);
         Debug.Assert(RoughnessBeatTex);
         Debug.Assert(MetallicBeatTex);
         DissolveMaterialPool = new List<Material>();
-        for (int i = 0; i < MaterialPoolSize; i++)
-        {
+
+        for (int i = 0; i < MaterialPoolSize; i++) {
             Material temp = new Material(DissolveShader);
             temp.SetTexture("_RoughnessTex", RoughnessBeatTex);
             temp.SetTexture("_MetallicTex", MetallicBeatTex);
             temp.SetTexture("NoiseTex",
                 NoiseTexGenerator.GetTexture((float)i, (float)i));
-            DissolveMaterialPool.Add(temp);
-        }
+            DissolveMaterialPool.Add(temp); }
 
         listGOBeatPool = new List<List<GameObject>>();
-        for (int i1 = 0; i1 < listGOPrefab.Count; i1++)
-        {
+        for (int i1 = 0; i1 < listGOPrefab.Count; i1++) {
             listGOBeatPool.Add(new List<GameObject>());
-            for (int i2 = 0; i2 < _maxBeats; i2++)
-            {
+
+            for (int i2 = 0; i2 < _maxBeats; i2++) {
                 listGOBeatPool[i1].Add(Instantiate(listGOPrefab[i1]));
-                listGOBeatPool[i1][i2].SetActive(false);
-            }
+                listGOBeatPool[i1][i2].SetActive(false); }
         }
 #endif
     }
@@ -78,40 +81,27 @@ public class AudioBandVisualiser : MonoBehaviour
         for (int i = 0; i < _goAudioScales.Length; i++)
             _goAudioScales[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
 
-        switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty)
-        {
-            case 0:
-                {
+        switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
+            case 0: {
                     _ftWait = 1.25f;
-                    break;
-                }
-            case 1:
-                {
+                    break; }
+            case 1: {
                     _ftWait = 0.975f;
-                    break;
-                }
-            case 2:
-                {
+                    break; }
+            case 2: {
                     _ftWait = 0.85f;
-                    break;
-                }
-            case 3:
-                {
+                    break; }
+            case 3: {
                     _ftWait = 0.65f;
-                    break;
-                }
-            default:
-                {
+                    break; }
+            default: {
                     _ftWait = 1.25f;
-                    break;
-                }
+                    break; }
         }
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
             _goAudio.GetComponent<AudioSource>().isPlaying == true &&
-           (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f))
-        {
-            //Debug.Log(_goAudio.GetComponent<AudioSource>().time + " / " + _goAudio.GetComponent<AudioSource>().clip.length);
+           (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             GetDifference();
             InstantiateBeat();
         }
@@ -149,29 +139,48 @@ public class AudioBandVisualiser : MonoBehaviour
                                     }
                                 }
                                 continue;
-                            }
-                        }
-                    }
+                    }   }   }
 
-                    for (int i = 0; i < _intMax; i++)
-                    {
-                        if (i == 0)
-                        {
-                            p = _intFst;
-                            _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                    for (int i = 0; i < _intMax; i++) {
+                        if (_goPlayer.GetComponent<PlayerStats>()._intPlayerMode == 1) {
+                                
+                            if (i == 0) {
+                                p = _intFst;
+                                _intCurrentMaterial = Random.Range(0, _matsPrimary.Length); }
+                            else {
+                                p = _intSnd;
+                                _intCurrentMaterial = Random.Range(0, _matsSecondary.Length); }
                         }
-                        else
-                        {
-                            p = _intSnd;
-                            _intCurrentMaterial = Random.Range(0, _matsSecondary.Length);
+                        else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerMode == 0) {
+                            
+                            if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
+                                if (i == 0) {
+                                    p = _intFst;
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length); 
+                                    _intMatColorL = _intCurrentMaterial;}
+                                else {
+                                    p = _intSnd;
+                                    _intCurrentMaterial = Random.Range(0, _matsSecondary.Length);
+                                    _intMatColorR = _intCurrentMaterial;}
+                            }
+                            else {
+                                if (i == 0) {
+                                    p = _intFst;
+                                    _intCurrentMaterial = _intMatColorL;
+                                }
+                                else {
+                                    p = _intSnd;
+                                    _intCurrentMaterial = _intMatColorR;
+                                }
+                            }
                         }
 
 #if (BEAT_POOL)
                         if (i == 1) _intCurrentMaterial += 2;
                         GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[p]);
 #else
-							GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
-							go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
+                        GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
+                        go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
                         go.transform.localScale = beatScale;
                         _intPreviousMaterial = _intCurrentMaterial;
@@ -181,7 +190,6 @@ public class AudioBandVisualiser : MonoBehaviour
 #if (BEAT_POOL)
                         InitPoolObject(go, _intCurrentMaterial);
 #endif
-                        // _intBeatCounts++;
                     }
                 }
 
