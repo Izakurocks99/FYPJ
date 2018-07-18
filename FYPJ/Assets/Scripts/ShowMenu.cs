@@ -7,15 +7,15 @@ public class ShowMenu : MonoBehaviour {
     bool showing, showingAudioMenu, showingDifficultyMenu, hiding, hidingAudioMenu, hidingDifficultyMenu, audioPriority, difficultyPriority;
     public float _ScrollLenght, transitionSpeed;
     public Vector3 showingPosition, audioShowingPos,difficultyShowingPos, hidingPosition, audioHidingPos, difficultyHidingPos;
-	public GameObject audioMenu, difficultyMenu, exitMenu;
+	public GameObject menu, audioMenu, difficultyMenu, exitMenu;
 
 
 	// Use this for initialization
 	void Start () {
 
-        hidingPosition = transform.localPosition;
-		audioHidingPos = audioMenu.transform.localPosition;
-		difficultyHidingPos = difficultyMenu.transform.localPosition;
+  //      hidingPosition = transform.localPosition;
+		//audioHidingPos = audioMenu.transform.localPosition;
+		//difficultyHidingPos = difficultyMenu.transform.localPosition;
         showing = false;
         hiding = true;
 		showingAudioMenu = false;
@@ -85,9 +85,9 @@ public class ShowMenu : MonoBehaviour {
 
         while(!showing)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, showingPosition, Time.deltaTime * transitionSpeed);
+            menu.transform.localPosition = Vector3.Lerp(menu.transform.localPosition, showingPosition, Time.deltaTime * transitionSpeed);
 
-            if (Vector3.Distance(transform.localPosition, showingPosition) < 1)
+            if (Vector3.Distance(menu.transform.localPosition, showingPosition) < 1)
                 showing = true;
 
             yield return 0;
@@ -106,9 +106,9 @@ public class ShowMenu : MonoBehaviour {
 		while (!hiding)
 		{
 
-			transform.localPosition = Vector3.Lerp(transform.localPosition, hidingPosition, Time.deltaTime * transitionSpeed);
+            menu.transform.localPosition = Vector3.Lerp(menu.transform.localPosition, hidingPosition, Time.deltaTime * transitionSpeed);
 
-			if (Vector3.Distance(transform.localPosition, hidingPosition) < 1)
+			if (Vector3.Distance(menu.transform.localPosition, hidingPosition) < 1)
 				hiding = true;
 
 			yield return 0;
