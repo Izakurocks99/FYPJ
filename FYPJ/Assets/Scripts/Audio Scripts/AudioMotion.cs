@@ -7,17 +7,17 @@ using UnityEngine;
 public class AudioMotion : MonoBehaviour
 {
 
-    Transform _tfCamera;
-    Transform _tfParent;
+    //Transform _tfCamera;
+    //Transform _tfParent;
     Transform _tfThis;
     public float _intShiftRate;
     public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
     float _ftTime;
-    int _intNumber;
+    //int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
-    PlayerStats PlayerStats;
+    //PlayerStats PlayerStats;
 
     public float speed = 10;
     public Transform endPoint;
@@ -45,18 +45,18 @@ public class AudioMotion : MonoBehaviour
 #endif
         _ftTime = 0.0f;
         _tfThis = this.transform;
-        _tfParent = this.transform.parent.transform;
-        _tfCamera = Camera.main.transform;
+        //_tfParent = this.transform.parent.transform;
+        //_tfCamera = Camera.main.transform;
 
         _die = false;
-        _intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+        //_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
         _ftZ = -Mathf.Abs(calibration.distFromPlayer);
 
-        PlayerStats = FindObjectOfType<PlayerStats>();
+        //PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                      _ftY,
                                                      _ftZ);

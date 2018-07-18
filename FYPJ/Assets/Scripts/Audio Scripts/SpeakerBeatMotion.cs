@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SpeakerBeatMotion : MonoBehaviour {
 
-	Transform _tfCamera;
-	Transform _tfParent;
+	Transform _tfCamera = null;
+	//Transform _tfParent = null;
 	Transform _tfThis;
     public float _intShiftRate;
 	int _intNumber;
@@ -41,7 +41,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
         _die = false;
 
         _tfThis = this.transform;
-        _tfParent = this.transform.parent.transform;
+        //_tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
         _vec3Area = (_tfCamera.position + _tfCamera.forward * 0.5f);
         _vec3Shift = new Vector3(Random.Range(-0.25f, 0.25f),

@@ -7,8 +7,8 @@ using UnityEditor;
 public class DiscoBeatMotion : MonoBehaviour
 {
 
-    Transform _tfCamera;
-    Transform _tfParent;
+    //Transform _tfCamera;
+    //Transform _tfParent;
     Transform _tfThis;
     public float _intShiftRate;
     public Vector3 _vec3Shift;
@@ -43,9 +43,9 @@ public class DiscoBeatMotion : MonoBehaviour
         _die = false;
 
         _tfThis = this.transform;
-        if (this.transform.parent.transform != null)
-            _tfParent = this.transform.parent.transform;
-        _tfCamera = Camera.main.transform;
+        //if (this.transform.parent.transform != null)
+        //    _tfParent = this.transform.parent.transform;
+        //_tfCamera = Camera.main.transform;
     }
 
     void Update()

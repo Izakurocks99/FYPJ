@@ -13,7 +13,7 @@ public class WeaponController : MonoBehaviour
     public AudioSource shotSound;
     public AudioSource missSound;
     public GameObject player;
-    private LaserPointer laserPointer;
+    //private LaserPointer laserPointer;
 	private RaycastHit hit;
 	private float lastShotTime = 0;
 	private bool canShoot = true;
@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
 	// Used for initialization
 	void Start ()
 	{
-		laserPointer = FindObjectOfType<LaserPointer>();
+		//laserPointer = FindObjectOfType<LaserPointer>();
 		WeaponCanShoot(false);
 		shotsFired = 0;
 	}
