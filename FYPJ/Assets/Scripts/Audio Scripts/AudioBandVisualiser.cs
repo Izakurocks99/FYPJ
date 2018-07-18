@@ -113,7 +113,6 @@ public class AudioBandVisualiser : MonoBehaviour
         {
             if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait)
             {
-
                 float _ftSpawn = Random.value;
                 int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
 
