@@ -41,7 +41,6 @@ public class TrailColor
 [ExecuteInEditMode]
 public class PlayerStickScript : MonoBehaviour
 {
-    public GameObject handle;
     public bool RNGSticks;
 
     public ControllerScript heldController;
@@ -91,6 +90,12 @@ public class PlayerStickScript : MonoBehaviour
 
     }
 
+    public void InitMesh(int index)
+    {
+        objectMesh = (StickType)index;
+        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
+    }
+
     public void ChangeStickColor(GameColors newColor)
     {
         //update var
@@ -105,7 +110,15 @@ public class PlayerStickScript : MonoBehaviour
     public void Equip()
     {
         heldController = GetComponentInParent<ControllerScript>();
-        Debug.Log(heldController.gameObject.name);
+        if(heldController.isSecondaryMoveController)
+        {
+            PlayerPrefs.SetInt("secstick", (int)objectMesh);
+        }
+        else if(!heldController.isSecondaryMoveController)
+        {
+            PlayerPrefs.SetInt("pristick", (int)objectMesh);
+        }
+        //Debug.Log(heldController.gameObject.name);
     }
 
     public void Drop()

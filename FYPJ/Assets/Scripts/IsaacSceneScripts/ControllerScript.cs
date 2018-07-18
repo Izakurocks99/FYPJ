@@ -32,6 +32,7 @@ public class ControllerScript : MonoBehaviour
 {
     //public
     public bool isSecondaryMoveController = false;
+    public GameObject stick;
     public PlayerStickScript currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;
@@ -45,7 +46,7 @@ public class ControllerScript : MonoBehaviour
     public ControlCalibrationScript calibrateScript;
 
     //private
-    private GameObject highlightedStick; //indicate which stick is selected/where to grab the stick to equip
+    //private GameObject highlightedStick; //indicate which stick is selected/where to grab the stick to equip
     private RaycastHit hit;
     private Vector3 startingPos;
     private bool canPickup = true; //check if hand is alread grabbing a stick
@@ -354,9 +355,9 @@ public class ControllerScript : MonoBehaviour
         if (button == controlsScript.clickButton)
         {
             //interact with UI 
-            if (laserPointer && laserPointer.LineRaycast().collider && laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>())
+            if (laserPointer && laserPointer.LineRaycast() && laserPointer.LineRaycast().gameObject.GetComponent<Button>())
             {
-                laserPointer.LineRaycast().collider.gameObject.GetComponent<Button>().onClick.Invoke();
+                laserPointer.LineRaycast().gameObject.GetComponent<Button>().onClick.Invoke();
             }
         }
     }
@@ -373,21 +374,39 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
+    public void SpawnStick()
+    {
+        GameObject go = Instantiate(stick);
+        if (isSecondaryMoveController)
+            go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("secstick"));
+        else if (!isSecondaryMoveController)
+            go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("pristick"));
+
+    }
+
     bool PickUpStick()
     {
-        if (highlightedStick && canPickup)//if overlapping a stick and is not holding
+        Collider hit = laserPointer.LineRaycast();
+        if (hit != null)
         {
-            //put stick in the hand's stick slot
-            highlightedStick.transform.SetParent(stickSlot);
-            highlightedStick.transform.position = stickSlot.position;
-            highlightedStick.transform.rotation = stickSlot.rotation;
-            //set controller currstick
-            currStick = highlightedStick.GetComponentInChildren<PlayerStickScript>();
-            currStick.Equip();
+            if (hit.gameObject.GetComponent<PlayerStickScript>())
+            {
+                PlayerStickScript stick = hit.gameObject.GetComponent<PlayerStickScript>();
+                if (hit.gameObject.GetComponent<PlayerStickScript>() && canPickup)//if overlapping a stick and is not holding
+                {
+                    //put stick in the hand's stick slot
+                    hit.gameObject.transform.parent.SetParent(stickSlot);
+                    hit.gameObject.transform.parent.position = stickSlot.position;
+                    hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                    //set controller currstick
+                    currStick = hit.gameObject.GetComponent<PlayerStickScript>();
+                    currStick.Equip();
 
-            //set player unable to pickup
-            canPickup = false;
-            return true;
+                    //set player unable to pickup
+                    canPickup = false;
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -408,35 +427,25 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //if other entered a sicks
-        if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-        {
-            //set current stick as "highlighted"
-            highlightedStick = other.gameObject;
-        }
-        if (other.gameObject.GetComponent<PlayerStickScript>() && !other.transform.parent.parent)
-        {
-            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
-            stickScript.handle.SetActive(true);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //if other entered a sicks
+    //    if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
+    //    {
+    //        //set current stick as "highlighted"
+    //        highlightedStick = other.gameObject;
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        //if other entered a sicks
-        if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-        {
-            //set current stick as "highlighted"
-            highlightedStick = null;
-        }
-        if (other.gameObject.GetComponent<PlayerStickScript>() && !other.transform.parent.parent)
-        {
-            PlayerStickScript stickScript = other.gameObject.GetComponent<PlayerStickScript>();
-            stickScript.handle.SetActive(false);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    //if other entered a sicks
+    //    if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
+    //    {
+    //        //set current stick as "highlighted"
+    //        highlightedStick = null;
+    //    }
+    //}
 
     void ResetScene()
     {
