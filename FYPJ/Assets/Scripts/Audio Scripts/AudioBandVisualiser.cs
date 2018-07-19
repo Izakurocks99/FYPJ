@@ -12,6 +12,8 @@ public class AudioBandVisualiser : MonoBehaviour
     public GameObject[] _goPrefab;
     public GameObject _goAudio;
     public GameObject _goPlayer;
+    GameObject _goInstanceA;
+    GameObject _goInstanceB;
 
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
@@ -47,7 +49,7 @@ public class AudioBandVisualiser : MonoBehaviour
         _ftTime = 0f;
         _intBeatCounts = 0;
         _intPreviousMaterial = 0;
-        _intCurrentMaterial = 10;
+        _intCurrentMaterial = 0;
         _intMatColorL = 0;
         _intMatColorR = 0;
 
@@ -116,75 +118,84 @@ public class AudioBandVisualiser : MonoBehaviour
                 float _ftSpawn = Random.value;
                 int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
 
+                // Normal, Hard && Challenge Mode
                 if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty != 0)
                 {
-                    int p = 9;
-                    int _intFst = 9;
-                    int _intSnd = 9;
-                    for (int j = 0; j < 2; j++)
-                    {
-                        for (int k = 0; k < AudioSampler._ftMaxbuffer.Length; k++)
-                        {
-                            if ((AudioSampler._ftMaxbuffer[k] - _ftAryPrevBuffer[k]) == _ftAryDiffBuffer[j])
-                            {
-                                if (j == 0) _intFst = k;
-                                else
-                                {
-                                    if (k != _intFst) _intSnd = k;
-                                    else
-                                    {
-                                        if (Random.value < 0.5f) _intSnd = k - 1;
-                                        else _intSnd = k + 1;
-                                    }
-                                }
-                                continue;
-                    }   }   }
+                    int _intParse = 9;
+                    int _intFirst = 9;
+                    int _intSecond = 9;
 
+                    // Getting the Spawn Locations
+                    for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
+                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
+                            if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
+                                if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
+                                else if (_intCurrentCounter != 0) {
+                                    if (_intCurrentBuffer == _intFirst) continue;
+                                    else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                }
+                            }
+                        }
+                    }
+
+                    // Start of Spawning Section
                     for (int i = 0; i < _intMax; i++) {
-                        if (_goPlayer.GetComponent<PlayerStats>()._intPlayerMode == 1) {
-                                
-                            if (i == 0) {
-                                p = _intFst;
-                                _intCurrentMaterial = Random.Range(0, _matsPrimary.Length); }
-                            else {
-                                p = _intSnd;
-                                _intCurrentMaterial = Random.Range(0, _matsSecondary.Length); }
-                        }
-                        else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerMode == 0) {
-                            
-                            if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                if (i == 0) {
-                                    p = _intFst;
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length); 
-                                    _intMatColorL = _intCurrentMaterial;}
-                                else {
-                                    p = _intSnd;
-                                    _intCurrentMaterial = Random.Range(0, _matsSecondary.Length);
-                                    _intMatColorR = _intCurrentMaterial;}
-                            }
-                            else {
-                                if (i == 0) {
-                                    p = _intFst;
-                                    _intCurrentMaterial = _intMatColorL;
-                                }
-                                else {
-                                    p = _intSnd;
-                                    _intCurrentMaterial = _intMatColorR;
-                                }
-                            }
-                        }
 
+                        // Parse in the Spawn Points
+                        if (i == 0) _intParse = _intFirst;
+                        else if (i != 0) _intParse = _intSecond;
+
+                        Debug.Log(_intCurrentMaterial);
+
+                        int _intGameMode = _goPlayer.GetComponent<PlayerStats>()._intPlayerMode;
+
+                        switch (_intGameMode) {
+
+                            // Set Material if the Gamemode is Type 1.
+                            case 0: {
+                                if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intMatColorL = _intCurrentMaterial;
+                                    _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
+                                    _intMatColorR = _intCurrentMaterial;
+                                }
+                                else {
+                                    if (i == 0) _intCurrentMaterial = _intMatColorL;
+                                    else if (i != 0) _intCurrentMaterial = _intMatColorR;
+                                }
+                                break;
+                            }
+    
+                            // Set Material if the Gamemode is Type 2.
+                            case 1: {
+                                if (i == 0) _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                else if (i != 0) _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
+                                break;
+                            }
+    
+                            // Set Material if the Gamemode is Invalid.
+                            default: {
+                                break;
+                            }
+                        }
 #if (BEAT_POOL)
-                        if (i == 1) _intCurrentMaterial += 2;
-                        GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[p]);
+                        GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[_intParse]);
 #else
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
+
+                        // Attach Readable Object Here!
+                        if (i == 0) _goInstanceA = go;
+                        if (i != 0) _goInstanceB = go;
+
+                        if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
+                        if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
+                        
                         go.transform.localScale = beatScale;
                         _intPreviousMaterial = _intCurrentMaterial;
 
-                        go.name = "Beat " + p;
+                        go.name = "Beat " + _intParse;
                         go.SetActive(true);
 #if (BEAT_POOL)
                         InitPoolObject(go, _intCurrentMaterial);
@@ -192,35 +203,26 @@ public class AudioBandVisualiser : MonoBehaviour
                     }
                 }
 
+                // Easy Mode && Default Mode
                 else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty == 0)
                 {
-                    int _intTemp = 0;
                     for (int j = _goAudioScales.Length - 1; j >= 0; j--)
                     {
-                        if (_intTemp < _intMax)
+                        if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
                         {
-
-                            if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
-                            {
-
-                                _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
-                                _intCurrentMaterial = (_intCurrentMaterial == 1) ? 3 : 0;
-
+                            _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                            _intCurrentMaterial = (_intCurrentMaterial == 1) ? 2 : 0;
 #if (BEAT_POOL)
-                                GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
+                            GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
 #else
-								GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
-								// go.transform.GetComponent<Renderer>().material = _matsPrimary[_intCurrentMaterial];
+                            GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
 #endif
-                                go.transform.localScale = beatScale;
-
-                                go.name = "Beat " + j;
-                                go.SetActive(true);
+                            go.transform.localScale = beatScale;
+                            go.name = "Beat " + j;
+                            go.SetActive(true);
 #if (BEAT_POOL)
-                                InitPoolObject(go, _intCurrentMaterial);
+                            InitPoolObject(go, _intCurrentMaterial);
 #endif
-                                _intTemp++;
-                            }
                         }
                     }
                 }
@@ -260,5 +262,9 @@ public class AudioBandVisualiser : MonoBehaviour
         }
 
         _ftAryDiffBuffer = _ftAryDiffBuffer.OrderByDescending(ft => ft).ToArray();
+    }
+
+    public void InjectTime(float _ftInjection) {
+        _ftTime -= _ftInjection;
     }
 }

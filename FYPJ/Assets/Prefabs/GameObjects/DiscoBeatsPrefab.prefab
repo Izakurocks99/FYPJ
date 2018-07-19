@@ -146,9 +146,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 0
+  _ftTimeToTravel: 10
   _vec3Shift: {x: 0, y: 0, z: 0}
   _vec3Target: {x: 0, y: 0, z: 0}
   _vec3Area: {x: 0, y: 0, z: 0}
+  speed: 0
+  dissolveTime: 1
 --- !u!114 &114542403217454486
 MonoBehaviour:
   m_ObjectHideFlags: 1

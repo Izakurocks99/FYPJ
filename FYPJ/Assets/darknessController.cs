@@ -51,6 +51,13 @@ public class darknessController : MonoBehaviour {
     }
     void Update()
     {
+        if (mat == null)
+        {
+            mat = new Material(sha);
+            _camera = GetComponent<Camera>();
+        }
+
+
         if (show)
         {
             timer += Time.deltaTime;
