@@ -310,8 +310,7 @@ MonoBehaviour:
   col2: {r: 0, g: 0, b: 0, a: 0}
   scale1: 1
   scale2: 2.58
-  curve: 10
-  curveRange: 80
+  curveRange: 180
   num: 666
 --- !u!23 &1156582114
 MeshRenderer:
