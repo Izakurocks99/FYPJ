@@ -30,8 +30,6 @@ public class AudioVisualiser : MonoBehaviour {
         if (this.GetComponent<AudioSource>().isPlaying == true &&
             this.GetComponent<AudioSource>().clip != null) {
 
-            // foreach (float ft in _ftSamplesbands)
-
             UpdateSamples();
             ScaleBuffer();
             ScaleVisualise();
