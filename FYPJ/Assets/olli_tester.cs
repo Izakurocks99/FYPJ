@@ -6,7 +6,7 @@ using UnityEngine;
 public class olli_tester : MonoBehaviour {
 
     [SerializeField]
-    Shader bloomShader;
+    Shader bloomShader = null;
     [SerializeField]
     [Range(0,10)]
     int numIterations = 4;

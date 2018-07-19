@@ -75,7 +75,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - changeSpeed: 0.2
+    - changeSpeed: 0.1
     - distortionScale: 0.2
     - rotation: 0.5
     - windstrenght: 2.7
