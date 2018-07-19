@@ -8,8 +8,9 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject[] _goSpeaker;
     public GameObject _goAudio;
-    public int _intPlayerScoring;
     public int _intPlayerDifficulty;
+    public int _intPlayerScoring;
+    public int _intPlayerMode;
     public int _intSpawnPoint;
     int _intCounter;
     int _intCombo;
@@ -23,11 +24,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     GameObject cam = null;
     WaveEffect Wave = null;
+
     void Start()
     {
         _intCombo = 0;
-        _intPlayerScoring = 0;
         _intPlayerDifficulty = 1;
+        _intPlayerScoring = 0;
+        _intPlayerMode = 0;
         _intSpawnPoint = 0;
         _intCounter = 0;
         _ftProbablity = 0.0f;
@@ -35,7 +38,6 @@ public class PlayerStats : MonoBehaviour
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
         _ftRNGWait = 1.0f;
-
 
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
         Debug.Assert(cam);
@@ -48,7 +50,7 @@ public class PlayerStats : MonoBehaviour
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             ProbablityRandomDistribution();
-            ProbablityRandomGeneration();
+            // ProbablityRandomGeneration();
         }
     }
 
@@ -56,7 +58,12 @@ public class PlayerStats : MonoBehaviour
     {
         _intPlayerDifficulty = _intDifficultyLevel;
     }
-    //int numHitsToPulse = 10;
+
+    public void ModeChange (int _intBeatMode)
+    {
+        _intPlayerMode = _intBeatMode;
+    }
+
     public void ModifyScore(int score)
     {
         _intPlayerScoring += score;

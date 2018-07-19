@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class ShowMenu : MonoBehaviour {
 
-    bool showing, showingAudioMenu, showingDifficultyMenu, hiding, hidingAudioMenu, hidingDifficultyMenu, audioPriority, difficultyPriority;
+    bool showing, showingAudioMenu, showingDifficultyMenu;
+    bool audioPriority, difficultyPriority;
     public float _ScrollLenght, transitionSpeed;
     public Vector3 showingPosition, audioShowingPos,difficultyShowingPos, hidingPosition, audioHidingPos, difficultyHidingPos;
-	public GameObject audioMenu, difficultyMenu, exitMenu;
+	public GameObject menu, audioMenu, difficultyMenu, exitMenu;
 
 
 	// Use this for initialization
 	void Start () {
-
-        hidingPosition = transform.localPosition;
-		audioHidingPos = audioMenu.transform.localPosition;
-		difficultyHidingPos = difficultyMenu.transform.localPosition;
         showing = false;
-        hiding = true;
 		showingAudioMenu = false;
 		showingDifficultyMenu = false;
-		hidingAudioMenu = true;
-		hidingDifficultyMenu = true;
-		
-	}
+
+    }
 	
 
 	public void ShowexitMenu()
@@ -43,171 +37,79 @@ public class ShowMenu : MonoBehaviour {
 
     public void Show()
     {
-        if(hiding)
-            StartCoroutine("ShowOptionMenu");
+        if (!showing)
+        {
+            showing = true;
+            StartCoroutine(ShowTheMenu(menu, showingPosition));
+        }
 
-        if (showing)
-            StartCoroutine("HideOptionMenu");
+        else if (showing)
+        {
+            showing = false;
+            StartCoroutine(ShowTheMenu(menu, hidingPosition));
+
+            showingAudioMenu = false;
+            StartCoroutine(ShowTheMenu(audioMenu, audioHidingPos));
+
+            showingDifficultyMenu = false;
+            StartCoroutine(ShowTheMenu(difficultyMenu, difficultyHidingPos));
+        }
     }
 
 	public void ShowAudio()
 	{
-		if (hidingAudioMenu)
-			StartCoroutine("ShowAudioMenu");
-		if (showingAudioMenu)
-			StartCoroutine("HideAudioMenu");
-	}
+        if (!showingAudioMenu)
+        {
+            showingAudioMenu = true;
+            StartCoroutine(ShowTheMenu(audioMenu, audioShowingPos));
+        }
+        else if (showingAudioMenu)
+        {
+            showingAudioMenu = false;
+            StartCoroutine(ShowTheMenu(audioMenu, audioHidingPos));
+        }
+    }
 
 	public void HideAudio()
-	{
-		StartCoroutine("HideAudioMenu");
-	}
+    {
+        showingAudioMenu = false;
+        StartCoroutine(ShowTheMenu(audioMenu, audioHidingPos));
+    }
 
 
 	public void ShowDifficulty()
 	{
-		if(hidingDifficultyMenu)
-			StartCoroutine("ShowDifficultyMenu");
-		if (showingDifficultyMenu)
-			StartCoroutine("HideDifficultyMenu");
-	}
+        if (!showingDifficultyMenu)
+        {
+            showingDifficultyMenu = true;
+            StartCoroutine(ShowTheMenu(difficultyMenu, difficultyShowingPos));
+        }
+        else if (showingDifficultyMenu)
+        {
+            showingDifficultyMenu = false;
+            StartCoroutine(ShowTheMenu(difficultyMenu, difficultyHidingPos));
+        }
+    }
 
 	public void HideDifficulty()
-	{
-		StartCoroutine("HideDifficultyMenu");
-	}
-
-
-
-    IEnumerator ShowOptionMenu()
     {
-        showing = false;
+        showingDifficultyMenu = false;
+        StartCoroutine(ShowTheMenu(difficultyMenu, difficultyHidingPos));
+    }
 
-        while(!showing)
+
+    IEnumerator ShowTheMenu(GameObject themenu, Vector3 topos)
+    {
+        while (true)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, showingPosition, Time.deltaTime * transitionSpeed);
+            themenu.transform.localPosition = Vector3.Lerp(themenu.transform.localPosition, topos, Time.deltaTime * transitionSpeed);
 
-            if (Vector3.Distance(transform.localPosition, showingPosition) < 1)
-                showing = true;
-
-            yield return 0;
-
-
+            if (Vector3.SqrMagnitude(themenu.transform.localPosition - topos) < 1)
+            {
+                break;
+            }
+            else
+                yield return null;
         }
-
-
-        yield break;
     }
-
-    IEnumerator HideOptionMenu()
-    {
-        hiding = false;
-
-		while (!hiding)
-		{
-
-			transform.localPosition = Vector3.Lerp(transform.localPosition, hidingPosition, Time.deltaTime * transitionSpeed);
-
-			if (Vector3.Distance(transform.localPosition, hidingPosition) < 1)
-				hiding = true;
-
-			yield return 0;
-
-
-		}
-
-
-        yield break;
-    }
-
-
-	IEnumerator ShowAudioMenu()
-	{
-		showingAudioMenu = false;
-		
-
-		while (!showingAudioMenu)
-		{
-			audioMenu.transform.localPosition = Vector3.Lerp(audioMenu.transform.localPosition, audioShowingPos, Time.deltaTime * transitionSpeed);
-
-			if (Vector3.Distance(audioMenu.transform.localPosition, audioShowingPos) < 1 || !hidingAudioMenu)
-				showingAudioMenu = true;
-
-			yield return 0;
-
-
-		}
-
-
-		yield break;
-	}
-
-
-
-	IEnumerator HideAudioMenu()
-	{
-		hidingAudioMenu = false;
-		
-
-		while (!hidingAudioMenu)
-		{
-			audioMenu.transform.localPosition = Vector3.Lerp(audioMenu.transform.localPosition, audioHidingPos, Time.deltaTime * transitionSpeed);
-
-			if (Vector3.Distance(audioMenu.transform.localPosition, audioHidingPos) < 1)
-				hidingAudioMenu = true;
-
-			yield return 0;
-
-
-		}
-
-
-		yield break;
-	}
-
-
-
-	IEnumerator ShowDifficultyMenu()
-	{
-		showingDifficultyMenu = false;
-		
-
-		while (!showingDifficultyMenu)
-		{
-			difficultyMenu.transform.localPosition = Vector3.Lerp(difficultyMenu.transform.localPosition, difficultyShowingPos, Time.deltaTime * transitionSpeed);
-
-			if (Vector3.Distance(difficultyMenu.transform.localPosition, difficultyShowingPos) < 1 || !hidingDifficultyMenu)
-				showingDifficultyMenu = true;
-
-			yield return 0;
-
-
-		}
-
-
-		yield break;
-	}
-
-
-
-	IEnumerator HideDifficultyMenu()
-	{
-		hidingDifficultyMenu = false;
-		
-
-		while (!hidingDifficultyMenu)
-		{
-			difficultyMenu.transform.localPosition = Vector3.Lerp(difficultyMenu.transform.localPosition, difficultyHidingPos, Time.deltaTime * transitionSpeed);
-
-			if (Vector3.Distance(difficultyMenu.transform.localPosition, difficultyHidingPos) < 1)
-				hidingDifficultyMenu = true;
-
-			yield return 0;
-
-
-		}
-
-
-		yield break;
-	}
 }
