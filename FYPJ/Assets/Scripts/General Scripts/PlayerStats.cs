@@ -19,6 +19,9 @@ public class PlayerStats : MonoBehaviour
     float _ftRNGTime;
     float _ftRNDWait;
     float _ftRNGWait;
+    bool _blActiveSpawn;
+
+    public static 
 
     ControllerScript[] _controllers;
     [SerializeField]
@@ -28,16 +31,20 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         _intCombo = 0;
-        _intPlayerDifficulty = 1;
+        _intPlayerDifficulty = 0;
         _intPlayerScoring = 0;
         _intPlayerMode = 0;
-        _intSpawnPoint = 0;
+
+        if (_intSpawnPoint == 0)
+            _intSpawnPoint = 0;
+
         _intCounter = 0;
         _ftProbablity = 0.0f;
         _ftRNDTime = 0.0f;
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
         _ftRNGWait = 1.0f;
+        _blActiveSpawn = true;
 
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
         Debug.Assert(cam);
@@ -126,5 +133,13 @@ public class PlayerStats : MonoBehaviour
 
             _ftRNGTime = 0.0f;
         }
+    }
+
+    void ActiveSpawnChange(bool _blState) {
+        _blActiveSpawn = _blState;
+    }
+
+    public bool GetActiveSpawn() {
+        return _blActiveSpawn;
     }
 }

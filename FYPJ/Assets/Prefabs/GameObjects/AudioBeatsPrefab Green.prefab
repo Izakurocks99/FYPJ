@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 8
-  _ftTimeToTravel: 20
+  _ftTimeToTravel: 15
   speed: 7
   endPoint: {fileID: 4352759193182030}
   dissolveTime: 0.5
