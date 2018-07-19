@@ -10,10 +10,11 @@ Shader "Custom/BillBoarder"
 		_Texture1 ("Texture1", 2D) = "white" {}
 		_Texture2 ("Texture2", 2D) = "white" {}
 		_Texture3 ("Texture3", 2D) = "white" {}
-		_Size ("Size",Float) = 12.0
-		_WaveLenght("Wave Lenght",Float) = 0.05
-		_DistortionAmount("distortion",Float) = 1
-		_Speed("Speed",Float) = 0.05
+		_Texture4 ("Texture4", 2D) = "white" {}
+		_Size ("Size",Float) = 0.02
+		_WaveLenght("Wave Lenght",Float) = 10
+		_DistortionAmount("distortion",Float) = 0.05
+		_Speed("Speed",Float) = 0.0
 		_Color1("Color",Color) = (1,1,1,1) 
 		_Color2("Color",Color) = (1,1,1,1) 
 	}
@@ -62,6 +63,7 @@ Shader "Custom/BillBoarder"
 		sampler2D _Texture1;
 		sampler2D _Texture2;
 		sampler2D _Texture3;
+		sampler2D _Texture4;
 		float	  lastDigit;
 		float	  midDigit;
 		float	  firstDigit;
@@ -107,6 +109,7 @@ Shader "Custom/BillBoarder"
 			p.col = tex2Dlod(_Texture1, float4( uv1 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
 			p.col += tex2Dlod(_Texture2, float4( uv2 , 0, lod)) ;// * linearHeight;//float4(1,0,0,1);
 			p.col += tex2Dlod(_Texture3, float4( uv3 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
+			//p.col += tex2Dlod(_Texture4, float4( uv3 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
 
 
 			float4 v[4];

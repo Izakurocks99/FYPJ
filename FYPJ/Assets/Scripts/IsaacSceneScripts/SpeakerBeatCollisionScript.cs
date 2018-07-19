@@ -14,7 +14,6 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
     Rigidbody rb;
 
     public float life;
-    bool isCollided = false;
 
     //void Start()
     //{
@@ -32,7 +31,6 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
     public void PoolInit()
     {
         playerCam = FindObjectOfType<PlayerStats>();
-        isCollided = false;
         life = lifeTime;
         this.enabled = true;
         isHit = false;

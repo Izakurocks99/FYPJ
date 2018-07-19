@@ -1,4 +1,5 @@
 ﻿#define BEAT_POOL
+//#define STAN
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -6,7 +7,6 @@ using UnityEngine;
 
 public class AudioMotion : MonoBehaviour
 {
-
     Transform _tfCamera;
     Transform _tfParent;
     Transform _tfThis;
@@ -21,6 +21,16 @@ public class AudioMotion : MonoBehaviour
 
     public float speed = 10;
     public Transform endPoint;
+
+    //[SerializeField]
+#if (STAN)
+    private Transform _childGlow = null;
+    //[SerializeField]
+    private Transform _childTwinkle = null;
+    Vector3 _childGlowScale = new Vector3(0,0,0);
+    Vector3 _childTwinkleScale  = new Vector3(0,0,0);
+#endif
+
 
 #if (BEAT_POOL)
 
@@ -43,6 +53,19 @@ public class AudioMotion : MonoBehaviour
     void Start() 
         {
 #endif
+//_childGlowScale = _childGlow.localScale;
+//Debug.Assert(_childGlow);
+
+
+#if (STAN)
+        _childGlow = this.transform.GetChild(2);
+         _childGlowScale = _childGlow.localScale;
+        _childTwinkle = transform.GetChild(3);
+        _childTwinkleScale = _childTwinkle.localScale;
+#endif
+
+
+
         _ftTime = 0.0f;
         _tfThis = this.transform;
         _tfParent = this.transform.parent.transform;
@@ -127,6 +150,11 @@ public class AudioMotion : MonoBehaviour
         else
         {
             myDissolveMaterial.SetFloat("_TreshHold", currentTime);
+
+#if (STAN)
+            _childGlow.localScale = Vector3.Lerp(_childGlowScale, Vector3.zero, currentTime);
+            _childTwinkle.localScale = Vector3.Lerp(_childTwinkleScale, Vector3.zero, currentTime);
+#endif
         }
     }
 

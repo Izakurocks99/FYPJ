@@ -8,12 +8,11 @@ public sealed class AudianceMember : MonoBehaviour {
     [HideInInspector]
     public GameObject manager;
 
-    float timer = 0;
+    //float timer = 0;
     
     void Awake()
     {
         // init object  here
-
     }
 
     // Update is called once per frame

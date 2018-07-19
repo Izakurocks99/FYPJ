@@ -26,13 +26,13 @@ public class MovementScript : ControllerModesScript
     private MovementMarkerScript markerScript; //to lock the other controller from modifying the marker
 
     private RaycastHit hit; // to get the point on the ground the player wants to move
-    private Vector3 startingPos; // for the player to reset the position
+    //private Vector3 startingPos; // for the player to reset the position
     private ControllerScript controller; //to get which controller this script is
 
 
     private void Awake()
     {
-        startingPos = player.transform.position;
+        //startingPos = player.transform.position;
         markerScript = movementMarker.GetComponent<MovementMarkerScript>();
         controller = gameObject.GetComponent<ControllerScript>();
     }

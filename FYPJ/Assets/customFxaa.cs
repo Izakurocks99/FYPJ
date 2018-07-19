@@ -6,13 +6,13 @@ public class customFxaa : MonoBehaviour
 {
 
     [SerializeField]
-    Shader fxaaShader;
+    Shader fxaaShader = null;
 
     [NonSerialized]
     Material fxaaMaterial = null;
 
     [SerializeField]
-    Shader luminanceShader;
+    Shader luminanceShader = null;
 
     [NonSerialized]
     Material luminanceMaterial = null;
