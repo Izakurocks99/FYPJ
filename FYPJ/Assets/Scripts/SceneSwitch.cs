@@ -8,7 +8,7 @@ public class SceneSwitch : MonoBehaviour {
 
 	public GameObject loadingScreen;
 	public GameObject loadingImage;
-	public string sceneName = "Lobby";
+	public string sceneName;
 	private float count = 0;
 	private Color color;
 
@@ -32,13 +32,13 @@ public class SceneSwitch : MonoBehaviour {
 	{
 		color = new Color(1,1,1,0);
 		loadingScreen.SetActive(true);
-		StartCoroutine("FadeIn");
+		StartCoroutine(FadeIn());
 		
 	}
 
 	public void Fade()
 	{
-		StartCoroutine("FadeOut");
+		StartCoroutine(FadeOut());
 	}
 
 	IEnumerator FadeIn()

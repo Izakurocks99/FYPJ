@@ -70,6 +70,11 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
+        if (currStick)
+        {
+            currStick.ChangeStickColor(pirmaryControllerColor);
+        }
+
     }
 
     // Update is called once per frame
@@ -479,6 +484,6 @@ public class ControllerScript : MonoBehaviour
 
     void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transform.root.GetComponentInChildren<SceneSwitch>().LoadScene();
     }
 }
