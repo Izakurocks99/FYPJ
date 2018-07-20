@@ -184,7 +184,6 @@ public class AudioBandVisualiser : MonoBehaviour
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
-
                         // Attach Readable Object Here!
                         if (i == 0) _goInstanceA = go;
                         if (i != 0) _goInstanceB = go;
@@ -242,7 +241,6 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void InitPoolObject(GameObject go, int poolsindex)
     {
-
         go.SetActive(true);
         //go.transform.position = new Vector3(0, 0, 0);
         go.GetComponent<AudioMotion>().PoolInit(listGOBeatPool[poolsindex], DissolveMaterialPool); // responsible for returing the object
@@ -254,7 +252,6 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         for (int i = 0; i < _ftAryDiffBuffer.Length; i++)
         {
-
             float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
             if (_ftDifference < 0)
                 _ftDifference *= -1;

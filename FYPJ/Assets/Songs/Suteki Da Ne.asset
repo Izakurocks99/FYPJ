@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab2cc14ad7793dc4dbab15d172017f92, type: 3}
-  m_Name: InitialD
+  m_Name: Suteki Da Ne
   m_EditorClassIdentifier: 
-  title: InitialD
-  description: Eurobeat is Top Tier
-  audioClip: {fileID: 8300000, guid: 7eaf25fbb517c234fa67e1aabf42a56e, type: 3}
-  songNumber: 5
+  title: Suteki Da Ne
+  description: Final Fantasy X
+  audioClip: {fileID: 8300000, guid: 7c8cdf9cfd450fc459f83fd052a79f98, type: 3}
+  songNumber: 8
