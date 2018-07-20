@@ -22,7 +22,8 @@ public class CDFollower : MonoBehaviour {
 
     private void Update()
     {
-        this.transform.forward = (lookAt.position - this.transform.position).normalized;
+        Vector3 tempForward = lookAt.position - this.transform.position;
+        this.transform.forward = new Vector3(tempForward.x,0,tempForward.z).normalized;
     }
 
     public void SetFollowTarget(Transform go)

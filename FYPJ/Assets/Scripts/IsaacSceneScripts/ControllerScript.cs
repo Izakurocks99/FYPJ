@@ -46,7 +46,8 @@ public class ControllerScript : MonoBehaviour
     public ControlCalibrationScript calibrateScript;
 
     //private
-    //private GameObject highlightedStick; //indicate which stick is selected/where to grab the stick to equip
+    private GameObject highlightedObject; //indicate which stick is selected/where to grab the stick to equip
+    private GameObject heldObject;
     private RaycastHit hit;
     private Vector3 startingPos;
     private bool canPickup = true; //check if hand is alread grabbing a stick
@@ -69,6 +70,11 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
+        if (currStick)
+        {
+            currStick.ChangeStickColor(pirmaryControllerColor);
+        }
+
     }
 
     // Update is called once per frame
@@ -80,14 +86,16 @@ public class ControllerScript : MonoBehaviour
         {
             TriggerButtonDown = true;
             ButtonPressed(ControllerButtons.BackTrigger);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.BackTrigger);
 
         }
         else if (!GetButtonDown(ControllerButtons.BackTrigger) && TriggerButtonDown)
         {
             TriggerButtonDown = false;
             ButtonReleased(ControllerButtons.BackTrigger);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.BackTrigger);
         }
 
         //middle button
@@ -95,13 +103,15 @@ public class ControllerScript : MonoBehaviour
         {
             middleButtonDown = true;
             ButtonPressed(ControllerButtons.MiddleButton);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.MiddleButton);
         }
         else if (!GetButtonDown(ControllerButtons.MiddleButton) && middleButtonDown)
         {
             middleButtonDown = false;
             ButtonReleased(ControllerButtons.MiddleButton);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.MiddleButton);
         }
 
         // X button
@@ -109,14 +119,16 @@ public class ControllerScript : MonoBehaviour
         {
             xButtonDown = true;
             ButtonPressed(ControllerButtons.X);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.X);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.X);
 
         }
         else if (!GetButtonDown(ControllerButtons.X) && xButtonDown)
         {
             xButtonDown = false;
             ButtonReleased(ControllerButtons.X);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.X);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.X);
         }
 
         //Circle button
@@ -124,13 +136,15 @@ public class ControllerScript : MonoBehaviour
         {
             circleButtonDown = true;
             ButtonPressed(ControllerButtons.Circle);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Circle);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Circle);
         }
         else if (!GetButtonDown(ControllerButtons.Circle) && circleButtonDown)
         {
             circleButtonDown = false;
             ButtonReleased(ControllerButtons.Circle);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Circle);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Circle);
         }
 
         //Triangle button
@@ -138,13 +152,15 @@ public class ControllerScript : MonoBehaviour
         {
             triangleButtonDown = true;
             ButtonPressed(ControllerButtons.Triangle);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Triangle);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Triangle);
         }
         else if (!GetButtonDown(ControllerButtons.Triangle) && triangleButtonDown)
         {
             triangleButtonDown = false;
             ButtonReleased(ControllerButtons.Triangle);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Triangle);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Triangle);
         }
 
         //Square button
@@ -152,13 +168,15 @@ public class ControllerScript : MonoBehaviour
         {
             squareButtonDown = true;
             ButtonPressed(ControllerButtons.Square);
-            GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Square);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonPressed(ControllerButtons.Square);
         }
         else if (!GetButtonDown(ControllerButtons.Square) && squareButtonDown)
         {
             squareButtonDown = false;
             ButtonReleased(ControllerButtons.Square);
-            GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Square);
+            if (controllerMode != ControllerModes.NONE)
+                GetControllerMode(controllerMode).ButtonReleased(ControllerButtons.Square);
         }
 
         //BothControllers
@@ -325,7 +343,14 @@ public class ControllerScript : MonoBehaviour
         if (button == controlsScript.interactButton)
         {
             //switch color
-            PickUpStick();
+            //PickUpStick();
+            if(highlightedObject)
+            {
+                Debug.Log(highlightedObject.name + "Held");
+                heldObject = highlightedObject;
+                heldObject.GetComponent<CDscript>().Hold(this.transform);
+            }
+
             if (currStick)
             {
                 currStick.ChangeStickColor(secondaryControllerColor);
@@ -355,6 +380,7 @@ public class ControllerScript : MonoBehaviour
         if (button == controlsScript.clickButton)
         {
             //interact with UI 
+            PickUpStick();
             if (laserPointer && laserPointer.LineRaycast() && laserPointer.LineRaycast().gameObject.GetComponent<Button>())
             {
                 laserPointer.LineRaycast().gameObject.GetComponent<Button>().onClick.Invoke();
@@ -364,6 +390,12 @@ public class ControllerScript : MonoBehaviour
 
     void ButtonReleased(ControllerButtons button)
     {
+        if (heldObject)
+        {
+            Debug.Log(heldObject.name + "Released");
+            heldObject.GetComponent<CDscript>().Release();
+            heldObject = null;
+        }
         if (button == controlsScript.interactButton)
         {
             //switch color
@@ -427,28 +459,31 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    //if other entered a sicks
-    //    if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-    //    {
-    //        //set current stick as "highlighted"
-    //        highlightedStick = other.gameObject;
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        //if other entered a sicks
+        if (other.gameObject.GetComponent<CDscript>())
+        {
+            Debug.Log(other.gameObject.name + "Entered");
+            //set current stick as "highlighted"
+            highlightedObject = other.gameObject;
+        }
+    }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    //if other entered a sicks
-    //    if (other.gameObject.tag == "PlayerStick" && !other.transform.parent)
-    //    {
-    //        //set current stick as "highlighted"
-    //        highlightedStick = null;
-    //    }
-    //}
+    private void OnTriggerExit(Collider other)
+    {
+        //add if trigger is still pressed dont enter
+        //if other entered a sicks
+        if (other.gameObject.GetComponent<CDscript>())
+        {
+            Debug.Log(other.gameObject.name + "Exited");
+            //set current stick as "highlighted"
+            highlightedObject = null;
+        }
+    }
 
     void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transform.root.GetComponentInChildren<SceneSwitch>().LoadScene();
     }
 }
