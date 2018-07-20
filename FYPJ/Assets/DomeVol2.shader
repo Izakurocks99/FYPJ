@@ -7,6 +7,8 @@ Shader "Example/DomeVol2"
 		_skytex ("sky tex", 2D) = "white" {}
 		changeSpeed("change speed", Range(0. , 100.)) = 1. 
 		distortionScale("wind distortion", Range(0. , 100.)) = 1.
+		_DirectionSpeed("Dir Speed",Float) = 0
+		_DirectionScale("Dir scale",Float) = 0
 	}
 	SubShader
 	{
@@ -27,11 +29,21 @@ Shader "Example/DomeVol2"
 
 	  float changeSpeed;
 	  float distortionScale;
+	  float _DirectionSpeed;
+	  float _DirectionScale;
 	   void vert (inout appdata_full v, out Input o) 
 	   {
 			float2 distortion = float2(0,0);
 			float3 windDir = float3(0,0,-1);
 			
+
+			float angle = cos(_Time.y * _DirectionSpeed) * _DirectionScale;
+			float cosr = cos(angle); 
+			float sinr = sin(angle); 
+			float2 windtemp = float2(windDir.x,windDir.z);
+			windDir.x =  cosr * windtemp.x + sinr * windtemp.y;
+			windDir.z =  -sinr * windtemp.x + cosr * windtemp.y;
+
 			distortion.x = dot(windDir , v.tangent.xyz);
 			//distortion.x +=  _Time;
 
