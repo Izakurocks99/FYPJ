@@ -87,13 +87,14 @@ public class PlayerStickScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<MeshFilter>().mesh != dicSticks[objectMesh].mesh)
+            GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
 
     }
 
     public void InitMesh(int index)
     {
         objectMesh = (StickType)index;
-        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
     }
 
     public void ChangeStickColor(GameColors newColor)
@@ -122,6 +123,7 @@ public class PlayerStickScript : MonoBehaviour
                 PlayerPrefs.SetInt("pristick", (int)objectMesh);
             }
 
+            GetComponent<Collider>().enabled = false;
             return true;
         }
         return false;

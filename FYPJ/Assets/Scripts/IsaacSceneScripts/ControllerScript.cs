@@ -31,8 +31,9 @@ public enum GameColors
 public class ControllerScript : MonoBehaviour
 {
     //public
+    public bool spawnSticks = false;
     public bool isSecondaryMoveController = false;
-    public GameObject stick;
+    public GameObject stickPrefab;
     public PlayerStickScript currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;
@@ -70,21 +71,25 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
+        if (spawnSticks)
+        {
+            SpawnStick();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currStick && !currStick.Equip())
-        {
-                currStick.transform.parent.SetParent(stickSlot);
-                currStick.transform.parent.localPosition = Vector3.zero;
-                currStick.transform.localRotation = Quaternion.identity;
-                currStick.transform.localScale = Vector3.one;
+        //if (currStick && !currStick.Equip())
+        //{
+        //        currStick.transform.parent.SetParent(stickSlot);
+        //        currStick.transform.parent.localPosition = Vector3.zero;
+        //        currStick.transform.localRotation = Quaternion.identity;
+        //        currStick.transform.localScale = Vector3.one;
 
-                currStick.Equip();
-                currStick.ChangeStickColor(pirmaryControllerColor);
-        }
+        //        currStick.Equip();
+        //        currStick.ChangeStickColor(pirmaryControllerColor);
+        //}
         //Inputs Single Controllers
         //back trigger
         if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
@@ -414,12 +419,21 @@ public class ControllerScript : MonoBehaviour
 
     public void SpawnStick()
     {
-        GameObject go = Instantiate(stick);
+        GameObject go = Instantiate(stickPrefab);
         if (isSecondaryMoveController)
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("secstick"));
         else if (!isSecondaryMoveController)
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("pristick"));
 
+        go.transform.SetParent(stickSlot);
+        go.transform.position = stickSlot.position;
+        go.transform.rotation = stickSlot.rotation;
+        go.transform.localScale = stickSlot.localScale;
+        currStick = go.GetComponentInChildren<PlayerStickScript>();
+        currStick.Equip();
+
+        //set player unable to pickup
+        canPickup = false;
     }
 
     bool PickUpStick()
@@ -436,6 +450,7 @@ public class ControllerScript : MonoBehaviour
                     hit.gameObject.transform.parent.SetParent(stickSlot);
                     hit.gameObject.transform.parent.position = stickSlot.position;
                     hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                    hit.gameObject.transform.parent.localScale = stickSlot.localScale;
                     //set controller currstick
                     currStick = hit.gameObject.GetComponent<PlayerStickScript>();
                     currStick.Equip();
@@ -470,7 +485,7 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            Debug.Log(other.gameObject.name + "Entered");
+            //Debug.Log(other.gameObject.name + "Entered");
             //set current stick as "highlighted"
             highlightedObject = other.gameObject;
         }
@@ -482,7 +497,7 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            Debug.Log(other.gameObject.name + "Exited");
+            //Debug.Log(other.gameObject.name + "Exited");
             //set current stick as "highlighted"
             highlightedObject = null;
         }
