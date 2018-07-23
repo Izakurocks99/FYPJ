@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.PS4;
 #endif
 
+
 //Controls color of stick
 //checks for controller input
 
@@ -310,10 +311,14 @@ public class ControllerScript : MonoBehaviour
 
     bool GetButtonDown(ControllerButtons button)
     {
-        if (button != ControllerButtons.BackTrigger)
-            return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
-        else
-            return CheckForInput();
+		if (button != ControllerButtons.BackTrigger)
+#if UNITY_PS4
+			return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
+#else
+			return false;
+#endif
+		else
+			return CheckForInput();
         //return false;
     }
 
