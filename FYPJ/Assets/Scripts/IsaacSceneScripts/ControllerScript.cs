@@ -70,16 +70,21 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        if (currStick)
-        {
-            currStick.ChangeStickColor(pirmaryControllerColor);
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currStick && !currStick.Equip())
+        {
+                currStick.transform.parent.SetParent(stickSlot);
+                currStick.transform.parent.localPosition = Vector3.zero;
+                currStick.transform.localRotation = Quaternion.identity;
+                currStick.transform.localScale = Vector3.one;
+
+                currStick.Equip();
+                currStick.ChangeStickColor(pirmaryControllerColor);
+        }
         //Inputs Single Controllers
         //back trigger
         if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
@@ -309,6 +314,7 @@ public class ControllerScript : MonoBehaviour
             return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
         else
             return CheckForInput();
+        //return false;
     }
 
     ControllerModesScript GetControllerMode(ControllerModes currMode)
@@ -344,7 +350,7 @@ public class ControllerScript : MonoBehaviour
         {
             //switch color
             //PickUpStick();
-            if(highlightedObject)
+            if (highlightedObject)
             {
                 Debug.Log(highlightedObject.name + "Held");
                 heldObject = highlightedObject;
@@ -357,7 +363,7 @@ public class ControllerScript : MonoBehaviour
             }
         }
 
-        if(button == controlsScript.dropStickButton)
+        if (button == controlsScript.dropStickButton)
         {
             DropStick();
         }
