@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_PS4
 using UnityEngine.PS4;
-#endif
 
 public class VibrationScript : MonoBehaviour {
 
@@ -30,3 +29,4 @@ public class VibrationScript : MonoBehaviour {
         PS4Input.MoveSetVibration(0, 0, 0);
     }
 }
+#endif

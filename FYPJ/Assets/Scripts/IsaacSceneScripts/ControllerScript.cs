@@ -286,14 +286,20 @@ public class ControllerScript : MonoBehaviour
     }
 
     bool GetButtonDown(ControllerButtons button)
-    {
+	{
+#if UNITY_PS4
         if (button != ControllerButtons.BackTrigger)
+
             return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
         else
             return CheckForInput();
-    }
+#else
+		return false;
+#endif
 
-    ControllerModesScript GetControllerMode(ControllerModes currMode)
+	}
+
+	ControllerModesScript GetControllerMode(ControllerModes currMode)
     {
         switch (currMode)
         {
@@ -309,7 +315,8 @@ public class ControllerScript : MonoBehaviour
     }
 
     public void VibrateController()
-    {
+	{
+#if UNITY_PS4
         if (isSecondaryMoveController)
         {
             StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateLeft());
@@ -318,9 +325,10 @@ public class ControllerScript : MonoBehaviour
         {
             StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateRight());
         }
-    }
+#endif
+	}
 
-    void ButtonPressed(ControllerButtons button)
+	void ButtonPressed(ControllerButtons button)
     {
         if (button == controlsScript.interactButton)
         {
