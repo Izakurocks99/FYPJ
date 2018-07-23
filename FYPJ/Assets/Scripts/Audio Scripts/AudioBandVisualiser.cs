@@ -262,6 +262,6 @@ public class AudioBandVisualiser : MonoBehaviour
     }
 
     public void InjectTime(float _ftInjection) {
-        _ftTime -= _ftInjection;
+		 _ftTime -= _ftInjection;
     }
 }

@@ -19,14 +19,25 @@ public class VibrationScript : MonoBehaviour {
 
     public IEnumerator VibrateLeft()
     {
+#if UNITY_PS4
         PS4Input.MoveSetVibration(0, 1, 128);
         yield return new WaitForSeconds(0.1f);
         PS4Input.MoveSetVibration(0, 1, 0);
-    }
-    public IEnumerator VibrateRight()
+#else
+		yield return new WaitForSeconds(0.1f);
+
+#endif
+	}
+	public IEnumerator VibrateRight()
     {
-        PS4Input.MoveSetVibration(0, 0, 128);
+#if UNITY_PS4
+
+		PS4Input.MoveSetVibration(0, 0, 128);
         yield return new WaitForSeconds(0.1f);
         PS4Input.MoveSetVibration(0, 0, 0);
-    }
+#else
+		        yield return new WaitForSeconds(0.1f);
+
+#endif
+	}
 }
