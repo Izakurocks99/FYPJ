@@ -107,18 +107,24 @@ public class PlayerStickScript : MonoBehaviour
         gameObject.GetComponent<MeleeWeaponTrail>()._colors = dicTrail[currColor];
     }
 
-    public void Equip()
+    public bool Equip()
     {
-        heldController = GetComponentInParent<ControllerScript>();
-        if(heldController.isSecondaryMoveController)
+        if (gameObject.transform.parent.parent)
         {
-            PlayerPrefs.SetInt("secstick", (int)objectMesh);
+            heldController = GetComponentInParent<ControllerScript>();
+
+            if (heldController.isSecondaryMoveController)
+            {
+                PlayerPrefs.SetInt("secstick", (int)objectMesh);
+            }
+            else if (!heldController.isSecondaryMoveController)
+            {
+                PlayerPrefs.SetInt("pristick", (int)objectMesh);
+            }
+
+            return true;
         }
-        else if(!heldController.isSecondaryMoveController)
-        {
-            PlayerPrefs.SetInt("pristick", (int)objectMesh);
-        }
-        //Debug.Log(heldController.gameObject.name);
+        return false;
     }
 
     public void Drop()

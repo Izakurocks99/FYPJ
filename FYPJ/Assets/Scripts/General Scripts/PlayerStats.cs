@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         _intCombo = 0;
-        _intPlayerDifficulty = 0;
+        _intPlayerDifficulty = 2;
         _intPlayerScoring = 0;
         _intPlayerMode = 0;
 

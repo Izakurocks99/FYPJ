@@ -70,16 +70,21 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        if (currStick)
-        {
-            currStick.ChangeStickColor(pirmaryControllerColor);
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (currStick && !currStick.Equip())
+        {
+                currStick.transform.parent.SetParent(stickSlot);
+                currStick.transform.parent.localPosition = Vector3.zero;
+                currStick.transform.localRotation = Quaternion.identity;
+                currStick.transform.localScale = Vector3.one;
+
+                currStick.Equip();
+                currStick.ChangeStickColor(pirmaryControllerColor);
+        }
         //Inputs Single Controllers
         //back trigger
         if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
@@ -304,20 +309,15 @@ public class ControllerScript : MonoBehaviour
     }
 
     bool GetButtonDown(ControllerButtons button)
-	{
-#if UNITY_PS4
+    {
         if (button != ControllerButtons.BackTrigger)
-
             return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
         else
             return CheckForInput();
-#else
-		return false;
-#endif
+        //return false;
+    }
 
-	}
-
-	ControllerModesScript GetControllerMode(ControllerModes currMode)
+    ControllerModesScript GetControllerMode(ControllerModes currMode)
     {
         switch (currMode)
         {
@@ -333,8 +333,7 @@ public class ControllerScript : MonoBehaviour
     }
 
     public void VibrateController()
-	{
-#if UNITY_PS4
+    {
         if (isSecondaryMoveController)
         {
             StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateLeft());
@@ -343,16 +342,15 @@ public class ControllerScript : MonoBehaviour
         {
             StartCoroutine(gameObject.GetComponent<VibrationScript>().VibrateRight());
         }
-#endif
-	}
+    }
 
-	void ButtonPressed(ControllerButtons button)
+    void ButtonPressed(ControllerButtons button)
     {
         if (button == controlsScript.interactButton)
         {
             //switch color
             //PickUpStick();
-            if(highlightedObject)
+            if (highlightedObject)
             {
                 Debug.Log(highlightedObject.name + "Held");
                 heldObject = highlightedObject;
@@ -365,7 +363,7 @@ public class ControllerScript : MonoBehaviour
             }
         }
 
-        if(button == controlsScript.dropStickButton)
+        if (button == controlsScript.dropStickButton)
         {
             DropStick();
         }
