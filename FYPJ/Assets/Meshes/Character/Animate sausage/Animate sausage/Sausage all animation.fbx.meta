@@ -1,60 +1,65 @@
 fileFormatVersion: 2
-guid: 4561b136b6e59274b9523aed379f1eee
+guid: a6e9552b187f8de4fb5f8cd7d8ce5028
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: chest
-    100002: head
-    100004: head2
-    100006: ikHandleL
-    100008: ikHandleR
-    100010: L_arm
-    100012: L_arm2
-    100014: L_arm3
-    100016: L_arm4
-    100018: L_leg
-    100020: L_leg2
-    100022: L_leg3
-    100024: //RootNode
-    100026: mushroom1
-    100028: R_arm
-    100030: R_arm2
-    100032: R_arm3
-    100034: R_arm4
-    100036: R_leg
-    100038: R_leg2
-    100040: R_leg3
-    100042: waist
-    400000: chest
-    400002: head
-    400004: head2
-    400006: ikHandleL
-    400008: ikHandleR
-    400010: L_arm
-    400012: L_arm2
-    400014: L_arm3
-    400016: L_arm4
-    400018: L_leg
-    400020: L_leg2
-    400022: L_leg3
-    400024: //RootNode
-    400026: mushroom1
-    400028: R_arm
-    400030: R_arm2
-    400032: R_arm3
-    400034: R_arm4
-    400036: R_leg
-    400038: R_leg2
-    400040: R_leg3
-    400042: waist
-    2100000: mushroom
-    4300000: mushroom1
+    100000: bottom
+    100002: chest
+    100004: head
+    100006: head2
+    100008: ikHandleL
+    100010: ikHandleR
+    100012: Larm
+    100014: Larm2
+    100016: Larm3
+    100018: Larm4
+    100020: Lfeet
+    100022: Lfeet2
+    100024: Lfeet32
+    100026: Rarm
+    100028: Rarm2
+    100030: Rarm3
+    100032: Rarm4
+    100034: Rfeet
+    100036: Rfeet2
+    100038: Rfeet32
+    100040: //RootNode
+    100042: sausage15
+    100044: stomach
+    100046: waist
+    400000: bottom
+    400002: chest
+    400004: head
+    400006: head2
+    400008: ikHandleL
+    400010: ikHandleR
+    400012: Larm
+    400014: Larm2
+    400016: Larm3
+    400018: Larm4
+    400020: Lfeet
+    400022: Lfeet2
+    400024: Lfeet32
+    400026: Rarm
+    400028: Rarm2
+    400030: Rarm3
+    400032: Rarm4
+    400034: Rfeet
+    400036: Rfeet2
+    400038: Rfeet32
+    400040: //RootNode
+    400042: sausage15
+    400044: stomach
+    400046: waist
+    2000000: bottom
+    2100000: sausage
+    4300000: sausage15
     7400000: nodding
     7400002: bounce
     7400004: wave
     7400006: twist
     9500000: //RootNode
-    13700000: mushroom1
+    13700000: sausage15
   externalObjects: {}
   materials:
     importMaterials: 1
