@@ -16,7 +16,7 @@ public class SelectSongsComponent : MonoBehaviour
     public SceneSwitch loadingScreen;
 
     [SerializeField]
-    CDFollower follower;
+    public CDFollower follower = null;
     Rigidbody _rigidbody;
 
     public bool selected = true;
@@ -28,6 +28,8 @@ public class SelectSongsComponent : MonoBehaviour
     public float distance;
     public float minDist;
     public float selectDist;
+
+    public float slowdownMultiplyer = 0.5f;
 
     // Use this for initialization
     void Start()
@@ -52,7 +54,7 @@ public class SelectSongsComponent : MonoBehaviour
             _instanceSong.transform.position += Vector3.forward * distance;
             this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, (i + 1) * (360 / (songs.Length)), this.transform.rotation.z);
 
-            CDscript cd = _instanceSong.GetComponent<CDscript>();
+            CDscript cd = _instanceSong.GetComponentInChildren<CDscript>();
             cd.Title = Title;
             cd.Description = Description;
             cd.audioSource = audioSource;
@@ -80,6 +82,8 @@ public class SelectSongsComponent : MonoBehaviour
         {
             float angleInDegrees;
             //angleInDegrees = Quaternion.Angle(tempRot, follower.transform.rotation);
+            Vector3 followerforward = new Vector3((follower.transform.forward).x, 0, (follower.transform.forward).z).normalized;
+
             angleInDegrees = Vector3.SignedAngle(tempForward, follower.transform.forward, transform.up);
             Vector3 angularDisplacement = transform.up * angleInDegrees * Mathf.Deg2Rad;
             Vector3 angularSpeed = tempRot * (angularDisplacement / Time.deltaTime);
@@ -91,6 +95,13 @@ public class SelectSongsComponent : MonoBehaviour
 
             _rigidbody.angularVelocity = angularSpeed;
         }
+        //else
+        //{
+        //if (_rigidbody.angularVelocity.magnitude <= 1)
+        //    _rigidbody.angularVelocity = Vector3.zero;
+        //else
+        //    _rigidbody.angularVelocity *= slowdownMultiplyer;
+        //}
     }
 
     void OnMouseOver()
@@ -103,6 +114,24 @@ public class SelectSongsComponent : MonoBehaviour
         }
     }
 
+    public void Select()
+    {
+        if (!selected)
+        {
+            ToggleSelected();
+            tempRot = follower.transform.rotation;
+            tempForward = follower.transform.forward;
+        }
+    }
+
+    public void Release()
+    {
+        if (selected)
+        {
+            ToggleSelected();
+        }
+    }
+
     bool ToggleSelected()
     {
         return selected = !selected;
@@ -111,7 +140,7 @@ public class SelectSongsComponent : MonoBehaviour
     public void LaunchSong()
     {
         StartCoroutine(currCD.LaunchSong());
-        PlayerPrefs.SetString("test", "test");
+        PlayerPrefs.SetString("test", currCD.song.title);
     }
     //public void SwitchSongRight()
     //{

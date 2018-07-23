@@ -9,7 +9,7 @@ public class LightController : MonoBehaviour {
     Shader sha = null;
     [SerializeField]
     Shader GlassShader = null;
-    Light light = null;
+    Light _light = null;
     Material m = null;
     GameObject parent = null;
     Material GlassMat = null;
@@ -21,13 +21,13 @@ public class LightController : MonoBehaviour {
         Debug.Assert(GlassShader);
         parent = this.transform.parent.gameObject;
         Debug.Assert(parent);
-        light = parent.GetComponentInChildren<Light>();
-        Debug.Assert(light);
+        _light = parent.GetComponentInChildren<Light>();
+        Debug.Assert(_light);
         m = new Material(sha);
         this.GetComponentInChildren<MeshRenderer>().material = m;
         GlassMat = new Material(GlassShader);
         parent.GetComponent<MeshRenderer>().material = GlassMat;
-        Vector4 color = light.color;
+        Vector4 color = _light.color;
         m.SetVector("_ColorScales",new Vector3(color.x,color.y,color.z ));
         GlassMat.SetVector("_Color",color);
         GlassMat.SetFloat("Scale",scale);

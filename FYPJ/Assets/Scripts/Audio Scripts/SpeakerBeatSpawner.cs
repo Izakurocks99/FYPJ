@@ -10,7 +10,6 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 
     public Shader dissolveShader = null;
     List<Material> dissolveMaterialPool = null;
-    //List<GameObject> listGOPrefab = new List<GameObject>();
     List<List<GameObject>> listGOBeatPool = null;
 
     private void Start()
@@ -42,7 +41,6 @@ public class SpeakerBeatSpawner : MonoBehaviour {
             }
         }
     }
-
 
     void Update () {
 		this.transform.parent.transform.LookAt(Camera.main.transform);

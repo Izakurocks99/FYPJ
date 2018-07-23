@@ -29,7 +29,7 @@ public class CDscript : MonoBehaviour
         //platform = GameObject.Find("SongsSelection/platform");
         //player = GameObject.Find("Player");
         //audioSource = GameObject.Find("SongsSelection/Screen/Audio Source");
-        originalScale = new Vector3(.65f, .65f, .65f);
+        originalScale = new Vector3(.5f, .5f, .5f);
         //loadingScreen = GameObject.Find("Player/MainCamera");
     }
 
@@ -41,6 +41,8 @@ public class CDscript : MonoBehaviour
         //transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, (((-transform.position.z + 3) / 6))/.7f);
         float a = (gameObject.transform.position - frontPoint).magnitude;
         transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, a / (maxDist - minDist));
+        transform.localRotation = Quaternion.identity;
+
         if (a < selectDist)
         {
             parent.currCD = this;
@@ -52,6 +54,17 @@ public class CDscript : MonoBehaviour
                 audioSource.GetComponent<AudioSource>().Play();
 
         }
+    }
+
+    public void Hold(Transform lookat)
+    {
+        parent.Select();
+        parent.follower.lookAt = lookat;
+    }
+
+    public void Release()
+    {
+        parent.Release();
     }
 
     //void OnMouseOver()

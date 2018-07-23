@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114469234394282094}
   - component: {fileID: 54237039072584310}
   - component: {fileID: 135306034087390878}
+  - component: {fileID: 114605909317623744}
   m_Layer: 11
   m_Name: AudioBeatsPrefab Pink
   m_TagString: Untagged
@@ -244,13 +245,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950594217325028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9277b5e58f6bd3e47bd32dc0a93fd295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 8
-  _ftTimeToTravel: 20
+  _ftTimeToTravel: 15
   speed: 7
   endPoint: {fileID: 4529317930299496}
   dissolveTime: 0.5
@@ -291,6 +292,23 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
   isHit: 0
   life: 0
+--- !u!114 &114605909317623744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1950594217325028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873aefa6413498543a6df9f9934ec855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intShiftRate: 8
+  _ftTimeToTravel: 15
+  speed: 7
+  endPoint: {fileID: 0}
+  id: 0
+  dissolveTime: 1
 --- !u!135 &135306034087390878
 SphereCollider:
   m_ObjectHideFlags: 1

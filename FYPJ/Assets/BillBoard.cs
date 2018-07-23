@@ -9,10 +9,11 @@ public static class MyExtension
     {
         return list[Random.Range(0, list.Count - 1)];
     }
-
+    public static T PopRandom<T>(this IList<T> list)
+    {
+        return list.PopAt(Random.Range(0, list.Count - 1));
+    }
 }
-
-
 
 
 public class BillBoard : MonoBehaviour {
@@ -32,6 +33,8 @@ public class BillBoard : MonoBehaviour {
     Texture2D tex1 = null;
     [SerializeField]
     Texture2D tex2 = null;
+    [SerializeField]
+    Texture2D tex3 = null;
 
     Material m = null;
 
@@ -50,8 +53,8 @@ public class BillBoard : MonoBehaviour {
     float scale2 = 1;
 
 
-    [SerializeField]
-    float curve = 0.5f;
+    //[SerializeField]
+    //float curve = 0.5f;
 
     [SerializeField]
     float curveRange = 180f;
@@ -61,12 +64,12 @@ public class BillBoard : MonoBehaviour {
         float height = 0;
         if (x < w / 2)
         {
-            height = Mathf.Lerp(0, curve, (float)x / ((float)w / 2f));
+           // height = Mathf.Lerp(0, curve, (float)x / ((float)w / 2f));
         }
         else
         {
             x = w - x;
-            height = Mathf.Lerp(0, curve, (float)x  / ((float)w / 2f));
+           // height = Mathf.Lerp(0, curve, (float)x  / ((float)w / 2f));
         }
 
         return height;
@@ -94,20 +97,21 @@ public class BillBoard : MonoBehaviour {
 
 
 
-        float r = Mathf.Sqrt(circleArea / Mathf.PI);
+        float r = circleArea / (2f * Mathf.PI);//Mathf.Sqrt(circleArea / Mathf.PI);
 
         //todo lerp just the z value of the curve
         // and the the normal can calculate froms neighbours
 
        // Color[] cols = new Color[w * h];
        Vector2 axis = new Vector2(-r,0);
+        float startAngle = 90 - curveRange / 2;
         for (int y = 0; y < h; y++)
         {
             for (int x = 0; x < w; x++)
             {
-                float angle = singleDegree * x;
+                float angle = singleDegree * x + startAngle;
 
-                float rcos = Mathf.Cos(Mathf.Deg2Rad * angle);
+                float rcos = Mathf.Cos(Mathf.Deg2Rad * angle); 
                 float rsin = Mathf.Sin(Mathf.Deg2Rad * angle);
 
                 //float height = GetHeight(x);//x < w / 2 ? Mathf.Lerp(0, curve, w * (dist / 2) / x * (dist / 2)) : Mathf.Lerp(curve, 0 , w * (dist / 2) / x * (dist / 2));
@@ -116,7 +120,7 @@ public class BillBoard : MonoBehaviour {
                 Vector2 ans = new Vector2(rcos * (float)axis.x + rsin* (float)axis.y, -rsin * (float)axis.x + rcos * (float)axis.y);
                 //ans = new Vector2(midpoint , 0) + ans;
 
-                verts[w * y + x] = new Vector3(ans.x * dist , y * dist, ans.y * dist);// ans.y * dist );
+                verts[w * y + x] = new Vector3(ans.x , y * dist, ans.y - r);// ans.y * dist );
                 Vector2 norm = ans.normalized * -1f;
                 normals[w * y + x] = new Vector3(norm.x, 0, norm.y);
                 uvs[w * y + x] = new Vector2((float)x / (float)w, ((float)y / (float)h) / 10.0f);
@@ -135,6 +139,7 @@ public class BillBoard : MonoBehaviour {
         m.SetTexture("_Texture1", tex);
         m.SetTexture("_Texture2", tex1);
         m.SetTexture("_Texture3", tex2);
+        m.SetTexture("_Texture4", tex3);
 
         m.SetColor("_Color1",col1);
         m.SetColor("_Color2",col2);

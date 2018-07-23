@@ -20,6 +20,7 @@ public class AudioVizualiser : MonoBehaviour {
         _direction = _direction.normalized;
         _position = this.transform.position;
 
+
 	    for(int i =0; i<_sampleCube.Length; i++) {
             GameObject _instanceSampleCube = (GameObject)Instantiate(_SampleCubePrefab);
             _instanceSampleCube.transform.position = this.transform.position;
@@ -39,6 +40,7 @@ public class AudioVizualiser : MonoBehaviour {
         {
             if (_sampleCube != null)
             {
+
                 _sampleCube[i].transform.localScale = new Vector3(_scale, (audio1.GetComponent<Audio1>()._bandBuffer[i] * _height) + _minimumHeight, _scale);
                 Color _color = _colorGradient.Evaluate(audio1.GetComponent<Audio1>()._bandBuffer[i]);
                 _mt = _sampleCube[i].GetComponentInChildren<MeshRenderer>().materials[0];
