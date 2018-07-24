@@ -7,17 +7,19 @@ using UnityEngine;
 
 public class AudioMotion : MonoBehaviour
 {
+#if (STAN)
     Transform _tfCamera;
     Transform _tfParent;
+#endif
     Transform _tfThis;
     public float _intShiftRate;
     public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
     float _ftTime;
-    int _intNumber;
+    //int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
-    PlayerStats PlayerStats;
+    //PlayerStats PlayerStats;
 
     public float speed = 10;
     public Transform endPoint;
@@ -35,7 +37,8 @@ public class AudioMotion : MonoBehaviour
 #if (BEAT_POOL)
 
     bool _die = false;
-    List<GameObject> _home = null;
+    int _home = 0; // index of the pool where object came from
+    //List<GameObject> _home = null;
     List<Material> _materials = null;
     [SerializeField]
     [Range(0.1f, 1.5f)]
@@ -43,12 +46,14 @@ public class AudioMotion : MonoBehaviour
     Material myDissolveMaterial = null;
     Material myDefaultMaterial = null;
     float dissolveTimer = 0;
-    public void PoolInit(List<GameObject> home, List<Material> mat)
+    ObjectPool _myPool = null;
+    //public void PoolInit(List<GameObject> home, List<Material> mat)
+    public void PoolInit(int home, List<Material> mat,ObjectPool Pool)
     {
-
         dissolveTimer = 0;
         _home = home;
         _materials = mat;
+	_myPool = Pool;
 #else
     void Start() 
         {
@@ -68,18 +73,20 @@ public class AudioMotion : MonoBehaviour
 
         _ftTime = 0.0f;
         _tfThis = this.transform;
+#if (STAN)
         _tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
+#endif
 
         _die = false;
-        _intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
+        //_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
         _ftZ = -Mathf.Abs(calibration.distFromPlayer);
 
-        PlayerStats = FindObjectOfType<PlayerStats>();
+        //PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                      _ftY,
                                                      _ftZ);
@@ -172,7 +179,9 @@ public class AudioMotion : MonoBehaviour
             myDefaultMaterial = null;
             _materials.Add(myDissolveMaterial);
         }
-        _home.Add(this.gameObject);
+        //_home.Add(this.gameObject);
+	_myPool.ReturnObjectToPool(this.gameObject,_home);
+	_home = 0;
 #else
     void OnDestroy()
     {

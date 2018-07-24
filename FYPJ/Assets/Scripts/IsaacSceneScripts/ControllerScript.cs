@@ -32,7 +32,7 @@ public class ControllerScript : MonoBehaviour
 {
     //public
     public bool isSecondaryMoveController = false;
-    public GameObject stick;
+    public GameObject stick = null;
     public PlayerStickScript currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;

@@ -77,7 +77,7 @@ Shader "Example/DomeVol2"
 			float4 first = tex2D(_skytex, IN.UVs.xy ).rgba  ;
 			float4 second = tex2D(_skytex, IN.UVs.zw ).rgba ;
 			float4 endcolor = lerp(first.rgba, second.rgba, IN.alphalerp);
-			o.Albedo.rgb = endcolor.rgb
+			o.Albedo.rgb = endcolor.rgb * endcolor.a
 			;//* 0.0001f + float3( IN.debug.x * 0.001f,IN.debug.y,0);
 			o.Alpha = endcolor.a ;//* 0.5;//lerp(org.a, second.a, IN.lerpVal);
 
