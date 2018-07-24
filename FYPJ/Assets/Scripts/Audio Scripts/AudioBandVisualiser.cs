@@ -145,7 +145,7 @@ public class AudioBandVisualiser : MonoBehaviour
                         if (i == 0) _intParse = _intFirst;
                         else if (i != 0) _intParse = _intSecond;
 
-                        Debug.Log(_intCurrentMaterial);
+                        // Debug.Log(_intCurrentMaterial);
 
                         int _intGameMode = _goPlayer.GetComponent<PlayerStats>()._intPlayerMode;
 
@@ -188,8 +188,8 @@ public class AudioBandVisualiser : MonoBehaviour
                         if (i == 0) _goInstanceA = go;
                         if (i != 0) _goInstanceB = go;
 
-                        if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
-                        if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
+                        // if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
+                        // if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
                         
                         go.transform.localScale = beatScale;
                         _intPreviousMaterial = _intCurrentMaterial;

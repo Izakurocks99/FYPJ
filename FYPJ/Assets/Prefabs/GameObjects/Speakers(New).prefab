@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 33208765032220372}
   - component: {fileID: 23499073439032828}
   - component: {fileID: 114337811705774104}
+  - component: {fileID: 114443170566143938}
   m_Layer: 0
   m_Name: Floating Speaker R
   m_TagString: Untagged
@@ -243,6 +244,7 @@ GameObject:
   - component: {fileID: 33377592932012878}
   - component: {fileID: 23192665874268850}
   - component: {fileID: 114411507006736646}
+  - component: {fileID: 114277061492343746}
   m_Layer: 0
   m_Name: Floating Speaker L
   m_TagString: Untagged
@@ -1099,7 +1101,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454301302305718}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 717995a55e5685546b6b780779925ef1, type: 2}
   m_CullingMode: 0
@@ -1117,7 +1119,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579658342694646}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d97f866b5ec16704b8aaa91095fbfb12, type: 2}
   m_CullingMode: 0
@@ -1141,6 +1143,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftWing: {fileID: 1911023374352846}
   _rightWing: {fileID: 1475330653008846}
+--- !u!114 &114277061492343746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1727573788481424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d627a7a18a5648a1c384a71626afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goDisc:
+  - {fileID: 1037158970853032}
+  - {fileID: 1666348911944418}
+  _goAudio: {fileID: 0}
 --- !u!114 &114337811705774104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,6 +1210,21 @@ MonoBehaviour:
   _goDisc:
   - {fileID: 1037158970853032}
   - {fileID: 1666348911944418}
+  - {fileID: 1945694862949790}
+  - {fileID: 1831107180340580}
+  _goAudio: {fileID: 0}
+--- !u!114 &114443170566143938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679691283020158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d627a7a18a5648a1c384a71626afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goDisc:
   - {fileID: 1945694862949790}
   - {fileID: 1831107180340580}
   _goAudio: {fileID: 0}
