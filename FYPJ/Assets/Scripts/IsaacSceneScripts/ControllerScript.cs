@@ -184,7 +184,6 @@ public class ControllerScript : MonoBehaviour
         //swapmode
         if (GetKeyDown(controlsScript.swapModeButton) && !swapModeButtonDown)
         {
-            Debug.Log("SwitchMode");
             swapModeButtonDown = true;
             if (controllerMode == ControllerModes.Movement)
             {
@@ -352,7 +351,6 @@ public class ControllerScript : MonoBehaviour
             //PickUpStick();
             if (highlightedObject)
             {
-                Debug.Log(highlightedObject.name + "Held");
                 heldObject = highlightedObject;
                 heldObject.GetComponent<CDscript>().Hold(this.transform);
             }
@@ -398,7 +396,6 @@ public class ControllerScript : MonoBehaviour
     {
         if (heldObject)
         {
-            Debug.Log(heldObject.name + "Released");
             heldObject.GetComponent<CDscript>().Release();
             heldObject = null;
         }
@@ -502,7 +499,6 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            //Debug.Log(other.gameObject.name + "Entered");
             //set current stick as "highlighted"
             highlightedObject = other.gameObject;
         }
@@ -514,7 +510,6 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            //Debug.Log(other.gameObject.name + "Exited");
             //set current stick as "highlighted"
             highlightedObject = null;
         }

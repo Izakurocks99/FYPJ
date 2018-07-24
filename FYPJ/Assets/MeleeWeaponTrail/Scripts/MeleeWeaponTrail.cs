@@ -192,8 +192,6 @@ public class MeleeWeaponTrail : MonoBehaviour
 						float firstTime = _points[_points.Count - 4].timeCreated;
 						float secondTime = _points[_points.Count - 1].timeCreated;
 
-						//Debug.Log(" smoothTipList.Count: " + smoothTipList.Count);
-
 						for (int n = 0; n < smoothTipList.Count; ++n)
 						{
 
@@ -208,10 +206,6 @@ public class MeleeWeaponTrail : MonoBehaviour
 								sp.timeCreated = Mathf.Lerp(firstTime, secondTime, (float)n/smoothTipList.Count);
 								_smoothedPoints[idx] = sp;
 							}
-							//else
-							//{
-							//	Debug.LogError(idx + "/" + _smoothedPoints.Count);
-							//}
 						}
 					}
 #endif

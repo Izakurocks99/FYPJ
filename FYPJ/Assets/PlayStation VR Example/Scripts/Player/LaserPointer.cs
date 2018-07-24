@@ -19,8 +19,6 @@ public class LaserPointer : MonoBehaviour
         //Physics.Raycast(transform.position, transform.forward, out hit, max_distance, uiLayerMask);
         if (Physics.Raycast(transform.position, transform.forward, out hit, max_distance, layerMask))
         {
-            Debug.Log(hit.collider.gameObject.name);
-
             line.SetPosition(1, Vector3.forward * hit.distance);
             line.startColor = Color.green;
             line.endColor = Color.green;

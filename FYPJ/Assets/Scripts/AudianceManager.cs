@@ -192,8 +192,6 @@ public sealed class AudianceManager : MonoBehaviour {
             }
         }
     }
-
-
 }
 
 // TODO 

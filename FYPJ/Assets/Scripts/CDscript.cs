@@ -36,7 +36,6 @@ public class CDscript : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log(transform.position + gameObject.name);
         //transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, (((-transform.position.z + 3) / 6))/.7f);
         float a = (gameObject.transform.position - parent.frontPoint).magnitude;
         transform.localScale = Vector3.Lerp(originalScale, Vector3.zero, a / (maxDist - minDist));
@@ -65,44 +64,6 @@ public class CDscript : MonoBehaviour
     {
         parent.Release();
     }
-
-    //void OnMouseOver()
-    //{
-    //	if (Input.GetMouseButtonDown(0) && transform.position.z < 2.9f)
-    //	{
-    //		if (transform.position.x < 0)
-    //		{
-    //			transform.parent.GetComponent<SelectSongsComponent>().SwitchSongRight();
-    //		}
-    //		else if(transform.position.x >0)
-    //		{
-    //			transform.parent.GetComponent<SelectSongsComponent>().SwitchSongLeft();
-    //		}
-    //	}
-
-    //	if (Input.GetMouseButtonDown(0) && transform.position.z >2.9f)
-    //	{
-    //		StartCoroutine(LaunchSong(song));
-    //		loadingScreen.GetComponent<SceneSwitch>().LoadScene();
-
-    //	}
-
-    //}
-    //void OnMouseOver()
-    //{
-    //    if(Input.GetMouseButtonDown(0))
-    //    {
-    //            Debug.Log("PRESS");
-    //        parent.locked = true;
-    //    }
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        Debug.Log("LIFT");
-    //        parent.locked = false;
-    //    }
-
-    //}
-
 
     public IEnumerator LaunchSong()
     {
