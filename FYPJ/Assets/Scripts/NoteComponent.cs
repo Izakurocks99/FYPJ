@@ -21,9 +21,9 @@ public class NoteComponent : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		
 
-		cible = GameObject.Find("Cible " + number);
+		this.gameObject.transform.Rotate(this.transform.up, 4.0f);
+		cible = GameObject.Find("Target" + number);
 		transform.position = Vector3.Lerp(transform.parent.position, cible.transform.position, count);
 		count += Time.deltaTime;
 		if (Vector3.Distance(transform.position,cible.transform.position)< limitDistance)
@@ -33,10 +33,6 @@ public class NoteComponent : MonoBehaviour {
 		}
 	}
 
-	private void Awake()
-	{
-		
-	}
 
 
 

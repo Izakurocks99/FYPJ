@@ -45,13 +45,8 @@ public class StanAudioMotion : MonoBehaviour
     Material myDissolveMaterial = null;
     Material myDefaultMaterial = null;
     float dissolveTimer = 0;
-	public void PoolInit(List<GameObject> home, List<Material> mat)
-	{
 
-		dissolveTimer = 0;
-		_home = home;
-		_materials = mat;
-	}
+
 #else
     void Start() 
         {
@@ -89,36 +84,33 @@ public class StanAudioMotion : MonoBehaviour
     void Update()
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
-
-        // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint= GameObject.Find("target "+id).transform;
 
-        BeatMotion();
+        //BeatMotion();
         if (!_die)
             TransitBeat();
         else
-            dissolve();
+            Dissolve();
     }
 
     void BeatMotion()
     {
-       // _tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _intShiftRate) * Time.deltaTime, 0);
+        _tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _intShiftRate) * Time.deltaTime, 0);
     }
 
     void TransitBeat()
     {
-        _ftTime += Time.deltaTime / _ftTimeToTravel   ;
 		count += Time.deltaTime;
         Vector3 _vec3Heading = endPoint.position - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            // _tfThis.position = Vector3.MoveTowards(_tfThis.position, endpoint.transform.position, speed * Time.deltaTime);
             _tfThis.position = Vector3.Lerp(_tfThis.transform.parent.transform.position, endPoint.transform.position, count);
+
         else
         {
 
-			Die();
+			Dissolve();
 #if (BEAT_POOL)
-            OnReturn();
+            //OnReturn();
 #else
             Destroy(_tfThis.gameObject);
 #endif
@@ -142,7 +134,7 @@ public class StanAudioMotion : MonoBehaviour
         myDissolveMaterial = temp;
     }
 
-    void dissolve()
+    void Dissolve()
     {
         dissolveTimer += Time.deltaTime;
         float currentTime = dissolveTimer / dissolveTime;
@@ -161,6 +153,14 @@ public class StanAudioMotion : MonoBehaviour
         }
     }
 
+	public void PoolInit(List<GameObject> home, List<Material> mat)
+	{
+
+		dissolveTimer = 0;
+		_home = home;
+		_materials = mat;
+	}
+
 #if (BEAT_POOL)
     void OnReturn()
     {
@@ -174,6 +174,7 @@ public class StanAudioMotion : MonoBehaviour
             this.GetComponent<Renderer>().material = myDefaultMaterial;
             myDefaultMaterial = null;
             _materials.Add(myDissolveMaterial);
+		
         }
         _home.Add(this.gameObject);
 #else
