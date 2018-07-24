@@ -11,16 +11,18 @@ public class SceneSwitch : MonoBehaviour {
 	public string sceneName;
 	private float count = 0;
 	private Color color;
+    bool switching = false;
 
 	void Start()
 	{
-		//loadingScreen = GameObject.Find("LoadingScreen");
-		//loadingImage = GameObject.Find("LoadingImage");
-		
-		Fade();
-	}
+        switching = false;
+        //loadingScreen = GameObject.Find("LoadingScreen");
+        //loadingImage = GameObject.Find("LoadingImage");
 
-	private void Update()
+        StartCoroutine(FadeOut());
+    }
+
+    private void Update()
 	{
 		//if (Input.anyKeyDown && SceneManager.GetActiveScene().buildIndex == 0)
 		//{
@@ -30,16 +32,16 @@ public class SceneSwitch : MonoBehaviour {
 
 	public void LoadScene()
 	{
+        if(!switching)
+        {
+
 		color = new Color(1,1,1,0);
 		loadingScreen.SetActive(true);
 		StartCoroutine(FadeIn());
-		
+        switching = true;
+        }
 	}
-
-	public void Fade()
-	{
-		StartCoroutine(FadeOut());
-	}
+    
 
 	IEnumerator FadeIn()
 	{
