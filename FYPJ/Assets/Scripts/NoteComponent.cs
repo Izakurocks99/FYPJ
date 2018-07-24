@@ -15,7 +15,8 @@ public class NoteComponent : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		
+		cible = GameObject.Find("target " + number);
+		Debug.Log(cible);
 	}
 	
 	// Update is called once per frame
@@ -23,8 +24,7 @@ public class NoteComponent : MonoBehaviour {
 	{
 
 		this.gameObject.transform.Rotate(this.transform.up, 4.0f);
-		cible = GameObject.Find("Target" + number);
-		transform.position = Vector3.Lerp(transform.parent.position, cible.transform.position, count);
+		this.transform.position = Vector3.Lerp(this.transform.parent.position, cible.transform.position, count);
 		count += Time.deltaTime;
 		if (Vector3.Distance(transform.position,cible.transform.position)< limitDistance)
 		{

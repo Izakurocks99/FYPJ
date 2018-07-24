@@ -55,14 +55,12 @@ GameObject:
   - component: {fileID: 4617200912068624}
   - component: {fileID: 33565469416462522}
   - component: {fileID: 23347189848662638}
-  - component: {fileID: 114262906788339824}
-  - component: {fileID: 114560399177568074}
-  - component: {fileID: 114256599037953752}
   - component: {fileID: 54419994188912478}
   - component: {fileID: 135238925341500474}
   - component: {fileID: 114096031846879736}
+  - component: {fileID: 114997991844272694}
   m_Layer: 11
-  m_Name: AudioBeatsPrefab Blue 1
+  m_Name: BlueBeats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +243,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767929173467982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 873aefa6413498543a6df9f9934ec855, type: 3}
   m_Name: 
@@ -256,7 +254,7 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   id: 0
   dissolveTime: 1
---- !u!114 &114256599037953752
+--- !u!114 &114997991844272694
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -264,51 +262,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1767929173467982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e37e2c1cdfa19449a2523cd9d7316a, type: 3}
+  m_Script: {fileID: 11500000, guid: f898b4cc643557140962ecc6570a6e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 10
-  playerCam: {fileID: 0}
-  beats:
-  - color: 1
-    material: {fileID: 2100000, guid: 2bbc1017368aab545b94738fa118fa90, type: 2}
-  - color: 0
-    material: {fileID: 2100000, guid: baa97f898d90c094a9aa1f6f5e6d7810, type: 2}
-  - color: 2
-    material: {fileID: 2100000, guid: f916868e3ab4b9b468e9da8f040ec206, type: 2}
-  - color: 3
-    material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
-  isHit: 0
-  life: 0
---- !u!114 &114262906788339824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1767929173467982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7942fd842ea947449815762d2e1d6cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _intColor: 1
-  _intDirection: 0
---- !u!114 &114560399177568074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1767929173467982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9277b5e58f6bd3e47bd32dc0a93fd295, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _intShiftRate: 8
-  _ftTimeToTravel: 15
-  speed: 7
-  endPoint: {fileID: 4215351834697888}
-  dissolveTime: 1
+  speed: 1
+  cible: {fileID: 0}
+  limitDistance: 0.1
+  number: 0
 --- !u!135 &135238925341500474
 SphereCollider:
   m_ObjectHideFlags: 1

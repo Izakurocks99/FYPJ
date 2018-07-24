@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class noteSpawner : MonoBehaviour {
 
-	public GameObject BeatPool;
 	public GameObject prefab;
 	public GameObject strongerPrefab;
 	public int number;
@@ -35,10 +34,10 @@ public class noteSpawner : MonoBehaviour {
 			else
 				_instance = Instantiate(prefab, this.transform);						//spawning a normal beat
 
-
-			_instance.GetComponent<StanAudioMotion>().id = number;						 //giving it his id so it goes on the right target
-			audio1.GetComponent<Audio1>().spawnLimit += 1;								//adding one to spawn limit so it won't spawwn 3 beats at the same time.
-
+			
+			_instance.GetComponent<NoteComponent>().number = number;						 //giving it his id so it goes on the right target
+			audio1.GetComponent<Audio1>().spawnLimit += 1;                              //adding one to spawn limit so it won't spawwn 3 beats at the same time.
+			_instance.transform.parent = this.transform;
 		}
 
 		

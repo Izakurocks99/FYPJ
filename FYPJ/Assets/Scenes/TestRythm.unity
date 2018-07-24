@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 715899553}
   - component: {fileID: 715899552}
   - component: {fileID: 715899556}
-  - component: {fileID: 715899557}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -216,24 +215,6 @@ MonoBehaviour:
   loadingScreen: {fileID: 1897192597}
   loadingImage: {fileID: 57487554}
   sceneName: Lobby
---- !u!114 &715899557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 715899551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a934c5b55b4031546bb88250437efe5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goSpeaker: []
-  _goAudio: {fileID: 0}
-  _intPlayerDifficulty: 0
-  _intPlayerScoring: 0
-  _intPlayerMode: 0
-  _intSpawnPoint: 0
-  cam: {fileID: 0}
 --- !u!1001 &805652203
 Prefab:
   m_ObjectHideFlags: 0
@@ -369,6 +350,46 @@ Prefab:
       value: 
       objectReference: {fileID: 1950594217325028, guid: 8b0deb417562a79408c4df66498a48f6,
         type: 2}
+    - target: {fileID: 114419330403600588, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114384227279446892, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024032581150256, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114491796167148444, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114173436196885876, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114491473558080426, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114794599726310528, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114739285978030006, guid: ef5ea868a7322194f83740054bed2775,
+        type: 2}
+      propertyPath: number
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef5ea868a7322194f83740054bed2775, type: 2}
   m_IsPrefabParent: 0
