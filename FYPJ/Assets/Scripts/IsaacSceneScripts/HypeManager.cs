@@ -23,7 +23,7 @@ public class HypeManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = FindObjectOfType<PlayerStats>();
-        Debug.Assert(HypeMeter);
+        //Debug.Assert(HypeMeter);
     }
 
     void IncreaseHype()
@@ -53,8 +53,12 @@ public class HypeManager : MonoBehaviour {
         }
         if (hypeMaterial == null)
         {
+	    if(hypeMaterial != null)
             hypeMaterial = HypeMeter.GetComponent<Renderer>().material;
         }
-        hypeMaterial.SetFloat("_ShowPercent",_hype);
+	else
+	{
+        	hypeMaterial.SetFloat("_ShowPercent",_hype);
+	}
 	}
 }
