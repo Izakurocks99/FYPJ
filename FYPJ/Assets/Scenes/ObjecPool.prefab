@@ -38,8 +38,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802a238841a583b42aacf26fbfc28201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolSize: 20
-  Prefabs: []
+  poolData:
+  - Prefab: {fileID: 1767929173467982, guid: e11ea8619dca2be4f980411fb073a308, type: 2}
+    numObj: 10
+    OptionalParent: {fileID: 0}
+  - Prefab: {fileID: 1022804703494430, guid: 55e5ec664037ddd48bfc895d11873685, type: 2}
+    numObj: 10
+    OptionalParent: {fileID: 0}
+  - Prefab: {fileID: 1882934912556806, guid: 5a4a97eb0c2c03345912a8856fb376e3, type: 2}
+    numObj: 10
+    OptionalParent: {fileID: 0}
+  - Prefab: {fileID: 1950594217325028, guid: 52a345088ef56a2489670d843d279154, type: 2}
+    numObj: 10
+    OptionalParent: {fileID: 0}
 --- !u!224 &224334621849971084
 RectTransform:
   m_ObjectHideFlags: 1
