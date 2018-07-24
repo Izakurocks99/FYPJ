@@ -48,6 +48,10 @@ public class AudioMotion : MonoBehaviour
     float dissolveTimer = 0;
     ObjectPool _myPool = null;
     //public void PoolInit(List<GameObject> home, List<Material> mat)
+    
+#if (SPAWNDEBUG)
+    float timer = 0;
+#endif
     public void PoolInit(int home, List<Material> mat,ObjectPool Pool)
     {
         dissolveTimer = 0;
@@ -90,6 +94,9 @@ public class AudioMotion : MonoBehaviour
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                      _ftY,
                                                      _ftZ);
+#if (SPAWNDEBUG)
+	timer = 0;
+#endif
     }
 
     void Update()
@@ -99,8 +106,16 @@ public class AudioMotion : MonoBehaviour
         // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
+	
+#if (SPAWNDEBUG)
+	timer += Time.deltaTime;
+#endif
         BeatMotion();
+#if (SPAWNDEBUG)
+	if(timer < 1.f)
+#else
         if (!_die)
+#endif
             TransitBeat();
         else
             dissolve();
