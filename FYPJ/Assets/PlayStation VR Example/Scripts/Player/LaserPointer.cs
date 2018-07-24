@@ -3,7 +3,7 @@
 [RequireComponent(typeof(LineRenderer))]
 public class LaserPointer : MonoBehaviour
 {
-    public LayerMask uiLayerMask;
+    public LayerMask layerMask;
     public int max_distance = 100;
     private LineRenderer line;
     private RaycastHit hit;
@@ -17,7 +17,7 @@ public class LaserPointer : MonoBehaviour
     void Update()
     {
         //Physics.Raycast(transform.position, transform.forward, out hit, max_distance, uiLayerMask);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, max_distance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, max_distance, layerMask))
         {
             line.SetPosition(1, Vector3.forward * hit.distance);
             line.startColor = Color.green;
@@ -34,7 +34,7 @@ public class LaserPointer : MonoBehaviour
     public Collider LineRaycast()
     {
         //Physics.Raycast(transform.position, transform.forward, out hit, max_distance, uiLayerMask);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, max_distance))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, max_distance, layerMask))
             return hit.collider;
         else
             return null;

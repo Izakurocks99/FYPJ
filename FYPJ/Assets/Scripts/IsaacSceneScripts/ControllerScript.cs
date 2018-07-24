@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.PS4;
 #endif
 
+
 //Controls color of stick
 //checks for controller input
 
@@ -31,8 +32,9 @@ public enum GameColors
 public class ControllerScript : MonoBehaviour
 {
     //public
+    public bool spawnSticks = false;
     public bool isSecondaryMoveController = false;
-    public GameObject stick = null;
+    public GameObject stickPrefab;
     public PlayerStickScript currStick;
     public LaserPointer laserPointer;
     public PlayerControlsScript controlsScript;
@@ -70,11 +72,10 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        if (currStick)
+        if (spawnSticks)
         {
-            currStick.ChangeStickColor(pirmaryControllerColor);
+            SpawnStick();
         }
-
     }
 
     // Update is called once per frame
@@ -183,7 +184,6 @@ public class ControllerScript : MonoBehaviour
         //swapmode
         if (GetKeyDown(controlsScript.swapModeButton) && !swapModeButtonDown)
         {
-            Debug.Log("SwitchMode");
             swapModeButtonDown = true;
             if (controllerMode == ControllerModes.Movement)
             {
@@ -305,10 +305,15 @@ public class ControllerScript : MonoBehaviour
 
     bool GetButtonDown(ControllerButtons button)
     {
-        if (button != ControllerButtons.BackTrigger)
-            return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
-        else
-            return CheckForInput();
+		if (button != ControllerButtons.BackTrigger)
+#if UNITY_PS4
+			return PS4Input.MoveGetButtons(0, controllerIndex) == (GetButtonIndex(button));
+#else
+			return false;
+#endif
+		else
+			return CheckForInput();
+        //return false;
     }
 
     ControllerModesScript GetControllerMode(ControllerModes currMode)
@@ -344,9 +349,8 @@ public class ControllerScript : MonoBehaviour
         {
             //switch color
             //PickUpStick();
-            if(highlightedObject)
+            if (highlightedObject)
             {
-                Debug.Log(highlightedObject.name + "Held");
                 heldObject = highlightedObject;
                 heldObject.GetComponent<CDscript>().Hold(this.transform);
             }
@@ -357,7 +361,7 @@ public class ControllerScript : MonoBehaviour
             }
         }
 
-        if(button == controlsScript.dropStickButton)
+        if (button == controlsScript.dropStickButton)
         {
             DropStick();
         }
@@ -392,7 +396,6 @@ public class ControllerScript : MonoBehaviour
     {
         if (heldObject)
         {
-            Debug.Log(heldObject.name + "Released");
             heldObject.GetComponent<CDscript>().Release();
             heldObject = null;
         }
@@ -408,12 +411,21 @@ public class ControllerScript : MonoBehaviour
 
     public void SpawnStick()
     {
-        GameObject go = Instantiate(stick);
+        GameObject go = Instantiate(stickPrefab);
         if (isSecondaryMoveController)
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("secstick"));
         else if (!isSecondaryMoveController)
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("pristick"));
 
+        go.transform.SetParent(stickSlot);
+        go.transform.position = stickSlot.position;
+        go.transform.rotation = stickSlot.rotation;
+        go.transform.localScale = stickSlot.localScale;
+        currStick = go.GetComponentInChildren<PlayerStickScript>();
+        currStick.Equip();
+
+        //set player unable to pickup
+        canPickup = false;
     }
 
     bool PickUpStick()
@@ -424,19 +436,42 @@ public class ControllerScript : MonoBehaviour
             if (hit.gameObject.GetComponent<PlayerStickScript>())
             {
                 PlayerStickScript stick = hit.gameObject.GetComponent<PlayerStickScript>();
-                if (hit.gameObject.GetComponent<PlayerStickScript>() && canPickup)//if overlapping a stick and is not holding
+                if (hit.gameObject.GetComponent<PlayerStickScript>())//if overlapping a stick and is not holding
                 {
-                    //put stick in the hand's stick slot
-                    hit.gameObject.transform.parent.SetParent(stickSlot);
-                    hit.gameObject.transform.parent.position = stickSlot.position;
-                    hit.gameObject.transform.parent.rotation = stickSlot.rotation;
-                    //set controller currstick
-                    currStick = hit.gameObject.GetComponent<PlayerStickScript>();
-                    currStick.Equip();
+                    if (canPickup)
+                    {
+                        //put stick in the hand's stick slot
+                        hit.gameObject.transform.parent.SetParent(stickSlot);
+                        hit.gameObject.transform.parent.position = stickSlot.position;
+                        hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                        hit.gameObject.transform.parent.localScale = stickSlot.localScale;
+                        //set controller currstick
+                        currStick = hit.gameObject.GetComponent<PlayerStickScript>();
+                        currStick.Equip();
+                        currStick.ChangeStickColor(pirmaryControllerColor);
 
-                    //set player unable to pickup
-                    canPickup = false;
-                    return true;
+                        //set player unable to pickup
+                        canPickup = false;
+                        return true;
+                    }
+                    else
+                    {
+                        currStick.Return();
+
+                        //put stick in the hand's stick slot
+                        hit.gameObject.transform.parent.SetParent(stickSlot);
+                        hit.gameObject.transform.parent.position = stickSlot.position;
+                        hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                        hit.gameObject.transform.parent.localScale = stickSlot.localScale;
+                        //set controller currstick
+                        currStick = hit.gameObject.GetComponent<PlayerStickScript>();
+                        currStick.Equip();
+                        currStick.ChangeStickColor(pirmaryControllerColor);
+
+                        //set player unable to pickup
+                        canPickup = false;
+                        return true;
+                    }
                 }
             }
         }
@@ -464,7 +499,6 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            Debug.Log(other.gameObject.name + "Entered");
             //set current stick as "highlighted"
             highlightedObject = other.gameObject;
         }
@@ -476,7 +510,6 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            Debug.Log(other.gameObject.name + "Exited");
             //set current stick as "highlighted"
             highlightedObject = null;
         }

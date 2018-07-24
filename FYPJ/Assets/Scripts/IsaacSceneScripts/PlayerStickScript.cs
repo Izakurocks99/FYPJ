@@ -56,6 +56,12 @@ public class PlayerStickScript : MonoBehaviour
 
     public List<BatonCapsuleFollower> BatonFollowers;
 
+    Vector3 startingPos;
+    Vector3 startingScale;
+
+    [SerializeField]
+    Transform stickRack = null;
+
     // Use this for initialization
     void Start()
     {
@@ -80,6 +86,9 @@ public class PlayerStickScript : MonoBehaviour
             dicTrail.Add(var.gamecolor, var.color);
         }
 
+        startingPos = gameObject.transform.parent.position;
+        startingScale = gameObject.transform.parent.localScale;
+
         GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
         ChangeStickColor(currColor);
     }
@@ -87,13 +96,11 @@ public class PlayerStickScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void InitMesh(int index)
     {
         objectMesh = (StickType)index;
-        GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
     }
 
     public void ChangeStickColor(GameColors newColor)
@@ -107,18 +114,25 @@ public class PlayerStickScript : MonoBehaviour
         gameObject.GetComponent<MeleeWeaponTrail>()._colors = dicTrail[currColor];
     }
 
-    public void Equip()
+    public bool Equip()
     {
-        heldController = GetComponentInParent<ControllerScript>();
-        if(heldController.isSecondaryMoveController)
+        if (gameObject.transform.parent.parent)
         {
-            PlayerPrefs.SetInt("secstick", (int)objectMesh);
+            heldController = GetComponentInParent<ControllerScript>();
+
+            if (heldController.isSecondaryMoveController)
+            {
+                PlayerPrefs.SetInt("secstick", (int)objectMesh);
+            }
+            else if (!heldController.isSecondaryMoveController)
+            {
+                PlayerPrefs.SetInt("pristick", (int)objectMesh);
+            }
+
+            GetComponent<Collider>().enabled = false;
+            return true;
         }
-        else if(!heldController.isSecondaryMoveController)
-        {
-            PlayerPrefs.SetInt("pristick", (int)objectMesh);
-        }
-        //Debug.Log(heldController.gameObject.name);
+        return false;
     }
 
     public void Drop()
@@ -138,4 +152,13 @@ public class PlayerStickScript : MonoBehaviour
         ChangeStickColor(currColor);
     }
 
+    public void Return()
+    {
+        gameObject.transform.parent.SetParent(stickRack);
+        gameObject.transform.parent.position = startingPos;
+        gameObject.transform.parent.rotation= Quaternion.identity;
+        gameObject.transform.parent.localScale = startingScale;
+        GetComponent<Collider>().enabled = true;
+
+    }
 }

@@ -17,11 +17,16 @@ public class SelectSongsComponent : MonoBehaviour
 
     [SerializeField]
     public CDFollower follower = null;
+    [SerializeField]
+    public Vector3 frontPoint;
+    [SerializeField]
+    GameObject debugObj = null;
     Rigidbody _rigidbody;
 
     public bool selected = true;
     Quaternion tempRot;
     Vector3 tempForward;
+    Vector3 startForward;
 
     public CDscript currCD;
 
@@ -31,12 +36,21 @@ public class SelectSongsComponent : MonoBehaviour
 
     public float slowdownMultiplyer = 0.5f;
 
+    private GameObject playerCam;
+    [SerializeField]
+    Vector3 playerOffset;
+
+    bool snap = true;
+
+
     // Use this for initialization
     void Start()
     {
+        startForward = transform.forward;
         //Getting Values
         loadingScreen = FindObjectOfType<SceneSwitch>();
         player = FindObjectOfType<PlayerControlsScript>().gameObject;
+        playerCam = player.GetComponentInChildren<Camera>().gameObject;
 
         //songsSelector = gameObject;
         tempRot = follower.transform.rotation;
@@ -48,10 +62,9 @@ public class SelectSongsComponent : MonoBehaviour
         for (int i = 0; i < songs.Length; i++)
         {
             GameObject _instanceSong = Instantiate(prefabs);
-            _instanceSong.transform.position = this.transform.position;
+            _instanceSong.transform.position = this.transform.position + Vector3.forward * distance;
             _instanceSong.transform.parent = this.transform;
             _instanceSong.name = "Song" + i;
-            _instanceSong.transform.position += Vector3.forward * distance;
             this.transform.rotation = Quaternion.Euler(this.transform.rotation.x, (i + 1) * (360 / (songs.Length)), this.transform.rotation.z);
 
             CDscript cd = _instanceSong.GetComponentInChildren<CDscript>();
@@ -59,7 +72,6 @@ public class SelectSongsComponent : MonoBehaviour
             cd.Description = Description;
             cd.audioSource = audioSource;
             cd.song = songs[i];
-            cd.frontPoint = this.transform.position + Vector3.forward * distance;
             cd.minDist = minDist;
             cd.maxDist = distance;
             cd.selectDist = selectDist;
@@ -78,30 +90,46 @@ public class SelectSongsComponent : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        transform.position = playerCam.transform.position - playerOffset;
+        frontPoint = transform.position + Vector3.forward * distance;
+        follower.transform.position = transform.position;
+
+        if (debugObj)
+            debugObj.transform.position = frontPoint;
+
+        if (_rigidbody.angularVelocity.sqrMagnitude <= 0.5*0.5)
+            snap = true;
+
         if (selected)
         {
             float angleInDegrees;
-            //angleInDegrees = Quaternion.Angle(tempRot, follower.transform.rotation);
-            Vector3 followerforward = new Vector3((follower.transform.forward).x, 0, (follower.transform.forward).z).normalized;
+            //Vector3 followerforward = new Vector3((follower.transform.forward).x, 0, (follower.transform.forward).z).normalized;
 
+            //angle between
             angleInDegrees = Vector3.SignedAngle(tempForward, follower.transform.forward, transform.up);
+            //displacement
             Vector3 angularDisplacement = transform.up * angleInDegrees * Mathf.Deg2Rad;
+            //speed from current to destination
             Vector3 angularSpeed = tempRot * (angularDisplacement / Time.deltaTime);
             tempRot = follower.transform.rotation;
             tempForward = follower.transform.forward;
-            //Quaternion destination = follower.transform.rotation;
+            //assign speed
+            _rigidbody.angularVelocity = angularSpeed;
+        }
+        else if(snap)
+        {
+            //rotate to curr dist to front pos
+            float angleInDegrees;
+            Vector3 forwardCD = (currCD.transform.position - transform.position).normalized;
 
-            //Vector3 angularSpeed = transform.rotation * (angularDisplacement / Time.deltaTime);
+            angleInDegrees = Vector3.SignedAngle(forwardCD, startForward, transform.up);
+            Vector3 angularDisplacement = transform.up * angleInDegrees * Mathf.Deg2Rad;
+
+            Vector3 angularSpeed = Quaternion.LookRotation(forwardCD) * (angularDisplacement / Time.deltaTime);
 
             _rigidbody.angularVelocity = angularSpeed;
         }
-        //else
-        //{
-        //if (_rigidbody.angularVelocity.magnitude <= 1)
-        //    _rigidbody.angularVelocity = Vector3.zero;
-        //else
-        //    _rigidbody.angularVelocity *= slowdownMultiplyer;
-        //}
     }
 
     void OnMouseOver()
@@ -134,6 +162,7 @@ public class SelectSongsComponent : MonoBehaviour
 
     bool ToggleSelected()
     {
+        snap = !selected;
         return selected = !selected;
     }
 

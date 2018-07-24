@@ -5,6 +5,7 @@ using UnityEngine;
 public class noteSpawner : MonoBehaviour {
 
 	public GameObject prefab;
+	public GameObject strongerPrefab;
 	public int number;
 	float intensity, prevIntensity;
 	GameObject _instance;
@@ -24,8 +25,13 @@ public class noteSpawner : MonoBehaviour {
 
 		if ((intensity - prevIntensity > audio1.GetComponent<Audio1>().sensitivity /*|| intensity > 0.7f*/) && audio1.GetComponent<Audio1>().spawnLimit < 2  && Time.time>1 && spawnActive && audio1.GetComponent<Audio1>().spawnActive )
 		{
-			_instance = Instantiate(prefab, this.transform);
-			_instance.GetComponent<NoteComponent>().number = number;
+			if(intensity - prevIntensity >0.6f)
+				_instance = Instantiate(strongerPrefab, this.transform);
+			else
+				_instance = Instantiate(prefab, this.transform);
+
+
+			_instance.GetComponent<StanAudioMotion>().id = number;
 			audio1.GetComponent<Audio1>().spawnLimit += 1;
 			//spawnActive = false;
 			//StartCoroutine("SpawnDelay");

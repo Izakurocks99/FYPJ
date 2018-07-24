@@ -6,11 +6,11 @@ using System.Collections;
 public class Audio1 : MonoBehaviour {
 
     AudioSource _audioSource;
-    public static int _barLenght = 4;
+    public static int _barLenght = 8;
     float[] _samples = new float[512];
     float[] _freqBand = new float[_barLenght];
-    public float[] _bandBuffer = new float[_barLenght];
-    float[] _bufferDecrease = new float[4];
+	public float[] _bandBuffer = new float[8];
+    float[] _bufferDecrease = new float[_barLenght];
     public float _initialBufferDecrease, _decreaseMultiplier, _higherDecrease;
 
     float[] _frequenceHighest = new float[_barLenght];
@@ -26,6 +26,7 @@ public class Audio1 : MonoBehaviour {
 	void Start ()
     {
         _audioSource = GetComponent<AudioSource>();
+		Debug.Log(_bandBuffer.Length);
 	}
 
 	void LateUpdate()
@@ -69,7 +70,7 @@ public class Audio1 : MonoBehaviour {
         for(int i =0; i<_freqBand.Length; i++)
         {
             float average = 0;
-            int sampleCount = (int)Mathf.Pow(2, i + 2);
+            int sampleCount = (int)Mathf.Pow(2, i + 1);
 
             for (int j =0; j<sampleCount; j++)
             {
