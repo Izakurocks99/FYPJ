@@ -81,16 +81,6 @@ public class ControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (currStick && !currStick.Equip())
-        //{
-        //        currStick.transform.parent.SetParent(stickSlot);
-        //        currStick.transform.parent.localPosition = Vector3.zero;
-        //        currStick.transform.localRotation = Quaternion.identity;
-        //        currStick.transform.localScale = Vector3.one;
-
-        //        currStick.Equip();
-        //        currStick.ChangeStickColor(pirmaryControllerColor);
-        //}
         //Inputs Single Controllers
         //back trigger
         if (GetButtonDown(ControllerButtons.BackTrigger) && !TriggerButtonDown)
@@ -449,20 +439,42 @@ public class ControllerScript : MonoBehaviour
             if (hit.gameObject.GetComponent<PlayerStickScript>())
             {
                 PlayerStickScript stick = hit.gameObject.GetComponent<PlayerStickScript>();
-                if (hit.gameObject.GetComponent<PlayerStickScript>() && canPickup)//if overlapping a stick and is not holding
+                if (hit.gameObject.GetComponent<PlayerStickScript>())//if overlapping a stick and is not holding
                 {
-                    //put stick in the hand's stick slot
-                    hit.gameObject.transform.parent.SetParent(stickSlot);
-                    hit.gameObject.transform.parent.position = stickSlot.position;
-                    hit.gameObject.transform.parent.rotation = stickSlot.rotation;
-                    hit.gameObject.transform.parent.localScale = stickSlot.localScale;
-                    //set controller currstick
-                    currStick = hit.gameObject.GetComponent<PlayerStickScript>();
-                    currStick.Equip();
+                    if (canPickup)
+                    {
+                        //put stick in the hand's stick slot
+                        hit.gameObject.transform.parent.SetParent(stickSlot);
+                        hit.gameObject.transform.parent.position = stickSlot.position;
+                        hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                        hit.gameObject.transform.parent.localScale = stickSlot.localScale;
+                        //set controller currstick
+                        currStick = hit.gameObject.GetComponent<PlayerStickScript>();
+                        currStick.Equip();
+                        currStick.ChangeStickColor(pirmaryControllerColor);
 
-                    //set player unable to pickup
-                    canPickup = false;
-                    return true;
+                        //set player unable to pickup
+                        canPickup = false;
+                        return true;
+                    }
+                    else
+                    {
+                        currStick.Return();
+
+                        //put stick in the hand's stick slot
+                        hit.gameObject.transform.parent.SetParent(stickSlot);
+                        hit.gameObject.transform.parent.position = stickSlot.position;
+                        hit.gameObject.transform.parent.rotation = stickSlot.rotation;
+                        hit.gameObject.transform.parent.localScale = stickSlot.localScale;
+                        //set controller currstick
+                        currStick = hit.gameObject.GetComponent<PlayerStickScript>();
+                        currStick.Equip();
+                        currStick.ChangeStickColor(pirmaryControllerColor);
+
+                        //set player unable to pickup
+                        canPickup = false;
+                        return true;
+                    }
                 }
             }
         }
