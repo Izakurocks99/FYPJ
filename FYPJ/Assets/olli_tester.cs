@@ -10,10 +10,9 @@ public class olli_tester : MonoBehaviour {
     [SerializeField]
     [Range(0,10)]
     int numIterations = 4;
-
+	
     Material bloom;
-
-
+	    
    	RenderTexture[] textures = new RenderTexture[16];
 
 

@@ -8,6 +8,9 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject[] _goSpeaker;
     public GameObject _goAudio;
+    [SerializeField]
+    GameObject _hypeManagerObj = null;
+    HypeManager _hypeManager = null;
     public int _intPlayerDifficulty;
     public int _intPlayerScoring;
     public int _intPlayerMode;
@@ -34,6 +37,8 @@ public class PlayerStats : MonoBehaviour
         _intPlayerDifficulty = 2;
         _intPlayerScoring = 0;
         _intPlayerMode = 0;
+        Debug.Assert(_hypeManagerObj);
+        _hypeManager = _hypeManagerObj.GetComponent<HypeManager>();
 
         if (_intSpawnPoint == 0)
             _intSpawnPoint = 0;
@@ -81,12 +86,14 @@ public class PlayerStats : MonoBehaviour
         if (hit)
         {
             _intCombo++;
-            if(_intCombo % 10 == 0)
+            _hypeManager.scoreHypeRatio *= 1 + (_intCombo < _hypeManager.MaxCombo ? _intCombo : _hypeManager.MaxCombo - 1);
+            if (_intCombo % 10 == 0)
             {
                 Wave.Pulse();
             }
         }
         else
+            _hypeManager.scoreHypeRatio = 0;
             _intCombo = 0;
 
         foreach (ControllerScript controller in _controllers) //for each controllers

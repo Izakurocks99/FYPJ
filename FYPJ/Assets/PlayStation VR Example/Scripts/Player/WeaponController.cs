@@ -87,7 +87,6 @@ public class WeaponController : MonoBehaviour
             {
                 Vector3 height = new Vector3(0f, 1.5f, 0f);
                 player.transform.position = hit.point + height;
-                Debug.Log(hit.collider.gameObject.name);
             }
         }
     }

@@ -56,6 +56,12 @@ public class PlayerStickScript : MonoBehaviour
 
     public List<BatonCapsuleFollower> BatonFollowers;
 
+    Vector3 startingPos;
+    Vector3 startingScale;
+
+    [SerializeField]
+    Transform stickRack = null;
+
     // Use this for initialization
     void Start()
     {
@@ -80,6 +86,9 @@ public class PlayerStickScript : MonoBehaviour
             dicTrail.Add(var.gamecolor, var.color);
         }
 
+        startingPos = gameObject.transform.parent.position;
+        startingScale = gameObject.transform.parent.localScale;
+
         GetComponent<MeshFilter>().mesh = dicSticks[objectMesh].mesh;
         ChangeStickColor(currColor);
     }
@@ -87,7 +96,6 @@ public class PlayerStickScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void InitMesh(int index)
@@ -144,4 +152,13 @@ public class PlayerStickScript : MonoBehaviour
         ChangeStickColor(currColor);
     }
 
+    public void Return()
+    {
+        gameObject.transform.parent.SetParent(stickRack);
+        gameObject.transform.parent.position = startingPos;
+        gameObject.transform.parent.rotation= Quaternion.identity;
+        gameObject.transform.parent.localScale = startingScale;
+        GetComponent<Collider>().enabled = true;
+
+    }
 }

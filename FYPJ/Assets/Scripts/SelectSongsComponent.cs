@@ -93,6 +93,8 @@ public class SelectSongsComponent : MonoBehaviour
 
         transform.position = playerCam.transform.position - playerOffset;
         frontPoint = transform.position + Vector3.forward * distance;
+        follower.transform.position = transform.position;
+
         if (debugObj)
             debugObj.transform.position = frontPoint;
 
