@@ -200,8 +200,8 @@ public class SelectSongsComponent : MonoBehaviour
             Debug.Log("randomarea" + random);
 
         if (random)
-            PlayerPrefs.SetInt("randomarea", 1);
-        else
             PlayerPrefs.SetInt("randomarea", 0);
+        else
+            PlayerPrefs.SetInt("randomarea", 1);
     }
 }

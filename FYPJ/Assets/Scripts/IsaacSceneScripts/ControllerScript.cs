@@ -413,9 +413,15 @@ public class ControllerScript : MonoBehaviour
     {
         GameObject go = Instantiate(stickPrefab);
         if (isSecondaryMoveController)
+        {
+            Debug.Log("secstick" + PlayerPrefs.GetInt("secstick"));
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("secstick"));
+        }
         else if (!isSecondaryMoveController)
+        {
+            Debug.Log("pristick" + PlayerPrefs.GetInt("pristick"));
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("pristick"));
+        }
 
         go.transform.SetParent(stickSlot);
         go.transform.position = stickSlot.position;

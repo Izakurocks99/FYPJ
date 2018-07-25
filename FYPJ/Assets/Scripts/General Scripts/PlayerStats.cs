@@ -13,9 +13,9 @@ public class PlayerStats : MonoBehaviour
     HypeManager _hypeManager = null;
     public int _intPlayerDifficulty;
     public int _intPlayerScoring;
-    public int _intPlayerMode;
+    public int _intPlayerMode; //0 is 2 colors, 1 4 colors
     public int _intSpawnPoint;
-    public int _intSpawnMode;
+    public int _intSpawnMode; //0 is random, 1 is straight
     int _intCounter;
     int _intCombo;
     float _ftProbablity;
@@ -42,6 +42,11 @@ public class PlayerStats : MonoBehaviour
             _intPlayerMode = 0;
         if (_intSpawnMode == 0)
             _intSpawnMode = 0;
+
+        _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+        _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+        _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+
         _intCombo = 0;
 
         Debug.Assert(_hypeManagerObj);
