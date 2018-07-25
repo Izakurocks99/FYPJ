@@ -143,6 +143,7 @@ public class AudioMotion : MonoBehaviour
         }
         else
         {
+            _ftTime = 0.0f;
 #if (BEAT_POOL)
             OnReturn();
 #else

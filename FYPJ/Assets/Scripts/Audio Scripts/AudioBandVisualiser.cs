@@ -158,11 +158,14 @@ public class AudioBandVisualiser : MonoBehaviour
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
                             if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
-                                else if (_intCurrentCounter != 0) {
-                                    if (_intCurrentBuffer == _intFirst) continue;
-                                    else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.3f) {
+                                    if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
+                                    else if (_intCurrentCounter != 0) {
+                                        if (_intCurrentBuffer == _intFirst) continue;
+                                        else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                    }
                                 }
+                                else continue;
                             }
                         }
                     }
@@ -188,10 +191,19 @@ public class AudioBandVisualiser : MonoBehaviour
                                     _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
                                     _intMatColorR = _intCurrentMaterial;
                                 }
-                                else {
-                                    if (i == 0) _intCurrentMaterial = _intMatColorL;
-                                    else if (i != 0) _intCurrentMaterial = _intMatColorR;
+
+                                if (_intMatColorL >= 9) {
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intMatColorL = _intCurrentMaterial;
                                 }
+                                
+                                if (_intMatColorR >= 9) {
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intMatColorR = _intCurrentMaterial;
+                                }
+
+                                if (i == 0) _intCurrentMaterial = _intMatColorL;
+                                else if (i != 0) _intCurrentMaterial = _intMatColorR;
                                 break;
                             }
     
@@ -208,6 +220,7 @@ public class AudioBandVisualiser : MonoBehaviour
                             }
                         }
 #if (BEAT_POOL)
+                        if (_intParse >= 9) continue;
                         GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[_intParse]);
 #else
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
