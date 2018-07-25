@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour {
-	// Use this for initialization
-	//
+
 	[System.Serializable]
 	public class PoolingData 
 	{
@@ -18,13 +17,8 @@ public class ObjectPool : MonoBehaviour {
 	[SerializeField]
 	List<PoolingData> poolData = new List<PoolingData>();
 	
-	//[SerializeField]
-	//uint poolSize = 20;
-
 	List<List<GameObject>> Pools = new List<List<GameObject>>();
-	
-	//[SerializeField]
-	//List<GameObject> Prefabs = new List<GameObject>();
+
 	void Start () {
 		Debug.Assert(poolData.Count > 0);
 		for(int i1 = 0; i1 < poolData.Count;i1++)
@@ -33,6 +27,7 @@ public class ObjectPool : MonoBehaviour {
 			for(int i2 = 0; i2 < poolData[i1].numObj;i2++)
 			{
 				GameObject temp = GameObject.Instantiate(poolData[i1].Prefab);
+				Debug.Assert(temp);
 				temp.transform.parent =  poolData[i1].OptionalParent != null ? poolData[i1].OptionalParent.transform : null;// 
 				temp.SetActive(false);
 				Pools[i1].Add(temp);
@@ -42,6 +37,7 @@ public class ObjectPool : MonoBehaviour {
 	}
 	public GameObject GetObjectFromPool(int PoolIndex)
 	{
+		Debug.Assert(Pools[PoolIndex].Count > 0);
 		GameObject go = Pools[PoolIndex].PopBack();
 		go.SetActive(true);
 		return go;

@@ -10,7 +10,7 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
     public PlayerStats playerCam;
     public bool isHit = false;
     [SerializeField]
-    GameColors color;
+    GameColors color = new GameColors();
     Rigidbody rb;
 
     public float life;
