@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatonCapsule : MonoBehaviour {
     [SerializeField]
-    private BatonCapsuleFollower _batonCapsuleFollowerPrefab;
+    private BatonCapsuleFollower _batonCapsuleFollowerPrefab = null;
     public PlayerStickScript thisStick;
 
     private void Start()

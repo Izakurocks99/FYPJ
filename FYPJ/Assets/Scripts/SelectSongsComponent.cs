@@ -39,7 +39,7 @@ public class SelectSongsComponent : MonoBehaviour
 
     private GameObject playerCam;
     [SerializeField]
-    Vector3 playerOffset;
+    Vector3 playerOffset = new Vector3();
 
     bool snap = true;
 

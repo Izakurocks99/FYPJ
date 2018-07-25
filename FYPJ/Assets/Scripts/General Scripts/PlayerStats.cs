@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     public int _intPlayerScoring;
     public int _intPlayerMode;
     public int _intSpawnPoint;
+    public int _intSpawnMode;
     int _intCounter;
     int _intCombo;
     float _ftProbablity;
@@ -33,10 +34,16 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        if (_intPlayerDifficulty == 0)
+            _intPlayerDifficulty = 0;
+        if (_intPlayerScoring == 0)
+            _intPlayerScoring = 0;
+        if (_intPlayerMode == 0)
+            _intPlayerMode = 0;
+        if (_intSpawnMode == 0)
+            _intSpawnMode = 0;
         _intCombo = 0;
-        _intPlayerDifficulty = 2;
-        _intPlayerScoring = 0;
-        _intPlayerMode = 0;
+
         Debug.Assert(_hypeManagerObj);
         _hypeManager = _hypeManagerObj.GetComponent<HypeManager>();
 
@@ -62,7 +69,7 @@ public class PlayerStats : MonoBehaviour
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             ProbablityRandomDistribution();
-            ProbablityRandomGeneration();
+            // ProbablityRandomGeneration();
         }
     }
 

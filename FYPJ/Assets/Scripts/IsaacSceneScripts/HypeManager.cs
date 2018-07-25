@@ -13,7 +13,6 @@ public class HypeManager : MonoBehaviour {
     [SerializeField]
     GameObject HypeMeter = null;
 
-
     private float playerScore = 0;
     public float scoreHypeRatio = 0.1f;
     //private int hype;
@@ -23,7 +22,7 @@ public class HypeManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = FindObjectOfType<PlayerStats>();
-        //Debug.Assert(HypeMeter);
+        Debug.Assert(HypeMeter); // SET METER TO GAMOBJETC USE IT
     }
 
     void IncreaseHype()
@@ -45,7 +44,6 @@ public class HypeManager : MonoBehaviour {
 		if (playerScore != player._intPlayerScoring)
         {
             playerScore = player.GetComponent<PlayerStats>()._intPlayerScoring;
-            //hype = Mathf.RoundToInt(playerScore * scoreHypeRatio);
             if (_hype >= 0)
             {
                 audienceManager.HypeMeter = (int)(_hype * 100);
