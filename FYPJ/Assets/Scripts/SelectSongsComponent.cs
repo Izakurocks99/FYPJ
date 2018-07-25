@@ -13,6 +13,7 @@ public class SelectSongsComponent : MonoBehaviour
     public GameObject platform;
     public GameObject audioSource;
     public GameObject player;
+    public GameObject difficultyMenu;
     public SceneSwitch loadingScreen;
 
     [SerializeField]
@@ -86,6 +87,8 @@ public class SelectSongsComponent : MonoBehaviour
         {
             ToggleSelected();
         }
+
+        difficultyMenu.transform.position = gameObject.transform.position;
     }
 
     private void FixedUpdate()
@@ -168,41 +171,37 @@ public class SelectSongsComponent : MonoBehaviour
 
     public void LaunchSong()
     {
-        StartCoroutine(currCD.LaunchSong());
+        //StartCoroutine(currCD.LaunchSong());
         PlayerPrefs.SetString("test", currCD.song.title);
+        difficultyMenu.SetActive(true);
     }
-    //public void SwitchSongRight()
-    //{
-    //    if (clickable)
-    //    {
-    //        clickable = false;
-    //        _startRotation = songsSelector.transform.eulerAngles;
-    //        _toRotation = new Vector3(0, songsSelector.transform.eulerAngles.y + 360 / songs.Length, 0);
-    //        StartCoroutine("SwitchRight");
-    //    }
-    //}
 
-    //IEnumerator SwitchRight()
-    //{
-    //    count = 0;
-    //    while (count < 1.15)
-    //    {
-    //        songsSelector.transform.eulerAngles = Vector3.Lerp(_startRotation, _toRotation, count);
-    //        count += Time.deltaTime;
-    //        yield return 0;
-    //    }
-    //    clickable = true;
-    //    yield break;
-    //}
+    [SerializeField]
+    bool debugSpawningStats;
 
-    //public void SwitchSongLeft()
-    //{
-    //    if (clickable)
-    //    {
-    //        clickable = false;
-    //        _startRotation = songsSelector.transform.eulerAngles;
-    //        _toRotation = new Vector3(0, songsSelector.transform.eulerAngles.y - 360 / songs.Length, 0);
-    //        StartCoroutine("SwitchRight");
-    //    }
-    //}
+    bool dual;
+    public void ToggleNumColors( bool isdual)
+    {
+        dual = isdual;
+        if (debugSpawningStats)
+            Debug.Log("dualcolor" + dual);
+
+        if (dual)
+            PlayerPrefs.SetInt("dualcolor", 1);
+        else
+            PlayerPrefs.SetInt("dualcolor", 0);
+    }
+
+    bool random;
+    public void ToggleRandomArea(bool isrand)
+    {
+        random = isrand;
+        if (debugSpawningStats)
+            Debug.Log("randomarea" + random);
+
+        if (random)
+            PlayerPrefs.SetInt("randomarea", 1);
+        else
+            PlayerPrefs.SetInt("randomarea", 0);
+    }
 }
