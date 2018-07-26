@@ -32,37 +32,37 @@ public class Audio1 : MonoBehaviour {
 	void LateUpdate()
 	{
 		
-		if (spawnLimit > 0)
+		if (spawnLimit > 0)																//if a beat has spawn this frame
 		{
-			spawnActive = false;
-			StartCoroutine("SpawnReactivate");
+			spawnActive = false;														//desactivate every spawners
+			StartCoroutine("SpawnReactivate");											//and Delay its Reactivation
 		}
 
 	}
 
+	//reactivation delay for beat spawner after each spawn
 	IEnumerator SpawnReactivate()
 	{
-		//Debug.Log("Reactivation");
 		spawnLimit = 0;
-		yield return new WaitForSeconds(difficulty);
+		yield return new WaitForSeconds(difficulty);									//reactivation delay is set by difficulty  = Delay between 2 beats
 		spawnActive = true;
 
 		yield break;
 	}
 
+
 	void Update ()
     {
         _audioSource.GetSpectrumData(_samples, 0, FFTWindow.Blackman);
+
         MakeFrequencyBands();
-        
         CreateAudioBands();
         BandBuffer();
-
-		//Debug.Log(spawnLimit);
-
-
 	}
 
+
+
+	//create 8 bands from the 512 samples
     void MakeFrequencyBands()
     {
         int count = 0;
@@ -74,7 +74,7 @@ public class Audio1 : MonoBehaviour {
 
             for (int j =0; j<sampleCount; j++)
             {
-                average += _samples[count] * (count + 1);  // le coef est-il vraiment utile ?
+                average += _samples[count] * (count + 1);  
                 count++;
             }
             average /= count;
@@ -83,6 +83,23 @@ public class Audio1 : MonoBehaviour {
         }
     }
 
+
+	//some tweaking to smooth each band
+    void CreateAudioBands()
+    {
+        for (int i = 0; i < _barLenght; i++)
+        {
+            if (_freqBand[i] > _frequenceHighest[i]) {
+                _frequenceHighest[i] = _freqBand[i];									//replace the max intensity if it has been overpowered
+            }
+            _audioBand[i] = (_freqBand[i] / _frequenceHighest[i]);						//bands will have the same size when they are at their max even if they have different intensity
+
+			_frequenceHighest[i] -= _frequenceHighest[i]/10 * Time.deltaTime;			//band's max will slowly decrease to fit songs that goes down in intensity
+        }
+    }
+
+
+	//add buffering to the decrease of band intensity
     void BandBuffer()
     {
         for (int i = 0; i < _barLenght; i++)
@@ -100,18 +117,22 @@ public class Audio1 : MonoBehaviour {
         }
     }
 
-    void CreateAudioBands()
-    {
-        for (int i = 0; i < _barLenght; i++)
-        {
-            if (_freqBand[i] > _frequenceHighest[i]) {
-                _frequenceHighest[i] = _freqBand[i];
-            }
-            _audioBand[i] = (_freqBand[i] / _frequenceHighest[i]);
+	//difficulty settings
+	void SetDifficultyToEasy()
+	{
+		sensitivity = 0.7f;
+		difficulty = .5f;
+	}
 
-			_frequenceHighest[i] -= _frequenceHighest[i]/10 * Time.deltaTime;
-        }
+	void SetDifficultyToNormal()
+	{
+		 sensitivity = 0.65f;
+		 difficulty = 0.3f;
+	}
 
-
-    }
+	void SetDifficultyToHard()
+	{
+		sensitivity = .6f;
+		difficulty = .2f;
+	}
 }

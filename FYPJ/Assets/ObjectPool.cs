@@ -37,4 +37,6 @@ public class ObjectPool : MonoBehaviour {
 		obj.SetActive(false);
 		Pools[index].Add(obj);
 	}
+
+
 }
