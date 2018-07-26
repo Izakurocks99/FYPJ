@@ -12,7 +12,7 @@ public class NumOfColorsScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (PlayerPrefs.GetInt("dualcolors") == 1)
+        if (PlayerPrefs.GetInt("dualcolor") == 0)
             twoColors.gameObject.SetActive(false);
         else
             fourColors.gameObject.SetActive(false);
