@@ -41,10 +41,11 @@ public class RainbowSpawner : MonoBehaviour {
 			yield return new WaitForSeconds(.15f);																	//waiting a bit between 2 rainbow beats
 		}
 
-		for (int i = 0; i < normalSpawners.Length; i++)																//reactivating others spawners
-			normalSpawners[i].SetActive(true);
 
-		this.gameObject.SetActive(false);																			//desactivating rainbow Spawner
+		StartCoroutine("ActivateNormalSpawner");
+
+		                                                                         //desactivating rainbow Spawner
+
 
 		yield break;
 	}
@@ -52,6 +53,17 @@ public class RainbowSpawner : MonoBehaviour {
 	private void Update()
 	{
 		count += Time.deltaTime;
+	}
+
+	IEnumerator ActivateNormalSpawner()
+	{
+		yield return new WaitForSeconds(.6f);
+
+		for (int i = 0; i < normalSpawners.Length; i++)                                                             //reactivating others spawners
+			normalSpawners[i].SetActive(true);
+
+
+		this.gameObject.SetActive(false);
 	}
 
 }

@@ -26,7 +26,7 @@ public class Audio1 : MonoBehaviour {
 	void Start ()
     {
         _audioSource = GetComponent<AudioSource>();
-		Debug.Log(_bandBuffer.Length);
+
 	}
 
 	void LateUpdate()

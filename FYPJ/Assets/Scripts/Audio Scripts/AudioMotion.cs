@@ -145,6 +145,11 @@ public class AudioMotion : MonoBehaviour
         }
     }
 
+	public void SetPlayer(GameObject go)
+	{
+
+	}
+
     public void Die()
     {
         if (_die) return;

@@ -44,7 +44,7 @@ public class noteSpawner : MonoBehaviour {
 
 			_instance.GetComponent<NoteComponent>().number = number;									//giving it its id so it goes on the right target
 			audio1.GetComponent<Audio1>().spawnLimit += 1;												//adding one to spawn limit so it won't spawn 3 beats at the same time.
-			_instance.transform.parent = this.transform;												//parenting the beat to the spawner
+			//_instance.transform.parent = this.transform;												//parenting the beat to the spawner
 			_instance.GetComponent<NoteComponent>().startPos = this.transform.position;					//setting the starting position to match the one of the spawner
 			_instance.GetComponent<NoteComponent>().destination = GameObject.Find("target " + number).transform.position;		//giving the beat the right target
 		}

@@ -58,7 +58,6 @@ public class NoteComponent : MonoBehaviour {
 
 		transform.parent = pool.transform;															//resetting its parent and position
 		transform.localPosition = new Vector3(0, 0, 0);
-		Debug.Log(typeIndex);
 		pool.ReturnObjectToPool(this.gameObject, typeIndex);                                        //desactivate it and return it to the pool
 		yield break;
 	}
