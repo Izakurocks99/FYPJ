@@ -12,7 +12,7 @@ public class CDscript : MonoBehaviour
     //public GameObject platform, player;
     public GameObject audioSource;
     //, loadingScreen;
-    Vector3 originalScale;
+    public Vector3 originalScale;
 
     public SelectSongsComponent parent;
     public float maxDist;
@@ -28,7 +28,6 @@ public class CDscript : MonoBehaviour
         //platform = GameObject.Find("SongsSelection/platform");
         //player = GameObject.Find("Player");
         //audioSource = GameObject.Find("SongsSelection/Screen/Audio Source");
-        originalScale = new Vector3(.25f, .25f, .25f);
         //loadingScreen = GameObject.Find("Player/MainCamera");
     }
 
