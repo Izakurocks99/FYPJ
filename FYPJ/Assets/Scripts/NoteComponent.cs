@@ -90,7 +90,7 @@ public class NoteComponent : MonoBehaviour {
                 {
                     if (stick.heldController)
                         stick.heldController.VibrateController();
-                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude));
                     player.ModifyCombo(true);
                     //addscore
                 }
