@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour {
-
+    
 	[System.Serializable]
 	public class PoolingData 
 	{
@@ -21,16 +21,18 @@ public class ObjectPool : MonoBehaviour {
 
 	void Start () {
 		Debug.Assert(poolData.Count > 0);
+        Vector3 Position = new Vector3(0,0,0);
 		for(int i1 = 0; i1 < poolData.Count;i1++)
 		{
 			Pools.Add(new List<GameObject>());
 			for(int i2 = 0; i2 < poolData[i1].numObj;i2++)
 			{
-				GameObject temp = GameObject.Instantiate(poolData[i1].Prefab);
+				GameObject temp = GameObject.Instantiate(poolData[i1].Prefab,Position,new Quaternion());
 				Debug.Assert(temp);
-				temp.transform.parent =  poolData[i1].OptionalParent != null ? poolData[i1].OptionalParent.transform : null;// 
+				temp.transform.parent =  poolData[i1].OptionalParent != null ? poolData[i2].OptionalParent.transform : null;// 
 				temp.SetActive(false);
 				Pools[i1].Add(temp);
+                Position += new Vector3(10,0,0);
 			}
 	
 		}

@@ -15,7 +15,7 @@ public class StanAudioMotion : MonoBehaviour
     float _ftX, _ftY, _ftZ;
     float _ftTime;
     int _intNumber;
-    Vector3 _vec3Area;
+    Vector3 _vec3Area;// = null;
     ControlCalibrationScript calibration;
     PlayerStats PlayerStats;
 

@@ -31,6 +31,21 @@ public class PlayerStats : MonoBehaviour
     GameObject cam = null;
     WaveEffect Wave = null;
 
+    void OnValidate()
+    {
+        if(_hypeManagerObj == null)
+        {
+            //TODO Or try to search it?
+            Debug.LogWarning("Please set the HypeManager to PlayerStats");
+        }
+        if(cam == null)
+        {
+            //TODO Or try to search it?
+            Debug.LogWarning("Please set the Camera to PlayerStats");
+        }
+
+    }
+
     void Start()
     {
         _intCombo = 0;
@@ -78,7 +93,7 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyScore(int score)
     {
-        _intPlayerScoring += score;
+        _intPlayerScoring += score * _hypeManager.hypeMult;
     }
 
     public void ModifyCombo(bool hit)

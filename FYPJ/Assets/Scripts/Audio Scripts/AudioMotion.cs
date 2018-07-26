@@ -1,5 +1,5 @@
 ﻿#define BEAT_POOL
-//#define STAN
+#define STAN
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -56,6 +56,7 @@ public class AudioMotion : MonoBehaviour
     {
         dissolveTimer = 0;
         _home = home;
+        
         _materials = mat;
 	_myPool = Pool;
 #else
@@ -67,9 +68,9 @@ public class AudioMotion : MonoBehaviour
 
 
 #if (STAN)
-        _childGlow = this.transform.GetChild(2);
+        _childGlow = this.transform.GetChild(1);
          _childGlowScale = _childGlow.localScale;
-        _childTwinkle = transform.GetChild(3);
+        _childTwinkle = transform.GetChild(2); // out of bounds
         _childTwinkleScale = _childTwinkle.localScale;
 #endif
 
