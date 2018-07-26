@@ -384,7 +384,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1900403519190746}
-  m_Mesh: {fileID: 4300000, guid: 65e3b1bb321152f428793bab828d0f0d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 278b36500b88186449c039717e8ad074, type: 3}
 --- !u!33 &33773110215596724
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -459,3 +459,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sha: {fileID: 4800000, guid: 3df4d78e89f67c442a0fdc2ac4dd2e51, type: 3}
   GlassShader: {fileID: 4800000, guid: aae723ae512d4c945a1d8d82c85523b0, type: 3}
+  scale: 1
