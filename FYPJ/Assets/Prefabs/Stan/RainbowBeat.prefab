@@ -203,12 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f898b4cc643557140962ecc6570a6e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
   limitDistance: 0.1
   number: 0
   typeIndex: 0
   startPos: {x: 0, y: 0, z: 0}
   destination: {x: 0, y: 0, z: 0}
+  color: 4
+  isHit: 0
 --- !u!135 &135720156067500176
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -38,8 +38,8 @@ public class ObjectPool : MonoBehaviour {
 		}
 	}
 	public GameObject GetObjectFromPool(int PoolIndex)
-	{
-		Debug.Assert(Pools[PoolIndex].Count > 0);
+    {
+        Debug.Assert(Pools[PoolIndex].Count > 0);
 		GameObject go = Pools[PoolIndex].PopBack();
 		go.SetActive(true);
 		return go;
