@@ -85,7 +85,7 @@ public sealed class AudianceManager : MonoBehaviour {
               }
           }
           */
-        Debug.Log(string.Format("AudianceManager {0}", this.gameObject.GetHashCode()));
+        //Debug.Log(string.Format("AudianceManager {0}", this.gameObject.GetHashCode()));
 
         Debug.Assert(Member != null);
         //Quaternion q = new Quaternion();

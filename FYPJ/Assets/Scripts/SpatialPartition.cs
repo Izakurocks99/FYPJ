@@ -63,7 +63,7 @@ public sealed class SpatialPartition : MonoBehaviour { // can we work without mo
     List<Collider> Colliders = new List<Collider>();
 
     void Awake () {
-        Debug.Log(string.Format( "Spatial {0}", this.gameObject.GetHashCode()));
+        //Debug.Log(string.Format( "Spatial {0}", this.gameObject.GetHashCode()));
 
         FastRadius = CharacterRadius * CharacterRadius;
         for (int y = 0; y < NumHeightGrids; y++)

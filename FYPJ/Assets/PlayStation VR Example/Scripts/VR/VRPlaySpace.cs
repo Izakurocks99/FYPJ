@@ -20,6 +20,7 @@ public class VRPlaySpace : MonoBehaviour
     PlayStationVRTrackingStatus status;
 #endif
 
+    
     void Start()
     {
 #if !UNITY_5_4_OR_NEWER

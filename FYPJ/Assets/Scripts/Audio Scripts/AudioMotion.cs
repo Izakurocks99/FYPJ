@@ -1,5 +1,5 @@
 ﻿#define BEAT_POOL
-//#define STAN
+#define STAN
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -12,7 +12,6 @@ public class AudioMotion : MonoBehaviour
     Transform _tfParent;
 #endif
     Transform _tfThis;
-    GameObject _goPlayer;
     public float _intShiftRate;
     public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
@@ -57,8 +56,9 @@ public class AudioMotion : MonoBehaviour
     {
         dissolveTimer = 0;
         _home = home;
+        
         _materials = mat;
-	    _myPool = Pool;
+	_myPool = Pool;
 #else
     void Start() 
         {
@@ -68,9 +68,9 @@ public class AudioMotion : MonoBehaviour
 
 
 #if (STAN)
-        _childGlow = this.transform.GetChild(2);
-        _childGlowScale = _childGlow.localScale;
-        _childTwinkle = transform.GetChild(3);
+        _childGlow = this.transform.GetChild(1);
+         _childGlowScale = _childGlow.localScale;
+        _childTwinkle = transform.GetChild(2); // out of bounds
         _childTwinkleScale = _childTwinkle.localScale;
 #endif
 
@@ -104,12 +104,7 @@ public class AudioMotion : MonoBehaviour
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
 
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) {
-            // _vec3Area = new Vector3(0, 0, -7.0f);
-        }
-        else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
-            _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
-        }
+        // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
 	
@@ -137,13 +132,10 @@ public class AudioMotion : MonoBehaviour
         _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-        {
             // _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
-        }
         else
         {
-            _ftTime = 0.0f;
 #if (BEAT_POOL)
             OnReturn();
 #else
@@ -210,10 +202,5 @@ public class AudioMotion : MonoBehaviour
     void OnDestroy()
     {
 #endif
-    }
-
-    public void SetPlayer(GameObject goPlayer_)
-    {
-        _goPlayer = goPlayer_;
     }
 }
