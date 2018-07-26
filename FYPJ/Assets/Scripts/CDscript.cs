@@ -23,12 +23,6 @@ public class CDscript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //Title = GameObject.Find("SongsSelection/Screen/Canvas/Title").GetComponent<Text>();
-        //Description = GameObject.Find("SongsSelection/Screen/Canvas/Description").GetComponent<Text>();
-        //platform = GameObject.Find("SongsSelection/platform");
-        //player = GameObject.Find("Player");
-        //audioSource = GameObject.Find("SongsSelection/Screen/Audio Source");
-        //loadingScreen = GameObject.Find("Player/MainCamera");
     }
 
     // Update is called once per frame
