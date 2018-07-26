@@ -5,23 +5,27 @@ using UnityEngine;
 public class NoteComponent : MonoBehaviour {
 
 	ObjectPool pool;
-	public float speed = 1;
 	public float limitDistance = 0.1f;
 	public int number;
 	float count = 0;
 	public int typeIndex;
+	[HideInInspector]
 	public Vector3 startPos;
+	[HideInInspector]
 	public Vector3 destination;
+	private float travelTime = 2;
 
 
 	// Use this for initialization
 	void OnEnable ()
 	{
+		this.GetComponent<SphereCollider>().enabled = true;
 		this.transform.GetChild(1).GetComponent<Transform>().localScale = Vector3.one * 0.75f;		//reset particles localscales
 		this.transform.GetChild(2).GetComponent<Transform>().localScale = Vector3.one * 0.75f;
 		this.GetComponent<Renderer>().material.SetFloat("_TreshHold", 0);							//reset material  dissolve threshold to 0
 		pool = GameObject.FindObjectOfType<ObjectPool>();											//find the pool in the scene
 		count = 0;
+		travelTime = GameObject.Find("MusicSource").GetComponent<MusicDelay>().delay;				//make the travel time fit song delay
 	}
 
 
@@ -31,7 +35,7 @@ public class NoteComponent : MonoBehaviour {
 	{
 		this.gameObject.transform.Rotate(this.transform.up, 4.0f);									//beat rotating on its own axis
 		this.transform.position = Vector3.Lerp(startPos, destination, count);						//beat moving towards the target
-		count += Time.deltaTime;
+		count += Time.deltaTime*(1/travelTime);
 		if (Vector3.Distance(this.transform.position,destination) < .5f)				//if beat touching the target, the player miss and it disappear.
 		{
 
@@ -62,5 +66,11 @@ public class NoteComponent : MonoBehaviour {
 		yield break;
 	}
 
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		this.GetComponent<SphereCollider>().enabled = false;
+		Dissolve();
+	}
 
 }
