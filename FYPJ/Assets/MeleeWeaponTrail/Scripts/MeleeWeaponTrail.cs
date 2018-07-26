@@ -33,7 +33,7 @@ public class MeleeWeaponTrail : MonoBehaviour
 	public Color[] _colors;
 
 	[SerializeField]
-	float[] _sizes;
+	float[] _sizes = null;
 
 	[SerializeField]
 	float _minVertexDistance = 0.1f;
@@ -55,9 +55,9 @@ public class MeleeWeaponTrail : MonoBehaviour
 #endif
 
 	[SerializeField]
-	Transform _base;
+	Transform _base = null;
 	[SerializeField]
-	Transform _tip;
+	Transform _tip = null;
 
 	List<Point> _points = new List<Point>();
 #if USE_INTERPOLATION

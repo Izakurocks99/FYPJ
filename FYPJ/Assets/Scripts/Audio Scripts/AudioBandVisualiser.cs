@@ -8,10 +8,14 @@ using UnityEngine;
 public class AudioBandVisualiser : MonoBehaviour
 {
     public Vector3 beatScale;
-    public GameObject[] _goAudioScales;
     public GameObject[] _goPrefab;
+    public GameObject _goAudioScalesPrimary;
+    public GameObject _goAudioScalesSecondary;
     public GameObject _goAudio;
     public GameObject _goPlayer;
+    GameObject[] _goPrimaryArray;
+    GameObject[] _goSecondaryArray;
+    GameObject[] _goParseArray;
     GameObject _goInstanceA;
     GameObject _goInstanceB;
 
@@ -86,12 +90,27 @@ public class AudioBandVisualiser : MonoBehaviour
 
 	 * */
         #endif
+
+        _goPrimaryArray = new GameObject[_goAudioScalesPrimary.transform.childCount];
+        for (int _intPrimary = 0; _intPrimary < _goAudioScalesPrimary.transform.childCount; _intPrimary++) {
+            _goPrimaryArray[_intPrimary] = _goAudioScalesPrimary.transform.GetChild(_intPrimary).gameObject;
+        }
+
+        _goSecondaryArray = new GameObject[_goAudioScalesSecondary.transform.childCount];
+        for (int _intSecondary = 0; _intSecondary < _goAudioScalesSecondary.transform.childCount; _intSecondary++) {
+            _goSecondaryArray[_intSecondary] = _goAudioScalesSecondary.transform.GetChild(_intSecondary).gameObject;
+        }
+
+        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
+            _goParseArray = _goPrimaryArray;
+        else
+            _goParseArray = _goSecondaryArray;
     }
 
     void Update()
     {
-        for (int i = 0; i < _goAudioScales.Length; i++)
-            _goAudioScales[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
+        // for (int i = 0; i < _goParseArray.Length; i++)
+        //     _goParseArray[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
 
         switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
             case 0: {
@@ -139,11 +158,14 @@ public class AudioBandVisualiser : MonoBehaviour
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
                             if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
-                                else if (_intCurrentCounter != 0) {
-                                    if (_intCurrentBuffer == _intFirst) continue;
-                                    else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.3f) {
+                                    if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
+                                    else if (_intCurrentCounter != 0) {
+                                        if (_intCurrentBuffer == _intFirst) continue;
+                                        else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                    }
                                 }
+                                else continue;
                             }
                         }
                     }
@@ -155,7 +177,7 @@ public class AudioBandVisualiser : MonoBehaviour
                         if (i == 0) _intParse = _intFirst;
                         else if (i != 0) _intParse = _intSecond;
 
-                        Debug.Log(_intCurrentMaterial);
+                        // Debug.Log(_intCurrentMaterial);
 
                         int _intGameMode = _goPlayer.GetComponent<PlayerStats>()._intPlayerMode;
 
@@ -169,10 +191,19 @@ public class AudioBandVisualiser : MonoBehaviour
                                     _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
                                     _intMatColorR = _intCurrentMaterial;
                                 }
-                                else {
-                                    if (i == 0) _intCurrentMaterial = _intMatColorL;
-                                    else if (i != 0) _intCurrentMaterial = _intMatColorR;
+
+                                if (_intMatColorL >= 9) {
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intMatColorL = _intCurrentMaterial;
                                 }
+                                
+                                if (_intMatColorR >= 9) {
+                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intMatColorR = _intCurrentMaterial;
+                                }
+
+                                if (i == 0) _intCurrentMaterial = _intMatColorL;
+                                else if (i != 0) _intCurrentMaterial = _intMatColorR;
                                 break;
                             }
     
@@ -189,7 +220,8 @@ public class AudioBandVisualiser : MonoBehaviour
                             }
                         }
 #if (BEAT_POOL)
-                        GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[_intParse]);
+                        if (_intParse >= 9) continue;
+                        GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[_intParse]);
 #else
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
@@ -198,8 +230,8 @@ public class AudioBandVisualiser : MonoBehaviour
                         if (i == 0) _goInstanceA = go;
                         if (i != 0) _goInstanceB = go;
 
-                        if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
-                        if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
+                        // if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
+                        // if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
                         
                         go.transform.localScale = beatScale;
                         //_intPreviousMaterial = _intCurrentMaterial;
@@ -215,14 +247,14 @@ public class AudioBandVisualiser : MonoBehaviour
                 // Easy Mode && Default Mode
                 else if (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty == 0)
                 {
-                    for (int j = _goAudioScales.Length - 1; j >= 0; j--)
+                    for (int j = _goParseArray.Length - 1; j >= 0; j--)
                     {
                         if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
                         {
                             _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
                             _intCurrentMaterial = (_intCurrentMaterial == 1) ? 2 : 0;
 #if (BEAT_POOL)
-                            GameObject go = GetObjectFromPool(_intCurrentMaterial, _goAudioScales[j]);
+                            GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[j]);
 #else
                             GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[j].transform.parent.transform, false);
 #endif
@@ -243,9 +275,16 @@ public class AudioBandVisualiser : MonoBehaviour
 #if (BEAT_POOL)
     GameObject GetObjectFromPool(int index, GameObject parent)
     {
-        GameObject go = _Pool.GetObjectFromPool(index);//listGOBeatPool[index].PopBack();
-        go.transform.parent = parent.transform.parent.transform;
+        //listGOBeatPool[index].PopBack();
+        GameObject go = _Pool.GetObjectFromPool(index);
+        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0){
+            go.transform.parent = parent.transform.parent.transform;
+        }
+        else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
+            go.transform.parent = parent.transform;
+        }
         go.transform.position = parent.transform.position;
+        go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
         return go;
     }
 

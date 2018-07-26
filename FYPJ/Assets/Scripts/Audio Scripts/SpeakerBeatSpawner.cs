@@ -12,10 +12,16 @@ public class SpeakerBeatSpawner : MonoBehaviour {
     List<Material> dissolveMaterialPool = null;
     List<List<GameObject>> listGOBeatPool = null;
 
+    public float _ftWait;
+    float _ftTime;
+
     private void Start()
     {
         dissolveMaterialPool = new List<Material>();
         listGOBeatPool = new List<List<GameObject>>();
+        
+        _ftTime = 0;
+        
         for (int i1 = 0; i1 < _goPrefab.Length; i1++)
         {
             listGOBeatPool.Add(new List<GameObject>());
@@ -47,27 +53,27 @@ public class SpeakerBeatSpawner : MonoBehaviour {
 	}
 
 	public void SpawnSpeakerBeat() {
-		int _intRandomContainer = Random.Range(0, _goContainer.Length);
-		float _ftRandomPrefab = Random.value;
 
-		if (_ftRandomPrefab < 0.6f) {
-            //GameObject go = Instantiate(_goPrefab[0], _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
+        if ((_ftTime += 1 * Time.deltaTime) >= _ftWait) {
+            int _intRandomContainer = Random.Range(0, _goContainer.Length);
+            float _ftRandomPrefab = Random.value;
 
-            GameObject go = InitPoolObject(0, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
+            if (_ftRandomPrefab < 0.6f) {
+                GameObject go = InitPoolObject(0, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
 
-
-            go.name = "Test";
-			go.SetActive(true);
-		}
-		
-		else {
-			//GameObject go = Instantiate(_goPrefab[1], _goContainer[_intRandomContainer].transform.parent.transform.parent.transform, false);
-            GameObject go = InitPoolObject(1, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
-            go.transform.localScale = _vec3Scale;
-			
-			go.name = "Test";
-			go.SetActive(true);
-		}
+                go.name = "Test";
+                go.SetActive(true);
+            }
+            
+            else {
+                GameObject go = InitPoolObject(1, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
+                go.transform.localScale = _vec3Scale;
+                
+                go.name = "Test";
+                go.SetActive(true);
+            }
+            _ftTime = 0.0f;
+        }
 	}
 
     GameObject InitPoolObject(int index, Transform parent)

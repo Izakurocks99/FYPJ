@@ -24,6 +24,7 @@ public class AudioBeatCollisionScript : MonoBehaviour
 
     public float life;
 
+    
 #if (BEAT_POOL)
     public void PoolInit()
     {
@@ -83,7 +84,7 @@ public class AudioBeatCollisionScript : MonoBehaviour
                 {
                     if (stick.heldController)
                         stick.heldController.VibrateController();
-                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1)); 
                     playerCam.ModifyCombo(true);
                     //addscore
                 }

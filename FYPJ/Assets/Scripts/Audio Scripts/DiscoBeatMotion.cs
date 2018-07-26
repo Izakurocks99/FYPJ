@@ -78,6 +78,7 @@ public class DiscoBeatMotion : MonoBehaviour
         else
         {
             //Destroy(_tfThis.gameObject);
+            _ftTime = 0.0f;
             OnReturn();
         }
     }

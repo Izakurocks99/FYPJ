@@ -47,9 +47,15 @@ public class TrackedDeviceMoveControllers : MonoBehaviour {
 		{
             ResetControllerTracking();
 		}
-	}
 
-	void Update()
+
+#if UNITY_PS4
+        PS4Input.MoveSetVibration(0, 1, 0);
+        PS4Input.MoveSetVibration(0, 0, 0);
+#endif
+    }
+
+    void Update()
 	{
       
 #if UNITY_5_3

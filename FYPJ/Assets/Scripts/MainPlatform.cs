@@ -28,7 +28,7 @@ public class MainPlatform : Platforms  { // inhereted monobehaviour
         Grid = temp.GetComponent<SpatialPartition>();
         Debug.Assert(Grid);
 
-        Debug.Log(string.Format( "Platform {0}", this.gameObject.GetHashCode()));
+        //Debug.Log(string.Format( "Platform {0}", this.gameObject.GetHashCode()));
 	}
 
     // Update is called once per frame

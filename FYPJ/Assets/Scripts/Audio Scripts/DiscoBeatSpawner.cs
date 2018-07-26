@@ -60,7 +60,6 @@ public class DiscoBeatSpawner : MonoBehaviour {
     }
 
 	void Update () {
-			_ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
             _goAudio.GetComponent<AudioSource>().isPlaying == true &&
@@ -68,6 +67,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
         {
             if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 1)
             {
+                _ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
                 if (_intCount == 0) {
                     _intCount = Random.Range(15, 21);
                     _ftWait = 4.0f / _intCount;
@@ -85,6 +85,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
                     //discobeatPool = trashBin;
                     trashBin.Clear();
                 }
+                _ftTime = 0.0f;
             }
         }
 	}

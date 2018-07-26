@@ -266,7 +266,7 @@ MonoBehaviour:
   _ftTimeToTravel: 15
   speed: 7
   endPoint: {fileID: 4570928790380784}
-  dissolveTime: 0.5
+  dissolveTime: 1
 --- !u!114 &114962147558127712
 MonoBehaviour:
   m_ObjectHideFlags: 1

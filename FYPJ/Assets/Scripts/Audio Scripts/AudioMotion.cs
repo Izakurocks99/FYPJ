@@ -1,5 +1,5 @@
 ﻿#define BEAT_POOL
-//#define STAN
+#define STAN
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -48,10 +48,15 @@ public class AudioMotion : MonoBehaviour
     float dissolveTimer = 0;
     ObjectPool _myPool = null;
     //public void PoolInit(List<GameObject> home, List<Material> mat)
+    
+#if (SPAWNDEBUG)
+    float timer = 0;
+#endif
     public void PoolInit(int home, List<Material> mat,ObjectPool Pool)
     {
         dissolveTimer = 0;
         _home = home;
+        
         _materials = mat;
 	_myPool = Pool;
 #else
@@ -63,9 +68,9 @@ public class AudioMotion : MonoBehaviour
 
 
 #if (STAN)
-        _childGlow = this.transform.GetChild(2);
+        _childGlow = this.transform.GetChild(1);
          _childGlowScale = _childGlow.localScale;
-        _childTwinkle = transform.GetChild(3);
+        _childTwinkle = transform.GetChild(2); // out of bounds
         _childTwinkleScale = _childTwinkle.localScale;
 #endif
 
@@ -90,6 +95,9 @@ public class AudioMotion : MonoBehaviour
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                      _ftY,
                                                      _ftZ);
+#if (SPAWNDEBUG)
+	timer = 0;
+#endif
     }
 
     void Update()
@@ -99,8 +107,16 @@ public class AudioMotion : MonoBehaviour
         // _vec3Area = new Vector3(0, 0, -7.0f);
         endPoint.position = _vec3Area;
 
+	
+#if (SPAWNDEBUG)
+	timer += Time.deltaTime;
+#endif
         BeatMotion();
+#if (SPAWNDEBUG)
+	if(timer < 1.f)
+#else
         if (!_die)
+#endif
             TransitBeat();
         else
             dissolve();

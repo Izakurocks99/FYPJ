@@ -13,7 +13,13 @@ public class DiscoMotion : MonoBehaviour {
     float _floatTime;
     float _floatWait;
     bool _blFlip;
+    [SerializeField]
+    float RotationSpeed = 100f;
+    [SerializeField]
+    float RotationStrenght = 1f;
 
+    [SerializeField]
+    float MovementScale = 1f;
     void Start () {
         _transform = this.transform;
         _vec3Previous = new Vector3(0, 6.45f, 2.75f);
@@ -26,16 +32,26 @@ public class DiscoMotion : MonoBehaviour {
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
             _goAudio.GetComponent<AudioSource>().isPlaying == true) {
                 
+            float currentSpeed = RotationStrenght * Time.time;
+            float xrot = Mathf.PerlinNoise(currentSpeed , 0);
+            float yrot = Mathf.PerlinNoise(0,currentSpeed);
+
+            Vector2 rots = new Vector2(xrot,yrot);
+            rots.Normalize();
+            rots *= RotationSpeed * Time.deltaTime;
+            _goChild.transform.Rotate(rots.x,rots.y,0);
+            /*
             if ((_floatTime += 1 * Time.deltaTime) > _floatWait)
             {
                 _blFlip = !_blFlip;
                 _floatTime = 0;
             }
             if (_blFlip == true)
-                _goChild.transform.Rotate(new Vector3(7, 0, 7));
+                _goChild.transform.Rotate(new Vector3(7, 0, 7) * Time.deltaTime * RotationSpeed);
             else
-                _goChild.transform.Rotate(new Vector3(0, 7, 7));
+                _goChild.transform.Rotate(new Vector3(0, 7, 7) * Time.deltaTime * RotationSpeed);
         
+             * */
             TransitDiscoBall();
 
             _vec3Spawn = _goChild.transform.position;
@@ -44,6 +60,8 @@ public class DiscoMotion : MonoBehaviour {
 
     void TransitDiscoBall()
     {
+
+        /*
         if (_goChild.transform.position != _vec3Previous)
             _goChild.transform.position = Vector3.SmoothDamp(_goChild.transform.position, _vec3Previous, ref _vec3Velocity, 0.3f);
         else
@@ -54,5 +72,6 @@ public class DiscoMotion : MonoBehaviour {
             Vector3 _vec3Current = new Vector3(_ftX, _ftY, _ftZ);
             _vec3Previous = _vec3Current;
         }
+        */
     }
 }

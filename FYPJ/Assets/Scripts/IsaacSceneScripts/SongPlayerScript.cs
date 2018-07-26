@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SongPlayerScript : MonoBehaviour {
     [SerializeField]
-    AudioSource audiosource;
+    AudioSource audiosource = null;
     [SerializeField]
-    List<SongScriptableObject> songs;
+    List<SongScriptableObject> songs = null;
 
     Dictionary<string,AudioClip> songlist;
 
