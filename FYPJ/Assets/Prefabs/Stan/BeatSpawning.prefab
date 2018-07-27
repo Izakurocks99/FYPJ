@@ -605,7 +605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1881980372080742
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1979090501156680
 GameObject:
   m_ObjectHideFlags: 1
@@ -761,7 +761,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960003999136406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.82, z: 0}
+  m_LocalPosition: {x: 0, y: 7.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4843709636051224}
@@ -817,7 +817,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635545411179570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.5, z: -8.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4584396909805704}
@@ -2442,6 +2442,7 @@ MonoBehaviour:
   rainbowTarget: {fileID: 1635545411179570}
   pool: {fileID: 1849342300915920}
   duration: 5
+  audio1: {fileID: 0}
 --- !u!114 &114483133443408448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2454,7 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioVizualiser: {fileID: 1896680404823114}
-  delay: 1
+  delay: 2
 --- !u!114 &114491473558080426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2575,13 +2576,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolData:
   - Prefab: {fileID: 1767929173467982, guid: 5e19eb914e0e4ce4da578fa1ae010830, type: 2}
-    numObj: 10
+    numObj: 15
     OptionalParent: {fileID: 0}
   - Prefab: {fileID: 1950594217325028, guid: 8b0deb417562a79408c4df66498a48f6, type: 2}
-    numObj: 10
+    numObj: 15
     OptionalParent: {fileID: 0}
   - Prefab: {fileID: 1761407923449524, guid: 34238a138c6ba84438914c201a46f68a, type: 2}
-    numObj: 30
+    numObj: 45
     OptionalParent: {fileID: 0}
 --- !u!135 &135004469619907630
 SphereCollider:
