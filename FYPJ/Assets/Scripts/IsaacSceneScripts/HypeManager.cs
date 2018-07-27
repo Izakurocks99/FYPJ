@@ -39,6 +39,10 @@ public class HypeManager : MonoBehaviour {
     void Start () {
         player = FindObjectOfType<PlayerStats>();
         Debug.Assert(HypeMeter); // SET METER TO GAMOBJETC USE IT
+        hypeMaterial = HypeMeter.GetComponent<Renderer>().material;
+        GameObject child = HypeMeter.transform.GetChild(0).gameObject;
+        hypeNumberMaterial = child.GetComponent<SpriteRenderer>();
+        setnumbertexture();
     }
 
     void setnumbertexture()
@@ -70,24 +74,11 @@ public class HypeManager : MonoBehaviour {
 		if (playerScore != player._intPlayerScoring)
         {
             playerScore = player.GetComponent<PlayerStats>()._intPlayerScoring;
-            if (_hype >= 0)
-            {
+            if (_hype >= 0) {
                 audienceManager.HypeMeter = (int)(_hype * 100);
             }
         }
-        if (hypeMaterial == null)
-        {
-            if(hypeMaterial != null)
-                hypeMaterial = HypeMeter.GetComponent<Renderer>().material;
-                GameObject child = HypeMeter.transform.GetChild(0).gameObject;
-                hypeNumberMaterial = child.GetComponent<SpriteRenderer>();
-            }
-            else
-            {
-                hypeMaterial.SetFloat("_ShowPercent",_hype);
-
-            }
+            hypeMaterial.SetFloat("_ShowPercent",_hype);
 	}
 }
-//TODO set score multiplier 
 //TODO test in game 
