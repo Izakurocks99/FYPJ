@@ -72,6 +72,12 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
+        if(PlayerPrefs.GetInt("dualcolor") == 0)
+        {
+            pirmaryControllerColor = GameColors.Pink;
+            secondaryControllerColor = GameColors.Blue;
+        }
+
         if (spawnSticks)
         {
             SpawnStick();
@@ -414,12 +420,12 @@ public class ControllerScript : MonoBehaviour
         GameObject go = Instantiate(stickPrefab);
         if (isSecondaryMoveController)
         {
-            Debug.Log("secstick" + PlayerPrefs.GetInt("secstick"));
+            //Debug.Log("secstick" + PlayerPrefs.GetInt("secstick"));
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("secstick"));
         }
         else if (!isSecondaryMoveController)
         {
-            Debug.Log("pristick" + PlayerPrefs.GetInt("pristick"));
+            //Debug.Log("pristick" + PlayerPrefs.GetInt("pristick"));
             go.GetComponentInChildren<PlayerStickScript>().InitMesh(PlayerPrefs.GetInt("pristick"));
         }
 
@@ -428,6 +434,7 @@ public class ControllerScript : MonoBehaviour
         go.transform.rotation = stickSlot.rotation;
         go.transform.localScale = stickSlot.localScale;
         currStick = go.GetComponentInChildren<PlayerStickScript>();
+        currStick.currColor = pirmaryControllerColor;
         currStick.Equip();
 
         //set player unable to pickup

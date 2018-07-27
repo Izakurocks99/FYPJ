@@ -105,7 +105,7 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyScore(int score)
     {
-        _intPlayerScoring += score * _hypeManager.hypeMult;
+        _intPlayerScoring += score * _hypeManager.hypeMult + 1;
     }
 
     public void ModifyCombo(bool hit)

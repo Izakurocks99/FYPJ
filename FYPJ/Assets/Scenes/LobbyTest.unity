@@ -293,6 +293,37 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1310748939}
+    - target: {fileID: 114134305292808736, guid: 3e0ae8ffaa7b3e0489ca853a307450c6,
+        type: 2}
+      propertyPath: selectDist
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671633564321918, guid: 3e0ae8ffaa7b3e0489ca853a307450c6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23038772317943294, guid: 3e0ae8ffaa7b3e0489ca853a307450c6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018148737429732, guid: 3e0ae8ffaa7b3e0489ca853a307450c6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832569612710988, guid: 3e0ae8ffaa7b3e0489ca853a307450c6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591728728452384, guid: 3e0ae8ffaa7b3e0489ca853a307450c6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23805237572191962, guid: 3e0ae8ffaa7b3e0489ca853a307450c6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e0ae8ffaa7b3e0489ca853a307450c6, type: 2}
   m_IsPrefabParent: 0
@@ -1015,6 +1046,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 179.99998
       objectReference: {fileID: 0}
+    - target: {fileID: 3300000, guid: a0f1164747571e64590d61dbd477706c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: 83e84a2ab9240f74893fd732ab5bcc25, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0f1164747571e64590d61dbd477706c, type: 3}
   m_IsPrefabParent: 0
@@ -1754,7 +1789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 1695634122}
   loadingImage: {fileID: 1868816557}
-  sceneName: Gameplay4
+  sceneName: Gameplay5
 --- !u!82 &1310748936
 AudioSource:
   m_ObjectHideFlags: 0
