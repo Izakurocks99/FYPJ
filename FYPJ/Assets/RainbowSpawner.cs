@@ -85,8 +85,6 @@ public class RainbowSpawner : MonoBehaviour {
 
 		for(int i = 0; i<8; i++)
 			intensitySum += audio1.GetComponent<Audio1>()._bandBuffer[i];
-
-		Debug.Log(intensitySum);
 	}
 
 }
