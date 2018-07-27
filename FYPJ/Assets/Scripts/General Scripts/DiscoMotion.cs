@@ -20,6 +20,16 @@ public class DiscoMotion : MonoBehaviour {
 
     [SerializeField]
     float MovementScale = 1f;
+
+    [SerializeField]
+    Vector3 ZeroPosition = new Vector3(0,0,0);
+    [SerializeField]
+    Vector3 Dimensions = new Vector3(0,0,0);
+    [SerializeField]
+    float MovementSpeed = 1f;
+    [SerializeField]
+    float DirectionFreq = 1f;
+
     void Start () {
         _transform = this.transform;
         _vec3Previous = new Vector3(0, 6.45f, 2.75f);
@@ -33,13 +43,21 @@ public class DiscoMotion : MonoBehaviour {
             _goAudio.GetComponent<AudioSource>().isPlaying == true) {
                 
             float currentSpeed = RotationStrenght * Time.time;
-            float xrot = Mathf.PerlinNoise(currentSpeed , 0);
-            float yrot = Mathf.PerlinNoise(0,currentSpeed);
+            float xrot = Mathf.PerlinNoise(currentSpeed , 0) * 2 - 1;
+            float yrot = Mathf.PerlinNoise(0,currentSpeed) * 2 - 1;
 
+            
+            xrot *= 2 * Mathf.PI * RotationSpeed;
+            yrot *= 2 * Mathf.PI * RotationSpeed;
             Vector2 rots = new Vector2(xrot,yrot);
-            rots.Normalize();
-            rots *= RotationSpeed * Time.deltaTime;
-            _goChild.transform.Rotate(rots.x,rots.y,0);
+            //rots.Normalize();
+            //rots *= RotationSpeed * Time.deltaTime;
+            Quaternion q = new Quaternion(rots.x,rots.y,0,1);
+            //q.Normalize();
+            //Quaternion.
+            //Quaternion.Normalize(q);
+            //q.Normalize();
+            _goChild.transform.rotation *= (q);// * RotationSpeed);
             /*
             if ((_floatTime += 1 * Time.deltaTime) > _floatWait)
             {
@@ -61,6 +79,16 @@ public class DiscoMotion : MonoBehaviour {
     void TransitDiscoBall()
     {
 
+        float step = Time.time * MovementSpeed;
+        float nx = (Mathf.PerlinNoise(step,0) * 2 - 1 )* Dimensions.x;
+        float ny = (Mathf.PerlinNoise(0,step)* 2 - 1) * Dimensions.y;
+        float nz = (Mathf.PerlinNoise(step,step)* 2 - 1) * Dimensions.z;
+        Vector3 npos = new Vector3(nx,ny,nz);
+        //npos.Normalize();
+        //npos = npos * Dimensions;
+
+        _goChild.transform.position = ZeroPosition + npos;
+
         /*
         if (_goChild.transform.position != _vec3Previous)
             _goChild.transform.position = Vector3.SmoothDamp(_goChild.transform.position, _vec3Previous, ref _vec3Velocity, 0.3f);
@@ -73,5 +101,12 @@ public class DiscoMotion : MonoBehaviour {
             _vec3Previous = _vec3Current;
         }
         */
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(ZeroPosition,Dimensions);
+        //Vector3 corner1 = ZeroPosition + Dimensions;
+        //Vector3 corner2 = ZeroPosition - Dimensions;
+        //Gizmos.DrawLine()    
     }
 }

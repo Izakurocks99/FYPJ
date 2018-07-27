@@ -284,7 +284,7 @@ public class AudioBandVisualiser : MonoBehaviour
             go.transform.parent = parent.transform;
         }
         go.transform.position = parent.transform.position;
-        go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
+        //go.GetComponent<AudioMotion>().SetPlayer(_goPlayer); DOES NOT EXIST
         return go;
     }
 
