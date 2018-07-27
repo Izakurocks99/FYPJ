@@ -11,7 +11,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
     public float _intShiftRate;
     public float _ftTimeToTravel;
     float _tfTime;
-	int _intNumber;
+	//int _intNumber;
 	Vector3 _vec3Shift;
 	Vector3 _vec3Area;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShowMenu : MonoBehaviour {
 
     bool showing, showingAudioMenu, showingDifficultyMenu;
-    bool audioPriority, difficultyPriority;
+                   //bool audioPriority, difficultyPriority; never used
     public float _ScrollLenght, transitionSpeed;
     public Vector3 showingPosition, audioShowingPos,difficultyShowingPos, hidingPosition, audioHidingPos, difficultyHidingPos;
 	public GameObject menu, audioMenu, difficultyMenu, exitMenu;

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class RandTargetMenuScript : MonoBehaviour {
 
     [SerializeField]
-    Button straightButton;
+    Button straightButton = null;
     [SerializeField]
-    Button RandomButton;
+    Button RandomButton = null;
 
     // Use this for initialization
     void Start ()
@@ -17,6 +17,9 @@ public class RandTargetMenuScript : MonoBehaviour {
             straightButton.gameObject.SetActive(false);
         else
             RandomButton.gameObject.SetActive(false);
+
+        Debug.Assert(straightButton);
+        Debug.Assert(RandomButton);
     }
 	
 	// Update is called once per frame
