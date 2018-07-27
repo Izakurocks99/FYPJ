@@ -1881,6 +1881,46 @@ Prefab:
       propertyPath: _goAudio
       value: 
       objectReference: {fileID: 564139634}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _ftWait
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _ftWait
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8dad51769797c943aea61cba335d3d8, type: 2}
   m_IsPrefabParent: 0
@@ -5727,6 +5767,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114174073544815848, guid: 77d8ac777ce266044831455c337217c2,
+        type: 2}
+      propertyPath: AudianceMemberPrefab
+      value: 
+      objectReference: {fileID: 1855088472558440, guid: a4419a9cb41eb4c49b70f528e1944559,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77d8ac777ce266044831455c337217c2, type: 2}
   m_IsPrefabParent: 0
@@ -7335,7 +7381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1706770426
 Transform:
   m_ObjectHideFlags: 0

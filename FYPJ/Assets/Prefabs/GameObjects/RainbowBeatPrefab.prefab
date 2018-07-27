@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intShiftRate: 8
-  _ftTimeToTravel: 60
+  _ftTimeToTravel: 30
   dissolveTime: 1
 --- !u!114 &114895042204494098
 MonoBehaviour:
