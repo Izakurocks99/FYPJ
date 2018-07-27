@@ -465,11 +465,9 @@ MonoBehaviour:
   _vec3Spawn: {x: -2.1994548, y: 6.991571, z: 10.205325}
   RotationSpeed: 0.05
   RotationStrenght: 1
-  MovementScale: 1
   ZeroPosition: {x: 0, y: 8.28, z: 8.89}
   Dimensions: {x: 10, y: 2, z: 7}
   MovementSpeed: 0.5
-  DirectionFreq: 1
 --- !u!1 &63713749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,7 +2635,8 @@ Prefab:
       propertyPath: beatScale.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114138058778199632, guid: 9e54ad60725570a41b513a50164b90cc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9e54ad60725570a41b513a50164b90cc, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &528620577 stripped
@@ -2750,7 +2749,7 @@ Prefab:
     - target: {fileID: 82863508924551132, guid: aab412b51de41d940a507aa6e0945ede,
         type: 2}
       propertyPath: m_Volume
-      value: 1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aab412b51de41d940a507aa6e0945ede, type: 2}
@@ -3060,7 +3059,7 @@ MonoBehaviour:
   _intPlayerScoring: 0
   _intPlayerMode: 0
   _intSpawnPoint: 0
-  _intSpawnMode: 1
+  _intSpawnMode: 0
   cam: {fileID: 1046849135}
 --- !u!20 &760541050
 Camera:
@@ -7381,7 +7380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1706770426
 Transform:
   m_ObjectHideFlags: 0

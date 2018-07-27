@@ -56,10 +56,10 @@ public class SpeakerBeatMotion : MonoBehaviour {
 
     void Update () {
 		// _tfThis.Rotate(_tfThis.forward, 7.0f);
-        Debug.Log("Transiting");
 		
 		BeatMotion();
         if (!_die) {
+            // _vec3Area = new Vector3(0, 0, -7.0f);
             TransitBeat();
         }
         else
@@ -76,6 +76,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else {
+            _ftTime = 0.0f;
             OnReturn();
         }
     }
