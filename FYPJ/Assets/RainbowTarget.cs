@@ -6,7 +6,7 @@ public class RainbowTarget : MonoBehaviour {
 
 	public Audio1 audio1;
 	private Transform destination;
-	private float interpolation;
+	private float speed;
 	private Vector3 startPos;
 
 
@@ -15,18 +15,19 @@ public class RainbowTarget : MonoBehaviour {
 	{
 		startPos = this.transform.position;
 		destination = this.transform;
-		interpolation = 0;
+		speed = 1;
 	}
 
 	private void Update()
 	{
-		this.transform.position = Vector3.Lerp(startPos, destination.position, interpolation);
-		interpolation += Time.deltaTime;
+		//this.transform.position = Vector3.Lerp(startPos, destination.position, interpolation);
+		this.transform.position = Vector3.MoveTowards(this.transform.position, destination.position, speed*Time.deltaTime);
+		//interpolation += Time.deltaTime;
 
 		if (Vector3.Distance(this.transform.position, destination.position)==0)
 		{
 			destination = GameObject.Find("target " + GetHighestAudioBarID()).transform;
-			interpolation = 0;
+			//interpolation = 0;
 			startPos = this.transform.position;
 		}
 

@@ -181,6 +181,7 @@ public sealed class AudianceManager : MonoBehaviour {
                             //temp = PlatformList[0];
                             _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);
                             temp.InsertToInnerStructure(_ObjectPool[i]);
+							_ObjectPool[i].GetComponent<AudianceMember>().OnPoolAwake();
                         }
 
                     }
