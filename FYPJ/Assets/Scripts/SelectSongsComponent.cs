@@ -101,7 +101,7 @@ public class SelectSongsComponent : MonoBehaviour
         if (debugObj)
             debugObj.transform.position = frontPoint;
 
-        if (_rigidbody.angularVelocity.sqrMagnitude <= 0.5*0.5)
+        if (_rigidbody.angularVelocity.sqrMagnitude <= 0.5 * 0.5)
             snap = true;
 
         if (selected)
@@ -120,7 +120,7 @@ public class SelectSongsComponent : MonoBehaviour
             //assign speed
             _rigidbody.angularVelocity = angularSpeed;
         }
-        else if(snap)
+        else if (snap && currCD)
         {
             //rotate to curr dist to front pos
             float angleInDegrees;
@@ -169,18 +169,22 @@ public class SelectSongsComponent : MonoBehaviour
         return selected = !selected;
     }
 
+    [SerializeField]
+    bool showDifficulty = false;
     public void LaunchSong()
     {
-        //StartCoroutine(currCD.LaunchSong());
         PlayerPrefs.SetString("test", currCD.song.title);
-        difficultyMenu.SetActive(true);
+        if (showDifficulty)
+            difficultyMenu.SetActive(true);
+        else
+            StartCoroutine(currCD.LaunchSong());
     }
 
     [SerializeField]
-    bool debugSpawningStats;
+    bool debugSpawningStats = false;
 
     bool dual;
-    public void ToggleNumColors( bool isdual)
+    public void ToggleNumColors(bool isdual)
     {
         dual = isdual;
         if (debugSpawningStats)

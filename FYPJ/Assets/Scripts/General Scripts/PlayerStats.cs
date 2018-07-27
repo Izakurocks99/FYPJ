@@ -89,7 +89,7 @@ public class PlayerStats : MonoBehaviour
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             ProbablityRandomDistribution();
-            // ProbablityRandomGeneration();
+            ProbablityRandomGeneration();
         }
     }
 
@@ -105,7 +105,7 @@ public class PlayerStats : MonoBehaviour
 
     public void ModifyScore(int score)
     {
-        _intPlayerScoring += score * _hypeManager.hypeMult;
+        _intPlayerScoring += score * _hypeManager.hypeMult + 1;
     }
 
     public void ModifyCombo(bool hit)
@@ -114,15 +114,18 @@ public class PlayerStats : MonoBehaviour
         {
             _intCombo++;
             _hypeManager.scoreHypeRatio *= 1 + (_intCombo < _hypeManager.MaxCombo ? _intCombo : _hypeManager.MaxCombo - 1);
+            _hypeManager.IncreaseHype();
             if (_intCombo % 10 == 0)
             {
                 Wave.Pulse();
             }
         }
         else
+        {
             _hypeManager.scoreHypeRatio = 0;
             _intCombo = 0;
-
+            _hypeManager.DecreaseHype();
+        }
         foreach (ControllerScript controller in _controllers) //for each controllers
         {
             if (controller.currStick)

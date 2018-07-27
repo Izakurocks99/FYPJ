@@ -15,9 +15,13 @@ public class NoteComponent : MonoBehaviour {
 	public Vector3 destination;
 	private float travelTime = 2;
 
+    [SerializeField]
+    GameColors color = GameColors.NONE;
+    public bool isHit = false;
+    Rigidbody rb;
 
-	// Use this for initialization
-	void OnEnable ()
+    // Use this for initialization
+    void OnEnable ()
 	{
 		this.GetComponent<SphereCollider>().enabled = true;
 		this.transform.GetChild(1).GetComponent<Transform>().localScale = Vector3.one * 0.75f;		//reset particles localscales
@@ -26,21 +30,26 @@ public class NoteComponent : MonoBehaviour {
 		pool = GameObject.FindObjectOfType<ObjectPool>();											//find the pool in the scene
 		count = 0;
 		travelTime = GameObject.Find("MusicSource").GetComponent<MusicDelay>().delay;				//make the travel time fit song delay
-	}
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        isHit = false;
+    }
 
 
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		this.gameObject.transform.Rotate(this.transform.up, 4.0f);									//beat rotating on its own axis
-		this.transform.position = Vector3.Lerp(startPos, destination, count);						//beat moving towards the target
-		count += Time.deltaTime*(1/travelTime);
-		if (Vector3.Distance(this.transform.position,destination) < .5f)				//if beat touching the target, the player miss and it disappear.
-		{
-
-			StartCoroutine("Dissolve");																//dissolving it
-		}
+        if (!isHit)
+        {
+            this.gameObject.transform.Rotate(this.transform.up, 4.0f);                                  //beat rotating on its own axis
+            this.transform.position = Vector3.Lerp(startPos, destination, count);                       //beat moving towards the target
+            count += Time.deltaTime * (1 / travelTime);
+            if (Vector3.Distance(this.transform.position, destination) < .5f)               //if beat touching the target, the player miss and it disappear.
+            {
+                StartCoroutine("Dissolve");                                                             //dissolving it
+            }
+        }
 	}
 
 
@@ -69,8 +78,35 @@ public class NoteComponent : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		this.GetComponent<SphereCollider>().enabled = false;
-		Dissolve();
-	}
+        if (!isHit)
+        {
+            if (collision.gameObject.GetComponentInParent<BatonCapsuleFollower>())
+            {
+                BatonCapsuleFollower follower = collision.gameObject.GetComponentInParent<BatonCapsuleFollower>();
+                PlayerStickScript stick = follower._batonFollower.thisStick;
+                PlayerStats player = stick.gameObject.transform.root.GetComponentInChildren<PlayerStats>();
+
+                if (stick.currColor == color || color == GameColors.Rainbow)
+                {
+                    if (stick.heldController)
+                        stick.heldController.VibrateController();
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude));
+                    player.ModifyCombo(true);
+                    //addscore
+                }
+                else
+                {
+                    //lowerscore
+                    player.ModifyCombo(false);
+                }
+
+                StartCoroutine("Dissolve");                                                             //dissolving it
+
+                this.GetComponent<SphereCollider>().enabled = false;
+                isHit = true;
+                //gameObject.GetComponent<Collider>().enabled = false;
+            }
+        }
+    }
 
 }

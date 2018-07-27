@@ -46,9 +46,10 @@ public class SpeakerBeatMotion : MonoBehaviour {
         //_tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
         _vec3Area = (_tfCamera.position + _tfCamera.forward * 0.5f);
-        _vec3Shift = new Vector3(Random.Range(-0.25f, 0.25f),
+        _vec3Shift = new Vector3(Random.Range(-0.125f, 0.125f),
                                  Random.Range(-0.125f, 0.125f),
-                                 Random.Range(-0.125f, 0.125f));
+                                 0.0f);
+        _vec3Area += _vec3Shift;
     }
 
     void Update () {
@@ -67,13 +68,17 @@ public class SpeakerBeatMotion : MonoBehaviour {
 
 	void TransitBeat() {
         _tfTime += Time.deltaTime / _ftTimeToTravel;
-		Vector3 _vec3Heading = _vec3Area + _vec3Shift - _tfThis.position;
+		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
+
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            // _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area + _vec3Shift, 0.05f);
-            _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area + _vec3Shift, _tfTime);
-        else {
-            OnReturn();
+            _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _tfTime);
+        else if (_vec3Heading != Vector3.zero && _vec3Heading.z >= -0.15f) {
             _tfTime = 0.0f;
+            OnReturn();
+        }
+        else {
+            _tfTime = 0.0f;
+            OnReturn();
         }
     }
 

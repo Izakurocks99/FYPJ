@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 1950594217325028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4529317930299496}
   - {fileID: 4866135839583990}
@@ -247,10 +247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f898b4cc643557140962ecc6570a6e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  cible: {fileID: 0}
   limitDistance: 0.1
   number: 0
+  typeIndex: 0
+  startPos: {x: 0, y: 0, z: 0}
+  destination: {x: 0, y: 0, z: 0}
+  color: 0
+  isHit: 0
 --- !u!135 &135306034087390878
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -261,7 +264,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.06017782
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198286271982203772
 ParticleSystem:

@@ -11,7 +11,7 @@ public class SpeakerDiscEffect : MonoBehaviour {
 	float _ftBandMax;
 
 	void Start () {
-		_ftBandBuffer = new float[AudioSampler._ftBandbuffer.Length];
+		_ftBandBuffer = new float[AudioSampler._ftMaxbuffer.Length];
 	}
 	
 	void Update () {
@@ -32,7 +32,7 @@ public class SpeakerDiscEffect : MonoBehaviour {
 	}
 
 	void GetTotal() {
-		_ftBandBuffer = AudioSampler._ftBandbuffer;
+		_ftBandBuffer = AudioSampler._ftMaxbuffer;
 		_ftBandMax = 0.0f;
 
 		for (int i = 0; i < _ftBandBuffer.Length; i++)

@@ -57,7 +57,6 @@ GameObject:
   - component: {fileID: 23347189848662638}
   - component: {fileID: 54419994188912478}
   - component: {fileID: 135238925341500474}
-  - component: {fileID: 114096031846879736}
   - component: {fileID: 114997991844272694}
   m_Layer: 11
   m_Name: BlueBeats
@@ -130,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 1767929173467982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4215351834697888}
   - {fileID: 4214496158864148}
@@ -237,23 +236,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &114096031846879736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1767929173467982}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873aefa6413498543a6df9f9934ec855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _intShiftRate: 8
-  _ftTimeToTravel: 15
-  speed: 7
-  endPoint: {fileID: 0}
-  id: 0
-  dissolveTime: 1
 --- !u!114 &114997991844272694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,10 +247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f898b4cc643557140962ecc6570a6e89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  cible: {fileID: 0}
   limitDistance: 0.1
   number: 0
+  typeIndex: 0
+  startPos: {x: 0, y: 0, z: 0}
+  destination: {x: 0, y: 0, z: 0}
+  color: 2
+  isHit: 0
 --- !u!135 &135238925341500474
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -279,7 +264,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.06017782
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198612172406713738
 ParticleSystem:
