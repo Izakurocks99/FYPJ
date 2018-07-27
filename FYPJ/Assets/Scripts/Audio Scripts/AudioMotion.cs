@@ -109,6 +109,9 @@ public class AudioMotion : MonoBehaviour
             // _vec3Area = new Vector3(0, 0, -7.0f);
         }
         else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
+            _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
+                                                                                            _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                                                                            calibration.calibrationObject.transform.position.z);
             _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
         }
         endPoint.position = _vec3Area;
