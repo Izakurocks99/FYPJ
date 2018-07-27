@@ -19,7 +19,7 @@ public class ControlCalibrationScript : ControllerModesScript
     public float areaScale;
 
     private bool isLocked;
-    private bool followSecondary;
+    //private bool followSecondary; never used
     private Transform currController;
     private ControllerScript controller;
 
