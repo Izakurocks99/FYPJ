@@ -7,19 +7,22 @@ public sealed class AudianceMember : MonoBehaviour {
     // Use this for initialization
     [HideInInspector]
     public GameObject manager;
-	public float hype = 0;
 	Animator animator;
-    //float timer = 0;
-    
-    void Awake()
+	//float timer = 0;
+	AudianceManager auManager = null;
+
+   public  void OnPoolAwake()
     {
 		animator = gameObject.GetComponent<Animator>();
 		StartCoroutine("SwitchAnim");
+		auManager = manager.GetComponent<AudianceManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+		float hype = auManager.HypeMeter;
+
         if (hype < 25)
 		{
 			animator.SetBool("mediumHype", false);

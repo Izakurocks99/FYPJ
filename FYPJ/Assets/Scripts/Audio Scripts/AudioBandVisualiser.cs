@@ -263,7 +263,8 @@ public class AudioBandVisualiser : MonoBehaviour
                             go.SetActive(true);
 #if (BEAT_POOL)
                             InitPoolObject(go, _intCurrentMaterial);
-#endif
+#endif                      
+                            break;    
                         }
                     }
                 }
@@ -284,7 +285,7 @@ public class AudioBandVisualiser : MonoBehaviour
             go.transform.parent = parent.transform;
         }
         go.transform.position = parent.transform.position;
-        //go.GetComponent<AudioMotion>().SetPlayer(_goPlayer); DOES NOT EXIST
+        go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
         return go;
     }
 

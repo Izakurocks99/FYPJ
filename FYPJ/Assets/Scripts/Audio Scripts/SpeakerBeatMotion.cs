@@ -69,7 +69,6 @@ public class SpeakerBeatMotion : MonoBehaviour {
 	void TransitBeat() {
         _tfTime += Time.deltaTime / _ftTimeToTravel;
 		Vector3 _vec3Heading = _vec3Area - _tfThis.position;
-        Debug.Log(_vec3Heading);
 
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _tfTime);
