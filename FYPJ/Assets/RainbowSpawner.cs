@@ -39,7 +39,7 @@ public class RainbowSpawner : MonoBehaviour {
 
 
 		//Rainbow Spawn
-		while (intensitySum > 3.5f)
+		while (intensitySum > 4.5f)
 		{
 			GameObject _instance = pool.GetComponent<ObjectPool>().GetObjectFromPool(2);                            //Get Rainbow from pool
 																													//_instance.transform.parent = this.transform;															//give them their new parent(no more needed) and position

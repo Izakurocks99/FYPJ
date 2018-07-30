@@ -47,6 +47,8 @@ public class NoteComponent : MonoBehaviour {
             count += Time.deltaTime * (1 / travelTime);
             if (Vector3.Distance(this.transform.position, destination) < .5f)               //if beat touching the target, the player miss and it disappear.
             {
+                //lowerscore
+
                 StartCoroutine("Dissolve");                                                             //dissolving it
             }
         }
@@ -68,8 +70,9 @@ public class NoteComponent : MonoBehaviour {
 			yield return null;																																	//Wait next frame and continue the loop
 		}
 
+        FindObjectOfType<PlayerStats>().ModifyCombo(false);
 
-		transform.parent = pool.transform;															//resetting its parent and position
+        transform.parent = pool.transform;															//resetting its parent and position
 		transform.localPosition = new Vector3(0, 0, 0);
 		pool.ReturnObjectToPool(this.gameObject, typeIndex);                                        //desactivate it and return it to the pool
 		yield break;
@@ -90,7 +93,7 @@ public class NoteComponent : MonoBehaviour {
                 {
                     if (stick.heldController)
                         stick.heldController.VibrateController();
-                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude));
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     player.ModifyCombo(true);
                     //addscore
                 }

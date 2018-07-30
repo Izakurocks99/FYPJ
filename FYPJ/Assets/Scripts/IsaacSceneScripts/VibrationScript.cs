@@ -18,6 +18,30 @@ public class VibrationScript : MonoBehaviour {
 
     }
 
+    public IEnumerator VibrateLeft(int intensity)
+    {
+#if UNITY_PS4
+        PS4Input.MoveSetVibration(0, 1, intensity);
+        yield return new WaitForSeconds(0.1f);
+        PS4Input.MoveSetVibration(0, 1, 0);
+#else
+		yield return new WaitForSeconds(0.1f);
+
+#endif
+	}
+	public IEnumerator VibrateRight(int intensity)
+    {
+#if UNITY_PS4
+
+		PS4Input.MoveSetVibration(0, 0, intensity);
+        yield return new WaitForSeconds(0.1f);
+        PS4Input.MoveSetVibration(0, 0, 0);
+#else
+		        yield return new WaitForSeconds(0.1f);
+
+#endif
+	}
+
     public IEnumerator VibrateLeft()
     {
 #if UNITY_PS4
@@ -28,17 +52,17 @@ public class VibrationScript : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 
 #endif
-	}
-	public IEnumerator VibrateRight()
+    }
+    public IEnumerator VibrateRight()
     {
 #if UNITY_PS4
 
-		PS4Input.MoveSetVibration(0, 0, 128);
+        PS4Input.MoveSetVibration(0, 0, 128);
         yield return new WaitForSeconds(0.1f);
         PS4Input.MoveSetVibration(0, 0, 0);
 #else
 		        yield return new WaitForSeconds(0.1f);
 
 #endif
-	}
+    }
 }
