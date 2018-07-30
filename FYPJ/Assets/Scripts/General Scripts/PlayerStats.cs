@@ -49,18 +49,11 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        if (_intPlayerDifficulty == 0)
-            _intPlayerDifficulty = 0;
-        if (_intPlayerScoring == 0)
-            _intPlayerScoring = 0;
-        if (_intPlayerMode == 0)
-            _intPlayerMode = 0;
-        if (_intSpawnMode == 0)
-            _intSpawnMode = 0;
+        _intPlayerScoring = 0;
 
-        _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
-        _intSpawnMode = PlayerPrefs.GetInt("randomarea");
-        _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        // _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+        // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+        // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
 
         _intCombo = 0;
 
@@ -85,6 +78,18 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
+// [0]2x Colors or [1]4x Colors
+        if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
+            _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+// [0]Random Pathing or [1]Straight Pathing
+        if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
+            _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+            AudioBandVisualiser._intPathing = _intSpawnMode;
+        }
+// Difficulty Levels
+        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty"))
+            _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
@@ -106,6 +111,15 @@ public class PlayerStats : MonoBehaviour
     public void ModifyScore(int score)
     {
         _intPlayerScoring += score * (_hypeManager.hypeMult + 1);
+        if (score > 0)
+        {
+            if (_hypeManager.hypeMult == 8)
+            {
+                Wave.Pulse();
+            }
+            _hypeManager.IncreaseHype(score);
+        }
+
     }
 
     public void ModifyCombo(bool hit)
@@ -113,16 +127,9 @@ public class PlayerStats : MonoBehaviour
         if (hit)
         {
             _intCombo++;
-            _hypeManager.scoreHypeRatio *= 1 + (_intCombo < _hypeManager.MaxCombo ? _intCombo : _hypeManager.MaxCombo - 1);
-            _hypeManager.IncreaseHype();
-            if (_intCombo % 10 == 0)
-            {
-                Wave.Pulse();
-            }
         }
         else
         {
-            _hypeManager.scoreHypeRatio = 0;
             _intCombo = 0;
             _hypeManager.DecreaseHype();
         }
