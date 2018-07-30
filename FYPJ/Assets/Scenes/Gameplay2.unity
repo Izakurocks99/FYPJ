@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b9b67e490a8ae4c8b536b77ec33dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goPrefab: {fileID: 1761407923449524, guid: f8be0be861597144589dc45a3233aeed, type: 2}
+  _goPrefab: {fileID: 1245887945193710, guid: a8518599b5003074395a95e7c726a12e, type: 2}
   _goPlayer: {fileID: 1046849135}
   _goAudio: {fileID: 280549398}
   _goBandVisualiser: {fileID: 681982836}
@@ -3058,7 +3058,7 @@ MonoBehaviour:
   _intPlayerDifficulty: 0
   _intPlayerScoring: 0
   _intPlayerMode: 0
-  _intSpawnPoint: 0
+  _intSpawnPoint: 1
   _intSpawnMode: 0
   cam: {fileID: 1046849135}
 --- !u!20 &760541050
