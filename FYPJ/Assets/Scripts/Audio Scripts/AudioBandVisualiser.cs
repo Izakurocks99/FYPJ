@@ -34,11 +34,11 @@ public class AudioBandVisualiser : MonoBehaviour
     public float _ftSpeed = 1f;
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
-    public static int _intBeatCounts;
-    //int _intPreviousMaterial,     
-    int  _intCurrentMaterial;
-
-    int _intMatColorL, _intMatColorR;
+    public static int _intBeatCounts;     
+    public static int _intPathing;
+    int _intCurrentMaterial;
+    int _intMatColorL;
+    int _intMatColorR;
 
 #if (BEAT_POOL)  // in external class for now
     //[SerializeField]
@@ -57,10 +57,10 @@ public class AudioBandVisualiser : MonoBehaviour
         _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _ftTime = 0f;
         _intBeatCounts = 0;
-        //_intPreviousMaterial = 0;
         _intCurrentMaterial = 0;
         _intMatColorL = 0;
         _intMatColorR = 0;
+        _intPathing = 0;
 
 #if (BEAT_POOL)
         Debug.Assert(DissolveShader);
@@ -101,14 +101,19 @@ public class AudioBandVisualiser : MonoBehaviour
             _goSecondaryArray[_intSecondary] = _goAudioScalesSecondary.transform.GetChild(_intSecondary).gameObject;
         }
 
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
-            _goParseArray = _goPrimaryArray;
-        else
-            _goParseArray = _goSecondaryArray;
+        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
+        //     _goParseArray = _goPrimaryArray;
+        // else
+        //     _goParseArray = _goSecondaryArray;
     }
 
     void Update()
     {
+        if (_intPathing == 0)
+            _goParseArray = _goPrimaryArray;
+        else if (_intPathing == 1)
+            _goParseArray = _goSecondaryArray;
+
         // for (int i = 0; i < _goParseArray.Length; i++)
         //     _goParseArray[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
 
@@ -278,6 +283,7 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         //listGOBeatPool[index].PopBack();
         GameObject go = _Pool.GetObjectFromPool(index);
+        Debug.Log("Completed Generating the top");
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0){
             go.transform.parent = parent.transform.parent.transform;
         }
