@@ -50,8 +50,8 @@ public class ControllerScript : MonoBehaviour
     //private
     private GameObject highlightedObject; //indicate which stick is selected/where to grab the stick to equip
     private GameObject heldObject;
-    private RaycastHit hit;
-    private Vector3 startingPos;
+    //private RaycastHit hit; never used and same name as local
+    //private Vector3 startingPos; never used
     private bool canPickup = true; //check if hand is alread grabbing a stick
     private int controllerIndex = 0;
 

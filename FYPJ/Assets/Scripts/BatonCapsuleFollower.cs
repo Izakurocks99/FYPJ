@@ -5,7 +5,7 @@ using UnityEngine;
 public class BatonCapsuleFollower : MonoBehaviour {
     public BatonCapsule _batonFollower;
     private Rigidbody _rigidbody;
-    private Vector3 _velocity;
+    //private Vector3 _velocity;
 
     [SerializeField]
     private float _sensitivity = 100f;

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class NumOfColorsScript : MonoBehaviour {
 
     [SerializeField]
-    Button fourColors;
+    Button fourColors = null;
     [SerializeField]
-    Button twoColors;
+    Button twoColors = null;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +17,8 @@ public class NumOfColorsScript : MonoBehaviour {
         else
             fourColors.gameObject.SetActive(false);
 
+        Debug.Assert(fourColors);
+        Debug.Assert(twoColors);
 
     }
 	

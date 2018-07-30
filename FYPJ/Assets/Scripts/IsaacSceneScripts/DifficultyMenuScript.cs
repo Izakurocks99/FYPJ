@@ -5,12 +5,13 @@ using UnityEngine;
 public class DifficultyMenuScript : MonoBehaviour {
 
     [SerializeField]
-    SelectSongsComponent selectSongsComponent;
+    SelectSongsComponent selectSongsComponent = null;
 
     DifficultyButtonsScript[] difficultyButtons;
 
 	// Use this for initialization
 	void Start () {
+        Debug.Assert(selectSongsComponent);
         difficultyButtons = GetComponentsInChildren<DifficultyButtonsScript>();
 	}
 	

@@ -71,9 +71,6 @@ public class DiscoBeatMotion : MonoBehaviour
         _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area + _vec3Shift + _vec3Target - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            // _tfThis.position = Vector3.MoveTowards(_tfThis.position,
-            //                                        _vec3Area + _vec3Shift + _vec3Target,
-            //                                         speed * Time.deltaTime);
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area + _vec3Shift + _vec3Target, _ftTime);
         else
         {
