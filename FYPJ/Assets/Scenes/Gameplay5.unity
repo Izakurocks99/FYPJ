@@ -618,11 +618,9 @@ MonoBehaviour:
   _vec3Spawn: {x: 0, y: 0, z: 0}
   RotationSpeed: 100
   RotationStrenght: 1
-  MovementScale: 1
   ZeroPosition: {x: 0, y: 0, z: 0}
   Dimensions: {x: 0, y: 0, z: 0}
   MovementSpeed: 1
-  DirectionFreq: 1
 --- !u!1001 &89174948
 Prefab:
   m_ObjectHideFlags: 0
@@ -1418,8 +1416,8 @@ MonoBehaviour:
   controlsScript: {fileID: 849965392}
   stickSlot: {fileID: 1484642930}
   controllerMode: 2
-  pirmaryControllerColor: 0
-  secondaryControllerColor: 1
+  pirmaryControllerColor: 2
+  secondaryControllerColor: 0
   movementScript: {fileID: 308752612}
   calibrateScript: {fileID: 308752610}
 --- !u!1 &315576315
@@ -3143,7 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d64be2b613aaef48bb2b2e149888f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio1: {fileID: 0}
+  audio1: {fileID: 1759949246}
 --- !u!1001 &735442101
 Prefab:
   m_ObjectHideFlags: 0
@@ -4222,7 +4220,7 @@ MonoBehaviour:
   stickSlot: {fileID: 1484642929}
   controllerMode: 2
   pirmaryControllerColor: 2
-  secondaryControllerColor: 3
+  secondaryControllerColor: 0
   movementScript: {fileID: 958093805}
   calibrateScript: {fileID: 958093803}
 --- !u!1001 &962893328
@@ -4574,7 +4572,7 @@ Prefab:
     - target: {fileID: 114598099105449556, guid: b0513130ece320e47abe2e62ef73edd9,
         type: 2}
       propertyPath: defaultIncreaceAmount
-      value: 0.005
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 114598099105449556, guid: b0513130ece320e47abe2e62ef73edd9,
         type: 2}
@@ -6406,6 +6404,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1855088472558440, guid: a4419a9cb41eb4c49b70f528e1944559,
         type: 2}
+    - target: {fileID: 4168278606713960, guid: 77d8ac777ce266044831455c337217c2, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77d8ac777ce266044831455c337217c2, type: 2}
   m_IsPrefabParent: 0
@@ -7638,6 +7640,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1896680404823114, guid: ef5ea868a7322194f83740054bed2775,
     type: 2}
   m_PrefabInternal: {fileID: 1105821948}
+--- !u!114 &1759949246 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114557463813612862, guid: ef5ea868a7322194f83740054bed2775,
+    type: 2}
+  m_PrefabInternal: {fileID: 1105821948}
+  m_Script: {fileID: 11500000, guid: ea94fd5721ba9d94a9e0936c7c9655a4, type: 3}
 --- !u!114 &1759949248
 MonoBehaviour:
   m_ObjectHideFlags: 0
