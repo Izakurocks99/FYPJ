@@ -106,6 +106,15 @@ public class PlayerStats : MonoBehaviour
     public void ModifyScore(int score)
     {
         _intPlayerScoring += score * (_hypeManager.hypeMult + 1);
+        if (score > 0)
+        {
+            if (_hypeManager.hypeMult == 8)
+            {
+                Wave.Pulse();
+            }
+            _hypeManager.IncreaseHype(score);
+        }
+
     }
 
     public void ModifyCombo(bool hit)
@@ -113,16 +122,9 @@ public class PlayerStats : MonoBehaviour
         if (hit)
         {
             _intCombo++;
-            _hypeManager.scoreHypeRatio *= 1 + (_intCombo < _hypeManager.MaxCombo ? _intCombo : _hypeManager.MaxCombo - 1);
-            _hypeManager.IncreaseHype();
-            if (_intCombo % 10 == 0)
-            {
-                Wave.Pulse();
-            }
         }
         else
         {
-            _hypeManager.scoreHypeRatio = 0;
             _intCombo = 0;
             _hypeManager.DecreaseHype();
         }
