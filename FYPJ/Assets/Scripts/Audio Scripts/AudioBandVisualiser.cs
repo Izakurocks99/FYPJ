@@ -191,19 +191,9 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Set Material if the Gamemode is Type 1.
                             case 0: {
                                 if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
                                     _intMatColorL = _intCurrentMaterial;
-                                    _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
-                                    _intMatColorR = _intCurrentMaterial;
-                                }
-
-                                if (_intMatColorL >= 9) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
-                                    _intMatColorL = _intCurrentMaterial;
-                                }
-                                
-                                if (_intMatColorR >= 9) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
                                     _intMatColorR = _intCurrentMaterial;
                                 }
 
@@ -214,8 +204,8 @@ public class AudioBandVisualiser : MonoBehaviour
     
                             // Set Material if the Gamemode is Type 2.
                             case 1: {
-                                if (i == 0) _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
-                                else if (i != 0) _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
+                                if (i == 0)      _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
+                                else if (i != 0) _intCurrentMaterial = Random.Range(2, (int)_matsSecondary.Length + 2);
                                 break;
                             }
     
@@ -283,7 +273,6 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         //listGOBeatPool[index].PopBack();
         GameObject go = _Pool.GetObjectFromPool(index);
-        Debug.Log("Completed Generating the top");
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0){
             go.transform.parent = parent.transform.parent.transform;
         }
