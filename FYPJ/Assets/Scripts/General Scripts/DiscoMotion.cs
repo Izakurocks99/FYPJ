@@ -8,18 +8,20 @@ public class DiscoMotion : MonoBehaviour {
     public GameObject _goChild;
     Transform _transform;
     public Vector3 _vec3Spawn;
+    /*
     Vector3 _vec3Velocity;
     Vector3 _vec3Previous;
     float _floatTime;
     float _floatWait;
     bool _blFlip;
+    */
     [SerializeField]
     float RotationSpeed = 100f;
     [SerializeField]
     float RotationStrenght = 1f;
 
-    [SerializeField]
-    float MovementScale = 1f;
+    //[SerializeField]
+    //float MovementScale = 1f;
 
     [SerializeField]
     Vector3 ZeroPosition = new Vector3(0,0,0);
@@ -27,15 +29,15 @@ public class DiscoMotion : MonoBehaviour {
     Vector3 Dimensions = new Vector3(0,0,0);
     [SerializeField]
     float MovementSpeed = 1f;
-    [SerializeField]
-    float DirectionFreq = 1f;
+    //[SerializeField]
+    //float DirectionFreq = 1f;
 
     void Start () {
         _transform = this.transform;
-        _vec3Previous = new Vector3(0, 6.45f, 2.75f);
-        _floatTime = 0.0f;
-        _floatWait = 1.0f;
-        _blFlip = false;
+        //_vec3Previous = new Vector3(0, 6.45f, 2.75f);
+        //_floatTime = 0.0f;
+        //_floatWait = 1.0f;
+        //_blFlip = false;
     }
 	
 	void Update () {

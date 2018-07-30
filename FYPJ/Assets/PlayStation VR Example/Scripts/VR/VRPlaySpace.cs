@@ -17,7 +17,7 @@ public class VRPlaySpace : MonoBehaviour
     Quaternion hmdRotationUnity, hmdRotationRaw;
 #if UNITY_PS4 && UNITY_5_4_OR_NEWER
     PlayStationVRPlayAreaWarningInfo info;
-    PlayStationVRTrackingStatus status;
+    //PlayStationVRTrackingStatus status; nevwe used
 #endif
 
     

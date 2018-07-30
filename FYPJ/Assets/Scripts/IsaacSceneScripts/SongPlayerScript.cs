@@ -9,7 +9,10 @@ public class SongPlayerScript : MonoBehaviour {
     List<SongScriptableObject> songs = null;
 
     Dictionary<string,AudioClip> songlist;
-
+    [SerializeField]
+    bool getSavedSong = true;
+    [SerializeField]
+    AudioClip defaultSong;
 	// Use this for initialization
 	void Start () {
         songlist = new Dictionary<string, AudioClip>();
@@ -19,17 +22,30 @@ public class SongPlayerScript : MonoBehaviour {
             songlist.Add(var.title, var.audioClip);
         }
 
-        PlaySong(PlayerPrefs.GetString("test"));
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        if (audiosource.isPlaying)
+            audiosource.Stop();
+
+        if (getSavedSong)
+        {
+            PlaySong(PlayerPrefs.GetString("test"));
+        }
+        //else
+        //{
+        //    audiosource.clip = defaultSong;
+        //    audiosource.Play();
+        //}
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
     public void PlaySong(string songname)
     {
+        GetComponent<AudioSource>().clip = songlist[songname];
+        GetComponent<AudioSource>().PlayDelayed(3f);
         audiosource.clip = songlist[songname];
-        audiosource.Play();
+        audiosource.PlayDelayed(3+2);
     }
 }

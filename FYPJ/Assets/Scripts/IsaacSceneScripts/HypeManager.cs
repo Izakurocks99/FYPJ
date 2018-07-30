@@ -25,7 +25,8 @@ public class HypeManager : MonoBehaviour {
     SpriteRenderer hypeNumberMaterial = null;
     float _hype = 0; // 0 - 1 value 
 
-    public int hypeMult = 1; // 1 - max hype value, used by player stats
+    [HideInInspector]
+    public int hypeMult = 0; // 1 - max hype value, used by player stats
     // Use this for initialization
     //
     void OnValidate()

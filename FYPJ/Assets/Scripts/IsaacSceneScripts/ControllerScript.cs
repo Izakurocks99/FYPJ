@@ -50,8 +50,8 @@ public class ControllerScript : MonoBehaviour
     //private
     private GameObject highlightedObject; //indicate which stick is selected/where to grab the stick to equip
     private GameObject heldObject;
-    private RaycastHit hit;
-    private Vector3 startingPos;
+    //private RaycastHit hit; never used and same name as local
+    //private Vector3 startingPos; never used
     private bool canPickup = true; //check if hand is alread grabbing a stick
     private int controllerIndex = 0;
 
@@ -74,8 +74,8 @@ public class ControllerScript : MonoBehaviour
 
         if(PlayerPrefs.GetInt("dualcolor") == 0)
         {
-            pirmaryControllerColor = GameColors.Pink;
-            secondaryControllerColor = GameColors.Blue;
+            pirmaryControllerColor = GameColors.Blue;
+            secondaryControllerColor = GameColors.Pink;
         }
 
         if (spawnSticks)
@@ -523,8 +523,18 @@ public class ControllerScript : MonoBehaviour
         //if other entered a sicks
         if (other.gameObject.GetComponent<CDscript>())
         {
-            //set current stick as "highlighted"
+
             highlightedObject = null;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //if other entered a sicks
+        if (other.gameObject.GetComponent<CDscript>() && !highlightedObject)
+        {
+            //set current stick as "highlighted"
+            highlightedObject = other.gameObject;
         }
     }
 

@@ -12,7 +12,7 @@ public class DifficultyButtonsScript : MonoBehaviour {
     }
 
     [SerializeField]
-    Difficulty difficulty;
+    Difficulty difficulty = Difficulty.MEDIUM;
 
     DifficultyMenuScript menuScript;
 

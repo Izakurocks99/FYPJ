@@ -12,11 +12,11 @@ public class StanAudioMotion : MonoBehaviour
     Transform _tfThis;
     public float _intShiftRate;
     public float _ftTimeToTravel;
-    float _ftX, _ftY, _ftZ;
-    float _ftTime;
-    int _intNumber;
-    Vector3 _vec3Area;// = null;
-    ControlCalibrationScript calibration;
+    //float _ftX, _ftY, _ftZ;
+    //float _ftTime;
+    //int _intNumber;
+    //Vector3 _vec3Area;// = null;
+    //ControlCalibrationScript calibration; never used
     PlayerStats PlayerStats;
 
     public float speed = 10;
@@ -64,7 +64,7 @@ public class StanAudioMotion : MonoBehaviour
 
 	void Start()
 	{
-		_ftTime = 0.0f;
+		//_ftTime = 0.0f;
         _tfThis = this.transform;
         _tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
