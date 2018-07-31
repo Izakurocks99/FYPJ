@@ -34,11 +34,11 @@ public class AudioBandVisualiser : MonoBehaviour
     public float _ftSpeed = 1f;
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
-    public static int _intBeatCounts;
-    //int _intPreviousMaterial,     
-    int  _intCurrentMaterial;
-
-    int _intMatColorL, _intMatColorR;
+    public static int _intBeatCounts;     
+    public static int _intPathing;
+    int _intCurrentMaterial;
+    int _intMatColorL;
+    int _intMatColorR;
 
 #if (BEAT_POOL)  // in external class for now
     //[SerializeField]
@@ -57,10 +57,10 @@ public class AudioBandVisualiser : MonoBehaviour
         _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _ftTime = 0f;
         _intBeatCounts = 0;
-        //_intPreviousMaterial = 0;
         _intCurrentMaterial = 0;
         _intMatColorL = 0;
         _intMatColorR = 0;
+        _intPathing = 0;
 
 #if (BEAT_POOL)
         Debug.Assert(DissolveShader);
@@ -101,14 +101,19 @@ public class AudioBandVisualiser : MonoBehaviour
             _goSecondaryArray[_intSecondary] = _goAudioScalesSecondary.transform.GetChild(_intSecondary).gameObject;
         }
 
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
-            _goParseArray = _goPrimaryArray;
-        else
-            _goParseArray = _goSecondaryArray;
+        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
+        //     _goParseArray = _goPrimaryArray;
+        // else
+        //     _goParseArray = _goSecondaryArray;
     }
 
     void Update()
     {
+        if (_intPathing == 0)
+            _goParseArray = _goPrimaryArray;
+        else if (_intPathing == 1)
+            _goParseArray = _goSecondaryArray;
+
         // for (int i = 0; i < _goParseArray.Length; i++)
         //     _goParseArray[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
 
@@ -186,19 +191,9 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Set Material if the Gamemode is Type 1.
                             case 0: {
                                 if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
                                     _intMatColorL = _intCurrentMaterial;
-                                    _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
-                                    _intMatColorR = _intCurrentMaterial;
-                                }
-
-                                if (_intMatColorL >= 9) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
-                                    _intMatColorL = _intCurrentMaterial;
-                                }
-                                
-                                if (_intMatColorR >= 9) {
-                                    _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
                                     _intMatColorR = _intCurrentMaterial;
                                 }
 
@@ -209,8 +204,8 @@ public class AudioBandVisualiser : MonoBehaviour
     
                             // Set Material if the Gamemode is Type 2.
                             case 1: {
-                                if (i == 0) _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
-                                else if (i != 0) _intCurrentMaterial = Random.Range(0, _matsSecondary.Length) + 2;
+                                if (i == 0)      _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
+                                else if (i != 0) _intCurrentMaterial = Random.Range(2, (int)_matsSecondary.Length + 2);
                                 break;
                             }
     

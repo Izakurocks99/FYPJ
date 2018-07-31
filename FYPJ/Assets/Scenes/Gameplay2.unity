@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b9b67e490a8ae4c8b536b77ec33dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goPrefab: {fileID: 1761407923449524, guid: f8be0be861597144589dc45a3233aeed, type: 2}
+  _goPrefab: {fileID: 1245887945193710, guid: a8518599b5003074395a95e7c726a12e, type: 2}
   _goPlayer: {fileID: 1046849135}
   _goAudio: {fileID: 280549398}
   _goBandVisualiser: {fileID: 681982836}
@@ -465,11 +465,9 @@ MonoBehaviour:
   _vec3Spawn: {x: -2.1994548, y: 6.991571, z: 10.205325}
   RotationSpeed: 0.05
   RotationStrenght: 1
-  MovementScale: 1
   ZeroPosition: {x: 0, y: 8.28, z: 8.89}
   Dimensions: {x: 10, y: 2, z: 7}
   MovementSpeed: 0.5
-  DirectionFreq: 1
 --- !u!1 &63713749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1879,46 @@ Prefab:
       propertyPath: _goAudio
       value: 
       objectReference: {fileID: 564139634}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _vec3Scale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337811705774104, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _ftWait
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114411507006736646, guid: b8dad51769797c943aea61cba335d3d8,
+        type: 2}
+      propertyPath: _ftWait
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8dad51769797c943aea61cba335d3d8, type: 2}
   m_IsPrefabParent: 0
@@ -2597,7 +2635,13 @@ Prefab:
       propertyPath: beatScale.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 82135228435029284, guid: 9e54ad60725570a41b513a50164b90cc,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c4a669f0435486c4ab0e574bd15ac92b, type: 3}
+    m_RemovedComponents:
+    - {fileID: 114138058778199632, guid: 9e54ad60725570a41b513a50164b90cc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9e54ad60725570a41b513a50164b90cc, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &528620577 stripped
@@ -2710,7 +2754,7 @@ Prefab:
     - target: {fileID: 82863508924551132, guid: aab412b51de41d940a507aa6e0945ede,
         type: 2}
       propertyPath: m_Volume
-      value: 1
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aab412b51de41d940a507aa6e0945ede, type: 2}
@@ -3020,7 +3064,7 @@ MonoBehaviour:
   _intPlayerScoring: 0
   _intPlayerMode: 0
   _intSpawnPoint: 0
-  _intSpawnMode: 1
+  _intSpawnMode: 0
   cam: {fileID: 1046849135}
 --- !u!20 &760541050
 Camera:
@@ -3483,7 +3527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &824177034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3550,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 886d3cc985096d04db6a710e6ab18672, type: 2}
   - {fileID: 11400000, guid: a1a34312e012a714baded2bede7560be, type: 2}
   - {fileID: 11400000, guid: 8e6a88ae06f56974cb66276da8e68520, type: 2}
+  getSavedSong: 1
+  defaultSong: {fileID: 0}
 --- !u!4 &824177035
 Transform:
   m_ObjectHideFlags: 0
@@ -5727,6 +5773,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114174073544815848, guid: 77d8ac777ce266044831455c337217c2,
+        type: 2}
+      propertyPath: AudianceMemberPrefab
+      value: 
+      objectReference: {fileID: 1855088472558440, guid: a4419a9cb41eb4c49b70f528e1944559,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77d8ac777ce266044831455c337217c2, type: 2}
   m_IsPrefabParent: 0

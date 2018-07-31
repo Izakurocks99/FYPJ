@@ -141,7 +141,6 @@ public class AudioMotion : MonoBehaviour
         _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
         if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            // _tfThis.position = Vector3.MoveTowards(_tfThis.position, _vec3Area, speed * Time.deltaTime);
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else
         {

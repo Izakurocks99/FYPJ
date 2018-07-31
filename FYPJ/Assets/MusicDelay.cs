@@ -11,7 +11,7 @@ public class MusicDelay : MonoBehaviour {
 	void Start ()
 	{
 		gameObject.GetComponent<AudioSource>().clip = AudioVizualiser.GetComponent<AudioSource>().clip;
-		GetComponent<AudioSource>().PlayDelayed(delay);
+		GetComponent<AudioSource>().PlayDelayed(delay+3);
 
 	}
 	
