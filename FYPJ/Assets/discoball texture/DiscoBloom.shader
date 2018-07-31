@@ -50,7 +50,7 @@
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = c.rgb ;
-			o.Emission = tex2D(_EmissiveTex,IN.uv_MainTex).rgb + lerp(tex2D(_EmissiveTexAdd,IN.uv_MainTex).rgb * _EmissiveScale * (1 -_LerpVal),
+			o.Emission = tex2D(_EmissiveTex,IN.uv_MainTex).rgb * 0.00001 + lerp(tex2D(_EmissiveTexAdd,IN.uv_MainTex).rgb * _EmissiveScale * (1 -_LerpVal),
 			tex2D(_EmissiveTexAdd2,IN.uv_MainTex).rgb * _EmissiveScale * _LerpVal,_LerpVal);
 			// Metallic and smoothness come from slider variables
 			o.Metallic = 0.f;
