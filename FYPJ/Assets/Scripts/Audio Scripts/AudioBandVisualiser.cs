@@ -191,10 +191,12 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Set Material if the Gamemode is Type 1.
                             case 0: {
                                 if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                    _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
-                                    _intMatColorL = _intCurrentMaterial;
-                                    _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
-                                    _intMatColorR = _intCurrentMaterial;
+                                    // _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
+                                    // _intMatColorL = _intCurrentMaterial;
+                                    // _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
+                                    // _intMatColorR = _intCurrentMaterial;
+                                    _intMatColorL = 0;
+                                    _intMatColorR = 2;
                                 }
 
                                 if (i == 0) _intCurrentMaterial = _intMatColorL;
