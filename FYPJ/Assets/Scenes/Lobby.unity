@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,7 +295,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53612d748a4c03646bb25487fd5202aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnSticks: 0
   isSecondaryMoveController: 1
+  stickPrefab: {fileID: 0}
   currStick: {fileID: 0}
   laserPointer: {fileID: 1703435929}
   controlsScript: {fileID: 345411338}
@@ -544,6 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1618825a513b849a2d19c97ad773c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 0}
+  loadingImage: {fileID: 0}
   sceneName: Gameplay2
 --- !u!20 &282840813
 Camera:
@@ -673,7 +677,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53612d748a4c03646bb25487fd5202aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnSticks: 0
   isSecondaryMoveController: 0
+  stickPrefab: {fileID: 0}
   currStick: {fileID: 0}
   laserPointer: {fileID: 867880154}
   controlsScript: {fileID: 345411338}
@@ -1185,9 +1191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fa04ad9fe21e94d9466b3ce825a36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiLayerMask:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   max_distance: 100
 --- !u!1 &903550430
 GameObject:
@@ -1775,6 +1781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1618825a513b849a2d19c97ad773c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 0}
+  loadingImage: {fileID: 0}
   sceneName: Gameplay2
 --- !u!82 &1310748936
 AudioSource:
@@ -2325,9 +2333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fa04ad9fe21e94d9466b3ce825a36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiLayerMask:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   max_distance: 100
 --- !u!1 &1781958203 stripped
 GameObject:

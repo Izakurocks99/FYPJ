@@ -22,12 +22,16 @@ public class Audio1 : MonoBehaviour {
 	public float difficulty = 0.3f;
 	public bool spawnActive = true;
 
+	public GameObject musicSource;
+
 	
 	void Start ()
     {
         _audioSource = GetComponent<AudioSource>();
-
+		_audioSource.PlayDelayed(3);
 	}
+
+
 
 	void LateUpdate()
 	{
