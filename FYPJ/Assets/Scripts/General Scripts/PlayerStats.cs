@@ -99,9 +99,9 @@ public class PlayerStats : MonoBehaviour
         //     AudioBandVisualiser._intPathing = _intSpawnMode;
         // }
 // Difficulty Levels
-        // if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty")) {
-        //     _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
-        // }
+        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty")) {
+            _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        }
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&

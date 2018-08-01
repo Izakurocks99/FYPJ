@@ -87,14 +87,14 @@ public class AudioMotion : MonoBehaviour
         //_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
-        _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
+/*         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
-        _ftZ = -Mathf.Abs(calibration.distFromPlayer);
+        _ftZ = -Mathf.Abs(calibration.distFromPlayer); */
 
         //PlayerStats = FindObjectOfType<PlayerStats>();
-        _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
+/*         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                                                    _ftY,
-                                                                                   _ftZ);
+                                                                                   _ftZ); */
 #if (SPAWNDEBUG)
 	timer = 0;
 #endif
@@ -115,14 +115,9 @@ public class AudioMotion : MonoBehaviour
             _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
         }
         else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 2) {
-            if (calibration.calibrationObject.transform.position.z == 0)
-                _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                        _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                        Camera.main.transform.position.z);
-            else
-                _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                        _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                        calibration.calibrationObject.transform.position.z);
+            _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
+                                    _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                    Camera.main.transform.position.z);
         }
         endPoint.position = _vec3Area;
 

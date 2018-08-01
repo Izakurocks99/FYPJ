@@ -179,7 +179,7 @@ public class AudioBandVisualiser : MonoBehaviour
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbufferParse.Length; _intCurrentBuffer++) {
                             // if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
                             if ((AudioSampler._ftMaxbufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.3f) {
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.1f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
                                         if (_intCurrentBuffer == _intFirst) continue;
