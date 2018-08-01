@@ -227,12 +227,18 @@ public class AudioBandVisualiser : MonoBehaviour
                                 break;
                             }
 
-                            // Set Material if the GameMode is Type 3.
+                            // Set Material if the Gamemode is Type 3.
                             case 2: {
                                 if (_intParse < 2)
                                     _intCurrentMaterial = 0;
                                 else
                                     _intCurrentMaterial = 2;
+                                break;
+                            }
+
+                            // Set Material if the Gamemode is Type 4
+                            case 3: {
+                                _intCurrentMaterial = _intParse;
                                 break;
                             }
 
