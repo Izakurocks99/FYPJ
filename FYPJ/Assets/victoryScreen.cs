@@ -22,7 +22,6 @@ public class victoryScreen : MonoBehaviour {
 	IEnumerator FadeIn()
 	{
 		ParticleSystem[] _particleList = GetComponentsInChildren<ParticleSystem>();
-		yield return new WaitForSeconds(2f);
 
 		for (int i = 0; i < _particleList.Length; i++)
 			_particleList[i].Play();
