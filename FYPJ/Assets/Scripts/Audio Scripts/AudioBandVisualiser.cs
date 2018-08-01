@@ -11,12 +11,10 @@ public class AudioBandVisualiser : MonoBehaviour
     public GameObject[] _goPrefab;
     public GameObject _goAudioScalesPrimary;
     public GameObject _goAudioScalesSecondary;
-    public GameObject _goAudioScalesTertiary;
     public GameObject _goAudio;
     public GameObject _goPlayer;
     GameObject[] _goPrimaryArray;
     GameObject[] _goSecondaryArray;
-    GameObject[] _goTertiaryArray;
     GameObject[] _goParseArray;
     GameObject _goInstanceA;
     GameObject _goInstanceB;
@@ -41,7 +39,6 @@ public class AudioBandVisualiser : MonoBehaviour
     int _intCurrentMaterial;
     int _intMatColorL;
     int _intMatColorR;
-    int _intMaxLimit;
 
 #if (BEAT_POOL)  // in external class for now
     //[SerializeField]
@@ -56,18 +53,14 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Start()
     {
-        // _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
-        // _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
-        _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
-        _ftAryPrevBuffer = new float[_intMaxLimit];
-        _ftAryDiffBuffer = new float[_intMaxLimit];
-
+        _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
+        _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _ftTime = 0f;
         _intBeatCounts = 0;
         _intCurrentMaterial = 0;
         _intMatColorL = 0;
         _intMatColorR = 0;
-        // _intPathing = 0;
+        _intPathing = 0;
 
 #if (BEAT_POOL)
         Debug.Assert(DissolveShader);
@@ -108,11 +101,6 @@ public class AudioBandVisualiser : MonoBehaviour
             _goSecondaryArray[_intSecondary] = _goAudioScalesSecondary.transform.GetChild(_intSecondary).gameObject;
         }
 
-        _goTertiaryArray = new GameObject[_goAudioScalesTertiary.transform.childCount];
-        for (int _intTertiary = 0; _intTertiary < _goAudioScalesTertiary.transform.childCount; _intTertiary++) {
-            _goTertiaryArray[_intTertiary] = _goAudioScalesTertiary.transform.GetChild(_intTertiary).gameObject;
-        }
-
         // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
         //     _goParseArray = _goPrimaryArray;
         // else
@@ -125,8 +113,6 @@ public class AudioBandVisualiser : MonoBehaviour
             _goParseArray = _goPrimaryArray;
         else if (_intPathing == 1)
             _goParseArray = _goSecondaryArray;
-        else if (_intPathing == 2)
-            _goParseArray = _goTertiaryArray;
 
         // for (int i = 0; i < _goParseArray.Length; i++)
         //     _goParseArray[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
@@ -175,10 +161,8 @@ public class AudioBandVisualiser : MonoBehaviour
 
                     // Getting the Spawn Locations
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
-                        //for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
-                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbufferParse.Length; _intCurrentBuffer++) {
-                            // if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                            if ((AudioSampler._ftMaxbufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
+                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
+                            if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
                                 if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.3f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
@@ -207,12 +191,10 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Set Material if the Gamemode is Type 1.
                             case 0: {
                                 if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                    // _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
-                                    // _intMatColorL = _intCurrentMaterial;
-                                    // _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
-                                    // _intMatColorR = _intCurrentMaterial;
-                                    _intMatColorL = 0;
-                                    _intMatColorR = 2;
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
+                                    _intMatColorL = _intCurrentMaterial;
+                                    _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
+                                    _intMatColorR = _intCurrentMaterial;
                                 }
 
                                 if (i == 0) _intCurrentMaterial = _intMatColorL;
@@ -262,8 +244,7 @@ public class AudioBandVisualiser : MonoBehaviour
                 {
                     for (int j = _goParseArray.Length - 1; j >= 0; j--)
                     {
-                        // if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
-                        if (AudioSampler._ftMaxbufferParse[j] == AudioSampler._ftMaxbufferParse.Max())
+                        if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
                         {
                             _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
                             _intCurrentMaterial = (_intCurrentMaterial == 1) ? 2 : 0;
@@ -292,11 +273,12 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         //listGOBeatPool[index].PopBack();
         GameObject go = _Pool.GetObjectFromPool(index);
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
+        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0){
             go.transform.parent = parent.transform.parent.transform;
-        else
+        }
+        else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
             go.transform.parent = parent.transform;
-            
+        }
         go.transform.position = parent.transform.position;
         go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
         return go;
@@ -315,8 +297,7 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         for (int i = 0; i < _ftAryDiffBuffer.Length; i++)
         {
-            // float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
-            float _ftDifference = AudioSampler._ftMaxbufferParse[i] - _ftAryPrevBuffer[i];
+            float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
             if (_ftDifference < 0)
                 _ftDifference *= -1;
             _ftAryDiffBuffer[i] = _ftDifference;

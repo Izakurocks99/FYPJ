@@ -74,12 +74,13 @@ public class AudioMotion : MonoBehaviour
         _childTwinkle = transform.GetChild(2); // out of bounds
         _childTwinkleScale = _childTwinkle.localScale;
 #endif
+
+
+
         _ftTime = 0.0f;
         _tfThis = this.transform;
-
 #if (STAN)
-        if (_goPlayer.GetComponent<PlayerStats>()._bl4x != true)
-            _tfParent = this.transform.parent.transform;
+        _tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
 #endif
 
@@ -112,11 +113,6 @@ public class AudioMotion : MonoBehaviour
                                                                                             _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
                                                                                             calibration.calibrationObject.transform.position.z);
             _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
-        }
-        else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 2) {
-            _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                    _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                    Camera.main.transform.position.z);
         }
         endPoint.position = _vec3Area;
 

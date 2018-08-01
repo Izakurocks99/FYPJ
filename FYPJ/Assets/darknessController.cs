@@ -5,6 +5,9 @@ using UnityEngine;
 public class darknessController : MonoBehaviour {
     //DELETE THIS AFTER DARKNESS PASS
 
+
+    //DELETE THIS AFTER DARKNESS PASS
+
     Material mat = null;
 
     [SerializeField]
@@ -15,6 +18,9 @@ public class darknessController : MonoBehaviour {
 
     [SerializeField]
     float dist = 50f;
+    //[SerializeField]
+    //[Range(0f, 1f)]
+    //float percent = 0;
 
     [SerializeField]
     float thicc = 1f;
@@ -165,6 +171,3 @@ public class darknessController : MonoBehaviour {
 		
 	//}
 }
-
-//TODO kato etta kamera poistuu pois kytkettaissa
-//TODO ota puhdas scene, tuoha ja korjaa se, kiitos

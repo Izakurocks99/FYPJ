@@ -7,19 +7,11 @@ public class SpeakerDiscEffect : MonoBehaviour {
 
 	public GameObject[] _goDisc;
 	public GameObject _goAudio;
-	public GameObject _goPlayer;
-	private float[] _ftBandBuffer;
-	private float _ftBandMax;
-	private int _intLimit;
+	float[] _ftBandBuffer;
+	float _ftBandMax;
 
 	void Start () {
-		// _ftBandBuffer = new float[AudioSampler._ftMaxbufferParse.Length];
-		if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true)
-			_intLimit = 4;
-		else
-			_intLimit = 8;
-
-		_ftBandBuffer = new float[_intLimit];
+		_ftBandBuffer = new float[AudioSampler._ftMaxbuffer.Length];
 	}
 	
 	void Update () {
@@ -40,8 +32,7 @@ public class SpeakerDiscEffect : MonoBehaviour {
 	}
 
 	void GetTotal() {
-		// _ftBandBuffer = AudioSampler._ftMaxbuffer;
-		_ftBandBuffer = AudioSampler._ftMaxbufferParse;
+		_ftBandBuffer = AudioSampler._ftMaxbuffer;
 		_ftBandMax = 0.0f;
 
 		for (int i = 0; i < _ftBandBuffer.Length; i++)

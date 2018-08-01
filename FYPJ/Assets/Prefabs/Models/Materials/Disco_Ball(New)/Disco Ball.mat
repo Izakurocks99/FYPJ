@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Disco Ball
-  m_Shader: {fileID: 4800000, guid: 23f3c3a86340daf40845c8d03a1d8426, type: 3}
+  m_Shader: {fileID: 47, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -18,10 +18,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTexture:
-        m_Texture: {fileID: 2800000, guid: 74803cb2e85d20142ab2774e61d0085b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 76d1d45719a84cb4d95229fec82beace, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -43,15 +39,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTex:
-        m_Texture: {fileID: 2800000, guid: b10eef4fddc2f51479a427d62d164b9a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 84a7ec931044baf4d8da7354ad5defd8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTexAdd:
-        m_Texture: {fileID: 2800000, guid: 51fc31476b92f1d4f96319ed49877522, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5625a58f6f7d888459955cb697d640a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveTexAdd2:
-        m_Texture: {fileID: 2800000, guid: d77f5284a9bc5d94e8a6cb6e89796543, type: 3}
+        m_Texture: {fileID: 2800000, guid: d7e62b2812f16624090bbeb3cf27ed80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -63,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 76d1d45719a84cb4d95229fec82beace, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6f9d65ca0f133b6428f2345ac90f14eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -87,23 +83,18 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Interpolation: 0.9
     - _LerpVal: 0.555
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _Roughness: 0
-    - _Scale: 4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.5
     - _SrcBlend: 1
-    - _Treshold: 0.2
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.82643497, g: 1.0594193, b: 0.07912675, a: 1}
-    - _Color1: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - col: {r: 0.34, g: 0.85, b: 0.92, a: 1}

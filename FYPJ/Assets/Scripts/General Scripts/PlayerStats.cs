@@ -23,7 +23,6 @@ public class PlayerStats : MonoBehaviour
     float _ftRNGTime;
     float _ftRNDWait;
     float _ftRNGWait;
-    public bool _bl4x;
     bool _blActiveSpawn;
 
     public static 
@@ -75,16 +74,6 @@ public class PlayerStats : MonoBehaviour
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
         Debug.Assert(cam);
         Wave = cam.GetComponent<WaveEffect>();
-        
-        _bl4x = true;
-        AudioBandVisualiser._intPathing = 2;
-
-        if (_bl4x == false) {
-            if (_intSpawnMode == 2)
-                _intSpawnMode = 1;
-        }
-        else
-            _intSpawnMode = 2;
     }
 
     void Update()
@@ -93,14 +82,13 @@ public class PlayerStats : MonoBehaviour
         if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
             _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
 // [0]Random Pathing or [1]Straight Pathing
-        // if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
-        //     _intSpawnMode = PlayerPrefs.GetInt("randomarea");
-        //     AudioBandVisualiser._intPathing = _intSpawnMode;
-        // }
-// Difficulty Levels
-        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty")) {
-            _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
+            _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+            AudioBandVisualiser._intPathing = _intSpawnMode;
         }
+// Difficulty Levels
+        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty"))
+            _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
@@ -129,8 +117,7 @@ public class PlayerStats : MonoBehaviour
             {
                 Wave.Pulse();
             }
-            // _hypeManager.IncreaseHype(score);
-            _hypeManager.IncreaseHype();
+            _hypeManager.IncreaseHype(score);
         }
 
     }

@@ -156,6 +156,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4152105797098446}
+  - component: {fileID: 114417697141931526}
   m_Layer: 0
   m_Name: Speakers(New)
   m_TagString: Untagged
@@ -1174,9 +1175,8 @@ MonoBehaviour:
   _goPrefab:
   - {fileID: 1761407923449524, guid: c403fe3a4eb9cfd429837618733cc0c1, type: 2}
   - {fileID: 1761407923449524, guid: a8d7bd35723777347809ea2567e375f3, type: 2}
-  _vec3Scale: {x: 3, y: 3, z: 3}
+  _vec3Scale: {x: 2, y: 2, z: 2}
   dissolveShader: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
-  _ftWait: 0
 --- !u!114 &114411507006736646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1194,9 +1194,25 @@ MonoBehaviour:
   _goPrefab:
   - {fileID: 1761407923449524, guid: c403fe3a4eb9cfd429837618733cc0c1, type: 2}
   - {fileID: 1761407923449524, guid: a8d7bd35723777347809ea2567e375f3, type: 2}
-  _vec3Scale: {x: 3, y: 3, z: 3}
+  _vec3Scale: {x: 2, y: 2, z: 2}
   dissolveShader: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
-  _ftWait: 0
+--- !u!114 &114417697141931526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493110601876542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0d627a7a18a5648a1c384a71626afc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goDisc:
+  - {fileID: 1037158970853032}
+  - {fileID: 1666348911944418}
+  - {fileID: 1945694862949790}
+  - {fileID: 1831107180340580}
+  _goAudio: {fileID: 0}
 --- !u!114 &114443170566143938
 MonoBehaviour:
   m_ObjectHideFlags: 1
