@@ -74,7 +74,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
                 }
                 GenerateDrag();
             }
-            else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
+            else /* if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0) */
             {
                 if(trashBin.Count > 0)
                 { 
