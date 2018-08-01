@@ -12,19 +12,19 @@ public class victoryScreen : MonoBehaviour {
 	{
 		vicTxt = this.transform.GetComponentInChildren<Text>();
 		vicTxt.color = new Color(1, 1, 1, 0);
-		//Activate();
 	}
 
 	void Activate()
 	{
-		
 		StartCoroutine("FadeIn");
 	}
 
 	IEnumerator FadeIn()
 	{
-		yield return new WaitForSeconds(2);
 		ParticleSystem[] _particleList = GetComponentsInChildren<ParticleSystem>();
+
+		for (int i = 0; i < _particleList.Length; i++)
+			_particleList[i].Play();
 
 		float _count = 0;
 		while(_count < 1)
@@ -33,12 +33,6 @@ public class victoryScreen : MonoBehaviour {
 			_count += Time.deltaTime;
 			yield return new WaitForEndOfFrame();
 		}
-
-		yield return new WaitForSeconds(.4f);
-
-		for (int i = 0; i < _particleList.Length; i++)
-			_particleList[i].Play();
-
 
 		yield return new WaitForSeconds(3);
 		//SceneManager.LoadScene(0);
