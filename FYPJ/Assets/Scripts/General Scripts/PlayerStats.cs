@@ -129,8 +129,7 @@ public class PlayerStats : MonoBehaviour
             {
                 Wave.Pulse();
             }
-            // _hypeManager.IncreaseHype(score);
-            _hypeManager.IncreaseHype();
+             _hypeManager.IncreaseHype(score);
         }
 
     }
