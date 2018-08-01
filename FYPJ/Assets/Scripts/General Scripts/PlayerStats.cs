@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         // _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        _intPlayerMode = 2;
         _intPlayerDifficulty = 0;
 
         _intCombo = 0;
@@ -90,9 +91,9 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-// [0]2x Colors or [1]4x Colors
-        if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
-            _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+// [0]2x Colors, [1]4x Colors, [2]Top Blue Bottom Pink
+        // if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
+        //     _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
 // [0]Random Pathing or [1]Straight Pathing
         // if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
         //     _intSpawnMode = PlayerPrefs.GetInt("randomarea");
