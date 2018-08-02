@@ -169,43 +169,68 @@ public class SelectSongsComponent : MonoBehaviour
         return selected = !selected;
     }
 
+    //Buttons
     [SerializeField]
     bool showDifficulty = false;
+
+    [SerializeField]
+    bool debugSpawningStats = false;
+
+    int dual;
+    //[SerializeField]
+    //int dualint = 1;
+    //[SerializeField]
+    //int singleint = 0;
+
+    int random;
+    //[SerializeField]
+    //int randint = 0;
+    //[SerializeField]
+    //int constint = 1;
+
     public void LaunchSong()
     {
         PlayerPrefs.SetString("test", currCD.song.title);
+
+
+        if (debugSpawningStats)
+               Debug.Log("mode" + (dual +random));
+
+        PlayerPrefs.SetInt("mode", dual + random);
+
         if (showDifficulty)
             difficultyMenu.SetActive(true);
         else
             StartCoroutine(currCD.LaunchSong());
     }
 
-    [SerializeField]
-    bool debugSpawningStats = false;
-
-    bool dual;
     public void ToggleNumColors(bool isdual)
     {
-        dual = isdual;
-        if (debugSpawningStats)
-            Debug.Log("dualcolor" + dual);
-
-        if (dual)
-            PlayerPrefs.SetInt("dualcolor", 1);
+        if (isdual)
+            dual = 1;
         else
-            PlayerPrefs.SetInt("dualcolor", 0);
+            dual = 0;
+        //if (debugSpawningStats)
+        //    Debug.Log("dualcolor" + dual);
+
+        //if (dual)
+        //    PlayerPrefs.SetInt("dualcolor", dualint);
+        //else
+        //    PlayerPrefs.SetInt("dualcolor", singleint);
     }
 
-    bool random;
     public void ToggleRandomArea(bool isrand)
     {
-        random = isrand;
-        if (debugSpawningStats)
-            Debug.Log("randomarea" + random);
-
-        if (random)
-            PlayerPrefs.SetInt("randomarea", 0);
+        if (isrand)
+            random = 0;
         else
-            PlayerPrefs.SetInt("randomarea", 1);
+            random = 2;
+        //if (debugSpawningStats)
+        //    Debug.Log("randomarea" + random);
+
+        //if (random)
+        //    PlayerPrefs.SetInt("randomarea", randint);
+        //else
+        //    PlayerPrefs.SetInt("randomarea", constint);
     }
 }
