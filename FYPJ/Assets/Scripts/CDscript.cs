@@ -65,12 +65,12 @@ public class CDscript : MonoBehaviour
         float _timer = 0;
         while (_waiting)
         {
-            parent.platform.transform.position += Vector3.up * Time.deltaTime * 3;
-            parent.player.transform.position += Vector3.up * Time.deltaTime * 3;
+            parent.platform.transform.position += Vector3.up * Time.deltaTime;
+            parent.player.transform.position += Vector3.up * Time.deltaTime;
 
             GetComponent<Renderer>().material.SetFloat("Vector1_798353CA", Mathf.Lerp(_timer - 1, 1, _timer / 5));
 
-            if (_timer > 2)
+            if (_timer > 1)
             {
                 _waiting = false;
                 parent.loadingScreen.GetComponent<SceneSwitch>().LoadScene();
