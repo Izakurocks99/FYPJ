@@ -86,4 +86,17 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
             }
         }
     }
+
+    public void Decay()
+    {
+        if (color == GameColors.Black)
+        {
+            playerCam.GetComponent<PlayerStats>().ModifyScore(Mathf.RoundToInt(10));
+            playerCam.ModifyCombo(true);
+        }
+        else
+        {
+            playerCam.ModifyCombo(true);
+        }
+    }
 }
