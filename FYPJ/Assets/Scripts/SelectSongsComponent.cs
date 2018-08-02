@@ -91,10 +91,11 @@ public class SelectSongsComponent : MonoBehaviour
         difficultyMenu.transform.position = gameObject.transform.position;
     }
 
+    bool followplayer = true;
     private void FixedUpdate()
     {
-
-        transform.position = playerCam.transform.position - playerOffset;
+        if (followplayer)
+            transform.position = playerCam.transform.position - playerOffset;
         frontPoint = transform.position + Vector3.forward * distance;
         follower.transform.position = transform.position;
 
@@ -177,16 +178,7 @@ public class SelectSongsComponent : MonoBehaviour
     bool debugSpawningStats = false;
 
     int dual;
-    //[SerializeField]
-    //int dualint = 1;
-    //[SerializeField]
-    //int singleint = 0;
-
     int random;
-    //[SerializeField]
-    //int randint = 0;
-    //[SerializeField]
-    //int constint = 1;
 
     public void LaunchSong()
     {
@@ -197,6 +189,8 @@ public class SelectSongsComponent : MonoBehaviour
                Debug.Log("mode" + (dual +random));
 
         PlayerPrefs.SetInt("mode", dual + random);
+
+        followplayer = false;
 
         if (showDifficulty)
             difficultyMenu.SetActive(true);
