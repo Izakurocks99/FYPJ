@@ -74,13 +74,12 @@ public class AudioMotion : MonoBehaviour
         _childTwinkle = transform.GetChild(2); // out of bounds
         _childTwinkleScale = _childTwinkle.localScale;
 #endif
-
-
-
         _ftTime = 0.0f;
         _tfThis = this.transform;
+
 #if (STAN)
-        _tfParent = this.transform.parent.transform;
+        if (_goPlayer.GetComponent<PlayerStats>()._bl4x != true)
+            _tfParent = this.transform.parent.transform;
         _tfCamera = Camera.main.transform;
 #endif
 
@@ -94,8 +93,8 @@ public class AudioMotion : MonoBehaviour
 
         //PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
-                                                     _ftY,
-                                                     _ftZ);
+                                                                                   _ftY,
+                                                                                   _ftZ);
 #if (SPAWNDEBUG)
 	timer = 0;
 #endif
@@ -109,10 +108,16 @@ public class AudioMotion : MonoBehaviour
             // _vec3Area = new Vector3(0, 0, -7.0f);
         }
         else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
-            _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                                                                            _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                                                                            calibration.calibrationObject.transform.position.z);
+            if (calibration.calibrationObject.transform.position.z != 0)
+                _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
+                                                                                                _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                                                                                calibration.calibrationObject.transform.position.z);
             _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
+        }
+        else {
+            _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
+                                    _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                    Camera.main.transform.position.z);
         }
         endPoint.position = _vec3Area;
 

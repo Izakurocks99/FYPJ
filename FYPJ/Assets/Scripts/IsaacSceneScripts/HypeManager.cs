@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HypeManager : MonoBehaviour {
+public class HypeManager : MonoBehaviour
+{
 
     PlayerStats player;
     AudianceManager audienceManager;
@@ -15,29 +16,28 @@ public class HypeManager : MonoBehaviour {
     GameObject HypeMeter = null;
 
     [SerializeField]
-    //List<Texture2D> numberTextures = new List<Texture2D>();
     Sprite[] numberTextures = new Sprite[10];
 
-    private float playerScore = 0;
-    public float scoreHypeRatio = 0.1f;
-    //private int hype;
+    [SerializeField]
+    float hypeDecaySpeed = 1;
+
     Material hypeMaterial = null;
     SpriteRenderer hypeNumberMaterial = null;
     float _hype = 0; // 0 - 1 value 
 
-    [HideInInspector]
     public int hypeMult = 0; // 1 - max hype value, used by player stats
     // Use this for initialization
     //
     void OnValidate()
     {
-        if(numberTextures.Length != 10)
+        if (numberTextures.Length != 10)
         {
             Debug.LogWarning("DO NOT RESIZE THE NUMBER TEXTURE ARRAY");
-            Array.Resize(ref numberTextures,10);
+            Array.Resize(ref numberTextures, 10);
         }
     }
-    void Start () {
+    void Start()
+    {
         player = FindObjectOfType<PlayerStats>();
         Debug.Assert(HypeMeter); // SET METER TO GAMOBJETC USE IT
         hypeMaterial = HypeMeter.GetComponent<Renderer>().material;
@@ -50,36 +50,43 @@ public class HypeManager : MonoBehaviour {
     {
         hypeNumberMaterial.sprite = numberTextures[hypeMult];
     }
-    public void IncreaseHype()
+    public void IncreaseHype(int score)
     {
-        _hype += defaultIncreaceAmount + (defaultIncreaceAmount * scoreHypeRatio);
+        _hype += score * defaultIncreaceAmount * hypeMult;
         _hype = Mathf.Clamp01(_hype);
         hypeMult = hypeMult < 9 ? hypeMult + 1 : 9;
+        if (_hype >= 0)
+            audienceManager.HypeMeter = (int)(_hype * 100);
+
         setnumbertexture();
     }
     public void DecreaseHype()
     {
-        _hype -= defaultIncreaceAmount ;
+        _hype -= defaultIncreaceAmount * 10;
         _hype = Mathf.Clamp01(_hype);
-        hypeMult = hypeMult > 0 ? hypeMult - 1 : 0;
+        //hypeMult = hypeMult > 0 ? hypeMult - 1 : 0;
+        hypeMult = hypeMult > 0 ? 0 : 0;
+
+        if (_hype >= 0)
+            audienceManager.HypeMeter = (int)(_hype * 100);
+
         setnumbertexture();
     }
-    
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
-        if(audienceManager == null)
+        if (audienceManager == null)
         {
             audienceManager = FindObjectOfType<AudianceManager>();
         }
-		if (playerScore != player._intPlayerScoring)
+        else
         {
-            playerScore = player.GetComponent<PlayerStats>()._intPlayerScoring;
-            if (_hype >= 0) {
-                audienceManager.HypeMeter = (int)(_hype * 100);
+            if (_hype >= 0)
+            {
+                _hype -= defaultIncreaceAmount * Time.deltaTime * hypeDecaySpeed;
             }
         }
-            hypeMaterial.SetFloat("_ShowPercent",_hype);
-	}
+        hypeMaterial.SetFloat("_ShowPercent", _hype);
+    }
 }
-//TODO test in game 

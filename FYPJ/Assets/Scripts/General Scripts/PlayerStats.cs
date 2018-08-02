@@ -23,6 +23,10 @@ public class PlayerStats : MonoBehaviour
     float _ftRNGTime;
     float _ftRNDWait;
     float _ftRNGWait;
+
+    [HideInInspector]
+    public bool _bl4x;
+
     bool _blActiveSpawn;
 
     public static 
@@ -54,6 +58,9 @@ public class PlayerStats : MonoBehaviour
         // _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        _intPlayerMode = 3;
+        _intSpawnMode = 2;
+        _intPlayerDifficulty = 0;
 
         _intCombo = 0;
 
@@ -74,21 +81,36 @@ public class PlayerStats : MonoBehaviour
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
         Debug.Assert(cam);
         Wave = cam.GetComponent<WaveEffect>();
+        
+        AudioBandVisualiser._intPathing = 2;
+
+        if (_intSpawnMode == 2)
+            _bl4x = true;
+        else
+            _bl4x = false;
+
+        // if (_bl4x == false) {
+        //     if (_intSpawnMode == 2)
+        //         _intSpawnMode = 1;
+        // }
+        // else
+        //     _intSpawnMode = 2;
     }
 
     void Update()
     {
-// [0]2x Colors or [1]4x Colors
-        if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
-            _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
-// [0]Random Pathing or [1]Straight Pathing
-        if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
-            _intSpawnMode = PlayerPrefs.GetInt("randomarea");
-            AudioBandVisualiser._intPathing = _intSpawnMode;
-        }
+// [0]2x Colors, [1]4x Colors, [2]Top Blue Bottom Pink, [3]TL Green TR Gold BL Pink BR Blue
+        // if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
+        //     _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+// [0]8 BandWidth Random Pathing, [1]8 BandWidth Straight Pathing, [2]4 BandWidth Pathing *for 8 BandWidth _bl4x must be false in editor*
+        // if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
+        //     _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+        //     AudioBandVisualiser._intPathing = _intSpawnMode;
+        // }
 // Difficulty Levels
-        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty"))
+        if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty")) {
             _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
+        }
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
@@ -117,7 +139,7 @@ public class PlayerStats : MonoBehaviour
             {
                 Wave.Pulse();
             }
-            _hypeManager.IncreaseHype();//score); no overloaded method with float
+             _hypeManager.IncreaseHype(score);
         }
 
     }
