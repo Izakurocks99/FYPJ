@@ -82,9 +82,10 @@ public class HypeManager : MonoBehaviour
         }
         else
         {
-            if (_hype >= 0)
+            if (_hype > 0)
             {
                 _hype -= defaultIncreaceAmount * Time.deltaTime * hypeDecaySpeed;
+                audienceManager.HypeMeter = (int)(_hype * 100);
             }
         }
         hypeMaterial.SetFloat("_ShowPercent", _hype);

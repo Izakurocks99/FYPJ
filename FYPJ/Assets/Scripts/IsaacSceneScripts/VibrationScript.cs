@@ -48,6 +48,8 @@ public class VibrationScript : MonoBehaviour {
         PS4Input.MoveSetVibration(0, 1, 128);
         yield return new WaitForSeconds(0.1f);
         PS4Input.MoveSetVibration(0, 1, 0);
+
+        //yield return new WaitForSeconds(0.1f);
 #else
 		yield return new WaitForSeconds(0.1f);
 
@@ -60,6 +62,9 @@ public class VibrationScript : MonoBehaviour {
         PS4Input.MoveSetVibration(0, 0, 128);
         yield return new WaitForSeconds(0.1f);
         PS4Input.MoveSetVibration(0, 0, 0);
+
+        //yield return new WaitForSeconds(0.1f);
+
 #else
 		        yield return new WaitForSeconds(0.1f);
 
