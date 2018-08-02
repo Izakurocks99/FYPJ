@@ -8,11 +8,12 @@
 		_Texture4 ("Texture4", 2D) = "white" {}
         _Texture5 ("BorderTexture",2D) = "white"{}
         _Texture6 ("BorderTexture",2D) = "white"{}
-        _Brightness("Brightness",Float) = 1 
+        //_Brightness("Brightness",Float) = 1 
         _Speed ("Speed", Float) = 1
         _Speed2 ("Speed2", Float) = 1
         [HDR]_BorderColor("Color",Color) = (1,0,1,1)
         [HDR]_BorderColor2("Color2",Color) = (1,0,1,1)
+        [HDR]_NumberColor("NumberColor",Color) = (1,0,1,1)
 	}
     SubShader {
     Pass {
@@ -65,9 +66,10 @@
 		sampler2D _Texture4;
         float4    _BorderColor;
         float4    _BorderColor2;
+        float4    _NumberColor;
         sampler2D _Texture5;
         sampler2D _Texture6;
-        float       _Brightness;
+        //float       _Brightness;
         float       _Speed;
         float       _Speed2;
 		float	  lastDigit;
@@ -90,10 +92,10 @@
             float2 nuv2 = float2(IN.uv.x,yUV + 0.1 * midDigit);
             float2 nuv3 = float2(IN.uv.x,yUV + 0.1 * lastDigit);
             float2 nuv4 = float2(IN.uv.x,yUV);
-            float4 col =  tex2D(_Texture1,nuv1); 
-            float4 col1 = tex2D(_Texture2,nuv2); 
-            float4 col2 = tex2D(_Texture3,nuv3); 
-            float4 col3 = tex2D(_Texture4,nuv4); 
+            float4 col =  tex2D(_Texture1,nuv1).a * _NumberColor; 
+            float4 col1 = tex2D(_Texture2,nuv2).a * _NumberColor; 
+            float4 col2 = tex2D(_Texture3,nuv3).a * _NumberColor; 
+            float4 col3 = tex2D(_Texture4,nuv4).a * _NumberColor; 
             float2 borderUv = IN.uv;//float2(IN.uv.x, IN.uv.y * 10);
             float4 bordercolor = tex2D(_Texture5,IN.uv); 
             float4 bordercolor2 = tex2D(_Texture6,IN.uv); 
@@ -124,9 +126,10 @@
             col2 *= col2.a;
             col3 *= col3.a;
             
-            float4 finalColor = (col
-+ col1 + col2 + col3) * _Brightness; 
-               
+            float3 finalColorTemp = (col.xyz
++ col1.xyz + col2.xyz + col3.xyz) ; 
+            float4 finalColor = float4(finalColorTemp.x,finalColorTemp.y,finalColorTemp.z,
+            col.a + col1.a + col2.a + col3.a);
             float4 finalBorder = bordercolor + bordercolor2;
                 
             return finalColor + finalBorder * (finalColor.a - 1) * (-1); //distAdd

@@ -46,6 +46,7 @@ public class BillBoard : MonoBehaviour {
     void Update () 
     {
         if (num < 0) return;
+        List<GameColors> d = new List<GameColors>();
         string n = num.ToString();
         m.SetFloat("firstDigit", GetFirstDigitLoop(n));
         m.SetFloat("midDigit", GetMiddleDigit(n));

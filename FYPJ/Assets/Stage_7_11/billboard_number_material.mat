@@ -55,19 +55,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture1:
-        m_Texture: {fileID: 2800000, guid: f3221927a674f7e42b9c9e56641780c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: de5c1e1696aa61144967eebc64b13fb8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2:
-        m_Texture: {fileID: 2800000, guid: 74be876382e957c43bec3e3798609a54, type: 3}
+        m_Texture: {fileID: 2800000, guid: a938e2a836ff2aa47b9333a939fe5f34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture3:
-        m_Texture: {fileID: 2800000, guid: a150cde705222774a952cce2809e14ba, type: 3}
+        m_Texture: {fileID: 2800000, guid: 36f15b85c2b6db047b8ce9ba48687942, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture4:
-        m_Texture: {fileID: 2800000, guid: f30875c1a614449489d6cb8925c69f4b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7957833e8632bd3428d2c710fb6b86ff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture5:
@@ -103,3 +103,4 @@ Material:
     - _BorderColor2: {r: 27.288725, g: 3.0003312, b: 4.857679, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _NumberColor: {r: 1, g: 0, b: 1, a: 1}
