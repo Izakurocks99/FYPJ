@@ -154,7 +154,7 @@ public class AudioMotion : MonoBehaviour
 #else
             Destroy(_tfThis.gameObject);
 #endif
-            //PlayerStats.ModifyScore(-1);
+            _goPlayer.GetComponent<PlayerStats>().ModifyCombo(false);
         }
     }
 
