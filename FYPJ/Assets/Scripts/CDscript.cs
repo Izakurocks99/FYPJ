@@ -36,9 +36,14 @@ public class CDscript : MonoBehaviour
 
         if (a < selectDist)
         {
+            int highscore = 0;
+            if (PlayerPrefs.HasKey(song.title + "highscore"))
+                highscore = PlayerPrefs.GetInt(song.title + "highscore");
+
             parent.currCD = this;
             Title.text = song.title;
-            Description.text = song.description;
+            Description.text = song.description + "\n Highscore: " + highscore;
+
             if (song.audioClip != null)
                 audioSource.GetComponent<AudioSource>().clip = song.audioClip;
             if (audioSource.GetComponent<AudioSource>().isPlaying == false)
