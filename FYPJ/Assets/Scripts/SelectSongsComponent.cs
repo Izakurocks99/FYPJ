@@ -30,6 +30,7 @@ public class SelectSongsComponent : MonoBehaviour
     Vector3 startForward;
 
     public CDscript currCD;
+    CDscript selectedCD = null;
 
     public float distance;
     public float minDist;
@@ -104,6 +105,10 @@ public class SelectSongsComponent : MonoBehaviour
 
         if (_rigidbody.angularVelocity.sqrMagnitude <= 0.5 * 0.5)
             snap = true;
+
+        if (currCD != selectedCD && difficultyMenu.activeInHierarchy)
+            difficultyMenu.SetActive(false);
+
 
         if (selected)
         {
@@ -191,6 +196,8 @@ public class SelectSongsComponent : MonoBehaviour
         PlayerPrefs.SetInt("mode", dual + random);
 
         followplayer = false;
+
+        selectedCD = currCD;
 
         if (showDifficulty)
             difficultyMenu.SetActive(true);
