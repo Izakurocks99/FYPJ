@@ -18,7 +18,8 @@ public sealed class AudianceMember : MonoBehaviour {
 		auManager = manager.GetComponent<AudianceManager>();
 
         Vector3 player = FindObjectOfType<PlayerStats>().gameObject.transform.position;
-        transform.forward = (player - this.gameObject.transform.position).normalized;
+        Vector3 tempforward = (player - this.gameObject.transform.position);
+        transform.forward = new Vector3(tempforward.x, 0 , tempforward.z).normalized;
     }
 
     // Update is called once per frame
