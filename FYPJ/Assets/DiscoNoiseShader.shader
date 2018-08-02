@@ -14,7 +14,7 @@
 	{
 
         Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
-		LOD 100
+		LOD 200
 		Blend SrcAlpha One
         //ZWrite Off
         Cull Off
