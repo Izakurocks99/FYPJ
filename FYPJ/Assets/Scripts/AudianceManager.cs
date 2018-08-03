@@ -51,7 +51,7 @@ public sealed class AudianceManager : MonoBehaviour {
     [SerializeField]
     uint MaxAudianceAmount = 100;
     [SerializeField]
-    public GameObject Member = null;
+    List<GameObject> Member = new List<GameObject>();
 
     [SerializeField]
     float SpawnTime = 0;
@@ -60,6 +60,7 @@ public sealed class AudianceManager : MonoBehaviour {
 
     [SerializeField]
     float Frequenzy = 0;
+
 
 
     float lastHype = 0;
@@ -91,7 +92,7 @@ public sealed class AudianceManager : MonoBehaviour {
         //Quaternion q = new Quaternion();
         for (uint i = 0; i < MaxAudianceAmount; i++)
         {
-            GameObject temp = GameObject.Instantiate(Member);
+            GameObject temp = GameObject.Instantiate(Member.GetRandom());
             temp.SetActive(false);
             AudianceMember tempCom = temp.GetComponentInChildren(typeof(AudianceMember)) as AudianceMember;
             Debug.Assert(tempCom != null);

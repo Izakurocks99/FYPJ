@@ -1,9 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-Shader "Custom/BillBoarder" 
+﻿Shader "Custom/BillBoarder" 
 {
 	Properties
 	{
@@ -11,38 +6,36 @@ Shader "Custom/BillBoarder"
 		_Texture2 ("Texture2", 2D) = "white" {}
 		_Texture3 ("Texture3", 2D) = "white" {}
 		_Texture4 ("Texture4", 2D) = "white" {}
-		_Size ("Size",Float) = 0.02
-		_WaveLenght("Wave Lenght",Float) = 10
-		_DistortionAmount("distortion",Float) = 0.05
-		_Speed("Speed",Float) = 0.0
-		_Color1("Color",Color) = (1,1,1,1) 
-		_Color2("Color",Color) = (1,1,1,1) 
+        _Texture5 ("BorderTexture",2D) = "white"{}
+        _Texture6 ("BorderTexture",2D) = "white"{}
+        //_Brightness("Brightness",Float) = 1 
+        _Speed ("Speed", Float) = 1
+        _Speed2 ("Speed2", Float) = 1
+        [HDR]_BorderColor("Color",Color) = (1,0,1,1)
+        [HDR]_BorderColor2("Color2",Color) = (1,0,1,1)
+        [HDR]_NumberColor("NumberColor",Color) = (1,0,1,1)
 	}
     SubShader {
     Pass {
 
-			Tags { "RenderType"="Opaque" }
-			LOD 200
+        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+		LOD 200
+		//Blend SrcAlpha One
+        Blend SrcAlpha OneMinusSrcAlpha 
 
-
-        //LOD 200
         Cull Off
         CGPROGRAM
         #pragma vertex vert
         #pragma fragment frag
-		#pragma geometry geom
+		//#pragma geometry geom
 		#include "UnityCG.cginc"
-		#include "shader_noice.cginc" // import noise functions
-        //struct tovert {
-         //   float4 v : POSITION;
-	//		float2 uv : TEXCOORD0;
-      //  };
+		//#include "shader_noice.cginc" // import noise functions TODO 
+#if 0
          
         struct v2g {
 			float4 pos : SV_POSITION;
 			float2 uv : TEXCOORD0;
 			float3 norm : NORMAL;
-			//float4 col : COLOR;
         };
 
 		struct g2f
@@ -50,23 +43,39 @@ Shader "Custom/BillBoarder"
             float4 pos : SV_POSITION;
 			float4 col : COLOR;	
 		};
+#endif
+        struct v2f
+        {
+			float4 pos : SV_POSITION;
+            float2 uv : TEXCOORD0;
+        };
 			 
-        v2g vert(appdata_base v) {
+        v2f vert(appdata_base v) {
          
-            v2g o;
-            o.pos = v.vertex;//mul(unity_ObjectToWorld, v.vertex);//v.v;//UnityObjectToClipPos(v.v);
-			o.uv = v.texcoord.xy;
-			o.norm = v.normal;
+            v2f OUT;
+            //out.pos = v.vertex;//mul(unity_ObjectToWorld, v.vertex);//v.v;//UnityObjectToClipPos(v.v);
+            OUT.pos = UnityObjectToClipPos(v.vertex);//mul(unity_ObjectToClip, v.vertex);
+			OUT.uv = v.texcoord.xy;
+			//out.norm = v.normal;
 			//o.col = v.color;
-            return o;
+            return OUT;
         }
 		sampler2D _Texture1;
 		sampler2D _Texture2;
 		sampler2D _Texture3;
 		sampler2D _Texture4;
+        float4    _BorderColor;
+        float4    _BorderColor2;
+        float4    _NumberColor;
+        sampler2D _Texture5;
+        sampler2D _Texture6;
+        //float       _Brightness;
+        float       _Speed;
+        float       _Speed2;
 		float	  lastDigit;
 		float	  midDigit;
 		float	  firstDigit;
+#if 0
 		float	_WaveLenght;
 		float	_DistortionAmount;
 		float	_Speed;
@@ -75,121 +84,57 @@ Shader "Custom/BillBoarder"
 		float4 _Color1;
 		float4 _Color2;
 
-		float _Size;
-		//https://docs.microsoft.com/en-us/windows/desktop/direct3dhlsl/dx-graphics-hlsl-geometry-shader
-		[maxvertexcount(4)]
-		void geom(point v2g IN[1],inout TriangleStream<g2f> triStream)//inout TriangleStream<g2f> triStream)
-		{
-			//g2f p;
-			//p.col = float4(1,1,1,1);
-			//p.pos = IN[0].pos;//UnityObjectToClipPos(IN[0].pos);
-			//pointStream.Append(p);
-			/*
-			float3 up = float3(0, 1, 0);
-			float3 look = _WorldSpaceCameraPos - IN[0].pos;
-			look.y = 0;
-			look = normalize(look);
-			float3 right = cross(up, look);
+#endif
+        float4 frag(v2f IN) : COLOR {
+            
+            float yUV = IN.uv.y / 10.0f;
+            float2 nuv1 = float2(IN.uv.x,yUV + 0.1 * firstDigit);
+            float2 nuv2 = float2(IN.uv.x,yUV + 0.1 * midDigit);
+            float2 nuv3 = float2(IN.uv.x,yUV + 0.1 * lastDigit);
+            float2 nuv4 = float2(IN.uv.x,yUV);
+            float4 col =  tex2D(_Texture1,nuv1).a * _NumberColor; 
+            float4 col1 = tex2D(_Texture2,nuv2).a * _NumberColor; 
+            float4 col2 = tex2D(_Texture3,nuv3).a * _NumberColor; 
+            float4 col3 = tex2D(_Texture4,nuv4).a * _NumberColor; 
+            float2 borderUv = IN.uv;//float2(IN.uv.x, IN.uv.y * 10);
+            float4 bordercolor = tex2D(_Texture5,IN.uv); 
+            float4 bordercolor2 = tex2D(_Texture6,IN.uv); 
+            //bordercolor *= bordercolor.a;
+            float alpha = bordercolor.a;
+            float alpha2 = bordercolor2.a;
+            float currentPosition = frac(_Time.y * _Speed);
+            float currentPosition2 = frac(_Time.y * _Speed2);
+            const float widht = 0.2f;
+            const float widht2 = 0.2f;
+            
+            float colorpos = (bordercolor.x + bordercolor.y + bordercolor.z) / 3.0f;
+            float colorpos2 = (bordercolor2.x + bordercolor2.y + bordercolor2.z) / 3.0f;
+            
+            bordercolor = lerp( float4(0,0,0,0) , _BorderColor , currentPosition < colorpos && 
+                                    currentPosition > colorpos - widht);
+            bordercolor2 = lerp( float4(0,0,0,0) , _BorderColor2 , currentPosition2 < colorpos2 && 
+                                    currentPosition2 > colorpos2 - widht2);
 
 
-			*/
-
-
-
-			g2f p;
-			float2 uv1 = IN[0].uv;
-			float2 uv2 = IN[0].uv;
-			float2 uv3 = IN[0].uv;
-			// frac( _Time.y * 0.2);
-			uv1.y +=  0.1 * firstDigit;
-			uv2.y +=  0.1 * midDigit;
-			uv3.y +=  0.1 * lastDigit;
-			float lod = 0;
-			//fgsdag
-			p.col = tex2Dlod(_Texture1, float4( uv1 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
-			p.col += tex2Dlod(_Texture2, float4( uv2 , 0, lod)) ;// * linearHeight;//float4(1,0,0,1);
-			p.col += tex2Dlod(_Texture3, float4( uv3 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
-			//p.col += tex2Dlod(_Texture4, float4( uv3 , 0, lod)) ;//* linearHeight;//float4(1,0,0,1);
-
-
-			float4 v[4];
-			float3 noisepos = IN[0].pos;
-			noisepos *= _WaveLenght;
-			noisepos.x += _Time.y * _Speed; 
-			//float linearHeight = ((pnoise( noisepos , float3(1,1,1))  + 1) / 2.f); 
-			float linearHeight = ((cnoise( noisepos )  + 1) / 2.f); 
-			float height = linearHeight  * _DistortionAmount;
-
-
-
-
-
-			float3 up = float3(0,1,0);
-			float3 right = cross(up, IN[0].norm);//float3(1,0,0);
-
-
-
-			float halfS = (0.5f * _Size) +     (p.col.r > 0.1 ? _DistortionAmount : height);//*  (float)LinearRgbToLuminance(saturate(p.col));;
-
-
-
-
-			v[0] = float4(IN[0].pos + halfS * right - halfS * up, 1.0);//1 * _Time.y);//height);
-			v[1] = float4(IN[0].pos + halfS * right + halfS * up, 1.0);//1 * _Time.y); //height);
-			v[2] = float4(IN[0].pos - halfS * right - halfS * up, 1.0);//1 * _Time.y);// height);
-			v[3] = float4(IN[0].pos - halfS * right + halfS * up, 1.0);//1 * _Time.y);// height);
-
-			//v[0].z += height; 
-			//v[1].z += height;
-			//v[2].z += height;
-			//v[3].z += height;
-
-			float4 floorcol = lerp(_Color1,_Color2,linearHeight);
-			float rscale = lerp(_Scale1,_Scale2,linearHeight);
-			floorcol *= rscale;
-			//p.col = lerp(IN[0].col * linearHeight, float4(1,1,1,1), p.col.r > 0.3);
-			p.col = lerp(floorcol, float4(1,1,1,1), p.col.r > 0.1);
-
-			p.pos = UnityObjectToClipPos( v[0]);//       UnityObjectToClipPos(v[0]);//mul(vp,v[0]);
-			triStream.Append(p);
-
-			p.pos = UnityObjectToClipPos( v[1]);//  UnityObjectToClipPos(v[1]);//mul(vp,v[1]);
-			triStream.Append(p);
-
-			p.pos = UnityObjectToClipPos( v[2]);//   UnityObjectToClipPos(v[2]);//mul(vp,v[2]);
-			triStream.Append(p);
-
-			p.pos = UnityObjectToClipPos( v[3]);//   UnityObjectToClipPos(v[3]);//mul(vp,v[3]);
-			triStream.Append(p);
-			
-			//float4x4 vp = UnityObjectToClipPos(unity_WorldToObject);
-
-			//p.col = float4(IN[0].uv.x,IN[0].uv.y,0,1);
-
-			//p.pos = IN[0].pos.xyzw ;//- float4(0.03,0,0,0);
-			//p.pos = UnityObjectToClipPos(p.pos);
-			/*
-			p.col = float4(1,1,1,1);
-			p.pos = IN[0].pos.xyzw  + float4(0.03,0,0,0);
-			p.pos = UnityObjectToClipPos(p.pos);
-			pointStream.Append(p);
-			
-			p.col = float4(1,1,1,1);
-			p.pos = IN[0].pos.xyzw  - float4(0,0.03,0,0);
-			p.pos = UnityObjectToClipPos(p.pos);
-			pointStream.Append(p);
-			
-			p.col = float4(1,1,1,1);
-			p.pos = IN[0].pos.xyzw  + float4(0,0.03,0,0);
-			p.pos = UnityObjectToClipPos(p.pos);
-			pointStream.Append(p);
-			*/
-		}
-         
-        float4 frag(g2f o) : COLOR {
-            return o.col;
+//_BorderColor , float4(0,0,0,0),
+                                 //  bordercolor.r < currentPosition
+                                   // && bordercolor.r > (currentPosition - widht));
+            bordercolor *= alpha;
+            bordercolor2 *= alpha2;
+            col *= col.a;
+            col1 *= col1.a;
+            col2 *= col2.a;
+            col3 *= col3.a;
+            
+            float3 finalColorTemp = (col.xyz
++ col1.xyz + col2.xyz + col3.xyz) ; 
+            float4 finalColor = float4(finalColorTemp.x,finalColorTemp.y,finalColorTemp.z,
+            col.a + col1.a + col2.a + col3.a);
+            float4 finalBorder = bordercolor + bordercolor2;
+                
+            return finalColor + finalBorder * (finalColor.a - 1) * (-1); //distAdd
         }
- 
+
         ENDCG
         } 
     }

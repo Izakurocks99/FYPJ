@@ -22,7 +22,7 @@ public sealed class SceneManagerUser : MonoBehaviour {
 
         GameObject tempAudianceManager = GameObject.Instantiate(AudianceManagerPrefab);
         tempAudianceManager.SetActive(true);
-        (tempAudianceManager.GetComponent(typeof(AudianceManager)) as AudianceManager).Member = AudianceMemberPrefab;
+        //(tempAudianceManager.GetComponent(typeof(AudianceManager)) as AudianceManager).Member = AudianceMemberPrefab;
 
         DontDestroyOnLoad(this.gameObject);       //when scene changes this will stay
 

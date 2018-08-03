@@ -57,7 +57,11 @@ MonoBehaviour:
   - {fileID: 1993889513561390, guid: 910adaead1bf1a54b8fb905f6194a000, type: 2}
   HypeMeter: 0
   MaxAudianceAmount: 100
-  Member: {fileID: 1855088472558440, guid: a4419a9cb41eb4c49b70f528e1944559, type: 2}
+  Member:
+  - {fileID: 1855088472558440, guid: a4419a9cb41eb4c49b70f528e1944559, type: 2}
+  - {fileID: 1702193628716514, guid: 1fd02939885d0c6429727a99cc01a4f0, type: 2}
+  - {fileID: 1893841599566944, guid: 93cda89739a8215469663eb63eda9f76, type: 2}
+  - {fileID: 1385900515097476, guid: 26e157b4fb392984bbfef18d9b0bb52b, type: 2}
   SpawnTime: 0
   Frequenzy: 0
   currentlyActiveAmount: 0
