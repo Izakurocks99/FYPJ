@@ -325,8 +325,10 @@ public class AudioBandVisualiser : MonoBehaviour
         GameObject go = _Pool.GetObjectFromPool(index);
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
             go.transform.parent = parent.transform.parent.transform;
-        else
+        else {
             go.transform.parent = parent.transform;
+            go.GetComponent<AudioMotion>()._tfPar = parent.transform;
+        }
             
         go.transform.position = parent.transform.position;
         go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);

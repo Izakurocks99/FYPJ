@@ -11,6 +11,7 @@ public class AudioMotion : MonoBehaviour
     Transform _tfCamera;
     Transform _tfParent;
 #endif
+    public Transform _tfPar;
     Transform _tfThis;
     GameObject _goPlayer;
     public float _intShiftRate;
@@ -108,16 +109,59 @@ public class AudioMotion : MonoBehaviour
             // _vec3Area = new Vector3(0, 0, -7.0f);
         }
         else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
-            if (calibration.calibrationObject.transform.position.z != 0)
+            if (calibration.calibrationObject.transform.position.z != 0) {
+
                 _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
                                                                                                 _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
                                                                                                 calibration.calibrationObject.transform.position.z);
-            _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
+                _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
+            }
         }
         else {
-            _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                    _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                    Camera.main.transform.position.z);
+            if (calibration.calibrationObject.transform.position.z != 0) {
+                string _strParName = Regex.Replace(_tfPar.transform.GetChild(0).name, "^[A-z]+", "");
+                _strParName = Regex.Replace(_strParName, " ", "");
+
+                int _intDespawnerNumber = int.Parse(_strParName);
+                float _ftXParse = 0.0f;
+                // float _ftYParse = 0.0f;
+
+                switch (_intDespawnerNumber) {
+                    case 0: {
+                        _ftXParse = -calibration.horizontalSize - 1.5f;
+                        // _ftYParse = calibration.verticleSize;
+                    }
+                        break;
+                    case 1: {
+                        _ftXParse = calibration.horizontalSize + 1.5f;
+                        // _ftYParse = calibration.verticleSize;
+                    }
+                        break;
+                    case 2: {
+                        _ftXParse = -calibration.horizontalSize - 1.5f;
+                        // _ftYParse = calibration.verticleSize;
+                    }
+                        break;
+                    case 3: {
+                        _ftXParse = calibration.horizontalSize + 1.5f;
+                        // _ftYParse = calibration.verticleSize;
+                    }
+                        break;
+                    default:
+                        break;
+                }
+                _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_ftXParse,
+                                                                                                /* _ftYParse  */_tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                                                                                calibration.calibrationObject.transform.position.z);
+                                                                                            
+                _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
+            }
+            else
+            {
+                _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
+                                        _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
+                                        Camera.main.transform.position.z);
+            }
         }
         endPoint.position = _vec3Area;
 
