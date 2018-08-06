@@ -10,8 +10,6 @@ namespace RockVR.Video.Demo
         {
             Application.runInBackground = true;
             isPlayVideo = false;
-
-                    UnityEngine.Debug.Log("VITUN VITTU");
         }
         [SerializeField]
         bool Capture = true;
@@ -24,34 +22,33 @@ namespace RockVR.Video.Demo
             //GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture");
             if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.NOT_START)
             {
-                //if (Capture)//GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture"))
-                //{
+                if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture"))
+                {
                     VideoCaptureCtrl.instance.StartCapture();
-                    UnityEngine.Debug.Log("STARTING");
-                //}
+                }
             }
             else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.STARTED)
             {
-                if (end)//GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Stop Capture"))
+                if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Stop Capture"))
                 {
                     VideoCaptureCtrl.instance.StopCapture();
                 }
-                //if (pause)//GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Pause Capture"))
-                //{
-                //    VideoCaptureCtrl.instance.ToggleCapture();
-                //}
+                if (GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Pause Capture"))
+                {
+                    VideoCaptureCtrl.instance.ToggleCapture();
+                }
             }
-            //else if (Capture)//VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.PAUSED)
-            //{
-              //  if (end)//GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Stop Capture"))
-               // {
-                   // VideoCaptureCtrl.instance.StopCapture();
-                //}
-                //if (GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Continue Capture"))
-                //{
-                 //   VideoCaptureCtrl.instance.ToggleCapture();
-                //}
-            //}
+            else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.PAUSED)
+            {
+                if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Stop Capture"))
+                {
+                    VideoCaptureCtrl.instance.StopCapture();
+                }
+                if (GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Continue Capture"))
+                {
+                    VideoCaptureCtrl.instance.ToggleCapture();
+                }
+            }
             else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.STOPPED)
             {
                 if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Processing"))
@@ -61,8 +58,8 @@ namespace RockVR.Video.Demo
             }
             else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.FINISH)
             {
-                //if (!isPlayVideo)
-                //{
+                if (!isPlayVideo)
+                {
                     if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "View Video"))
                     {
 #if UNITY_5_6_OR_NEWER
@@ -86,7 +83,7 @@ namespace RockVR.Video.Demo
                         Process.Start(PathConfig.saveFolder);
 #endif
                     }
-                //}
+                }
             }
         }
     }
