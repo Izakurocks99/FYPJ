@@ -36,6 +36,8 @@ public class AudioSampler : MonoBehaviour {
         else
             _intLimit = 8;
 
+        _intLimit = 4;
+
         _ftMaxbufferParse = new float[_intLimit];
     }
 	

@@ -925,7 +925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1710246017216736
 GameObject:
   m_ObjectHideFlags: 1
@@ -1476,7 +1476,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1671633564321918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2106,13 +2106,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Straight
+  m_Text: 'Fixed
+
+    spawning'
 --- !u!114 &114121669870807760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2153,13 +2155,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs: {fileID: 1259886468272736, guid: 7fa2cda16a4c9d14f95b45b6f8ad2386, type: 2}
   songs:
-  - {fileID: 11400000, guid: 9830c17e36c836a429fd34b04f710cd7, type: 2}
+  - {fileID: 11400000, guid: b3c9cb2091d6baa4c8dadd486c561af1, type: 2}
   - {fileID: 11400000, guid: 9793138727dab0546b374b0349c6b591, type: 2}
   - {fileID: 11400000, guid: 3add803d16756e74aac8c7e4faa23756, type: 2}
   - {fileID: 11400000, guid: 54ea406a33866da44b3a4881abe96c0b, type: 2}
   - {fileID: 11400000, guid: 15c4f8dd685de5645b06f3fe9f9e5bc4, type: 2}
   - {fileID: 11400000, guid: 78b723c315bc1a44bbe22ec4cd957267, type: 2}
-  - {fileID: 11400000, guid: 886d3cc985096d04db6a710e6ab18672, type: 2}
+  - {fileID: 11400000, guid: 9830c17e36c836a429fd34b04f710cd7, type: 2}
   - {fileID: 11400000, guid: a1a34312e012a714baded2bede7560be, type: 2}
   - {fileID: 11400000, guid: 8e6a88ae06f56974cb66276da8e68520, type: 2}
   Title: {fileID: 114374802601341540}
@@ -2176,9 +2178,10 @@ MonoBehaviour:
   currCD: {fileID: 0}
   distance: 0.5
   minDist: -0.5
-  selectDist: 0.5
+  selectDist: 0.1
   slowdownMultiplyer: 0.5
-  playerOffset: {x: 0, y: 0.2, z: 0}
+  playerOffset: {x: 0, y: 0.3, z: 0}
+  showDifficulty: 1
   debugSpawningStats: 0
 --- !u!114 &114134480281081106
 MonoBehaviour:
@@ -3248,7 +3251,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3690,7 +3693,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3941,7 +3944,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3949,7 +3952,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Random
 
-'
+    spawning'
 --- !u!114 &114984186999874596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9312,7 +9315,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1}
-  m_SizeDelta: {x: 16, y: 3}
+  m_SizeDelta: {x: 20, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224200138721145632
 RectTransform:
@@ -9686,7 +9689,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 16, y: 3}
+  m_SizeDelta: {x: 20, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224569669858155310
 RectTransform:

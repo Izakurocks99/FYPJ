@@ -21,6 +21,7 @@ public class AudioVizualiser : MonoBehaviour {
         _position = this.transform.position;
 
 
+        
 	    for(int i =0; i<_sampleCube.Length; i++) {
             GameObject _instanceSampleCube = (GameObject)Instantiate(_SampleCubePrefab);
             _instanceSampleCube.transform.position = this.transform.position;

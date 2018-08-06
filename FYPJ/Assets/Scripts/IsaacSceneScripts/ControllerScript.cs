@@ -72,7 +72,7 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        if(PlayerPrefs.GetInt("dualcolor") == 0)
+        if(PlayerPrefs.GetInt("mode") %2== 0)
         {
             pirmaryControllerColor = GameColors.Blue;
             secondaryControllerColor = GameColors.Pink;

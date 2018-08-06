@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour {
     
+	public Vector3 _vec3Scale;
+
 	[System.Serializable]
 	public class PoolingData 
 	{
@@ -28,6 +30,7 @@ public class ObjectPool : MonoBehaviour {
 			for(int i2 = 0; i2 < poolData[i1].numObj;i2++)
 			{
 				GameObject temp = GameObject.Instantiate(poolData[i1].Prefab,Position,new Quaternion());
+				temp.transform.localScale = _vec3Scale;
 				Debug.Assert(temp);
 				temp.transform.parent =  poolData[i1].OptionalParent != null ? poolData[i2].OptionalParent.transform : null;// 
 				temp.SetActive(false);

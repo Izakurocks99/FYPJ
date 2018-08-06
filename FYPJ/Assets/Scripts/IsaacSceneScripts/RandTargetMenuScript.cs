@@ -13,7 +13,7 @@ public class RandTargetMenuScript : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        if (PlayerPrefs.GetInt("randomarea") == 1)
+        if (PlayerPrefs.GetInt("mode") >= 2)
             straightButton.gameObject.SetActive(false);
         else
             RandomButton.gameObject.SetActive(false);

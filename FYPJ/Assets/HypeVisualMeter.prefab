@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379997335233788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.84, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4989019697537330}
@@ -123,14 +123,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930264172194248}
-  m_LocalRotation: {x: -0, y: 0.75728005, z: -0, w: -0.6530903}
-  m_LocalPosition: {x: -4.9, y: 0.25, z: -11.27}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.01, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4371504598422242}
   m_Father: {fileID: 4088226672214836}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -458.45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23267377575743674
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -185,20 +185,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCombo: 8
-  defaultIncreaceAmount: 0.01
+  defaultIncreaceAmount: 0.001
   HypeMeter: {fileID: 1084046330685132}
   numberTextures:
   - {fileID: 21300000, guid: 5f1b599cbc7743446b385cf0653dd6d2, type: 3}
   - {fileID: 21300000, guid: 8d3324ea9835c7e4fa7179a6dd61968e, type: 3}
   - {fileID: 21300000, guid: 5c6d55877bde49c45b3e2ca99b3172a0, type: 3}
   - {fileID: 21300000, guid: c771ee92f04e2914696abe9ee3202cf0, type: 3}
+  - {fileID: 21300000, guid: 335ad67c919fcaa4cbc53423251ce92a, type: 3}
   - {fileID: 21300000, guid: 0800ddcab6d62cb4d8b68c5312e8e2e1, type: 3}
   - {fileID: 21300000, guid: 10b124f83c4cb9243a3cbc59c70400dc, type: 3}
   - {fileID: 21300000, guid: 82d21756457eb5849a3079ac832a9464, type: 3}
   - {fileID: 21300000, guid: 875f225345bbc8c4a9302c06f20bb2bf, type: 3}
   - {fileID: 21300000, guid: f37de7c8d880327468a19850a9e16ca5, type: 3}
-  - {fileID: 21300000, guid: 335ad67c919fcaa4cbc53423251ce92a, type: 3}
-  scoreHypeRatio: 0.1
+  hypeDecaySpeed: 1
   hypeMult: 0
 --- !u!212 &212630277220490356
 SpriteRenderer:
