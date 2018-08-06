@@ -11,7 +11,7 @@ public class SplashScreen : MonoBehaviour {
 	private void Start()
 	{
 		StartCoroutine("Play");
-		this.GetComponent<Image>().color 
+		//this.GetComponent<Image>().color;
 	}
 
 	IEnumerator Play()
