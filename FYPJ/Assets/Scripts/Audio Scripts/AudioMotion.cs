@@ -128,22 +128,22 @@ public class AudioMotion : MonoBehaviour
 
                 switch (_intDespawnerNumber) {
                     case 0: {
-                        _ftXParse = -calibration.horizontalSize - 1.5f;
+                        _ftXParse = (-calibration.horizontalSize - 1.5f) * 0.55f;
                         // _ftYParse = calibration.verticleSize;
                     }
                         break;
                     case 1: {
-                        _ftXParse = calibration.horizontalSize + 1.5f;
+                        _ftXParse = (calibration.horizontalSize + 1.5f) * 0.55f;
                         // _ftYParse = calibration.verticleSize;
                     }
                         break;
                     case 2: {
-                        _ftXParse = -calibration.horizontalSize - 1.5f;
+                        _ftXParse = (-calibration.horizontalSize - 1.5f) * 0.55f;
                         // _ftYParse = calibration.verticleSize;
                     }
                         break;
                     case 3: {
-                        _ftXParse = calibration.horizontalSize + 1.5f;
+                        _ftXParse = (calibration.horizontalSize + 1.5f) * 0.55f;
                         // _ftYParse = calibration.verticleSize;
                     }
                         break;

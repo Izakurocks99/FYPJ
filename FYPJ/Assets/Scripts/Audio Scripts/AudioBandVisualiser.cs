@@ -59,6 +59,7 @@ public class AudioBandVisualiser : MonoBehaviour
         // _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         // _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
+        _intMaxLimit = 4;
         _ftAryPrevBuffer = new float[_intMaxLimit];
         _ftAryDiffBuffer = new float[_intMaxLimit];
 

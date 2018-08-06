@@ -89,6 +89,8 @@ public class PlayerStats : MonoBehaviour
         else
             _bl4x = false;
 
+        
+
         // if (_bl4x == false) {
         //     if (_intSpawnMode == 2)
         //         _intSpawnMode = 1;
