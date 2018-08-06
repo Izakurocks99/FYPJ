@@ -36,9 +36,14 @@ public class CDscript : MonoBehaviour
 
         if (a < selectDist)
         {
+            int highscore = 0;
+            if (PlayerPrefs.HasKey(song.title + "highscore"))
+                highscore = PlayerPrefs.GetInt(song.title + "highscore");
+
             parent.currCD = this;
             Title.text = song.title;
-            Description.text = song.description;
+            Description.text = song.description + "\n Highscore: " + highscore;
+
             if (song.audioClip != null)
                 audioSource.GetComponent<AudioSource>().clip = song.audioClip;
             if (audioSource.GetComponent<AudioSource>().isPlaying == false)
@@ -65,12 +70,12 @@ public class CDscript : MonoBehaviour
         float _timer = 0;
         while (_waiting)
         {
-            parent.platform.transform.position += Vector3.up * Time.deltaTime * 3;
-            parent.player.transform.position += Vector3.up * Time.deltaTime * 3;
+            parent.platform.transform.position += Vector3.up * Time.deltaTime;
+            parent.player.transform.position += Vector3.up * Time.deltaTime;
 
             GetComponent<Renderer>().material.SetFloat("Vector1_798353CA", Mathf.Lerp(_timer - 1, 1, _timer / 5));
 
-            if (_timer > 2)
+            if (_timer > 1)
             {
                 _waiting = false;
                 parent.loadingScreen.GetComponent<SceneSwitch>().LoadScene();

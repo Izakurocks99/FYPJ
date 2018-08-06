@@ -207,7 +207,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   isHit: 0
   color: 5
-  life: 0
+  life: -0.04
 --- !u!135 &135527209263247586
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -38,6 +38,19 @@ public class HypeManager : MonoBehaviour
     }
     void Start()
     {
+        switch (PlayerPrefs.GetInt("difficulty"))
+        {
+            case 0:
+                hypeDecaySpeed = 5;
+                break;
+            case 1:
+                hypeDecaySpeed = 10;
+                break;
+            case 2:
+                hypeDecaySpeed = 15;
+                break;
+        }
+
         player = FindObjectOfType<PlayerStats>();
         Debug.Assert(HypeMeter); // SET METER TO GAMOBJETC USE IT
         hypeMaterial = HypeMeter.GetComponent<Renderer>().material;

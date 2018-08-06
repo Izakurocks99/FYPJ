@@ -29,6 +29,8 @@ public class DiscoBeatMotion : MonoBehaviour
     Material myDefaultMaterial = null;
     float dissolveTimer = 0;
 
+    DiscoBeatCollisionScript collisionScript;
+
     //void Start()
     //{
     //    _tfThis = this.transform;
@@ -39,6 +41,9 @@ public class DiscoBeatMotion : MonoBehaviour
 
     public void PoolInit(List<GameObject> home, List<Material> mat)
     {
+        if (!collisionScript)
+            collisionScript = gameObject.GetComponent<DiscoBeatCollisionScript>();
+
         dissolveTimer = 0;
         _home = home;
         _materials = mat;
@@ -75,6 +80,7 @@ public class DiscoBeatMotion : MonoBehaviour
         else
         {
             //Destroy(_tfThis.gameObject);
+            collisionScript.playerCam.ModifyCombo(false);
             _ftTime = 0.0f;
             OnReturn();
         }

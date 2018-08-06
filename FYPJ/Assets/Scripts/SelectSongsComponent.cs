@@ -30,6 +30,7 @@ public class SelectSongsComponent : MonoBehaviour
     Vector3 startForward;
 
     public CDscript currCD;
+    CDscript selectedCD = null;
 
     public float distance;
     public float minDist;
@@ -91,10 +92,11 @@ public class SelectSongsComponent : MonoBehaviour
         difficultyMenu.transform.position = gameObject.transform.position;
     }
 
+    bool followplayer = true;
     private void FixedUpdate()
     {
-
-        transform.position = playerCam.transform.position - playerOffset;
+        if (followplayer)
+            transform.position = playerCam.transform.position - playerOffset;
         frontPoint = transform.position + Vector3.forward * distance;
         follower.transform.position = transform.position;
 
@@ -103,6 +105,10 @@ public class SelectSongsComponent : MonoBehaviour
 
         if (_rigidbody.angularVelocity.sqrMagnitude <= 0.5 * 0.5)
             snap = true;
+
+        if (currCD != selectedCD && difficultyMenu.activeInHierarchy)
+            difficultyMenu.SetActive(false);
+
 
         if (selected)
         {
@@ -177,16 +183,7 @@ public class SelectSongsComponent : MonoBehaviour
     bool debugSpawningStats = false;
 
     int dual;
-    //[SerializeField]
-    //int dualint = 1;
-    //[SerializeField]
-    //int singleint = 0;
-
     int random;
-    //[SerializeField]
-    //int randint = 0;
-    //[SerializeField]
-    //int constint = 1;
 
     public void LaunchSong()
     {
@@ -197,6 +194,10 @@ public class SelectSongsComponent : MonoBehaviour
                Debug.Log("mode" + (dual +random));
 
         PlayerPrefs.SetInt("mode", dual + random);
+
+        followplayer = false;
+
+        selectedCD = currCD;
 
         if (showDifficulty)
             difficultyMenu.SetActive(true);

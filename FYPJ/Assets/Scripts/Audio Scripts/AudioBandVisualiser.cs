@@ -59,6 +59,7 @@ public class AudioBandVisualiser : MonoBehaviour
         // _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         // _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
+        _intMaxLimit = 4;
         _ftAryPrevBuffer = new float[_intMaxLimit];
         _ftAryDiffBuffer = new float[_intMaxLimit];
 
@@ -325,8 +326,10 @@ public class AudioBandVisualiser : MonoBehaviour
         GameObject go = _Pool.GetObjectFromPool(index);
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
             go.transform.parent = parent.transform.parent.transform;
-        else
+        else {
             go.transform.parent = parent.transform;
+            go.GetComponent<AudioMotion>()._tfPar = parent.transform;
+        }
             
         go.transform.position = parent.transform.position;
         go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
