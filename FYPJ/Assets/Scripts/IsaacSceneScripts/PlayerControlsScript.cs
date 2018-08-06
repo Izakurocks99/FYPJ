@@ -25,4 +25,5 @@ public class PlayerControlsScript : MonoBehaviour
     public ControllerButtons calibrateButton;
     public ControllerButtons resetScoreButton;
     public ControllerButtons swapSticksButton;
+    public ControllerButtons toggleTutorialButton;
 }

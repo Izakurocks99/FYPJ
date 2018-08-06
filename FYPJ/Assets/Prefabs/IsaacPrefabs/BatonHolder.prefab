@@ -226,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 5, z: -2.5}
+  m_LocalPosition: {x: 10, y: 5, z: -5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4564743456582238}
@@ -373,7 +373,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+  - {fileID: 2100000, guid: e127fab0db9e8ac488583b5a9dfe11e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,7 +483,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 1448dd2201dec9b49875ecaebad578fb, type: 3}
 --- !u!33 &33687570696518278
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -508,7 +508,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.83074415, y: 5.969033, z: 0.830745}
+  m_Size: {x: 2, y: 5.969033, z: 2}
   m_Center: {x: 0.0000015944242, y: 2.984512, z: -0.00000018066032}
 --- !u!114 &114089734086464896
 MonoBehaviour:
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RNGSticks: 0
   heldController: {fileID: 0}
-  objectMesh: 1
+  objectMesh: 0
   currColor: 1
   stickMeshes:
   - type: 0
@@ -629,6 +629,7 @@ MonoBehaviour:
     color:
     - {r: 0.7816731, g: 0.7924528, b: 0, a: 1}
   BatonFollowers: []
+  stickRack: {fileID: 0}
 --- !u!114 &114383208978904600
 MonoBehaviour:
   m_ObjectHideFlags: 1

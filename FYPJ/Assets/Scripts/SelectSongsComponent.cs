@@ -31,6 +31,8 @@ public class SelectSongsComponent : MonoBehaviour
 
     public CDscript currCD;
     CDscript selectedCD = null;
+    CDscript tutCheck = null;
+    bool tut = true;
 
     public float distance;
     public float minDist;
@@ -90,6 +92,17 @@ public class SelectSongsComponent : MonoBehaviour
         }
 
         difficultyMenu.transform.position = gameObject.transform.position;
+
+        if(tut && tutCheck != currCD)
+        {
+            if (tutCheck == null)
+                tutCheck = currCD;
+            else
+            {
+                tut = false;
+                FindObjectOfType<TutorialScript>().NextImage(3);
+            }
+        }
     }
 
     bool followplayer = true;
@@ -198,6 +211,8 @@ public class SelectSongsComponent : MonoBehaviour
         followplayer = false;
 
         selectedCD = currCD;
+
+        FindObjectOfType<TutorialScript>().NextImage(4);
 
         if (showDifficulty)
             difficultyMenu.SetActive(true);

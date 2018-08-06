@@ -1407,7 +1407,7 @@ MonoBehaviour:
   clickButton: 6
   interactButton: 5
   resetSceneButton: 2
-  dropStickButton: 4
+  dropStickButton: 0
   togglePointerButton: 1
   calibrateButton: 3
   resetScoreButton: 1

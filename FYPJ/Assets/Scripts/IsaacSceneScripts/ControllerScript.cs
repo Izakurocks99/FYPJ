@@ -55,6 +55,9 @@ public class ControllerScript : MonoBehaviour
     private bool canPickup = true; //check if hand is alread grabbing a stick
     private int controllerIndex = 0;
 
+    [SerializeField]
+    TutorialScript tutorial;
+
     //button checks
     private bool middleButtonDown = false;
     private bool TriggerButtonDown = false;
@@ -82,6 +85,8 @@ public class ControllerScript : MonoBehaviour
         {
             SpawnStick();
         }
+
+        tutorial = FindObjectOfType<TutorialScript>();
     }
 
     // Update is called once per frame
@@ -359,11 +364,13 @@ public class ControllerScript : MonoBehaviour
             {
                 heldObject = highlightedObject;
                 heldObject.GetComponent<CDscript>().Hold(this.transform);
+                tutorial.NextImage(2);
             }
 
             if (currStick)
             {
                 currStick.ChangeStickColor(secondaryControllerColor);
+
             }
         }
 
@@ -395,6 +402,15 @@ public class ControllerScript : MonoBehaviour
             {
                 laserPointer.LineRaycast().gameObject.GetComponent<Button>().onClick.Invoke();
             }
+        }
+
+        if(button == controlsScript.toggleTutorialButton)
+        {
+            tutorial.gameObject.SetActive(!tutorial.gameObject.activeInHierarchy);
+            if (tutorial.gameObject.activeInHierarchy)
+                PlayerPrefs.SetInt("showtutorial", 1);
+            else
+                PlayerPrefs.SetInt("showtutorial", 0);
         }
     }
 
@@ -451,6 +467,7 @@ public class ControllerScript : MonoBehaviour
                 PlayerStickScript stick = hit.gameObject.GetComponent<PlayerStickScript>();
                 if (hit.gameObject.GetComponent<PlayerStickScript>())//if overlapping a stick and is not holding
                 {
+                    tutorial.NextImage(1);
                     if (canPickup)
                     {
                         //put stick in the hand's stick slot
