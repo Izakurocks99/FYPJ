@@ -19,6 +19,8 @@ public class BatonCapsuleFollower : MonoBehaviour {
     {
         Vector3 destination = _batonFollower.transform.position;
         transform.rotation = _batonFollower.transform.rotation;
+        transform.localScale = _batonFollower.transform.lossyScale;
+
         _rigidbody.transform.rotation = transform.rotation;
 
         _rigidbody.velocity = (destination - _rigidbody.transform.position) * _sensitivity;
