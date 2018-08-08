@@ -28,8 +28,7 @@ public class PressStartActivation : MonoBehaviour {
 	{
 		if (Input.anyKeyDown)
 		{
-			anim.Play("PressStartSelected");
-			StartCoroutine("SceneSwitch");			
+			anim.Play("PressStartSelected");		
 		}
 	}
 
