@@ -2427,11 +2427,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1638420661385120, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1586028231839598, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1818056733603700, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
       propertyPath: m_IsActive
