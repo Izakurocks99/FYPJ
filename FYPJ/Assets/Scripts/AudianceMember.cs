@@ -10,6 +10,7 @@ public sealed class AudianceMember : MonoBehaviour {
 	Animator animator;
 	//float timer = 0;
 	AudianceManager auManager = null;
+    Vector3 startPos;
 
    public  void OnPoolAwake()
     {
@@ -20,6 +21,7 @@ public sealed class AudianceMember : MonoBehaviour {
         Vector3 player = FindObjectOfType<PlayerStats>().gameObject.transform.position;
         Vector3 tempforward = (player - this.gameObject.transform.position);
         transform.forward = new Vector3(tempforward.x, 0 , tempforward.z).normalized;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -44,7 +46,10 @@ public sealed class AudianceMember : MonoBehaviour {
 			animator.SetBool("highHype", true);
 		}
 
+        float x = Mathf.PerlinNoise(Time.time, 0);
+        float y = Mathf.PerlinNoise(0,Time.time);
 
+        transform.position = startPos + new Vector3(x,y,0);
 	}
 
 
