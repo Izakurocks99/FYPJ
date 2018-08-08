@@ -64,7 +64,7 @@ Shader "RockVR/Cubemap2EquirectangularPro"
                 float3 dir = sphericalToCartesian(i.uv);
                 dir = mul(_CubeTransform, float4(dir, 1)).xyz;
                 fixed4 col = texCUBE(_CubeTex, dir);
-                return col;
+                return col * 0.000001f;
             }
             ENDCG
         }

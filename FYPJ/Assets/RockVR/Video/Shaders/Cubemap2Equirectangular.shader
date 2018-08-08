@@ -49,7 +49,7 @@ Shader "RockVR/Cubemap2Equirectangular"
             unit.y = cos(theta) * -1;
             unit.z = cos(phi) * sin(theta) * -1;
 
-            return texCUBE(_MainTex, unit);
+            return texCUBE(_MainTex, unit) * 0.0001;
         }
         ENDCG
     }
