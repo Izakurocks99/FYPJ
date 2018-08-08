@@ -90,6 +90,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4483697958616920}
+  - component: {fileID: 114487948588812866}
   m_Layer: 0
   m_Name: BatonHolder
   m_TagString: PlayerStick
@@ -226,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 5, z: -5}
+  m_LocalPosition: {x: -10, y: 5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4564743456582238}
@@ -373,7 +374,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+  - {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+  - {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,7 +485,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164987087485424}
-  m_Mesh: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
 --- !u!33 &33687570696518278
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -508,7 +510,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 5.969033, z: 2}
+  m_Size: {x: 2, y: 6, z: 2}
   m_Center: {x: 0.0000015944242, y: 2.984512, z: -0.00000018066032}
 --- !u!114 &114089734086464896
 MonoBehaviour:
@@ -548,7 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RNGSticks: 0
   heldController: {fileID: 0}
-  objectMesh: 1
+  objectMesh: 2
   currColor: 1
   stickMeshes:
   - type: 0
@@ -644,7 +646,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 1
+  activeFollower: 0
 --- !u!114 &114468277787093250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -659,7 +661,20 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 1
+  activeFollower: 0
+--- !u!114 &114487948588812866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358228741800116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7117773ac022984e9ddf7cf98b1d6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negative: 0
+  selected: 0
 --- !u!114 &114610937618645948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -674,7 +689,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 1
+  activeFollower: 0
 --- !u!114 &114638015035281946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -689,4 +704,4 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 1
+  activeFollower: 0

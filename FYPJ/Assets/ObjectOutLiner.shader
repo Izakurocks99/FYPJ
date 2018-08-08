@@ -27,7 +27,8 @@
 	{
 		Tags { 
                 "RenderType" = "Opaque"
-                "RenderType"="Outlined" }
+                "RenderType"="Outlined" 
+             }
 		LOD 200
         
 		Pass

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4888562614214542}
   - component: {fileID: 198741706322757558}
   - component: {fileID: 199961494423020806}
+  - component: {fileID: 114967104303343596}
   m_Layer: 0
   m_Name: Glow Gold(New)
   m_TagString: Untagged
@@ -60,6 +61,7 @@ GameObject:
   - component: {fileID: 4381825441790188}
   - component: {fileID: 198515384863601372}
   - component: {fileID: 199119595672032476}
+  - component: {fileID: 114894488198194570}
   m_Layer: 11
   m_Name: Twinkle Gold
   m_TagString: Untagged
@@ -265,9 +267,21 @@ MonoBehaviour:
   _tfPar: {fileID: 0}
   _intShiftRate: 8
   _ftTimeToTravel: 15
+  bounds: {fileID: 0}
   speed: 7
   endPoint: {fileID: 4570928790380784}
   dissolveTime: 1
+--- !u!114 &114894488198194570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470233774822446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114962147558127712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +306,17 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 0e946789f4bad1c48830200ef9745532, type: 2}
   isHit: 0
   life: 0
+--- !u!114 &114967104303343596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215544672441642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135882165208524170
 SphereCollider:
   m_ObjectHideFlags: 1

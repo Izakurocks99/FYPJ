@@ -13,14 +13,15 @@ public class AudioVisualiser : MonoBehaviour {
     GameObject[] _goLArray;
     public static float[] _ftSSamplesBuffer;
     public static float _ftCSampleBuffer;
-    public float _ftScale;
     float[] _ftSBufferDecrease;
     float _ftCBufferDecrease;
+    float _ftScale;
 
     void Start() {
         _ftSSamplesBuffer = new float[_goLParent.transform.childCount];
         _ftSBufferDecrease = new float[_goRParent.transform.childCount];
         _ftCBufferDecrease = 0.0f;
+        _ftScale = 1.0f;
 
         _goRArray = new GameObject[_goRParent.transform.childCount];
         _goLArray = new GameObject[_goLParent.transform.childCount];
@@ -41,11 +42,11 @@ public class AudioVisualiser : MonoBehaviour {
     }
 
     void ScaleBuffer() {
-        if (AudioSampler._ftSamples[0] > _ftCSampleBuffer) {
-            _ftCSampleBuffer = AudioSampler._ftSamples[0];
+        if (AudioPlayer._ftDelayedSamples[0] > _ftCSampleBuffer) {
+            _ftCSampleBuffer = AudioPlayer._ftDelayedSamples[0];
             _ftCBufferDecrease = 0.002f;
         }
-        else if (AudioSampler._ftSamples[0] < _ftCSampleBuffer) {
+        else if (AudioPlayer._ftDelayedSamples[0] < _ftCSampleBuffer) {
             _ftCSampleBuffer -= _ftCBufferDecrease;
             _ftCBufferDecrease *= 1.2f;
             if (_ftCSampleBuffer < 0.004f)
@@ -53,11 +54,11 @@ public class AudioVisualiser : MonoBehaviour {
         }
 
         for (int i = 0; i < _ftSSamplesBuffer.Length; i++) {
-            if (AudioSampler._ftSamples[i + 1] > _ftSSamplesBuffer[i]) {
-                _ftSSamplesBuffer[i] = AudioSampler._ftSamples[i + 1];
+            if (AudioPlayer._ftDelayedSamples[i + 1] > _ftSSamplesBuffer[i]) {
+                _ftSSamplesBuffer[i] = AudioPlayer._ftDelayedSamples[i + 1];
                 _ftSBufferDecrease[i] = 0.002f;
             }
-            else if (AudioSampler._ftSamples[i + 1] < _ftSSamplesBuffer[i]) {
+            else if (AudioPlayer._ftDelayedSamples[i + 1] < _ftSSamplesBuffer[i]) {
                 _ftSSamplesBuffer[i] -= _ftSBufferDecrease[i];
                 _ftSBufferDecrease[i] *= 1.2f;
                 if (_ftSSamplesBuffer[i] < 0.004f)

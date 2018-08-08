@@ -11,12 +11,8 @@ public class AudioSampler : MonoBehaviour {
     public static float[] _ftSamples = new float[512];
 
 // Sampling Seperation
-    // public static float[] _ftFreqbands = new float[8];
-    // public static float[] _ftBandbuffer = new float[8];
-    // public static float[] _ftMaxbuffer = new float[8];
-    // float[] _ftBufferDecrease = new float[8];
     private int _intLimit;
-    public static float[] _ftMaxbufferParse;
+    public static float[] _ftMaxBufferParse;
 
 // 8x Sampling
     private float[] _ftFreqbands8x = new float[8];
@@ -36,9 +32,7 @@ public class AudioSampler : MonoBehaviour {
         else
             _intLimit = 8;
 
-        // _intLimit = 4;
-
-        _ftMaxbufferParse = new float[_intLimit];
+        _ftMaxBufferParse = new float[_intLimit];
     }
 	
 	void Update () {
@@ -46,8 +40,8 @@ public class AudioSampler : MonoBehaviour {
         GetSpectrumAudioData();
 
 // Use Samples
-        MakeFrequencyBand();
-        BandBuffer();
+        MakeFrequencyBands();
+        BandBuffers();
         BandMax();
     }
 
@@ -55,7 +49,7 @@ public class AudioSampler : MonoBehaviour {
         _audiosource.GetSpectrumData(_ftSamples, 0, FFTWindow.Blackman);
     }
 
-    void MakeFrequencyBand() {
+    void MakeFrequencyBands() {
         int _intCnt = 0;
 
 // Get the Sample Count for each Range
@@ -88,7 +82,7 @@ public class AudioSampler : MonoBehaviour {
         }
     }
 
-    void BandBuffer() {
+    void BandBuffers() {
         float[] _ftFreqbandsParse = new float[_intLimit];
         float[] _ftBandbufferParse = new float[_intLimit];
         float[] _ftBufferDecreaseParse = new float[_intLimit];
@@ -127,22 +121,6 @@ public class AudioSampler : MonoBehaviour {
             _ftBandbuffer8x = _ftBandbufferParse;
             _ftBufferDecrease8x = _ftBufferDecreaseParse;
         }
-
-        /* for (int k = 0; k < 8; k++)
-        {
-            if (_ftFreqbands[k] > _ftBandbuffer[k])
-            {
-                _ftBandbuffer[k] = _ftFreqbands[k];
-                _ftBufferDecrease[k] = 0.005f;
-            }
-            else if (_ftFreqbands[k] < _ftBandbuffer[k])
-            {
-                _ftBandbuffer[k] -= _ftBufferDecrease[k];
-                _ftBufferDecrease[k] *= 1.2f;
-                if (_ftBandbuffer[k] < 0.04f)
-                    _ftBandbuffer[k] = 0.04f;
-            }
-        } */
     }
 
     void BandMax() {
@@ -151,15 +129,6 @@ public class AudioSampler : MonoBehaviour {
         if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) _ftBandbufferParse = _ftBandbuffer4x;
         else                                                     _ftBandbufferParse = _ftBandbuffer8x;
 
-        _ftMaxbufferParse = _ftBandbufferParse;
-
-/*         _ftMaxbuffer[0] = _ftBandbuffer[0];
-        _ftMaxbuffer[1] = _ftBandbuffer[1];
-        _ftMaxbuffer[2] = _ftBandbuffer[2];
-        _ftMaxbuffer[3] = _ftBandbuffer[3];
-        _ftMaxbuffer[4] = _ftBandbuffer[4];
-        _ftMaxbuffer[5] = _ftBandbuffer[5];
-        _ftMaxbuffer[6] = _ftBandbuffer[6];
-        _ftMaxbuffer[7] = _ftBandbuffer[7]; */
+        _ftMaxBufferParse = _ftBandbufferParse;
     }
 }

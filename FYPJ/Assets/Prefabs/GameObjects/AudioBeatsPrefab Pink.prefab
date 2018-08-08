@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4756536289938814}
   - component: {fileID: 198286271982203772}
   - component: {fileID: 199262567673502498}
+  - component: {fileID: 114811355080252434}
   m_Layer: 11
   m_Name: Twinkle Pink
   m_TagString: Untagged
@@ -55,6 +56,7 @@ GameObject:
   - component: {fileID: 4866135839583990}
   - component: {fileID: 198940960553648288}
   - component: {fileID: 199364947739407230}
+  - component: {fileID: 114379842946649580}
   m_Layer: 0
   m_Name: Glow Pink(New)
   m_TagString: Untagged
@@ -253,6 +255,7 @@ MonoBehaviour:
   _tfPar: {fileID: 0}
   _intShiftRate: 8
   _ftTimeToTravel: 15
+  bounds: {fileID: 0}
   speed: 7
   endPoint: {fileID: 4529317930299496}
   dissolveTime: 1
@@ -269,6 +272,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _intColor: 1
   _intDirection: 0
+--- !u!114 &114379842946649580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735561218228884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114469234394282094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,6 +324,17 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   id: 0
   dissolveTime: 1
+--- !u!114 &114811355080252434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630242502216658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135306034087390878
 SphereCollider:
   m_ObjectHideFlags: 1
