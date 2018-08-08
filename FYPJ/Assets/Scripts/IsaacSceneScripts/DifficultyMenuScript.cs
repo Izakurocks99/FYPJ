@@ -36,6 +36,8 @@ public class DifficultyMenuScript : MonoBehaviour {
             else
             {
                 PlaySong();
+
+                FindObjectOfType<TutorialScript>().NextImage(5);
             }
         }
     }

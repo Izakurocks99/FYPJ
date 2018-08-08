@@ -36,8 +36,13 @@ public class SpeakerBeatMotion : MonoBehaviour {
     Material myDefaultMaterial = null;
     float dissolveTimer = 0;
 
+    SpeakerBeatCollisionScript collisionScript;
+
     public void PoolInit(List<GameObject> home, List<Material> mat)
     {
+        if (!collisionScript)
+            collisionScript = gameObject.GetComponent<SpeakerBeatCollisionScript>();
+
         dissolveTimer = 0;
         _home = home;
         _materials = mat;
@@ -58,12 +63,15 @@ public class SpeakerBeatMotion : MonoBehaviour {
 		// _tfThis.Rotate(_tfThis.forward, 7.0f);
 		
 		BeatMotion();
-        if (!_die) {
+        if (!_die)
+        {
             // _vec3Area = new Vector3(0, 0, -7.0f);
             TransitBeat();
         }
         else
+        {
             Dissolve();
+        }
     }
 
 	void BeatMotion() {
@@ -77,6 +85,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else {
             _ftTime = 0.0f;
+            collisionScript.Decay();
             OnReturn();
         }
     }

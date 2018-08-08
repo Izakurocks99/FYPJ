@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
     public int _intPlayerScoring;
     public int _intPlayerMode; //0 is 2 colors, 1 4 colors
     public int _intSpawnPoint;
-    public int _intSpawnMode; //0 is random, 1 is straight
+    public int _intSpawnMode; //0 is random, 1 is straight // this needs to be reviewed
     int _intCounter;
     int _intCombo;
     float _ftProbablity;
@@ -59,8 +59,8 @@ public class PlayerStats : MonoBehaviour
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
         _intPlayerMode = PlayerPrefs.GetInt("mode");
-        _intSpawnMode = 2;
-        _intPlayerDifficulty = 0;
+        _intSpawnMode = 0;
+        _intPlayerDifficulty = 1;
 
         _intCombo = 0;
 
@@ -75,41 +75,32 @@ public class PlayerStats : MonoBehaviour
         _ftRNDTime = 0.0f;
         _ftRNGTime = 0.0f;
         _ftRNDWait = 3.0f;
-        _ftRNGWait = 1.0f;
+        _ftRNGWait = 3.5f;
         _blActiveSpawn = true;
 
         _controllers = transform.parent.GetComponentsInChildren<ControllerScript>();
         Debug.Assert(cam);
         Wave = cam.GetComponent<WaveEffect>();
         
-        AudioBandVisualiser._intPathing = 2;
+        AudioBandVisualiser._intPathing = 0;
 
-        if (_intSpawnMode == 2)
+        if (_intSpawnMode == 0)
             _bl4x = true;
         else
             _bl4x = false;
-
-        
-
-        // if (_bl4x == false) {
-        //     if (_intSpawnMode == 2)
-        //         _intSpawnMode = 1;
-        // }
-        // else
-        //     _intSpawnMode = 2;
     }
 
     void Update()
     {
-// [0]2x Colors, [1]4x Colors, [2]Top Blue Bottom Pink, [3]TL Green TR Gold BL Pink BR Blue
-        // if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
-        //     _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
-// [0]8 BandWidth Random Pathing, [1]8 BandWidth Straight Pathing, [2]4 BandWidth Pathing *for 8 BandWidth _bl4x must be false in editor*
-        // if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
-        //     _intSpawnMode = PlayerPrefs.GetInt("randomarea");
-        //     AudioBandVisualiser._intPathing = _intSpawnMode;
-        // }
-// Difficulty Levels
+// [0]4x BandWidth, [1]8x BandWidth
+        if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
+            _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+            AudioBandVisualiser._intPathing = _intSpawnMode;
+        }
+// [0]2x Colors, [1]4x Colors
+        if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
+            _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
+// [0]Easy, [1]Normal, [2]Hard
         if (_intPlayerDifficulty != PlayerPrefs.GetInt("difficulty")) {
             _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
         }
@@ -119,6 +110,13 @@ public class PlayerStats : MonoBehaviour
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             ProbablityRandomDistribution();
             ProbablityRandomGeneration();
+        }
+
+        if (Input.GetKey(KeyCode.Space)) {
+            Debug.Log("_intPlayerScoring :" + _intPlayerScoring);
+            Debug.Log("_intPlayerMode :" + _intPlayerMode);
+            Debug.Log("_intSpawnPoint :" + _intSpawnPoint);
+            Debug.Log("_intSpawnMode  :" + _intSpawnMode);
         }
     }
 
@@ -191,7 +189,7 @@ public class PlayerStats : MonoBehaviour
 
     void ProbablityRandomGeneration() {            
         if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-            float _ftRNG = (float)Random.Range(80f, 85f);
+            float _ftRNG = (float)Random.Range(90f, 100f);
             float _ftRandom = (float)Random.Range(1f, 100f);
 
             if (_ftRNG < _ftRandom) {

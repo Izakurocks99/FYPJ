@@ -14,6 +14,7 @@ public class AudioBandVisualiser : MonoBehaviour
     public GameObject _goAudioScalesTertiary;
     public GameObject _goAudio;
     public GameObject _goPlayer;
+    public GameObject _goBounds;
     GameObject[] _goPrimaryArray;
     GameObject[] _goSecondaryArray;
     GameObject[] _goTertiaryArray;
@@ -29,11 +30,9 @@ public class AudioBandVisualiser : MonoBehaviour
     public Texture2D MetallicBeatTex = null;
 #endif
 
-    public Material[] _matsPrimary;
-    public Material[] _matsSecondary;
     public float _ftTime;
-    public float _ftWait = 0.5f;
     public float _ftSpeed = 1f;
+    float _ftBPM;
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
     public static int _intBeatCounts;     
@@ -56,10 +55,8 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Start()
     {
-        // _ftAryPrevBuffer = new float[AudioSampler._ftMaxbuffer.Length];
-        // _ftAryDiffBuffer = new float[AudioSampler._ftMaxbuffer.Length];
         _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
-        _intMaxLimit = 4;
+        // _intMaxLimit = 4;
         _ftAryPrevBuffer = new float[_intMaxLimit];
         _ftAryDiffBuffer = new float[_intMaxLimit];
 
@@ -68,7 +65,6 @@ public class AudioBandVisualiser : MonoBehaviour
         _intCurrentMaterial = 0;
         _intMatColorL = 0;
         _intMatColorR = 0;
-        // _intPathing = 0;
 
 #if (BEAT_POOL)
         Debug.Assert(DissolveShader);
@@ -113,11 +109,6 @@ public class AudioBandVisualiser : MonoBehaviour
         for (int _intTertiary = 0; _intTertiary < _goAudioScalesTertiary.transform.childCount; _intTertiary++) {
             _goTertiaryArray[_intTertiary] = _goAudioScalesTertiary.transform.GetChild(_intTertiary).gameObject;
         }
-
-        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
-        //     _goParseArray = _goPrimaryArray;
-        // else
-        //     _goParseArray = _goSecondaryArray;
     }
 
 #if true
@@ -133,24 +124,18 @@ public class AudioBandVisualiser : MonoBehaviour
         else if (_intPathing == 2)
             _goParseArray = _goTertiaryArray;
 
-        // for (int i = 0; i < _goParseArray.Length; i++)
-        //     _goParseArray[i].transform.localScale = new Vector3(1, AudioSampler._ftBandbuffer[i] * 0.5f + 1, 1);
-
         switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
             case 0: {
-                    _ftWait = 1.25f;
+                    _ftBPM = 45 / 60;
                     break; }
             case 1: {
-                    _ftWait = 0.975f;
+                    _ftBPM = 60 / 60;
                     break; }
             case 2: {
-                    _ftWait = 0.85f;
-                    break; }
-            case 3: {
-                    _ftWait = 0.65f;
+                    _ftBPM = 80 / 60;
                     break; }
             default: {
-                    _ftWait = 1.25f;
+                    _ftBPM = 60 / 60;
                     break; }
         }
 
@@ -166,7 +151,7 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
         {
-            if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftWait)
+            if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftBPM)
             {
                 float _ftSpawn = Random.value;
                 int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
@@ -180,15 +165,13 @@ public class AudioBandVisualiser : MonoBehaviour
 
                     // Getting the Spawn Locations
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
-                        //for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbuffer.Length; _intCurrentBuffer++) {
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbufferParse.Length; _intCurrentBuffer++) {
-                            // if ((AudioSampler._ftMaxbuffer[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
                             if ((AudioSampler._ftMaxbufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
                                 if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.1f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
-                                        if (_intCurrentBuffer == _intFirst) continue;
-                                        else if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                        if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
+                                        else continue;
                                     }
                                 }
                                 else continue;
@@ -203,19 +186,66 @@ public class AudioBandVisualiser : MonoBehaviour
                         if (i == 0) _intParse = _intFirst;
                         else if (i != 0) _intParse = _intSecond;
 
-                        // Debug.Log(_intCurrentMaterial);
-
                         int _intGameMode = _goPlayer.GetComponent<PlayerStats>()._intPlayerMode;
 
                         switch (_intGameMode) {
-
-                            // Set Material if the Gamemode is Type 1.
+                            // Set Material if the Gamemode is Type 0.
                             case 0: {
+                                if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) {
+                                    switch (_intParse) {
+                                        case 0: _intCurrentMaterial = 0; break;
+                                        case 1: _intCurrentMaterial = 0; break;
+                                        case 2: _intCurrentMaterial = 2; break;
+                                        case 3: _intCurrentMaterial = 2; break;
+                                        default: break;
+                                    }
+                                }
+                                else {
+                                    switch (_intParse) {
+                                        case 0: _intCurrentMaterial = 0; break;
+                                        case 1: _intCurrentMaterial = 0; break;
+                                        case 2: _intCurrentMaterial = 2; break;
+                                        case 3: _intCurrentMaterial = 2; break;
+                                        case 4: _intCurrentMaterial = 0; break;
+                                        case 5: _intCurrentMaterial = 0; break;
+                                        case 6: _intCurrentMaterial = 2; break;
+                                        case 7: _intCurrentMaterial = 2; break;
+                                        default: break;
+                                    }
+                                }
+                                break;
+                            }
+
+                            // Set Material if the Gamemode is Type 1
+                            case 1: {
+                                if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true ) {
+                                    switch (_intParse) {
+                                        case 0: _intCurrentMaterial = 3; break;
+                                        case 1: _intCurrentMaterial = 1; break;
+                                        case 2: _intCurrentMaterial = 2; break;
+                                        case 3: _intCurrentMaterial = 0; break;
+                                        default: break;
+                                    }
+                                }
+                                else {
+                                    switch (_intParse) {
+                                        case 0: _intCurrentMaterial = 3; break;
+                                        case 1: _intCurrentMaterial = 1; break;
+                                        case 2: _intCurrentMaterial = 2; break;
+                                        case 3: _intCurrentMaterial = 0; break;
+                                        case 4: _intCurrentMaterial = 3; break;
+                                        case 5: _intCurrentMaterial = 1; break;
+                                        case 6: _intCurrentMaterial = 2; break;
+                                        case 7: _intCurrentMaterial = 0; break;
+                                        default: break;
+                                    }
+                                }
+                                break;
+                            }
+
+                            /* // Set Material if the Gamemode is Type 2.
+                            case 2: {
                                 if ((_intMatColorL == 0) && (_intMatColorR == 0)) {
-                                    // _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
-                                    // _intMatColorL = _intCurrentMaterial;
-                                    // _intCurrentMaterial = Random.Range(0, (int)_matsSecondary.Length) + 2;
-                                    // _intMatColorR = _intCurrentMaterial;
                                     _intMatColorL = 0;
                                     _intMatColorR = 2;
                                 }
@@ -225,48 +255,15 @@ public class AudioBandVisualiser : MonoBehaviour
                                 break;
                             }
     
-                            // Set Material if the Gamemode is Type 2.
-                            case 1: {
-                                if (i == 0)      _intCurrentMaterial = Random.Range(0, (int)_matsPrimary.Length);
-                                else if (i != 0) _intCurrentMaterial = Random.Range(2, (int)_matsSecondary.Length + 2);
-                                break;
-                            }
-
                             // Set Material if the Gamemode is Type 3.
-                            case 2: {
-                                if (_intParse < 2)
-                                    _intCurrentMaterial = 0;
-                                else
-                                    _intCurrentMaterial = 2;
-                                break;
-                            }
-
-                            // Set Material if the Gamemode is Type 4
                             case 3: {
-                                // _intCurrentMaterial = _intParse;
-                                switch (_intParse) {
-                                    case 0:
-                                            _intCurrentMaterial = 3;
-                                        break;
-                                    case 1:
-                                            _intCurrentMaterial = 1;
-                                        break;
-                                    case 2:
-                                            _intCurrentMaterial = 2;
-                                        break;
-                                    case 3:
-                                            _intCurrentMaterial = 0;
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                if (i == 0)      _intCurrentMaterial = Random.Range(0, 2);
+                                else if (i != 0) _intCurrentMaterial = Random.Range(2, 4);
                                 break;
-                            }
+                            } */
 
                             // Set Material if the Gamemode is Invalid.
-                            default: {
-                                break;
-                            }
+                            default: break;
                         }
 #if (BEAT_POOL)
                         if (_intParse >= 9) continue;
@@ -276,8 +273,8 @@ public class AudioBandVisualiser : MonoBehaviour
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
                         // Attach Readable Object Here!
-                        if (i == 0) _goInstanceA = go;
-                        if (i != 0) _goInstanceB = go;
+                        // if (i == 0) _goInstanceA = go;
+                        // if (i != 0) _goInstanceB = go;
 
                         // if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
                         // if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
@@ -301,7 +298,7 @@ public class AudioBandVisualiser : MonoBehaviour
                         // if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
                         if (AudioSampler._ftMaxbufferParse[j] == AudioSampler._ftMaxbufferParse.Max())
                         {
-                            _intCurrentMaterial = Random.Range(0, _matsPrimary.Length);
+                            _intCurrentMaterial = Random.Range(0, 2);
                             _intCurrentMaterial = (_intCurrentMaterial == 1) ? 2 : 0;
 #if (BEAT_POOL)
                             GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[j]);
@@ -328,12 +325,13 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         //listGOBeatPool[index].PopBack();
         GameObject go = _Pool.GetObjectFromPool(index);
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
-            go.transform.parent = parent.transform.parent.transform;
-        else {
+        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
+        //     go.transform.parent = parent.transform.parent.transform;
+        // else {
             go.transform.parent = parent.transform;
             go.GetComponent<AudioMotion>()._tfPar = parent.transform;
-        }
+            go.GetComponent<AudioMotion>().bounds = _goBounds.GetComponent<BoundCalculator>();
+        // }
             
         go.transform.position = parent.transform.position;
         go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
