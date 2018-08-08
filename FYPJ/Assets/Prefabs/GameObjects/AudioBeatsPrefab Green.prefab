@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4406098892805420}
   - component: {fileID: 198005336696120856}
   - component: {fileID: 199875932882665116}
+  - component: {fileID: 114495785842434054}
   m_Layer: 11
   m_Name: Twinkle Green
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 4254897938425550}
   - component: {fileID: 198456381300614858}
   - component: {fileID: 199701476900770770}
+  - component: {fileID: 114437049676464812}
   m_Layer: 0
   m_Name: Glow Green(New)
   m_TagString: Untagged
@@ -252,9 +254,32 @@ MonoBehaviour:
   _tfPar: {fileID: 0}
   _intShiftRate: 8
   _ftTimeToTravel: 15
+  bounds: {fileID: 0}
   speed: 7
   endPoint: {fileID: 4352759193182030}
   dissolveTime: 1
+--- !u!114 &114437049676464812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482670611693450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114495785842434054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010138740078746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114550759878323334
 MonoBehaviour:
   m_ObjectHideFlags: 1

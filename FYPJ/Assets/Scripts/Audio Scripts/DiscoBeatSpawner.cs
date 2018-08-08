@@ -109,6 +109,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
 			if (_intCurrent < _intCount) {
 
                 GameObject go = InitPoolObject(this.transform);
+                go.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
 
                 go.name = "Test " + _intCurrent;
 				go.SetActive(true);
@@ -137,7 +138,6 @@ public class DiscoBeatSpawner : MonoBehaviour {
 				else
 					return;
 			}
-            // _goBandVisualiser.GetComponent<AudioBandVisualiser>().InjectTime(2.0f / (_intCount - 1));
 			_ftTime = 0.0f;
 		}
         _intCount = 0;

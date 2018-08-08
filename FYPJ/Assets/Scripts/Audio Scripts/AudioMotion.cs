@@ -106,6 +106,8 @@ public class AudioMotion : MonoBehaviour
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
 
+        
+
 // If Calibrating
         if (calibration != null) {
             if (calibration.calibrationObject.transform.position.z != 0) {
@@ -118,15 +120,18 @@ public class AudioMotion : MonoBehaviour
                 Vector3 _vec3Parse = Vector3.zero;
 
                 if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) { // 4x
-                    switch (_intDespawner) {
-                        case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
-                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1];} break;
-                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2];} break;
-                        case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3];} break;
-                        default: break;
-                    }
 
-                    GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
+                    if (bounds != null && bounds.gameObject.activeSelf == true) {
+                        switch (_intDespawner) {
+                            case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
+                            case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1];} break;
+                            case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2];} break;
+                            case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3];} break;
+                            default: break;
+                        }
+
+                        GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
+                    }
                 }
                 else { //8x
                     GetChildZero().transform.position = new Vector3(GetChildZero().transform.position.x,
