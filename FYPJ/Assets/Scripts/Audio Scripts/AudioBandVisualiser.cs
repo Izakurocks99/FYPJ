@@ -165,8 +165,8 @@ public class AudioBandVisualiser : MonoBehaviour
 
                     // Getting the Spawn Locations
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
-                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxbufferParse.Length; _intCurrentBuffer++) {
-                            if ((AudioSampler._ftMaxbufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
+                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxBufferParse.Length; _intCurrentBuffer++) {
+                            if ((AudioSampler._ftMaxBufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
                                 if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.1f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
@@ -296,7 +296,7 @@ public class AudioBandVisualiser : MonoBehaviour
                     for (int j = _goParseArray.Length - 1; j >= 0; j--)
                     {
                         // if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
-                        if (AudioSampler._ftMaxbufferParse[j] == AudioSampler._ftMaxbufferParse.Max())
+                        if (AudioSampler._ftMaxBufferParse[j] == AudioSampler._ftMaxBufferParse.Max())
                         {
                             _intCurrentMaterial = Random.Range(0, 2);
                             _intCurrentMaterial = (_intCurrentMaterial == 1) ? 2 : 0;
@@ -352,7 +352,7 @@ public class AudioBandVisualiser : MonoBehaviour
         for (int i = 0; i < _ftAryDiffBuffer.Length; i++)
         {
             // float _ftDifference = AudioSampler._ftMaxbuffer[i] - _ftAryPrevBuffer[i];
-            float _ftDifference = AudioSampler._ftMaxbufferParse[i] - _ftAryPrevBuffer[i];
+            float _ftDifference = AudioSampler._ftMaxBufferParse[i] - _ftAryPrevBuffer[i];
             if (_ftDifference < 0)
                 _ftDifference *= -1;
             _ftAryDiffBuffer[i] = _ftDifference;

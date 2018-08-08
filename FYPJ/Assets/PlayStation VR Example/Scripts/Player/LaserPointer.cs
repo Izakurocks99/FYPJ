@@ -7,6 +7,7 @@ public class LaserPointer : MonoBehaviour
     public int max_distance = 100;
     private LineRenderer line;
     private RaycastHit hit;
+    SelectionVisualizer stickSelection;
 
     void Start()
     {
@@ -22,6 +23,14 @@ public class LaserPointer : MonoBehaviour
             line.SetPosition(1, Vector3.forward * hit.distance);
             line.startColor = Color.green;
             line.endColor = Color.green;
+
+            if (hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>())
+            {
+                stickSelection = hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>();
+                stickSelection.selected = true;
+            }
+            else
+                stickSelection.selected = false;
         }
         else
         {

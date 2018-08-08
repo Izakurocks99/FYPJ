@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4214496158864148}
   - component: {fileID: 198761612442632066}
   - component: {fileID: 199344812494203456}
+  - component: {fileID: 114595613615533954}
   m_Layer: 0
   m_Name: Glow Blue(New)
   m_TagString: Untagged
@@ -78,6 +79,7 @@ GameObject:
   - component: {fileID: 4390971847754414}
   - component: {fileID: 198612172406713738}
   - component: {fileID: 199373537393685858}
+  - component: {fileID: 114820564552541290}
   m_Layer: 11
   m_Name: Twinkle Blue
   m_TagString: Untagged
@@ -307,9 +309,32 @@ MonoBehaviour:
   _tfPar: {fileID: 0}
   _intShiftRate: 8
   _ftTimeToTravel: 15
+  bounds: {fileID: 0}
   speed: 7
   endPoint: {fileID: 4215351834697888}
   dissolveTime: 1
+--- !u!114 &114595613615533954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067080669817756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114820564552541290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933761233844478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f56b106161214469b88b7646cc574e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135238925341500474
 SphereCollider:
   m_ObjectHideFlags: 1
