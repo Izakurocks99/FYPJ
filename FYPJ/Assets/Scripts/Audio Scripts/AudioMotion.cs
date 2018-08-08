@@ -1,5 +1,5 @@
 ﻿#define BEAT_POOL
-#define STAN
+// #define STAN
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -93,10 +93,43 @@ public class AudioMotion : MonoBehaviour
         _ftY = Random.Range(-calibration.verticleSize, calibration.verticleSize);
         _ftZ = -Mathf.Abs(calibration.distFromPlayer);
 
+        if (calibration.calibrationObject.transform.position.z != 0) {
+            string _strParName = Regex.Replace(GetChildZero().name, "^[A-z]+", "");
+            _strParName = Regex.Replace(_strParName, " ", "");
+            int _intDespawner = int.Parse(_strParName);
+            Vector3 _vec3Parse = Vector3.zero;
+
+            if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) { // 4x
+
+                if (bounds != null && bounds.gameObject.activeSelf == true) {
+                    switch (_intDespawner) {
+                        case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
+                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1];} break;
+                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2];} break;
+                        case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3];} break;
+                        default: break;
+                    }
+
+                    GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
+                }
+            }
+            else { //8x
+                GetChildZero().transform.position = new Vector3(GetChildZero().transform.position.x,
+                                                                GetChildZero().transform.position.y,
+                                                                calibration.calibrationObject.transform.position.z);
+            }
+        }
+
+// If Calibrating
+        if (calibration != null)
+            _vec3Area = GetChildZero().transform.position;
+// If Defaulting -> Skip
+        else
         //PlayerStats = FindObjectOfType<PlayerStats>();
         _vec3Area = calibration.calibrationObject.transform.position + new Vector3(_ftX,
                                                                                    _ftY,
                                                                                    _ftZ);
+
 #if (SPAWNDEBUG)
 	timer = 0;
 #endif
@@ -106,42 +139,10 @@ public class AudioMotion : MonoBehaviour
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
 
-        
-
 // If Calibrating
-        if (calibration != null) {
-            if (calibration.calibrationObject.transform.position.z != 0) {
-                string _strParName = Regex.Replace(GetChildZero().name, "^[A-z]+", "");
-                _strParName = Regex.Replace(_strParName, " ", "");
-                int _intDespawner = int.Parse(_strParName);
-
-                // float _ftXParse = 0.0f;
-                // float _ftYParse = 0.0f;
-                Vector3 _vec3Parse = Vector3.zero;
-
-                if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) { // 4x
-
-                    if (bounds != null && bounds.gameObject.activeSelf == true) {
-                        switch (_intDespawner) {
-                            case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
-                            case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1];} break;
-                            case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2];} break;
-                            case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3];} break;
-                            default: break;
-                        }
-
-                        GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
-                    }
-                }
-                else { //8x
-                    GetChildZero().transform.position = new Vector3(GetChildZero().transform.position.x,
-                                                                    GetChildZero().transform.position.y,
-                                                                    calibration.calibrationObject.transform.position.z);
-                }
-            }
-        }
+        if (calibration != null)
+            _vec3Area = GetChildZero().transform.position;
 // If Defaulting -> Skip
-        _vec3Area = GetChildZero().transform.position;
 
         endPoint.position = _vec3Area;
 
@@ -169,8 +170,10 @@ public class AudioMotion : MonoBehaviour
     {
         _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
-        if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
-            _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
+        if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f)) {
+            _tfThis.position = Vector3.Lerp(_tfPar.transform.position, _vec3Area, _ftTime);
+            // Debug.Log("T: " + GetChildZero().transform.position);
+        }
         else
         {
 #if (BEAT_POOL)

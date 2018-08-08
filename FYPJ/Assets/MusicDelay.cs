@@ -5,19 +5,17 @@ using UnityEngine;
 public class MusicDelay : MonoBehaviour {
 
 	public GameObject AudioVizualiser;
+	public float _ftDelay;
 
-	public float delay = 1;
-	// Use this for initialization
 	void Start ()
 	{
+		_ftDelay = 1.0f;
+
 		gameObject.GetComponent<AudioSource>().clip = AudioVizualiser.GetComponent<AudioSource>().clip;
-		GetComponent<AudioSource>().PlayDelayed(delay+3);
-
+		GetComponent<AudioSource>().PlayDelayed(_ftDelay + 3);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+		Debug.Log(_ftDelay);
 	}
-
 }

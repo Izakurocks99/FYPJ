@@ -34,10 +34,12 @@ public class AudioPlayer : MonoBehaviour {
 	}
 
 	void Update () {
-		if (this.GetComponent<AudioSource>().clip != _audioSampler.transform.GetComponent<AudioSource>().clip) {
+    		if (_audioSampler.transform.GetComponent<AudioSource>().clip != null &&
+            _audioSampler.transform.GetComponent<AudioSource>().isPlaying == true) {
 			this.GetComponent<AudioSource>().clip = _audioSampler.transform.GetComponent<AudioSource>().clip;
 			this.GetComponent<AudioSource>().PlayDelayed(_ftDelay);
 		}
+
 
 		else {
 // Get Samples

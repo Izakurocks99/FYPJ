@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene7_3.unity
     guid: eb81463744673e044b71ddd472321c75
   - enabled: 1
+    path: Assets/Scenes/LobbyTest.unity
+    guid: 23ea1b407b801cf438481e00e466490b
+  - enabled: 1
     path: Assets/Scenes/Gameplay2.unity
     guid: b1187312d2fb9844aa9f9282e1443b4f
   m_configObjects: {}
