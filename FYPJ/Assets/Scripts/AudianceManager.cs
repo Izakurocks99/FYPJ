@@ -125,7 +125,7 @@ public sealed class AudianceManager : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-
+#if false
 
 
         Debug.Assert(HypeMeter >= 0);
@@ -193,6 +193,7 @@ public sealed class AudianceManager : MonoBehaviour {
                 //_ObjectPool.Shuffle();
             }
         }
+#endif
     }
 }
 

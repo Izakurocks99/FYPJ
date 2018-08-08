@@ -23,20 +23,20 @@ namespace RockVR.Video.Demo
             if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.NOT_START)
             {
                     VideoCaptureCtrl.instance.StartCapture();
-                if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture"))
-                {
-                }
+                //if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Start Capture"))
+               // {
+                //}
             }
             else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.STARTED)
             {
-                if (GUI.Button(new Rect(10, Screen.height - 60, 150, 50), "Stop Capture"))
+                if (GUI.Button(new Rect(10, Screen.height - 60, 10, 10), "."))
                 {
                     VideoCaptureCtrl.instance.StopCapture();
                 }
-                if (GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Pause Capture"))
-                {
-                    VideoCaptureCtrl.instance.ToggleCapture();
-                }
+                //if (GUI.Button(new Rect(180, Screen.height - 60, 150, 50), "Pause Capture"))
+                //{
+                //    VideoCaptureCtrl.instance.ToggleCapture();
+                //}
             }
             else if (VideoCaptureCtrl.instance.status == VideoCaptureCtrl.StatusType.PAUSED)
             {

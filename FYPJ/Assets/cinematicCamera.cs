@@ -32,9 +32,9 @@ public class cinematicCamera : MonoBehaviour {
                 currentIndex++;
                 if(currentIndex >= WayPoints.Count)
                 {
-                    running = false;
+                    //running = false;
                     currentIndex = 0;
-                    return;
+                    //return;
                 }
             }
 

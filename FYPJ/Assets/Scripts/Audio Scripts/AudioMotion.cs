@@ -21,6 +21,7 @@ public class AudioMotion : MonoBehaviour
     //int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
+    public BoundCalculator bounds;
     //PlayerStats PlayerStats;
 
     public float speed = 10;
@@ -105,64 +106,38 @@ public class AudioMotion : MonoBehaviour
     {
         _tfThis.Rotate(_tfThis.up, 4.0f);
 
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) {
-            // _vec3Area = new Vector3(0, 0, -7.0f);
-        }
-        else if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 1) {
+// If Calibrating
+        if (calibration != null) {
             if (calibration.calibrationObject.transform.position.z != 0) {
-
-                _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                                                                                _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                                                                                calibration.calibrationObject.transform.position.z);
-                _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
-            }
-        }
-        else {
-            if (calibration.calibrationObject.transform.position.z != 0) {
-                string _strParName = Regex.Replace(_tfPar.transform.GetChild(0).name, "^[A-z]+", "");
+                string _strParName = Regex.Replace(GetChildZero().name, "^[A-z]+", "");
                 _strParName = Regex.Replace(_strParName, " ", "");
+                int _intDespawner = int.Parse(_strParName);
 
-                int _intDespawnerNumber = int.Parse(_strParName);
-                float _ftXParse = 0.0f;
+                // float _ftXParse = 0.0f;
                 // float _ftYParse = 0.0f;
+                Vector3 _vec3Parse = Vector3.zero;
 
-                switch (_intDespawnerNumber) {
-                    case 0: {
-                        _ftXParse = (-calibration.horizontalSize - 1.5f) * 0.55f;
-                        // _ftYParse = calibration.verticleSize;
+                if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) { // 4x
+                    switch (_intDespawner) {
+                        case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
+                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1];} break;
+                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2];} break;
+                        case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3];} break;
+                        default: break;
                     }
-                        break;
-                    case 1: {
-                        _ftXParse = (calibration.horizontalSize + 1.5f) * 0.55f;
-                        // _ftYParse = calibration.verticleSize;
-                    }
-                        break;
-                    case 2: {
-                        _ftXParse = (-calibration.horizontalSize - 1.5f) * 0.55f;
-                        // _ftYParse = calibration.verticleSize;
-                    }
-                        break;
-                    case 3: {
-                        _ftXParse = (calibration.horizontalSize + 1.5f) * 0.55f;
-                        // _ftYParse = calibration.verticleSize;
-                    }
-                        break;
-                    default:
-                        break;
+
+                    GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
                 }
-                _tfThis.transform.parent.transform.GetChild(0).transform.position = new Vector3(_ftXParse,
-                                                                                                /* _ftYParse  */_tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                                                                                calibration.calibrationObject.transform.position.z);
-                                                                                            
-                _vec3Area = _tfThis.transform.parent.transform.GetChild(0).transform.position;
-            }
-            else
-            {
-                _vec3Area = new Vector3(_tfThis.transform.parent.transform.GetChild(0).transform.position.x,
-                                        _tfThis.transform.parent.transform.GetChild(0).transform.position.y,
-                                        Camera.main.transform.position.z);
+                else { //8x
+                    GetChildZero().transform.position = new Vector3(GetChildZero().transform.position.x,
+                                                                    GetChildZero().transform.position.y,
+                                                                    calibration.calibrationObject.transform.position.z);
+                }
             }
         }
+// If Defaulting -> Skip
+        _vec3Area = GetChildZero().transform.position;
+
         endPoint.position = _vec3Area;
 
 	
@@ -263,5 +238,9 @@ public class AudioMotion : MonoBehaviour
 
     public void SetPlayer(GameObject goPlayer_) {
         _goPlayer = goPlayer_;
+    }
+
+    private GameObject GetChildZero() {
+        return _tfPar.transform.GetChild(0).gameObject;
     }
 }

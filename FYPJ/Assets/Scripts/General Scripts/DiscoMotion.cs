@@ -41,8 +41,8 @@ public class DiscoMotion : MonoBehaviour {
     }
 	
 	void Update () {
-        if (_goAudio.GetComponent<AudioSource>().clip != null &&
-            _goAudio.GetComponent<AudioSource>().isPlaying == true) {
+        //if (_goAudio.GetComponent<AudioSource>().clip != null &&
+          //  _goAudio.GetComponent<AudioSource>().isPlaying == true) {
                 
             float currentSpeed = RotationStrenght * Time.time;
             float xrot = Mathf.PerlinNoise(currentSpeed , 0) * 2 - 1;
@@ -75,7 +75,7 @@ public class DiscoMotion : MonoBehaviour {
             TransitDiscoBall();
 
             _vec3Spawn = _goChild.transform.position;
-        }
+        //}
     }
 
     void TransitDiscoBall()

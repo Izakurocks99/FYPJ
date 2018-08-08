@@ -129,6 +129,11 @@ public class PlayerStickScript : MonoBehaviour
                 PlayerPrefs.SetInt("pristick", (int)objectMesh);
             }
 
+            foreach (BatonCapsuleFollower follower in BatonFollowers)
+            {
+                follower.gameObject.SetActive(true);
+            }
+
             GetComponent<Collider>().enabled = false;
             return true;
         }
@@ -160,5 +165,9 @@ public class PlayerStickScript : MonoBehaviour
         gameObject.transform.parent.localScale = startingScale;
         GetComponent<Collider>().enabled = true;
 
+        foreach (BatonCapsuleFollower follower in BatonFollowers)
+        {
+            follower.gameObject.SetActive(false);
+        }
     }
 }

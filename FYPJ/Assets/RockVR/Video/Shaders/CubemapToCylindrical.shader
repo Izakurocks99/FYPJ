@@ -63,7 +63,7 @@ Shader "RockVR/CubemapToClindrical"
     {
         float3 dir = sphericalToCartesian(i.uv);
         dir = mul(_CubeTransform, float4(dir, 1)).xyz;
-        fixed4 col = texCUBE(_CubeTex, dir);
+        fixed4 col = texCUBE(_CubeTex, dir) * 0.0001f;
         return col;
     }
     ENDCG
