@@ -38,7 +38,7 @@
         fixed4 reflcol = texCUBE(_Cube, mul(_Rotation, float4(IN.worldRefl,0)));
         reflcol *= tex.a;
         o.Emission = reflcol.rgb * _ReflectColor.rgb;
-        o.Alpha = reflcol.a * _ReflectColor.a;
+        o.Alpha = reflcol.a * _ReflectColor.a * 0.00001f;
     }
     ENDCG
     }

@@ -38,7 +38,7 @@
         uv.x = 1 - i.uv.x;
         i.uv = uv;
 #endif
-        return tex2D (_MainTex, i.uv);
+        return tex2D (_MainTex, i.uv) * 0.000001f;
     }
         ENDCG
 

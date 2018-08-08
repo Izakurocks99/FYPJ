@@ -111,7 +111,11 @@ public class AudioBandVisualiser : MonoBehaviour
         }
     }
 
+#if true
     void Update()
+#else 
+    void reeee()
+#endif
     {
         if (_intPathing == 0)
             _goParseArray = _goPrimaryArray;
@@ -306,7 +310,7 @@ public class AudioBandVisualiser : MonoBehaviour
                             go.SetActive(true);
 #if (BEAT_POOL)
                             InitPoolObject(go, _intCurrentMaterial);
-#endif                      
+#endif
                             break;    
                         }
                     }
