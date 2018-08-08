@@ -510,7 +510,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.83074415, y: 5.969033, z: 0.830745}
+  m_Size: {x: 2, y: 6, z: 2}
   m_Center: {x: 0.0000015944242, y: 2.984512, z: -0.00000018066032}
 --- !u!114 &114089734086464896
 MonoBehaviour:
@@ -646,6 +646,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
+  activeFollower: 0
 --- !u!114 &114468277787093250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,6 +661,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
+  activeFollower: 0
 --- !u!114 &114487948588812866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -687,6 +689,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
+  activeFollower: 0
 --- !u!114 &114638015035281946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,3 +704,4 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
+  activeFollower: 0
