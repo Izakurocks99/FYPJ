@@ -24,13 +24,13 @@ public class LaserPointer : MonoBehaviour
             line.startColor = Color.green;
             line.endColor = Color.green;
 
-            if (hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>())
-            {
-                stickSelection = hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>();
-                stickSelection.selected = true;
-            }
-            else
-                stickSelection.selected = false;
+            //if (hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>())
+            //{
+            //    stickSelection = hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>();
+            //    stickSelection.selected = true;
+            //}
+            //else
+            //    stickSelection.selected = false;
         }
         else
         {
