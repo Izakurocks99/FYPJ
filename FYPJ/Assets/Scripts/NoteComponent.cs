@@ -29,7 +29,7 @@ public class NoteComponent : MonoBehaviour {
 		this.GetComponent<Renderer>().material.SetFloat("_TreshHold", 0);							//reset material  dissolve threshold to 0
 		pool = GameObject.FindObjectOfType<ObjectPool>();											//find the pool in the scene
 		count = 0;
-		travelTime = GameObject.Find("MusicSource").GetComponent<MusicDelay>().delay;				//make the travel time fit song delay
+		travelTime = GameObject.Find("MusicSource").GetComponent<MusicDelay>()._ftDelay;				//make the travel time fit song delay
         rb = gameObject.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         isHit = false;

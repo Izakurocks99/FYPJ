@@ -30,7 +30,36 @@ public class SceneSwitch : MonoBehaviour {
 		//}
 	}
 
-	public void LoadScene()
+    public void LoadScene(string scene)
+    {
+        if (!switching)
+        {
+
+            color = new Color(1, 1, 1, 0);
+            loadingScreen.SetActive(true);
+            StartCoroutine(FadeIn(scene));
+            switching = true;
+        }
+    }
+
+    IEnumerator FadeIn(string scene)
+    {
+        color = new Color(1, 1, 1, 0);
+        count = 0;
+        while (color.a != 1)
+        {
+            color.a = Mathf.Lerp(0, 1, count);
+            loadingImage.GetComponent<Image>().color = color;
+
+            count += Time.deltaTime;
+
+            yield return null;
+        }
+        SceneManager.LoadSceneAsync(scene);
+        yield break;
+    }
+
+    public void LoadScene()
 	{
         if(!switching)
         {

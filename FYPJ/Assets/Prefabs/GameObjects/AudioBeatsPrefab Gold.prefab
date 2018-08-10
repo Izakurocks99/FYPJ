@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tfPar: {fileID: 0}
   _intShiftRate: 8
-  _ftTimeToTravel: 15
+  _ftTimeToTravel: 1
   bounds: {fileID: 0}
   speed: 7
   endPoint: {fileID: 4570928790380784}

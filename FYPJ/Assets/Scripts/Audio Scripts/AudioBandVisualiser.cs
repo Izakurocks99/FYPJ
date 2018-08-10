@@ -19,8 +19,6 @@ public class AudioBandVisualiser : MonoBehaviour
     GameObject[] _goSecondaryArray;
     GameObject[] _goTertiaryArray;
     GameObject[] _goParseArray;
-    GameObject _goInstanceA;
-    GameObject _goInstanceB;
 
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
@@ -31,7 +29,6 @@ public class AudioBandVisualiser : MonoBehaviour
 #endif
 
     public float _ftTime;
-    public float _ftSpeed = 1f;
     float _ftBPM;
     float[] _ftAryPrevBuffer;
     float[] _ftAryDiffBuffer;
@@ -126,16 +123,16 @@ public class AudioBandVisualiser : MonoBehaviour
 
         switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
             case 0: {
-                    _ftBPM = 45 / 60;
+                    _ftBPM = .25f;
                     break; }
             case 1: {
-                    _ftBPM = 60 / 60;
+                    _ftBPM = .5f;
                     break; }
             case 2: {
-                    _ftBPM = 80 / 60;
+                    _ftBPM = .75f;
                     break; }
             default: {
-                    _ftBPM = 60 / 60;
+                    _ftBPM = .5f;
                     break; }
         }
 
@@ -151,7 +148,7 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
         {
-            if ((_ftTime += 1 * Time.deltaTime * _ftSpeed) >= _ftBPM)
+            if ((_ftTime += 1 * Time.deltaTime) >= _ftBPM)
             {
                 float _ftSpawn = Random.value;
                 int _intMax = (_ftSpawn < 0.6f) ? 2 : 1;
@@ -272,15 +269,8 @@ public class AudioBandVisualiser : MonoBehaviour
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
-                        // Attach Readable Object Here!
-                        // if (i == 0) _goInstanceA = go;
-                        // if (i != 0) _goInstanceB = go;
-
-                        // if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
-                        // if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
                         
                         go.transform.localScale = beatScale;
-                        //_intPreviousMaterial = _intCurrentMaterial;
 
                         go.name = "Beat " + _intParse;
                         go.SetActive(true);
@@ -295,7 +285,6 @@ public class AudioBandVisualiser : MonoBehaviour
                 {
                     for (int j = _goParseArray.Length - 1; j >= 0; j--)
                     {
-                        // if (AudioSampler._ftMaxbuffer[j] == AudioSampler._ftMaxbuffer.Max())
                         if (AudioSampler._ftMaxBufferParse[j] == AudioSampler._ftMaxBufferParse.Max())
                         {
                             _intCurrentMaterial = Random.Range(0, 2);
@@ -315,9 +304,10 @@ public class AudioBandVisualiser : MonoBehaviour
                         }
                     }
                 }
-                _ftTime = 0;
+                _ftTime -= 1.0f;
             }
         }
+        // Debug.Log(_ftTime);
     }
 
 #if (BEAT_POOL)
@@ -325,14 +315,9 @@ public class AudioBandVisualiser : MonoBehaviour
     {
         //listGOBeatPool[index].PopBack();
         GameObject go = _Pool.GetObjectFromPool(index);
-        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0)
-        //     go.transform.parent = parent.transform.parent.transform;
-        // else {
-            go.transform.parent = parent.transform;
-            go.GetComponent<AudioMotion>()._tfPar = parent.transform;
-            go.GetComponent<AudioMotion>().bounds = _goBounds.GetComponent<BoundCalculator>();
-        // }
-            
+        go.transform.parent = parent.transform;
+        go.GetComponent<AudioMotion>()._tfPar = parent.transform;
+        go.GetComponent<AudioMotion>().bounds = _goBounds.GetComponent<BoundCalculator>();
         go.transform.position = parent.transform.position;
         go.GetComponent<AudioMotion>().SetPlayer(_goPlayer);
         return go;
@@ -359,9 +344,5 @@ public class AudioBandVisualiser : MonoBehaviour
         }
 
         _ftAryDiffBuffer = _ftAryDiffBuffer.OrderByDescending(ft => ft).ToArray();
-    }
-
-    public void InjectTime(float _ftInjection) {
-		 _ftTime -= _ftInjection;
     }
 }
