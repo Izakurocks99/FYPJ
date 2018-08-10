@@ -19,8 +19,6 @@ public class AudioBandVisualiser : MonoBehaviour
     GameObject[] _goSecondaryArray;
     GameObject[] _goTertiaryArray;
     GameObject[] _goParseArray;
-    GameObject _goInstanceA;
-    GameObject _goInstanceB;
 
 #if (BEAT_POOL)
     public Shader DissolveShader = null;
@@ -271,12 +269,6 @@ public class AudioBandVisualiser : MonoBehaviour
                         GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
                         go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
 #endif
-                        // Attach Readable Object Here!
-                        // if (i == 0) _goInstanceA = go;
-                        // if (i != 0) _goInstanceB = go;
-
-                        // if (_goInstanceA != null) Debug.Log(_goInstanceA.GetComponent<AudioMotion>().endPoint.position);
-                        // if (_goInstanceB != null) Debug.Log(_goInstanceB.GetComponent<AudioMotion>().endPoint.position);
                         
                         go.transform.localScale = beatScale;
 
@@ -352,9 +344,5 @@ public class AudioBandVisualiser : MonoBehaviour
         }
 
         _ftAryDiffBuffer = _ftAryDiffBuffer.OrderByDescending(ft => ft).ToArray();
-    }
-
-    public void InjectTime(float _ftInjection) {
-		 _ftTime -= _ftInjection;
     }
 }
