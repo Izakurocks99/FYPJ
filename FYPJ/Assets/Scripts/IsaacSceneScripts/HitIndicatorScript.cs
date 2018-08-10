@@ -6,22 +6,22 @@ public class HitIndicatorScript : MonoBehaviour {
 
     [SerializeField]
     GameObject missIndicator = null;
-    Animation missAnim;
+    Animator missAnimator;
 
     [SerializeField]
     bool playMissAnim;
 
     [SerializeField]
     GameObject hitIndicator = null;
-    Animation hitAnim;
+    Animator hitAnimator;
 
     [SerializeField]
     bool playHitAnim;
 
     // Use this for initialization
     void Start () {
-        missAnim = missIndicator.GetComponent<Animation>();
-        hitAnim = hitIndicator.GetComponent<Animation>();
+        missAnimator = missIndicator.GetComponent<Animator>();
+        hitAnimator = hitIndicator.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -42,14 +42,14 @@ public class HitIndicatorScript : MonoBehaviour {
     {
         StopAnim();
         hitIndicator.SetActive(true);
-        hitAnim.Play();
+        hitAnimator.Play("SkillfulHit");
     }
 
     public void PlayMissAnim()
     {
         StopAnim();
         missIndicator.SetActive(true);
-        missAnim.Play();
+        missAnimator.Play("PoorHit");
         
     }
     
