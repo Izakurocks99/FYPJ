@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114126485155196972}
   - component: {fileID: 65574413837760506}
   - component: {fileID: 114089734086464896}
+  - component: {fileID: 114565837591713452}
   m_Layer: 0
   m_Name: baton
   m_TagString: PlayerStick
@@ -661,6 +662,19 @@ MonoBehaviour:
     type: 2}
   thisStick: {fileID: 0}
   activeFollower: 0
+--- !u!114 &114565837591713452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164987087485424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7117773ac022984e9ddf7cf98b1d6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  negative: 0
+  selected: 0
 --- !u!114 &114610937618645948
 MonoBehaviour:
   m_ObjectHideFlags: 1
