@@ -196,17 +196,11 @@ public class SelectSongsComponent : MonoBehaviour
     bool debugSpawningStats = false;
 
     int dual;
-    int random;
+    int eightx;
 
     public void LaunchSong()
     {
         PlayerPrefs.SetString("test", currCD.song.title);
-
-
-        if (debugSpawningStats)
-               Debug.Log("mode" + (dual +random));
-
-        PlayerPrefs.SetInt("mode", dual + random);
 
         followplayer = false;
 
@@ -226,27 +220,27 @@ public class SelectSongsComponent : MonoBehaviour
             dual = 1;
         else
             dual = 0;
-        //if (debugSpawningStats)
-        //    Debug.Log("dualcolor" + dual);
+        if (debugSpawningStats)
+            Debug.Log("dualcolor" + dual);
 
-        //if (dual)
-        //    PlayerPrefs.SetInt("dualcolor", dualint);
-        //else
-        //    PlayerPrefs.SetInt("dualcolor", singleint);
+        if (isdual)
+            PlayerPrefs.SetInt("dualcolor", dual);
+        else
+            PlayerPrefs.SetInt("dualcolor", dual);
     }
 
-    public void ToggleRandomArea(bool isrand)
+    public void ToggleNumSpawners(bool iseightx)
     {
-        if (isrand)
-            random = 0;
+        if (iseightx)
+            eightx = 1;
         else
-            random = 2;
-        //if (debugSpawningStats)
-        //    Debug.Log("randomarea" + random);
+            eightx = 0;
+        if (debugSpawningStats)
+            Debug.Log("is 8x" + eightx);
 
-        //if (random)
-        //    PlayerPrefs.SetInt("randomarea", randint);
-        //else
-        //    PlayerPrefs.SetInt("randomarea", constint);
+        if (iseightx)
+            PlayerPrefs.SetInt("eightspawners", eightx);
+        else
+            PlayerPrefs.SetInt("eightspawners", eightx);
     }
 }

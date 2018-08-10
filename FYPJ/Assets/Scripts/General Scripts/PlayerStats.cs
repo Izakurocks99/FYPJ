@@ -93,8 +93,8 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
 // [0]4x BandWidth, [1]8x BandWidth
-        if (_intSpawnMode != PlayerPrefs.GetInt("randomarea")) {
-            _intSpawnMode = PlayerPrefs.GetInt("randomarea");
+        if (_intSpawnMode != PlayerPrefs.GetInt("eightspawners")) {
+            _intSpawnMode = PlayerPrefs.GetInt("eightspawners");
             AudioBandVisualiser._intPathing = _intSpawnMode;
         }
 // [0]2x Colors, [1]4x Colors
