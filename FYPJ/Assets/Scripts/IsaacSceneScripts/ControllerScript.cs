@@ -394,6 +394,7 @@ public class ControllerScript : MonoBehaviour
             transform.root.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
         }
 
+        HoverStick();
         if (button == controlsScript.clickButton)
         {
             //interact with UI 
@@ -414,6 +415,7 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
+    
     void ButtonReleased(ControllerButtons button)
     {
         if (heldObject)
@@ -455,6 +457,18 @@ public class ControllerScript : MonoBehaviour
 
         //set player unable to pickup
         canPickup = false;
+    }
+    void HoverStick()
+    {
+        Collider hit = laserPointer.LineRaycast();
+        if(!hit)
+        {
+            SelectionVisualizer temp = hit.gameObject.GetComponent<SelectionVisualizer>();
+            if (temp)
+            {
+                temp.selected = true; 
+            }
+        }
     }
 
     bool PickUpStick()

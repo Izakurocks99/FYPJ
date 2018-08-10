@@ -31,7 +31,7 @@ public class SelectionVisualizer : MonoBehaviour {
 
         //Audia
         //Mathf.Smoo
-        //selected = false;
+        selected = false;
         // spring interpolation when  inter and webs comes back
 
 	}
