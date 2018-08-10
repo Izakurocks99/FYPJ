@@ -78,7 +78,7 @@
 				fixed4 col = tex2D(_MainTex, i.uv);
 				float3 rpos = i.lerpPos * _WaveLenght + _Time.y * _WaveSpeed;
 				float p = cnoise(rpos)* _WaveStrenght + i.uv.y;
-				col *= lerp(col.a , 0 ,p > _ShowPercent); //i.uv.y > _ShowPercent);//col.a;
+				col *= lerp(col.a , 0 ,p > (_ShowPercent)); //i.uv.y > _ShowPercent);//col.a;
 
 				//col.r = 1;
 				//col.a = lerp(col.a , 0 , i.uv.y > _ShowPercent);
