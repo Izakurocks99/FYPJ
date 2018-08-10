@@ -14,11 +14,10 @@ public class AudioMotion : MonoBehaviour
     public Transform _tfPar;
     Transform _tfThis;
     GameObject _goPlayer;
-    public float _intShiftRate;
+    public float _ftShiftRate;
     public float _ftTimeToTravel;
     float _ftX, _ftY, _ftZ;
     float _ftTime;
-    //int _intNumber;
     Vector3 _vec3Area;
     ControlCalibrationScript calibration;
     public BoundCalculator bounds;
@@ -64,7 +63,7 @@ public class AudioMotion : MonoBehaviour
 	_myPool = Pool;
 #else
     void Start() 
-        {
+    {
 #endif
 //_childGlowScale = _childGlow.localScale;
 //Debug.Assert(_childGlow);
@@ -86,7 +85,6 @@ public class AudioMotion : MonoBehaviour
 #endif
 
         _die = false;
-        //_intNumber = int.Parse(Regex.Replace(_tfThis.name, "[^0-9]", ""));
 
         calibration = FindObjectOfType<ControlCalibrationScript>();
         _ftX = Random.Range(-calibration.horizontalSize, calibration.horizontalSize);
@@ -163,7 +161,7 @@ public class AudioMotion : MonoBehaviour
 
     void BeatMotion()
     {
-        _tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _intShiftRate) * Time.deltaTime, 0);
+        _tfThis.position += new Vector3(0, Mathf.Sin(Time.time * _ftShiftRate) * Time.deltaTime, 0);
     }
 
     void TransitBeat()
