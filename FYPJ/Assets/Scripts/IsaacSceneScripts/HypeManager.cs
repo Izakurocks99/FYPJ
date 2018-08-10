@@ -8,6 +8,8 @@ public class HypeManager : MonoBehaviour
 
     PlayerStats player;
     AudianceManager audienceManager;
+    HitIndicatorScript hitIndicator;
+
     [HideInInspector]
     public int MaxCombo = 10;
     [SerializeField]
@@ -51,6 +53,7 @@ public class HypeManager : MonoBehaviour
                 break;
         }
 
+        hitIndicator = FindObjectOfType<HitIndicatorScript>();
         player = FindObjectOfType<PlayerStats>();
         Debug.Assert(HypeMeter); // SET METER TO GAMOBJETC USE IT
         hypeMaterial = HypeMeter.GetComponent<Renderer>().material;
@@ -71,6 +74,8 @@ public class HypeManager : MonoBehaviour
         if (_hype >= 0)
             audienceManager.HypeMeter = (int)(_hype * 100);
 
+        if (hitIndicator)
+            hitIndicator.PlayHitAnim();
         setnumbertexture();
     }
     public void DecreaseHype()
@@ -83,6 +88,8 @@ public class HypeManager : MonoBehaviour
         if (_hype >= 0)
             audienceManager.HypeMeter = (int)(_hype * 100);
 
+        if (hitIndicator)
+            hitIndicator.PlayMissAnim();
         setnumbertexture();
     }
 
