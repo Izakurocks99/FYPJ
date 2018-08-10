@@ -73,8 +73,10 @@
         float       _Speed;
         float       _Speed2;
 		float	  lastDigit;
-		float	  midDigit;
+		float	  secondDigit;
+		float	  thirdDigit;
 		float	  firstDigit;
+        
 #if 0
 		float	_WaveLenght;
 		float	_DistortionAmount;
@@ -89,9 +91,9 @@
             
             float yUV = IN.uv.y / 10.0f;
             float2 nuv1 = float2(IN.uv.x,yUV + 0.1 * firstDigit);
-            float2 nuv2 = float2(IN.uv.x,yUV + 0.1 * midDigit);
-            float2 nuv3 = float2(IN.uv.x,yUV + 0.1 * lastDigit);
-            float2 nuv4 = float2(IN.uv.x,yUV);
+            float2 nuv2 = float2(IN.uv.x,yUV + 0.1 * secondDigit);
+            float2 nuv3 = float2(IN.uv.x,yUV + 0.1 * thirdDigit);
+            float2 nuv4 = float2(IN.uv.x,yUV + 0.1 * lastDigit);
             float4 col =  tex2D(_Texture1,nuv1).a * _NumberColor; 
             float4 col1 = tex2D(_Texture2,nuv2).a * _NumberColor; 
             float4 col2 = tex2D(_Texture3,nuv3).a * _NumberColor; 
