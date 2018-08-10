@@ -75,7 +75,7 @@ public class ControllerScript : MonoBehaviour
         if (isSecondaryMoveController) // init which controller this is
             controllerIndex = 1;
 
-        if(PlayerPrefs.GetInt("mode") %2== 0)
+        if(PlayerPrefs.GetInt("dualcolor") == 0)
         {
             pirmaryControllerColor = GameColors.Blue;
             secondaryControllerColor = GameColors.Pink;
@@ -394,7 +394,6 @@ public class ControllerScript : MonoBehaviour
             transform.root.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
         }
 
-        HoverStick();
         if (button == controlsScript.clickButton)
         {
             //interact with UI 
@@ -457,18 +456,6 @@ public class ControllerScript : MonoBehaviour
 
         //set player unable to pickup
         canPickup = false;
-    }
-    void HoverStick()
-    {
-        Collider hit = laserPointer.LineRaycast();
-        if(!hit)
-        {
-            SelectionVisualizer temp = hit.gameObject.GetComponent<SelectionVisualizer>();
-            if (temp)
-            {
-                temp.selected = true; 
-            }
-        }
     }
 
     bool PickUpStick()

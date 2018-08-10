@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4005964131436880}
   - component: {fileID: 82355384081527758}
   - component: {fileID: 114415314368126838}
+  - component: {fileID: 114558341694621924}
   m_Layer: 0
   m_Name: AudioPlayer
   m_TagString: Untagged
@@ -90,6 +91,7 @@ GameObject:
   - component: {fileID: 33292536774066668}
   - component: {fileID: 23476175243166878}
   - component: {fileID: 114017636491437980}
+  - component: {fileID: 114742424696051194}
   m_Layer: 0
   m_Name: CalibrationZone
   m_TagString: Untagged
@@ -146,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1431771651348726
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1865843819008326
 GameObject:
   m_ObjectHideFlags: 1
@@ -1146,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67de8376af971c4c9381034bdf76610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!114 &114310920284948100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1197,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSampler: {fileID: 0}
   _ftDelay: 1
+  _goPlayer: {fileID: 1494724157195762}
 --- !u!114 &114419325811002024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1269,6 +1273,20 @@ MonoBehaviour:
   loadingScreen: {fileID: 1865843819008326}
   loadingImage: {fileID: 1098993731873742}
   sceneName: LobbyTest
+--- !u!114 &114558341694621924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086425456098126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goRParent: {fileID: 0}
+  _goLParent: {fileID: 0}
+  _goCenter: {fileID: 0}
 --- !u!114 &114585539358131206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1320,6 +1338,7 @@ MonoBehaviour:
   secondaryControllerColor: 1
   movementScript: {fileID: 114114683555578130}
   calibrateScript: {fileID: 114956288234413014}
+  tutorial: {fileID: 0}
 --- !u!114 &114693331640450212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1336,6 +1355,21 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
+--- !u!114 &114742424696051194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230345193009564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vec3Points: []
+  _vec3Center: {x: 0, y: 0, z: 0}
+  _ftXRadius: 0
+  _ftYRadius: 0
 --- !u!114 &114803700959142474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1381,6 +1415,7 @@ MonoBehaviour:
   secondaryControllerColor: 3
   movementScript: {fileID: 114693331640450212}
   calibrateScript: {fileID: 114427599000826744}
+  tutorial: {fileID: 0}
 --- !u!114 &114921227057595974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1410,8 +1445,9 @@ MonoBehaviour:
   dropStickButton: 0
   togglePointerButton: 1
   calibrateButton: 3
-  resetScoreButton: 1
-  swapSticksButton: 1
+  resetScoreButton: 0
+  swapSticksButton: 0
+  toggleTutorialButton: 0
 --- !u!114 &114956288234413014
 MonoBehaviour:
   m_ObjectHideFlags: 1
