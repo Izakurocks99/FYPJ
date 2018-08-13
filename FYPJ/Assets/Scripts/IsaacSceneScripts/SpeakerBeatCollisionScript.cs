@@ -13,6 +13,7 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
     GameColors color = new GameColors();
     Rigidbody rb;
 
+    SoundEffectsScript soundEffects;
     public float life;
 
     //void Start()
@@ -30,6 +31,7 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
 
     public void PoolInit()
     {
+        soundEffects = FindObjectOfType<SoundEffectsScript>();
         playerCam = FindObjectOfType<PlayerStats>();
         life = lifeTime;
         this.enabled = true;
@@ -70,12 +72,14 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
                         stick.heldController.VibrateController();
                     player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
+                    soundEffects.PlaySound("HitBeat");
                     //addscore
                 }
                 else
                 {
                     //lowerscore
                     playerCam.ModifyCombo(false);
+                    soundEffects.PlaySound("MissBeat");
                 }
                 
                 gameObject.GetComponent<SpeakerBeatMotion>().Die();

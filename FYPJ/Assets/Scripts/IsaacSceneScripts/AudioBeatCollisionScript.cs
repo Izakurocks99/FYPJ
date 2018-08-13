@@ -21,6 +21,7 @@ public class AudioBeatCollisionScript : MonoBehaviour
     GameColors color = GameColors.NONE;
     Dictionary<Material, GameColors> dicBeat;
     Rigidbody rb;
+    SoundEffectsScript soundEffects;
 
     public float life;
 
@@ -38,6 +39,7 @@ public class AudioBeatCollisionScript : MonoBehaviour
 #endif
         playerCam = FindObjectOfType<PlayerStats>();
 
+        soundEffects = FindObjectOfType<SoundEffectsScript>();
         if (dicBeat == null)
         {
             dicBeat = new Dictionary<Material, GameColors>();
@@ -84,14 +86,16 @@ public class AudioBeatCollisionScript : MonoBehaviour
                 {
                     if (stick.heldController)
                         stick.heldController.VibrateController();
-                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1)); 
+                    player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
+                    soundEffects.PlaySound("HitBeat");
                     //addscore
                 }
                 else
                 {
                     //lowerscore
                     playerCam.ModifyCombo(false);
+                    soundEffects.PlaySound("MissBeat");
                 }
 
                 //Destroy(transform.gameObject);
