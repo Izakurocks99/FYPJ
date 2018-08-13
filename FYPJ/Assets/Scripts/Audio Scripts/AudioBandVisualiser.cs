@@ -110,11 +110,8 @@ public class AudioBandVisualiser : MonoBehaviour
     [SerializeField]
     public GameObject EndScreen = null;
     bool songStarted = true;
-#if true
+
     void Update()
-#else 
-    void reeee()
-#endif
     {
         if (_intPathing == 0)
             _goParseArray = _goPrimaryArray;
