@@ -45,7 +45,6 @@ public class customFxaa : MonoBehaviour
         fxaaMaterial.SetFloat("_SubpixelBlending", subpixelBlending);
 
         if (luminanceSource == LuminanceMode.Calculate)
-#endif
         {
 #if (LUMINANCE)
             fxaaMaterial.DisableKeyword("LUMINANCE_GREEN");
