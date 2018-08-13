@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+#if UNITY_PS4
 using UnityEngine.PS4;
+#endif
 
 public class PressStartActivation : MonoBehaviour {
 
