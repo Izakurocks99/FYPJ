@@ -43,8 +43,6 @@ public sealed class AudianceManager : MonoBehaviour {
     [SerializeField]
     List<GameObject> Platforms = new List<GameObject>();
 
-       
-
     [SerializeField]
     [Range(0, 100)]
     public int HypeMeter = 0;

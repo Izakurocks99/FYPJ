@@ -62,6 +62,6 @@ MonoBehaviour:
   - {fileID: 1702193628716514, guid: 1fd02939885d0c6429727a99cc01a4f0, type: 2}
   - {fileID: 1893841599566944, guid: 93cda89739a8215469663eb63eda9f76, type: 2}
   - {fileID: 1385900515097476, guid: 26e157b4fb392984bbfef18d9b0bb52b, type: 2}
-  SpawnTime: 0
-  Frequenzy: 0
+  SpawnTime: 1
+  Frequenzy: 1
   currentlyActiveAmount: 0
