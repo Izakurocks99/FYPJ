@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class RandTargetMenuScript : MonoBehaviour {
 
     [SerializeField]
-    Button straightButton = null;
+    Button fourSpawners = null;
     [SerializeField]
-    Button RandomButton = null;
+    Button eightSpawners = null;
 
     // Use this for initialization
     void Start ()
     {
-        if (PlayerPrefs.GetInt("mode") >= 2)
-            straightButton.gameObject.SetActive(false);
+        if (PlayerPrefs.GetInt("eightspawners") == 0)
+            fourSpawners.gameObject.SetActive(false);
         else
-            RandomButton.gameObject.SetActive(false);
+            eightSpawners.gameObject.SetActive(false);
 
-        Debug.Assert(straightButton);
-        Debug.Assert(RandomButton);
+        Debug.Assert(fourSpawners);
+        Debug.Assert(eightSpawners);
     }
 	
 	// Update is called once per frame

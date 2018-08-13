@@ -23,14 +23,6 @@ public class LaserPointer : MonoBehaviour
             line.SetPosition(1, Vector3.forward * hit.distance);
             line.startColor = Color.green;
             line.endColor = Color.green;
-
-            //if (hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>())
-            //{
-            //    stickSelection = hit.collider.gameObject.GetComponentInParent<SelectionVisualizer>();
-            //    stickSelection.selected = true;
-            //}
-            //else
-            //    stickSelection.selected = false;
         }
         else
         {

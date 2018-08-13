@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class NumOfColorsScript : MonoBehaviour {
 
     [SerializeField]
-    Button fourColors = null;
-    [SerializeField]
     Button twoColors = null;
+    [SerializeField]
+    Button fourColors = null;
 
     // Use this for initialization
     void Start () {
-        if (PlayerPrefs.GetInt("mode")%2 == 0)
+        if (PlayerPrefs.GetInt("dualcolor") == 0)
             twoColors.gameObject.SetActive(false);
         else
             fourColors.gameObject.SetActive(false);
