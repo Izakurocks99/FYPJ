@@ -486,6 +486,11 @@ Prefab:
       propertyPath: activeFollower
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: objectMesh
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
