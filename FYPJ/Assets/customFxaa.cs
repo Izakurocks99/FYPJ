@@ -10,13 +10,13 @@ public class customFxaa : MonoBehaviour
 
     [NonSerialized]
     Material fxaaMaterial = null;
-
+#if (LUMINANCE)
     [SerializeField]
     Shader luminanceShader = null;
 
     [NonSerialized]
     Material luminanceMaterial = null;
-    
+#endif 
 
     public enum LuminanceMode { Alpha, Green, Calculate }
 
@@ -35,8 +35,10 @@ public class customFxaa : MonoBehaviour
         {
             fxaaMaterial = new Material(fxaaShader);
             fxaaMaterial.hideFlags = HideFlags.HideAndDontSave;
+#if (LUMINANCE)
             luminanceMaterial = new Material(luminanceShader);
             luminanceMaterial.hideFlags = HideFlags.HideAndDontSave;
+#endif
         }
         fxaaMaterial.SetFloat("_ContrastThreshold", contrastThreshold);
         fxaaMaterial.SetFloat("_RelativeThreshold", relativeThreshold);
@@ -44,6 +46,7 @@ public class customFxaa : MonoBehaviour
 
         if (luminanceSource == LuminanceMode.Calculate)
         {
+#if (LUMINANCE)
             fxaaMaterial.DisableKeyword("LUMINANCE_GREEN");
             RenderTexture luminanceTex = RenderTexture.GetTemporary(
                 source.width, source.height, 0, source.format
@@ -51,6 +54,7 @@ public class customFxaa : MonoBehaviour
             Graphics.Blit(source, luminanceTex, luminanceMaterial);
             Graphics.Blit(luminanceTex, destination, fxaaMaterial);
             RenderTexture.ReleaseTemporary(luminanceTex);
+#endif
         }
         else
         {
