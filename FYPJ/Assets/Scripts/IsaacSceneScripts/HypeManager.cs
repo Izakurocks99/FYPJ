@@ -68,7 +68,7 @@ public class HypeManager : MonoBehaviour
     }
     public void IncreaseHype(int score)
     {
-        _hype += score * defaultIncreaceAmount * hypeMult;
+        _hype += score * defaultIncreaceAmount * (hypeMult+1);
         _hype = Mathf.Clamp01(_hype);
         hypeMult = hypeMult < 9 ? hypeMult + 1 : 9;
         if (_hype >= 0)
