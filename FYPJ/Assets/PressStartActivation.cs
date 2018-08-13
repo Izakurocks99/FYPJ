@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.PS4;
 
 public class PressStartActivation : MonoBehaviour {
 
 	public GameObject pressStartGO;
 	Animator anim;
+    SceneSwitch sceneSwitcher;
 
 	void Start ()
 	{
 		anim = pressStartGO.GetComponent<Animator>();
+        sceneSwitcher = FindObjectOfType<SceneSwitch>();
 
-		StartCoroutine("Init");
+        StartCoroutine("Init");
 	}
 
 	IEnumerator Init()
@@ -25,16 +28,38 @@ public class PressStartActivation : MonoBehaviour {
 	}
 
 	private void Update()
-	{
-		if (Input.anyKeyDown)
-		{
-			anim.Play("PressStartSelected");		
-		}
-	}
+    {
+        if (pressStartGO.activeInHierarchy)
+        {
+            //if (Input.anyKeyDown)
+            //{
+            //    anim.Play("PressStartSelected");
+            //    StartCoroutine(SceneSwitch());
+            //}
+#if UNITY_PS4
+            if (PS4Input.MoveGetButtons(0, 1) > 0)
+            {
+                anim.Play("PressStartSelected");
+                StartCoroutine(SceneSwitch());
+            }
+            else if (PS4Input.MoveGetButtons(0, 0) > 0)
+            {
+                anim.Play("PressStartSelected");
+                StartCoroutine(SceneSwitch());
+            }
+#else
+            if (Input.anyKeyDown)
+            {
+                anim.Play("PressStartSelected");
+                StartCoroutine(SceneSwitch());
+            }
+#endif
+        }
+    }
 
-	IEnumerator SceneSwitch()
+    IEnumerator SceneSwitch()
 	{
-		yield return new WaitForSeconds(2);
-		SceneManager.LoadScene(1);
-	}
+		yield return new WaitForSeconds(1);
+        sceneSwitcher.LoadScene();
+            }
 }
