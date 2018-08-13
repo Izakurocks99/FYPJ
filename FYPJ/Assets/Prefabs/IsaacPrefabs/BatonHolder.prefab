@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114126485155196972}
   - component: {fileID: 65574413837760506}
   - component: {fileID: 114089734086464896}
-  - component: {fileID: 114396481000846718}
   m_Layer: 0
   m_Name: baton
   m_TagString: PlayerStick
@@ -227,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358228741800116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 5, z: 0}
+  m_LocalPosition: {x: 10, y: 5, z: -5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4564743456582238}
@@ -645,20 +644,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 0
---- !u!114 &114396481000846718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1164987087485424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7117773ac022984e9ddf7cf98b1d6b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  negative: 0
-  selected: 0
+  activeFollower: 1
 --- !u!114 &114468277787093250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -673,7 +659,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 0
+  activeFollower: 1
 --- !u!114 &114610937618645948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,7 +674,7 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 0
+  activeFollower: 1
 --- !u!114 &114638015035281946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -703,4 +689,4 @@ MonoBehaviour:
   _batonCapsuleFollowerPrefab: {fileID: 114852137903563142, guid: b80f378f160c56f4a8cc7337fabe96b0,
     type: 2}
   thisStick: {fileID: 0}
-  activeFollower: 0
+  activeFollower: 1
