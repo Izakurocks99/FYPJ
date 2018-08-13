@@ -140,13 +140,14 @@ public class AudioBandVisualiser : MonoBehaviour
 
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
             _goAudio.GetComponent<AudioSource>().isPlaying == true &&
-           (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
+           (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f )) {
             GetDifference();
             InstantiateBeat();
             songStarted = true;
         }
-        else if(songStarted && EndScreen)
+        else if(songStarted && EndScreen )
         {
+            Debug.Log("END STARTED");
             songStarted = false;
             EndScreen.GetComponent<victoryScreen>().Activate();
         }
