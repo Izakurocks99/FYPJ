@@ -107,7 +107,9 @@ public class AudioBandVisualiser : MonoBehaviour
             _goTertiaryArray[_intTertiary] = _goAudioScalesTertiary.transform.GetChild(_intTertiary).gameObject;
         }
     }
-
+    [SerializeField]
+    public GameObject EndScreen = null;
+    bool songStarted = true;
 #if true
     void Update()
 #else 
@@ -141,6 +143,12 @@ public class AudioBandVisualiser : MonoBehaviour
            (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
             GetDifference();
             InstantiateBeat();
+            songStarted = true;
+        }
+        else if(songStarted && EndScreen)
+        {
+            songStarted = false;
+            EndScreen.GetComponent<victoryScreen>().Activate();
         }
     }
 

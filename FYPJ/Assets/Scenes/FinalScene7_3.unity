@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -873,6 +873,29 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114071470301967210, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23915251774464426, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23575322464946342, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031712060575774, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946455776050584, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
@@ -922,11 +945,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3287c9525eae56a4292a6b50ecf72635, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &203052108 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1606866905819768, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-    type: 2}
-  m_PrefabInternal: {fileID: 167463060}
 --- !u!1 &213895269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -2312,7 +2330,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -2779,7 +2797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -3146,7 +3164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &859856307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,7 +3863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -4236,7 +4254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68665620230c244c966c7a0dfacd006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goAudio: {fileID: 1876414391}
+  _goAudio: {fileID: 0}
   _goChild: {fileID: 1349690057}
   _vec3Spawn: {x: -5.5578666, y: 3.849342, z: 0.16242361}
   RotationSpeed: 0.01
@@ -4257,8 +4275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goPrefab: {fileID: 1761407923449524, guid: f8be0be861597144589dc45a3233aeed, type: 2}
   _goPlayer: {fileID: 760541044}
-  _goAudio: {fileID: 1876414391}
-  _goBandVisualiser: {fileID: 203052108}
+  _goAudio: {fileID: 0}
+  _goBandVisualiser: {fileID: 0}
   dissolveShader: {fileID: 4800000, guid: 8f5ecfa8307cca043aad2a304ce45f5e, type: 3}
 --- !u!1001 &1390616075
 Prefab:
@@ -4562,7 +4580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -5229,7 +5247,7 @@ Prefab:
     - target: {fileID: 108895665585282942, guid: 6b3cf2947928a3c4aaea31a8aa7ccaf4,
         type: 2}
       propertyPath: m_Intensity
-      value: 10
+      value: 3.61
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b3cf2947928a3c4aaea31a8aa7ccaf4, type: 2}
@@ -5288,17 +5306,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94ca51819af9c6a45af7a1a110a1778f, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1876414391 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1831990804590460, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-    type: 2}
-  m_PrefabInternal: {fileID: 167463060}
---- !u!114 &1876414392 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114636312230192316, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-    type: 2}
-  m_PrefabInternal: {fileID: 167463060}
-  m_Script: {fileID: 11500000, guid: 9cc01a79e271e7946828960cd3ad37ed, type: 3}
 --- !u!1 &1880227424
 GameObject:
   m_ObjectHideFlags: 0
@@ -5739,7 +5746,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876414392}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeMusic
         m_Mode: 3
         m_Arguments:
@@ -6401,7 +6408,7 @@ Prefab:
     - target: {fileID: 108895665585282942, guid: 6b3cf2947928a3c4aaea31a8aa7ccaf4,
         type: 2}
       propertyPath: m_Intensity
-      value: 10
+      value: 5.66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b3cf2947928a3c4aaea31a8aa7ccaf4, type: 2}

@@ -15,7 +15,7 @@ public class victoryScreen : MonoBehaviour {
 		//Activate();
 	}
 
-	void Activate()
+	public void Activate()
 	{
 		
 		StartCoroutine("FadeIn");
