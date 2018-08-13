@@ -394,7 +394,7 @@ public class ControllerScript : MonoBehaviour
             transform.root.GetComponentInChildren<PlayerStats>()._intPlayerScoring = 0;
         }
 
-
+#if true
         if(laserPointer)
         {
             SelectionVisualizer temp = null;
@@ -404,6 +404,7 @@ public class ControllerScript : MonoBehaviour
                 temp.selected = true;
             }
         }
+#endif
         if (button == controlsScript.clickButton)
         {
             //interact with UI 
