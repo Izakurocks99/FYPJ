@@ -3718,11 +3718,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4356819333086866, guid: 269f37d545cc5b2438b1c50db863ae3c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.56
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 4356819333086866, guid: 269f37d545cc5b2438b1c50db863ae3c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.87
+      value: -8.59
       objectReference: {fileID: 0}
     - target: {fileID: 4356819333086866, guid: 269f37d545cc5b2438b1c50db863ae3c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3742,7 +3742,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4356819333086866, guid: 269f37d545cc5b2438b1c50db863ae3c, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 198519679907194382, guid: 269f37d545cc5b2438b1c50db863ae3c,
+        type: 2}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198519679907194382, guid: 269f37d545cc5b2438b1c50db863ae3c,
+        type: 2}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 269f37d545cc5b2438b1c50db863ae3c, type: 2}

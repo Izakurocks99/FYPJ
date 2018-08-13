@@ -17,7 +17,6 @@ public class victoryScreen : MonoBehaviour {
 
 	public void Activate()
 	{
-		
 		StartCoroutine("FadeIn");
 	}
 
@@ -41,6 +40,7 @@ public class victoryScreen : MonoBehaviour {
 
 
 		yield return new WaitForSeconds(3);
+        FindObjectOfType<SceneSwitch>().LoadScene();
 		//SceneManager.LoadScene(0);
 
 		yield break;
