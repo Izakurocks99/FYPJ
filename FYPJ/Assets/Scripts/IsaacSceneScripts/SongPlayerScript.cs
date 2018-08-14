@@ -14,7 +14,7 @@ public class SongPlayerScript : MonoBehaviour {
     [SerializeField]
     AudioClip defaultSong;
 
-    string songtitle;
+    public string songtitle;
 	// Use this for initialization
 	void Start () {
         songlist = new Dictionary<string, AudioClip>();
@@ -39,32 +39,32 @@ public class SongPlayerScript : MonoBehaviour {
         //}
     }
 
-    bool savesong = true;
+    //bool savesong = true;
     // Update is called once per frame
     void Update () {
-        if(!audiosource.isPlaying && savesong)
-        {
-            savesong = false;
-            int score = FindObjectOfType<PlayerStats>()._intPlayerScoring;
-            //if have key
-            if (PlayerPrefs.HasKey(songtitle + "highscore"))
-            {
-                int highscore = PlayerPrefs.GetInt(songtitle + "highscore");
-                //compare if curr score is higher
-                if (score > highscore)
-                {
-                    //set curr score as highscore
-                    PlayerPrefs.SetInt(songtitle + "highscore", score);
-                }
+        //if(!audiosource.isPlaying && savesong)
+        //{
+        //    savesong = false;
+        //    int score = FindObjectOfType<PlayerStats>()._intPlayerScoring;
+        //    //if have key
+        //    if (PlayerPrefs.HasKey(songtitle + "highscore"))
+        //    {
+        //        int highscore = PlayerPrefs.GetInt(songtitle + "highscore");
+        //        //compare if curr score is higher
+        //        if (score > highscore)
+        //        {
+        //            //set curr score as highscore
+        //            PlayerPrefs.SetInt(songtitle + "highscore", score);
+        //        }
 
-            }
-            else
-            {
+        //    }
+        //    else
+        //    {
 
-            //if have no key
-            PlayerPrefs.SetInt(songtitle + "highscore", score);
-            }
-        }
+        //    //if have no key
+        //    PlayerPrefs.SetInt(songtitle + "highscore", score);
+        //    }
+        //}
 
     }
 
