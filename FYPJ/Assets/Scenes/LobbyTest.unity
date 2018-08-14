@@ -373,6 +373,106 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -458,6 +558,231 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -475,6 +800,106 @@ Prefab:
     - target: {fileID: 23341311728906072, guid: 5865e3ab679ef2f439e63240cfaae288,
         type: 2}
       propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -591,6 +1016,231 @@ Prefab:
       propertyPath: negative
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -691,6 +1341,156 @@ Prefab:
     - target: {fileID: 23341311728906072, guid: 5865e3ab679ef2f439e63240cfaae288,
         type: 2}
       propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -801,6 +1601,341 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: negative
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -987,6 +2122,136 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -1095,6 +2360,301 @@ Prefab:
         type: 2}
       propertyPath: _emit
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[4].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[5].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -1271,6 +2831,86 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -1376,6 +3016,161 @@ Prefab:
       propertyPath: negative
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -1456,6 +3251,86 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 213992540}
     m_Modifications:
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -1513,6 +3388,161 @@ Prefab:
       propertyPath: activeFollower
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -1598,6 +3628,86 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -1673,6 +3783,161 @@ Prefab:
       propertyPath: negative
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -1849,6 +4114,86 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -1949,6 +4294,161 @@ Prefab:
       propertyPath: negative
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 34ce0ceb1ee1caf4fa96a7662eda8912, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2d31827e0202c945bef1eeaca7f4d35, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f89e994999887bf44b39f7f056e2b2bb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 992ef0419a4ea4f46ad6556a2114ed5b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7ff1488fdc927e4bab1ef08f7925641, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
   m_IsPrefabParent: 0
@@ -1962,6 +4462,86 @@ Prefab:
     - target: {fileID: 23341311728906072, guid: 5865e3ab679ef2f439e63240cfaae288,
         type: 2}
       propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -2048,6 +4628,211 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: negative
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
@@ -2151,6 +4936,86 @@ Prefab:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483697958616920, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -2238,6 +5103,211 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: negative
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c353012ff79cd384eabad4ae36b73666, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b897b19e320182d43a5343c03f613986, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 296159b7653b541429929c5f72c0aa7b, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b351876feb8c7f94398c86b90bea94d2, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[0].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 279abcef67574fd41a056ae1891994da, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 5f7908bdd481034408787908c2ef1a66, type: 3}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[0].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 576c2457eb85813459fcef4ec243f756, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[1].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f245b782141db7e4c8a4ae0190d02c19, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[2].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74913d2740adc754788eabca49e02fbb, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[3].stickColors.Array.data[3].material.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69aabd1f661f4e34eb6dd6db8c7405a0, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[0].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].material.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 361a7f95fe120a6488f00e7ad90753d3, type: 2}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[2].stickColors.Array.data[3].color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[1].color
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[2].color
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126485155196972, guid: 5865e3ab679ef2f439e63240cfaae288,
+        type: 2}
+      propertyPath: stickMeshes.Array.data[1].stickColors.Array.data[3].color
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5865e3ab679ef2f439e63240cfaae288, type: 2}
