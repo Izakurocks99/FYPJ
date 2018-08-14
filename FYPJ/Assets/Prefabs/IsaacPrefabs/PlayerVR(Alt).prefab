@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114057194043453554}
   - component: {fileID: 114760710597799672}
   - component: {fileID: 114050779428894822}
+  - component: {fileID: 114190137641230372}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -117,7 +118,7 @@ GameObject:
   - component: {fileID: 4001506475761584}
   - component: {fileID: 114623181571029796}
   m_Layer: 0
-  m_Name: PlayerVR(OLD)
+  m_Name: PlayerVR(Alt)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -708,6 +709,20 @@ MonoBehaviour:
   softTreshold: 0.416
   DebugBuffer: 0
   Intensity: 0.26
+--- !u!114 &114190137641230372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077784792004918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea90d51c7b5002448dde92484cf7bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectsList:
+  - clipName: Select
+    audioClip: {fileID: 8300000, guid: 3135d2168a3de7644a56cc4c56eb77a8, type: 3}
 --- !u!114 &114269081583138088
 MonoBehaviour:
   m_ObjectHideFlags: 1

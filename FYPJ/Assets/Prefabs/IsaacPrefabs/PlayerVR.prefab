@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 114415314368126838}
   - component: {fileID: 114558341694621924}
   - component: {fileID: 114465115683295112}
+  - component: {fileID: 114874416851816164}
   m_Layer: 0
   m_Name: AudioPlayer
   m_TagString: Untagged
@@ -160,13 +161,14 @@ GameObject:
   - component: {fileID: 114017636491437980}
   - component: {fileID: 114742424696051194}
   - component: {fileID: 114435169230784292}
+  - component: {fileID: 114357369835100420}
   m_Layer: 0
   m_Name: CalibrationZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1239166195709006
 GameObject:
   m_ObjectHideFlags: 1
@@ -1821,7 +1823,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243115023568606334, guid: 57edb19f07f96584aa03a09972907f5a,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: af96ae4ce85780c4682c3a23bb1e1e74, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2269,6 +2271,21 @@ MonoBehaviour:
   contrastThreshold: 0.0511
   relativeThreshold: 0.166
   subpixelBlending: 0.75
+--- !u!114 &114357369835100420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230345193009564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _vec3Points: []
+  _vec3Center: {x: 0, y: 0, z: 0}
+  _ftXRadius: 0
+  _ftYRadius: 0
 --- !u!114 &114403179247116908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2835,6 +2852,20 @@ MonoBehaviour:
   movementScript: {fileID: 114693331640450212}
   calibrateScript: {fileID: 114427599000826744}
   tutorial: {fileID: 0}
+--- !u!114 &114874416851816164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086425456098126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goRParent: {fileID: 0}
+  _goLParent: {fileID: 0}
+  _goCenter: {fileID: 0}
 --- !u!114 &114921227057595974
 MonoBehaviour:
   m_ObjectHideFlags: 1
