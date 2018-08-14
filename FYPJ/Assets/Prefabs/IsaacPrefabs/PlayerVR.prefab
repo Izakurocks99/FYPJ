@@ -1197,6 +1197,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3135d2168a3de7644a56cc4c56eb77a8, type: 3}
   - clipName: Crowd
     audioClip: {fileID: 8300000, guid: 59fd653974eea9a49950cedb27cf8001, type: 3}
+  - clipName: LeftHit
+    audioClip: {fileID: 8300000, guid: b15d4081d3fb5524ea177fe23c2273b8, type: 3}
+  - clipName: RightHit
+    audioClip: {fileID: 8300000, guid: cbfe9e65362babc4ca50fb69c4aa7f14, type: 3}
 --- !u!114 &114308148537980674
 MonoBehaviour:
   m_ObjectHideFlags: 1

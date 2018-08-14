@@ -88,7 +88,11 @@ public class AudioBeatCollisionScript : MonoBehaviour
                         stick.heldController.VibrateController();
                     player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
-                    soundEffects.PlaySound("HitBeat");
+
+                    if (color == GameColors.Blue || color == GameColors.Gold)
+                        soundEffects.PlaySound("RightHit");
+                    else
+                        soundEffects.PlaySound("LeftHit");
                     //addscore
                 }
                 else
