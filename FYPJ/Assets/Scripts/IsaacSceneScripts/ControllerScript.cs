@@ -55,6 +55,8 @@ public class ControllerScript : MonoBehaviour
     private bool canPickup = true; //check if hand is alread grabbing a stick
     private int controllerIndex = 0;
 
+    SoundEffectsScript soundEffects;
+
     [SerializeField]
     TutorialScript tutorial;
 
@@ -86,6 +88,7 @@ public class ControllerScript : MonoBehaviour
             SpawnStick();
         }
 
+        soundEffects = FindObjectOfType<SoundEffectsScript>();
         tutorial = FindObjectOfType<TutorialScript>();
     }
 
@@ -400,6 +403,7 @@ public class ControllerScript : MonoBehaviour
             PickUpStick();
             if (laserPointer && laserPointer.LineRaycast() && laserPointer.LineRaycast().gameObject.GetComponent<Button>())
             {
+                soundEffects.PlaySound("Select");
                 laserPointer.LineRaycast().gameObject.GetComponent<Button>().onClick.Invoke();
             }
         }
@@ -468,6 +472,7 @@ public class ControllerScript : MonoBehaviour
                 PlayerStickScript stick = hit.gameObject.GetComponent<PlayerStickScript>();
                 if (hit.gameObject.GetComponent<PlayerStickScript>())//if overlapping a stick and is not holding
                 {
+                    soundEffects.PlaySound("Select");
                     tutorial.NextImage(1);
                     if (canPickup)
                     {

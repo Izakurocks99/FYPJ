@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
 
     bool _blActiveSpawn;
 
-    public static 
+    SoundEffectsScript soundEffects;
 
     ControllerScript[] _controllers;
     [SerializeField]
@@ -54,7 +54,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         _intPlayerScoring = 0;
-
+        soundEffects = FindObjectOfType<SoundEffectsScript>();
         // _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
@@ -138,6 +138,8 @@ public class PlayerStats : MonoBehaviour
             if (_hypeManager.hypeMult == 8)
             {
                 Wave.Pulse();
+                //play crowd sound
+                soundEffects.PlaySound("Crowd");
             }
              _hypeManager.IncreaseHype(score);
         }
