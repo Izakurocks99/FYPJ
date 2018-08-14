@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 238663718}
   - component: {fileID: 238663717}
   - component: {fileID: 238663716}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 368912408}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -933,7 +933,7 @@ GameObject:
   - component: {fileID: 773605607}
   - component: {fileID: 773605606}
   - component: {fileID: 773605605}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LoadingImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 969982929}
   - component: {fileID: 969982931}
   - component: {fileID: 969982930}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6265,8 +6265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1618825a513b849a2d19c97ad773c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 0}
-  loadingImage: {fileID: 0}
+  loadingScreen: {fileID: 238663714}
+  loadingImage: {fileID: 773605603}
   sceneName: LobbyTest
 --- !u!114 &1251765699
 MonoBehaviour:
