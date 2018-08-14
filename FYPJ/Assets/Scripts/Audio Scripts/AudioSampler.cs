@@ -12,7 +12,7 @@ public class AudioSampler : MonoBehaviour {
 
 // Sampling Seperation
     private int _intLimit;
-    public static float[] _ftMaxBufferParse;
+    public static float[] _ftMaxBufferParse = new float[8];
 
 // 8x Sampling
     private float[] _ftFreqbands8x = new float[8];
@@ -24,18 +24,17 @@ public class AudioSampler : MonoBehaviour {
     private float[] _ftBandbuffer4x = new float[4];
     private float[] _ftBufferDecrease4x = new float[4];
 
+    public float[] _ftDisplay = new float[8];
+
     void Start () {
         _audiosource = GetComponent<AudioSource>();
-
-        if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true)
-            _intLimit = 4;
-        else
-            _intLimit = 8;
-
-        _ftMaxBufferParse = new float[_intLimit];
     }
 	
 	void Update () {
+        _intLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
+        if (_intLimit != 8)
+            _ftMaxBufferParse = new float[_intLimit];
+
 // Get Samples
         GetSpectrumAudioData();
 
@@ -101,13 +100,13 @@ public class AudioSampler : MonoBehaviour {
         for (int k = 0; k < _intLimit; k++) {
             if (_ftFreqbandsParse[k] > _ftBandbufferParse[k]) {
                 _ftBandbufferParse[k] = _ftFreqbandsParse[k];
-                _ftBufferDecreaseParse[k] = 0.005f;
+                _ftBufferDecreaseParse[k] = (0.005f / 100f);
             }
             else if (_ftFreqbandsParse[k] < _ftBandbufferParse[k]) {
                 _ftBandbufferParse[k] -= _ftBufferDecreaseParse[k];
                 _ftBufferDecreaseParse[k] *= 1.2f;
-                if (_ftBandbufferParse[k] < 0.04f)
-                    _ftBandbufferParse[k] = 0.04f;
+                if (_ftBandbufferParse[k] < (0.01f / 100f))
+                    _ftBandbufferParse[k] = (0.01f / 100f);
             }
         }
 
@@ -121,6 +120,7 @@ public class AudioSampler : MonoBehaviour {
             _ftBandbuffer8x = _ftBandbufferParse;
             _ftBufferDecrease8x = _ftBufferDecreaseParse;
         }
+        _ftDisplay = _ftBandbufferParse;
     }
 
     void BandMax() {
@@ -130,5 +130,6 @@ public class AudioSampler : MonoBehaviour {
         else                                                     _ftBandbufferParse = _ftBandbuffer8x;
 
         _ftMaxBufferParse = _ftBandbufferParse;
+        // _ftDisplay = _ftMaxBufferParse;
     }
 }

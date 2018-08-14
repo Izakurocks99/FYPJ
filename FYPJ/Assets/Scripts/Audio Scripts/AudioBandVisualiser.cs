@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour
 {
-    public Vector3 beatScale;
+    private Vector3 beatScale;
     public GameObject[] _goPrefab;
     public GameObject _goAudioScalesPrimary;
     public GameObject _goAudioScalesSecondary;
@@ -52,10 +52,7 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Start()
     {
-        _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
-        // _intMaxLimit = 4;
-        _ftAryPrevBuffer = new float[_intMaxLimit];
-        _ftAryDiffBuffer = new float[_intMaxLimit];
+        beatScale = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? new Vector3(10, 10, 10) : new Vector3(15, 15, 15);
 
         _ftTime = 0f;
         _intBeatCounts = 0;
@@ -113,6 +110,21 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Update()
     {
+        if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) {
+            if (_intMaxLimit != 4) {
+                _intMaxLimit = 4;
+                _ftAryPrevBuffer = new float[_intMaxLimit];
+                _ftAryDiffBuffer = new float[_intMaxLimit];
+            }
+        }
+        else {
+            if (_intMaxLimit != 8) {
+                _intMaxLimit = 8;
+                _ftAryPrevBuffer = new float[_intMaxLimit];
+                _ftAryDiffBuffer = new float[_intMaxLimit];
+            }
+        }
+            
         if (_intPathing == 0)
             _goParseArray = _goPrimaryArray;
         else if (_intPathing == 1)
@@ -152,7 +164,7 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void InstantiateBeat()
     {
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
+        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
         {
             if ((_ftTime += 1 * Time.deltaTime) >= _ftBPM)
             {
@@ -170,7 +182,7 @@ public class AudioBandVisualiser : MonoBehaviour
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxBufferParse.Length; _intCurrentBuffer++) {
                             if ((AudioSampler._ftMaxBufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.1f) {
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.04f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
                                         if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;

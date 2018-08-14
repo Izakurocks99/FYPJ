@@ -98,7 +98,6 @@ public class AudioMotion : MonoBehaviour
             Vector3 _vec3Parse = Vector3.zero;
 
             if (_goPlayer.GetComponent<PlayerStats>()._intSpawnMode == 0) { // 4x
-
                 if (bounds != null && bounds.gameObject.activeSelf == true) {
                     switch (_intDespawner) {
                         case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0];} break;
@@ -111,10 +110,23 @@ public class AudioMotion : MonoBehaviour
                     GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
                 }
             }
+
             else { //8x
-                GetChildZero().transform.position = new Vector3(GetChildZero().transform.position.x,
-                                                                GetChildZero().transform.position.y,
-                                                                calibration.calibrationObject.transform.position.z);
+                if (bounds != null && bounds.gameObject.activeSelf == true) {
+                    switch (_intDespawner) {
+                        case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0] + new Vector3(+1.0f, +0.0f, 0.0f);} break;
+                        case 5: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0] + new Vector3(+0.0f, -1.0f, 0.0f);} break;
+                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1] + new Vector3(+0.0f, -1.0f, 0.0f);} break;
+                        case 4: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1] + new Vector3(-1.0f, +0.0f, 0.0f);} break;
+                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2] + new Vector3(+0.0f, +1.0f, 0.0f);} break;
+                        case 7: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2] + new Vector3(+1.0f, +0.0f, 0.0f);} break;
+                        case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3] + new Vector3(-1.0f, +0.0f, 0.0f);} break;
+                        case 6: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3] + new Vector3(+0.0f, +1.0f, 0.0f);} break;
+                        default: break;
+                    }
+
+                    GetChildZero().transform.position = new Vector3(_vec3Parse.x, _vec3Parse.y, calibration.calibrationObject.transform.position.z);
+                }
             }
         }
 

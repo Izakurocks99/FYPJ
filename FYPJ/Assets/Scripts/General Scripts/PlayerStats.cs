@@ -14,8 +14,8 @@ public class PlayerStats : MonoBehaviour
     public int _intPlayerDifficulty;
     public int _intPlayerScoring;
     public int _intPlayerMode; //0 is 2 colors, 1 4 colors
-    public int _intSpawnPoint;
-    public int _intSpawnMode; //0 is random, 1 is straight // this needs to be reviewed
+    public int _intSpawnPoint; //0 dont spawn disco beats, 1 spawn disco beats
+    public int _intSpawnMode; //0 is 4x mode, 1 is 8x mode
     int _intCounter;
     int _intCombo;
     float _ftProbablity;
@@ -59,16 +59,13 @@ public class PlayerStats : MonoBehaviour
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
         _intPlayerMode = PlayerPrefs.GetInt("mode");
-        _intSpawnMode = 0;
+        _intSpawnMode = 1;
         _intPlayerDifficulty = 1;
 
         _intCombo = 0;
 
         Debug.Assert(_hypeManagerObj);
         _hypeManager = _hypeManagerObj.GetComponent<HypeManager>();
-
-        if (_intSpawnPoint == 0)
-            _intSpawnPoint = 0;
 
         _intCounter = 0;
         _ftProbablity = 0.0f;
@@ -82,7 +79,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Assert(cam);
         Wave = cam.GetComponent<WaveEffect>();
         
-        AudioBandVisualiser._intPathing = 0;
+        // AudioBandVisualiser._intPathing = 0;
 
         if (_intSpawnMode == 0)
             _bl4x = true;
@@ -93,10 +90,10 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
 // [0]4x BandWidth, [1]8x BandWidth
-        if (_intSpawnMode != PlayerPrefs.GetInt("eightspawners")) {
-            _intSpawnMode = PlayerPrefs.GetInt("eightspawners");
+        // if (_intSpawnMode != PlayerPrefs.GetInt("eightspawners")) {
+        //     _intSpawnMode = PlayerPrefs.GetInt("eightspawners");
             AudioBandVisualiser._intPathing = _intSpawnMode;
-        }
+        // }
 // [0]2x Colors, [1]4x Colors
         if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
             _intPlayerMode = PlayerPrefs.GetInt("dualcolor");
@@ -108,7 +105,7 @@ public class PlayerStats : MonoBehaviour
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
 			_goAudio.GetComponent<AudioSource>().isPlaying == true &&
 		   (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f)) {
-            // ProbablityRandomDistribution();
+            ProbablityRandomDistribution();
             ProbablityRandomGeneration();
         }
 
@@ -191,7 +188,7 @@ public class PlayerStats : MonoBehaviour
 
     void ProbablityRandomGeneration() {            
         if ((_ftRNGTime += 1 * Time.deltaTime) >= _ftRNGWait) {
-            float _ftRNG = (float)Random.Range(90f, 100f);
+            float _ftRNG = Random.Range(77, 100);
             float _ftRandom = (float)Random.Range(1f, 100f);
 
             if (_ftRNG < _ftRandom) {

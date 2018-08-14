@@ -44,25 +44,25 @@ public class AudioVisualiser : MonoBehaviour {
     void ScaleBuffer() {
         if (AudioPlayer._ftDelayedSamples[0] > _ftCSampleBuffer) {
             _ftCSampleBuffer = AudioPlayer._ftDelayedSamples[0];
-            _ftCBufferDecrease = 0.002f;
+            _ftCBufferDecrease = (0.002f / 100f);
         }
         else if (AudioPlayer._ftDelayedSamples[0] < _ftCSampleBuffer) {
             _ftCSampleBuffer -= _ftCBufferDecrease;
             _ftCBufferDecrease *= 1.2f;
-            if (_ftCSampleBuffer < 0.004f)
-                _ftCSampleBuffer = 0.004f;
+            if (_ftCSampleBuffer < (0.004f / 100f))
+                _ftCSampleBuffer = (0.004f / 100f);
         }
 
         for (int i = 0; i < _ftSSamplesBuffer.Length; i++) {
             if (AudioPlayer._ftDelayedSamples[i + 1] > _ftSSamplesBuffer[i]) {
                 _ftSSamplesBuffer[i] = AudioPlayer._ftDelayedSamples[i + 1];
-                _ftSBufferDecrease[i] = 0.002f;
+                _ftSBufferDecrease[i] = (0.002f / 100f);
             }
             else if (AudioPlayer._ftDelayedSamples[i + 1] < _ftSSamplesBuffer[i]) {
                 _ftSSamplesBuffer[i] -= _ftSBufferDecrease[i];
                 _ftSBufferDecrease[i] *= 1.2f;
-                if (_ftSSamplesBuffer[i] < 0.004f)
-                    _ftSSamplesBuffer[i] = 0.004f;
+                if (_ftSSamplesBuffer[i] < (0.004f / 100f))
+                    _ftSSamplesBuffer[i] = (0.004f / 100f);
             }
         }
     }

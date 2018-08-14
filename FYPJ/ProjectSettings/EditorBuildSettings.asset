@@ -18,9 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene7_3.unity
     guid: eb81463744673e044b71ddd472321c75
   - enabled: 1
+    path: Assets/Scenes/SplashScreen.unity
+    guid: bf0a9add43c21034a8ad633a56812ee4
+  - enabled: 1
     path: Assets/Scenes/LobbyTest.unity
     guid: 23ea1b407b801cf438481e00e466490b
   - enabled: 1
     path: Assets/Scenes/Gameplay2.unity
     guid: b1187312d2fb9844aa9f9282e1443b4f
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 655a53f9a1d9d0b4c86368a0ccbe123b
   m_configObjects: {}
