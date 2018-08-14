@@ -12,7 +12,9 @@ public sealed class AudianceMember : MonoBehaviour {
 	AudianceManager auManager = null;
     Vector3 startPos;
 
-   public  void OnPoolAwake()
+    bool move = false;
+    float seed = 0;
+    public void OnPoolAwake(bool mov,float _seed)
     {
 		animator = gameObject.GetComponent<Animator>();
 		StartCoroutine("SwitchAnim");
@@ -22,6 +24,8 @@ public sealed class AudianceMember : MonoBehaviour {
         Vector3 tempforward = (player - this.gameObject.transform.position);
         transform.forward = new Vector3(tempforward.x, 0 , tempforward.z).normalized;
         startPos = transform.position;
+        move = mov;
+        seed = _seed;
     }
 
     // Update is called once per frame
@@ -45,11 +49,24 @@ public sealed class AudianceMember : MonoBehaviour {
 			animator.SetBool("mediumHype", true);
 			animator.SetBool("highHype", true);
 		}
+        if(!move) return;
 
-        float x = Mathf.PerlinNoise(Time.time, transform.position.x) * 0.8f;
-        float y = Mathf.PerlinNoise(transform.position.y,Time.time) * 0.5f;
+        float x = (Mathf.PerlinNoise(Time.time, seed) * 2 - 1) * 0.01f;
+        float y = (Mathf.PerlinNoise(seed,Time.time) * 2 - 1) * 0.01f;
 
-        transform.position = startPos + new Vector3(x,0,y);
+        transform.position = transform.position + new Vector3(y,0,x);
+
+        if(transform.position.z < -5f)
+            transform.position = new Vector3(transform.position.x,transform.position.y,-5f);
+        if(transform.position.z > 9f)
+            transform.position = new Vector3(transform.position.x,transform.position.y,9f);
+        if(transform.position.x < -13f)
+            transform.position = new Vector3(-13f,transform.position.y,transform.position.z);
+        if(transform.position.x > 13f)
+            transform.position = new Vector3(13f,transform.position.y,transform.position.z);
+
+        transform.LookAt(new Vector3(0f,-0.9f,-10.4f));
+        transform.rotation = new Quaternion(0,transform.rotation.y ,0f,transform.rotation.w);
 	}
 
 
@@ -64,7 +81,3 @@ public sealed class AudianceMember : MonoBehaviour {
 	}
 }
 
-
-//TODO
-// how character moves?
-// can we lerp the movement?

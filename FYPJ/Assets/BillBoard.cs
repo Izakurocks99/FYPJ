@@ -14,7 +14,7 @@ public static class MyExtension
     }
 }
 
-public class BillBoard : MonoBehaviour {
+public sealed class BillBoard : MonoBehaviour {
 
     [SerializeField]
     GameObject playerstats = null;

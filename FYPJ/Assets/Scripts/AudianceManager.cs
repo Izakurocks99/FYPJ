@@ -46,9 +46,9 @@ public sealed class AudianceManager : MonoBehaviour {
     [SerializeField]
     [Range(0, 100)]
     public int HypeMeter = 0;
-    [SerializeField]
-    [Range(0, 100)]
-    int temp = 0;
+    //[SerializeField]
+    //[Range(0, 100)]
+    //int temp = 0;
     [SerializeField]
     uint MaxAudianceAmount = 100;
     [SerializeField]
@@ -137,8 +137,8 @@ public sealed class AudianceManager : MonoBehaviour {
         {
             _Timer = 0;
 
-            //float diff = HypeMeter - lastHype;
-            float diff = temp - lastHype;
+            float diff = HypeMeter - lastHype;
+            //float diff = temp - lastHype;
             if (Mathf.Abs(diff) > Frequenzy)
             {
                 bool setActive = diff > 0;    // turn on or off
@@ -153,7 +153,7 @@ public sealed class AudianceManager : MonoBehaviour {
                         _ObjectPool[i].SetActive(setActive);
                         count++;
                         currentlyActiveAmount = setActive ? currentlyActiveAmount + 1 : currentlyActiveAmount - 1;
-
+                        int platformIndex = 0;
                         if (setActive)
                         {
                             Debug.Log("SPAWNING");
@@ -169,6 +169,7 @@ public sealed class AudianceManager : MonoBehaviour {
                                 if (platformIndicator <= PlatformList[i2].SpawnChance + currentChance && platformIndicator >= currentChance)
                                 {
                                     temp = PlatformList[i2];
+                                    platformIndex = i2;
                                     break;
                                 }
                                 else if (i2 >= PlatformList.Count)
@@ -183,15 +184,16 @@ public sealed class AudianceManager : MonoBehaviour {
                             //temp = PlatformList[0];
                             _ObjectPool[i].transform.position = temp.SpawnToPlatform(scale);
                             temp.InsertToInnerStructure(_ObjectPool[i]);
-							_ObjectPool[i].GetComponent<AudianceMember>().OnPoolAwake();
+							_ObjectPool[i].GetComponent<AudianceMember>().OnPoolAwake(platformIndex == 0,
+                                    Random.Range(0,100));
                         }
 
                     }
                     if (++i == _ObjectPool.Count) // assert? 
                         break;
                 }
-                //lastHype = HypeMeter;
-                lastHype = temp;
+                lastHype = HypeMeter;
+                //lastHype = temp;
                 //_ObjectPool.Shuffle();
             }
         }
