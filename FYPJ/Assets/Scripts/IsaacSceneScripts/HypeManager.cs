@@ -78,9 +78,11 @@ public class HypeManager : MonoBehaviour
             hitIndicator.PlayHitAnim();
         setnumbertexture();
     }
+
+    public float decreasePercentage = 20f;
     public void DecreaseHype()
     {
-        _hype -= defaultIncreaceAmount * 10;
+        _hype -= defaultIncreaceAmount * decreasePercentage;
         _hype = Mathf.Clamp01(_hype);
         //hypeMult = hypeMult > 0 ? hypeMult - 1 : 0;
         hypeMult = hypeMult > 0 ? 0 : 0;
