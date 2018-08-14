@@ -46,10 +46,10 @@ public sealed class AudianceMember : MonoBehaviour {
 			animator.SetBool("highHype", true);
 		}
 
-        float x = Mathf.PerlinNoise(Time.time, 0);
-        float y = Mathf.PerlinNoise(0,Time.time);
+        float x = Mathf.PerlinNoise(Time.time, transform.position.x) * 0.8f;
+        float y = Mathf.PerlinNoise(transform.position.y,Time.time) * 0.5f;
 
-        transform.position = startPos + new Vector3(x,y,0);
+        transform.position = startPos + new Vector3(x,0,y);
 	}
 
 

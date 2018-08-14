@@ -47,6 +47,9 @@ public sealed class AudianceManager : MonoBehaviour {
     [Range(0, 100)]
     public int HypeMeter = 0;
     [SerializeField]
+    [Range(0, 100)]
+    int temp = 0;
+    [SerializeField]
     uint MaxAudianceAmount = 100;
     [SerializeField]
     List<GameObject> Member = new List<GameObject>();
@@ -123,7 +126,7 @@ public sealed class AudianceManager : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-#if false
+//#if false
 
 
         Debug.Assert(HypeMeter >= 0);
@@ -134,7 +137,8 @@ public sealed class AudianceManager : MonoBehaviour {
         {
             _Timer = 0;
 
-            float diff = HypeMeter - lastHype;
+            //float diff = HypeMeter - lastHype;
+            float diff = temp - lastHype;
             if (Mathf.Abs(diff) > Frequenzy)
             {
                 bool setActive = diff > 0;    // turn on or off
@@ -152,6 +156,7 @@ public sealed class AudianceManager : MonoBehaviour {
 
                         if (setActive)
                         {
+                            Debug.Log("SPAWNING");
                             float scale = (float)currentlyActiveAmount / (float)MaxAudianceAmount;
 
                             float platformIndicator = Random.Range(0f, SpawnChance);
@@ -161,10 +166,8 @@ public sealed class AudianceManager : MonoBehaviour {
                             Platforms temp = null;
                             while (true)
                             {
-                                if (platformIndicator <= PlatformList [i2].SpawnChance + currentChance && platformIndicator >= currentChance)
+                                if (platformIndicator <= PlatformList[i2].SpawnChance + currentChance && platformIndicator >= currentChance)
                                 {
-
-
                                     temp = PlatformList[i2];
                                     break;
                                 }
@@ -187,11 +190,12 @@ public sealed class AudianceManager : MonoBehaviour {
                     if (++i == _ObjectPool.Count) // assert? 
                         break;
                 }
-                lastHype = HypeMeter;
+                //lastHype = HypeMeter;
+                lastHype = temp;
                 //_ObjectPool.Shuffle();
             }
         }
-#endif
+//#endif
     }
 }
 
