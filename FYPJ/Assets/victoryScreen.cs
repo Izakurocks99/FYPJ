@@ -22,7 +22,28 @@ public class victoryScreen : MonoBehaviour {
 
 	IEnumerator FadeIn()
 	{
-		yield return new WaitForSeconds(2);
+        int score = FindObjectOfType<PlayerStats>()._intPlayerScoring;
+        string songtitle = FindObjectOfType<SongPlayerScript>().songtitle;
+        //if have key
+        if (PlayerPrefs.HasKey(songtitle + "highscore"))
+        {
+            int highscore = PlayerPrefs.GetInt(songtitle + "highscore");
+            //compare if curr score is higher
+            if (score > highscore)
+            {
+                //set curr score as highscore
+                PlayerPrefs.SetInt(songtitle + "highscore", score);
+            }
+
+        }
+        else
+        {
+
+            //if have no key
+            PlayerPrefs.SetInt(songtitle + "highscore", score);
+        }
+
+        yield return new WaitForSeconds(2);
 		ParticleSystem[] _particleList = GetComponentsInChildren<ParticleSystem>();
 
 		float _count = 0;

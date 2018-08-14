@@ -72,10 +72,10 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
                         stick.heldController.VibrateController();
                     player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
-                    soundEffects.PlaySound("HitBeat");
+                    soundEffects.PlaySound("RainbowHit");
                     //addscore
                 }
-                else
+                else if(color != GameColors.Black)
                 {
                     //lowerscore
                     playerCam.ModifyCombo(false);
@@ -97,10 +97,12 @@ public class SpeakerBeatCollisionScript : MonoBehaviour
         {
             playerCam.GetComponent<PlayerStats>().ModifyScore(Mathf.RoundToInt(10));
             playerCam.ModifyCombo(true);
+            soundEffects.PlaySound("HitBeat");
         }
         else
         {
-            playerCam.ModifyCombo(true);
+            playerCam.ModifyCombo(false);
+            soundEffects.PlaySound("MissBeat");
         }
     }
 }

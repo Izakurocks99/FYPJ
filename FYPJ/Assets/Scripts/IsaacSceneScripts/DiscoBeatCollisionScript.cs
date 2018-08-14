@@ -74,7 +74,7 @@ public class DiscoBeatCollisionScript : MonoBehaviour
                         stick.heldController.VibrateController();
                     player.ModifyScore(Mathf.RoundToInt(rb.velocity.magnitude + 1));
                     playerCam.ModifyCombo(true);
-                    soundEffects.PlaySound("HitBeat");
+                    soundEffects.PlaySound("RainbowHit");
                     //addscore
                 }
                 else
