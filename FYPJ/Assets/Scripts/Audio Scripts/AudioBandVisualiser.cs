@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class AudioBandVisualiser : MonoBehaviour
 {
-    public Vector3 beatScale;
+    private Vector3 beatScale;
     public GameObject[] _goPrefab;
     public GameObject _goAudioScalesPrimary;
     public GameObject _goAudioScalesSecondary;
@@ -38,6 +38,7 @@ public class AudioBandVisualiser : MonoBehaviour
     int _intMatColorL;
     int _intMatColorR;
     int _intMaxLimit;
+    int _intbufferlimiter;
 
 #if (BEAT_POOL)  // in external class for now
     //[SerializeField]
@@ -52,10 +53,7 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Start()
     {
-        _intMaxLimit = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? 4 : 8;
-        // _intMaxLimit = 4;
-        _ftAryPrevBuffer = new float[_intMaxLimit];
-        _ftAryDiffBuffer = new float[_intMaxLimit];
+        beatScale = (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) ? new Vector3(10, 10, 10) : new Vector3(15, 15, 15);
 
         _ftTime = 0f;
         _intBeatCounts = 0;
@@ -113,6 +111,21 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void Update()
     {
+        if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) {
+            if (_intMaxLimit != 4) {
+                _intMaxLimit = 4;
+                _ftAryPrevBuffer = new float[_intMaxLimit];
+                _ftAryDiffBuffer = new float[_intMaxLimit];
+            }
+        }
+        else {
+            if (_intMaxLimit != 8) {
+                _intMaxLimit = 8;
+                _ftAryPrevBuffer = new float[_intMaxLimit];
+                _ftAryDiffBuffer = new float[_intMaxLimit];
+            }
+        }
+            
         if (_intPathing == 0)
             _goParseArray = _goPrimaryArray;
         else if (_intPathing == 1)
@@ -152,7 +165,7 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void InstantiateBeat()
     {
-        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
+        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
         {
             if ((_ftTime += 1 * Time.deltaTime) >= _ftBPM)
             {
@@ -168,9 +181,14 @@ public class AudioBandVisualiser : MonoBehaviour
 
                     // Getting the Spawn Locations
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
-                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < AudioSampler._ftMaxBufferParse.Length; _intCurrentBuffer++) {
+                        for (int _intCurrentBuffer = 0; _intCurrentBuffer < _goParseArray.Length; _intCurrentBuffer++) {
+
+                            // Debug.Log(AudioSampler._ftMaxBufferParse.Length);
+                            // Debug.Log(_ftAryPrevBuffer.Length);
+                            // Debug.Log(_ftAryDiffBuffer.Length);
+
                             if ((AudioSampler._ftMaxBufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.1f) {
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.02f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
                                         if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
@@ -187,7 +205,30 @@ public class AudioBandVisualiser : MonoBehaviour
 
                         // Parse in the Spawn Points
                         if (i == 0) _intParse = _intFirst;
-                        else if (i != 0) _intParse = _intSecond;
+                        else if (i != 0) {
+                            if (_intSecond != _intFirst)
+                                _intParse = _intSecond;
+                            else _intParse = 9;
+                        }
+
+                        // 4x Mode
+                        if (_goParseArray.Length == 4) {
+                            if (_intFirst == 4)
+                                _intFirst -= 1;
+                            if (_intSecond == 4)
+                                _intSecond -= 1;
+                        }
+                        // 8x Mode
+                        else {
+                            if (_intFirst == 8)
+                                _intFirst -= 1;
+                            if (_intSecond == 8)
+                                _intSecond -= 1;
+                        }
+
+                        // Debug.Log("_intFirst: " + _intFirst);
+                        // Debug.Log("_intSecond: " + _intSecond);
+                        // Debug.Log("_intMax: " + _intMax);
 
                         int _intGameMode = _goPlayer.GetComponent<PlayerStats>()._intPlayerMode;
 
@@ -268,21 +309,37 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Set Material if the Gamemode is Invalid.
                             default: break;
                         }
-#if (BEAT_POOL)
-                        if (_intParse >= 9) continue;
-                        GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[_intParse]);
-#else
-                        GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
-                        go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
-#endif
+                            // Debug.Log("_intCurrentMaterial: " +_intCurrentMaterial + " / " + 4);
+                            // Debug.Log("_intParse: " + _intParse + " / " + _goParseArray.Length);
+                            if (_intParse == _goParseArray.Length)  _intParse -= 1;
                         
-                        go.transform.localScale = beatScale;
-
-                        go.name = "Beat " + _intParse;
-                        go.SetActive(true);
+                        if (_intbufferlimiter < _intMax) {
 #if (BEAT_POOL)
-                        InitPoolObject(go, _intCurrentMaterial);
-#endif
+                            if (_intParse >= 9) {
+                                _intbufferlimiter++;
+                                continue;
+                            }
+
+                            else {
+                            // Debug.Log("_intParse: " + _intParse);
+                            // if (_goParseArray.Length < _intParse) Debug.Log("true"); else Debug.Log("false");
+                            
+                            GameObject go = GetObjectFromPool(_intCurrentMaterial, _goParseArray[_intParse]);
+    #else
+                            GameObject go = Instantiate(_goPrefab[_intCurrentMaterial], _goAudioScales[i].transform.parent.transform, false);
+                            go.transform.GetComponent<Renderer>().material = _materials[_intCurrentMaterial];
+    #endif
+                            
+                            go.transform.localScale = beatScale;
+
+                            go.name = "Beat " + _intParse;
+                            go.SetActive(true);
+    #if (BEAT_POOL)
+                            InitPoolObject(go, _intCurrentMaterial);
+    #endif
+                            _intbufferlimiter++;
+                            }
+                        }
                     }
                 }
 
@@ -310,6 +367,7 @@ public class AudioBandVisualiser : MonoBehaviour
                         }
                     }
                 }
+                _intbufferlimiter = 0;
                 _ftTime -= 1.0f;
             }
         }

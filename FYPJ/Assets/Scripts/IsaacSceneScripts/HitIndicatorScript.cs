@@ -18,14 +18,25 @@ public class HitIndicatorScript : MonoBehaviour {
     [SerializeField]
     bool playHitAnim;
 
+    public float lifetime = 2f;
+    float currlifetime = 0;
+
     // Use this for initialization
     void Start () {
         missAnimator = missIndicator.GetComponent<Animator>();
         hitAnimator = hitIndicator.GetComponent<Animator>();
+        currlifetime = lifetime;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        currlifetime -= Time.deltaTime;
+        if (currlifetime <= 0)
+        {
+            missIndicator.SetActive(false);
+            hitIndicator.SetActive(false);
+        }
+
         if (playHitAnim)
         {
             playHitAnim = false;
@@ -40,6 +51,7 @@ public class HitIndicatorScript : MonoBehaviour {
 
     public void PlayHitAnim()
     {
+        currlifetime = lifetime;
         StopAnim();
         hitIndicator.SetActive(true);
         hitAnimator.Play("SkillfulHit");
@@ -47,6 +59,7 @@ public class HitIndicatorScript : MonoBehaviour {
 
     public void PlayMissAnim()
     {
+        currlifetime = lifetime;
         StopAnim();
         missIndicator.SetActive(true);
         missAnimator.Play("PoorHit");

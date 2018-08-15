@@ -26,6 +26,8 @@ public class AudioPlayer : MonoBehaviour {
     private float[] _ftDelayedBandbuffer4x = new float[4];
     private float[] _ftDelayedBufferDecrease4x = new float[4];
 
+    public float[] _ftDisplay = new float[8];
+
 	void Start () {
 		if (_goPlayer.GetComponent<PlayerStats>()._bl4x == true) _intLimit = 4;
 		else _intLimit = 8;
@@ -34,14 +36,14 @@ public class AudioPlayer : MonoBehaviour {
 	}
 
 	void Update () {
-    		if (_audioSampler.transform.GetComponent<AudioSource>().clip != null &&
+        if (_audioSampler.transform.GetComponent<AudioSource>().clip != null &&
             _audioSampler.transform.GetComponent<AudioSource>().isPlaying == true) {
-			this.GetComponent<AudioSource>().clip = _audioSampler.transform.GetComponent<AudioSource>().clip;
-			this.GetComponent<AudioSource>().PlayDelayed(_ftDelay);
+            if (GetComponent<AudioSource>().clip == null && GetComponent<AudioSource>().isPlaying != true) {
+                this.GetComponent<AudioSource>().clip = _audioSampler.transform.GetComponent<AudioSource>().clip;
+                this.GetComponent<AudioSource>().PlayDelayed(_ftDelay);
+            }
 		}
-
-
-		else {
+		if (GetComponent<AudioSource>().isPlaying) {
 // Get Samples
 			GetSpectrumAudioData();
 
@@ -53,8 +55,8 @@ public class AudioPlayer : MonoBehaviour {
 	}
 
 	void GetSpectrumAudioData () {
-		this.GetComponent<AudioSource>().GetSpectrumData(_ftDelayedSamples, 0, FFTWindow.Blackman);
-	}
+		GetComponent<AudioSource>().GetSpectrumData(_ftDelayedSamples, 0, FFTWindow.Blackman);
+    }
 
 	void MakeFrequencyBands () {
         int _intCnt = 0;
@@ -108,13 +110,13 @@ public class AudioPlayer : MonoBehaviour {
         for (int k = 0; k < _intLimit; k++) {
             if (_ftDelayedFreqbandsParse[k] > _ftDelayedBandbufferParse[k]) {
                 _ftDelayedBandbufferParse[k] = _ftDelayedFreqbandsParse[k];
-                _ftDelayedBufferDecreaseParse[k] = 0.005f;
+                _ftDelayedBufferDecreaseParse[k] = (0.005f / 100f);
             }
             else if (_ftDelayedFreqbandsParse[k] < _ftDelayedBandbufferParse[k]) {
                 _ftDelayedBandbufferParse[k] -= _ftDelayedBufferDecreaseParse[k];
                 _ftDelayedBufferDecreaseParse[k] *= 1.2f;
-                if (_ftDelayedBandbufferParse[k] < 0.04f)
-                    _ftDelayedBandbufferParse[k] = 0.04f;
+                if (_ftDelayedBandbufferParse[k] < (0.01f / 100f))
+                    _ftDelayedBandbufferParse[k] = (0.01f / 100f);
             }
         }
 
@@ -128,6 +130,7 @@ public class AudioPlayer : MonoBehaviour {
             _ftDelayedBandbuffer8x = _ftDelayedBandbufferParse;
             _ftDelayedBufferDecrease8x = _ftDelayedBufferDecreaseParse;
         }
+        _ftDisplay = _ftDelayedBandbuffer4x;
 	}
 
 	void BandMax () {
