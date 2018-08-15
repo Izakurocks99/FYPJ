@@ -48,7 +48,7 @@ public class ControllerScript : MonoBehaviour
     public ControlCalibrationScript calibrateScript;
 
     //private
-    private GameObject highlightedObject; //indicate which stick is selected/where to grab the stick to equip
+    private GameObject highlightedObject = null; //indicate which stick is selected/where to grab the stick to equip
     private GameObject heldObject;
     //private RaycastHit hit; never used and same name as local
     //private Vector3 startingPos; never used
