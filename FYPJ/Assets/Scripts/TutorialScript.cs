@@ -37,6 +37,8 @@ public class TutorialScript : MonoBehaviour {
         if (currImage == nextImage - 1)
         {
             currImage = nextImage;
+            return true;
         }
+        return false;
     }
 }
