@@ -145,13 +145,13 @@ public class AudioBandVisualiser : MonoBehaviour
         }
         switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
             case 0: {
-                    _ftBPM = .25f;
+                    _ftBPM = .75f;
                     break; }
             case 1: {
                     _ftBPM = .5f;
                     break; }
             case 2: {
-                    _ftBPM = .75f;
+                    _ftBPM = .25f;
                     break; }
             default: {
                     _ftBPM = .5f;
@@ -161,7 +161,7 @@ public class AudioBandVisualiser : MonoBehaviour
         if (_goAudio.GetComponent<AudioSource>().clip != null &&
             _goAudio.GetComponent<AudioSource>().isPlaying == true &&
            (_goAudio.GetComponent<AudioSource>().time < _goAudio.GetComponent<AudioSource>().clip.length * 0.95f )) {
-            if (_goAudio.GetComponent<AudioSource>().time > 2.0f) {
+            /* if (_goAudio.GetComponent<AudioSource>().time > 1.0f) */ {
                 GetDifference();
                 InstantiateBeat();
                 songStarted = true;
@@ -200,7 +200,7 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Debug.Log(_ftAryDiffBuffer.Length);
 
                             if ((AudioSampler._ftMaxBufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.01f) {
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.001f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
                                         if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;

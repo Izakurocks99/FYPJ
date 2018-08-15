@@ -1350,7 +1350,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1a34312e012a714baded2bede7560be, type: 2}
   - {fileID: 11400000, guid: 8e6a88ae06f56974cb66276da8e68520, type: 2}
   - {fileID: 11400000, guid: b3c9cb2091d6baa4c8dadd486c561af1, type: 2}
-  - {fileID: 11400000, guid: d786924f870d6544892bc4fc544f3d6c, type: 2}
+  - {fileID: 11400000, guid: b6c9c58e74fab8242997f6e58eb73903, type: 2}
   getSavedSong: 1
   defaultSong: {fileID: 8300000, guid: 7eaf25fbb517c234fa67e1aabf42a56e, type: 3}
   songtitle: 

@@ -58,14 +58,14 @@ public class SpeakerBeatSpawner : MonoBehaviour {
             int _intRandomContainer = Random.Range(0, _goContainer.Length);
             float _ftRandomPrefab = Random.value;
 
-            if (_ftRandomPrefab < 0.6f) {
+/*             if (_ftRandomPrefab < 0.6f) {
                 GameObject go = InitPoolObject(0, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
 
                 go.name = "Test";
                 go.SetActive(true);
             }
             
-            else {
+            else  */{
                 GameObject go = InitPoolObject(1, _goContainer[_intRandomContainer].transform.parent.transform.parent.transform);
                 go.transform.localScale = _vec3Scale;
                 
