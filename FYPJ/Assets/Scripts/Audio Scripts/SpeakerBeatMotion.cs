@@ -110,15 +110,22 @@ public class SpeakerBeatMotion : MonoBehaviour {
 
     void Dissolve()
     {
-        dissolveTimer += Time.deltaTime * 5;
-        float currentTime = dissolveTimer / dissolveTime;
-        if (currentTime > 1)
+        if (myDissolveMaterial)
         {
-            OnReturn();
+            dissolveTimer += Time.deltaTime * 5;
+            float currentTime = dissolveTimer / dissolveTime;
+            if (currentTime > 1)
+            {
+                OnReturn();
+            }
+            else
+            {
+                myDissolveMaterial.SetFloat("_TreshHold", currentTime);
+            }
         }
         else
         {
-            myDissolveMaterial.SetFloat("_TreshHold", currentTime);
+            OnReturn();
         }
     }
 
