@@ -367,13 +367,13 @@ public class ControllerScript : MonoBehaviour
             {
                 heldObject = highlightedObject;
                 heldObject.GetComponent<CDscript>().Hold(this.transform);
-                tutorial.NextImage(2);
+                tutorial.NextImage(3);
             }
 
             if (currStick)
             {
                 currStick.ChangeStickColor(secondaryControllerColor);
-
+                tutorial.NextImage(2);
             }
         }
 
