@@ -286,12 +286,12 @@ public class AudioBandVisualiser : MonoBehaviour
                                 else {
                                     switch (_intParse) {
                                         case 0: _intCurrentMaterial = 3; break;
-                                        case 1: _intCurrentMaterial = 1; break;
-                                        case 2: _intCurrentMaterial = 2; break;
-                                        case 3: _intCurrentMaterial = 0; break;
                                         case 4: _intCurrentMaterial = 3; break;
+                                        case 1: _intCurrentMaterial = 1; break;
                                         case 5: _intCurrentMaterial = 1; break;
+                                        case 2: _intCurrentMaterial = 2; break;
                                         case 6: _intCurrentMaterial = 2; break;
+                                        case 3: _intCurrentMaterial = 0; break;
                                         case 7: _intCurrentMaterial = 0; break;
                                         default: break;
                                     }
@@ -324,7 +324,42 @@ public class AudioBandVisualiser : MonoBehaviour
                             // Debug.Log("_intCurrentMaterial: " +_intCurrentMaterial + " / " + 4);
                             // Debug.Log("_intParse: " + _intParse + " / " + _goParseArray.Length);
                             if (_intParse == _goParseArray.Length)  _intParse -= 1;
+                            if (i == 0) _intFirst = _intParse;
+                            else if (i != 0) _intSecond = _intParse;
                         
+                            if (_goPlayer.GetComponent<PlayerStats>()._bl4x == false) {
+                                if (_intGameMode == 1) {
+                                    if (((_intFirst - _intSecond) == 4) || ((_intSecond - _intFirst) == 4)) {
+                                        if ((_intSecond + 1) == _goParseArray.Length)
+                                            _intSecond -= 1;
+                                        else _intSecond += 1;
+                                    }
+
+                                    if ((_intFirst == 0) || (_intFirst == 4)) {
+                                        if ((_intSecond == 2) || (_intSecond == 6))
+                                            _intSecond -= 1;
+                                    }
+
+                                    if ((_intFirst == 1) || (_intFirst == 5)) {
+                                        if ((_intSecond == 3) || (_intSecond == 7))
+                                            _intSecond -= 1;
+                                    }
+
+                                    if ((_intFirst == 2) || (_intFirst == 6)) {
+                                        if ((_intSecond == 0) || (_intSecond == 4))
+                                            _intSecond -= 1;
+                                    }
+
+                                    if ((_intFirst == 3) || (_intFirst == 7)) {
+                                        if ((_intSecond == 1) || (_intSecond == 5))
+                                            _intSecond -= 1;
+                                    }
+                                }
+                            }
+
+                            if (i == 0) _intParse = _intFirst;
+                            else if (i != 0) _intParse = _intSecond;
+
                         if (_intbufferlimiter < _intMax) {
 #if (BEAT_POOL)
                             if (_intParse >= 9) {

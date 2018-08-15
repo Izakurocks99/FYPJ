@@ -109,7 +109,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
 
     void Dissolve()
     {
-        dissolveTimer += Time.deltaTime;
+        dissolveTimer += Time.deltaTime * 2;
         float currentTime = dissolveTimer / dissolveTime;
         if (currentTime > 1)
         {

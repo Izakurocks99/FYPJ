@@ -162,7 +162,7 @@ public class AudioMotion : MonoBehaviour
 #endif
         BeatMotion();
 #if (SPAWNDEBUG)
-	if(timer < 1.f)
+	if(timer < 0.5f)
 #else
         if (!_die)
 #endif
@@ -214,7 +214,7 @@ public class AudioMotion : MonoBehaviour
 
     void dissolve()
     {
-        dissolveTimer += Time.deltaTime;
+        dissolveTimer += Time.deltaTime * 2;
         float currentTime = dissolveTimer / dissolveTime;
         if (currentTime > 1)
         {
