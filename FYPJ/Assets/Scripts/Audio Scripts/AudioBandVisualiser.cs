@@ -183,12 +183,12 @@ public class AudioBandVisualiser : MonoBehaviour
                     for (int _intCurrentCounter = 0; _intCurrentCounter < _intMax; _intCurrentCounter++) {
                         for (int _intCurrentBuffer = 0; _intCurrentBuffer < _goParseArray.Length; _intCurrentBuffer++) {
 
-                            Debug.Log(AudioSampler._ftMaxBufferParse.Length);
-                            Debug.Log(_ftAryPrevBuffer.Length);
-                            Debug.Log(_ftAryDiffBuffer.Length);
+                            // Debug.Log(AudioSampler._ftMaxBufferParse.Length);
+                            // Debug.Log(_ftAryPrevBuffer.Length);
+                            // Debug.Log(_ftAryDiffBuffer.Length);
 
                             if ((AudioSampler._ftMaxBufferParse[_intCurrentBuffer] - _ftAryPrevBuffer[_intCurrentBuffer]) == _ftAryDiffBuffer[_intCurrentCounter]) {
-                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.04f) {
+                                if (_ftAryDiffBuffer[_intCurrentCounter] >= 0.02f) {
                                     if (_intCurrentCounter == 0) _intFirst = _intCurrentBuffer;
                                     else if (_intCurrentCounter != 0) {
                                         if (_intCurrentBuffer != _intFirst) _intSecond = _intCurrentBuffer;
