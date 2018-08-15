@@ -933,11 +933,11 @@ MonoBehaviour:
   interactButton: 5
   resetSceneButton: 0
   dropStickButton: 0
-  togglePointerButton: 1
-  calibrateButton: 0
+  togglePointerButton: 0
+  calibrateButton: 4
   resetScoreButton: 0
   swapSticksButton: 0
-  toggleTutorialButton: 2
+  toggleTutorialButton: 0
 --- !u!114 &114725985009559648
 MonoBehaviour:
   m_ObjectHideFlags: 1

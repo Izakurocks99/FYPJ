@@ -89,6 +89,9 @@ public class ControlCalibrationScript : ControllerModesScript
             verticleSize = Mathf.Abs(calibrationObject.transform.localScale.y * areaScale);
             horizontalSize = Mathf.Abs(calibrationObject.transform.localScale.x * areaScale);
             calibrationObject.SetActive(false);
+
+            PlayerPrefs.SetFloat("calivert", calibrationObject.transform.localScale.y);
+            PlayerPrefs.SetFloat("calihori", calibrationObject.transform.localScale.x);
         }
         //DEBUG
         //Debug.Log(horizontalSize + " : " + verticleSize);

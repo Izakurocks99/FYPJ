@@ -208,6 +208,16 @@ Prefab:
       propertyPath: m_ClearFlags
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114623181571029796, guid: 0015d11dc74580945a0dd9c5da6868e7,
+        type: 2}
+      propertyPath: calibrateButton
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623181571029796, guid: 0015d11dc74580945a0dd9c5da6868e7,
+        type: 2}
+      propertyPath: resetSceneButton
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0015d11dc74580945a0dd9c5da6868e7, type: 2}
   m_IsPrefabParent: 0

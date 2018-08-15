@@ -389,6 +389,7 @@ MonoBehaviour:
   - {fileID: 0}
   hypeDecaySpeed: 1
   hypeMult: 1
+  decreasePercentage: 20
 --- !u!4 &45929495
 Transform:
   m_ObjectHideFlags: 0
@@ -2438,7 +2439,13 @@ Prefab:
       propertyPath: _goCenter
       value: 
       objectReference: {fileID: 1907105450}
-    m_RemovedComponents: []
+    - target: {fileID: 114924607819376842, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+        type: 2}
+      propertyPath: resetSceneButton
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114801182822959516, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &546259695
@@ -2570,7 +2577,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4367904407286088, guid: 3ab7adc6deb96574a9d14a80326685fb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.67
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4367904407286088, guid: 3ab7adc6deb96574a9d14a80326685fb, type: 2}
       propertyPath: m_LocalPosition.y

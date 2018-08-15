@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 23476175243166878}
   - component: {fileID: 114017636491437980}
   - component: {fileID: 114395156231185582}
-  - component: {fileID: 114801182822959516}
   m_Layer: 0
   m_Name: CalibrationZone
   m_TagString: Untagged
@@ -1451,22 +1450,6 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
---- !u!114 &114801182822959516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230345193009564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goPrefab: {fileID: 0}
-  _vec3Points: []
-  _vec3Center: {x: 0, y: 0, z: 0}
-  _ftXRadius: 0
-  _ftYRadius: 0
 --- !u!114 &114803700959142474
 MonoBehaviour:
   m_ObjectHideFlags: 1
