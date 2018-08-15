@@ -125,14 +125,24 @@ public class AudioBandVisualiser : MonoBehaviour
                 _ftAryDiffBuffer = new float[_intMaxLimit];
             }
         }
+
+        _intPathing = _goPlayer.GetComponent<PlayerStats>()._intSpawnMode;
             
         if (_intPathing == 0)
+        {
+            // Debug.Log("_intPathing = 0");
             _goParseArray = _goPrimaryArray;
+        }
         else if (_intPathing == 1)
+        {
+            // Debug.Log("_intPathing = 1");
             _goParseArray = _goSecondaryArray;
+        }
         else if (_intPathing == 2)
+        {
+            // Debug.Log("_intPathing = 2");
             _goParseArray = _goTertiaryArray;
-
+        }
         switch (_goPlayer.GetComponent<PlayerStats>()._intPlayerDifficulty) {
             case 0: {
                     _ftBPM = .25f;
