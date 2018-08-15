@@ -59,8 +59,8 @@ public class PlayerStats : MonoBehaviour
         // _intSpawnMode = PlayerPrefs.GetInt("randomarea");
         // _intPlayerDifficulty = PlayerPrefs.GetInt("difficulty");
         _intPlayerMode = PlayerPrefs.GetInt("mode");
-        _intSpawnMode = 1;
-        _intPlayerDifficulty = 1;
+        // _intSpawnMode = 1;
+        // _intPlayerDifficulty = 1;
 
         _intCombo = 0;
 
@@ -90,10 +90,10 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
 // [0]4x BandWidth, [1]8x BandWidth
-        // if (_intSpawnMode != PlayerPrefs.GetInt("eightspawners")) {
-        //     _intSpawnMode = PlayerPrefs.GetInt("eightspawners");
+        if (_intSpawnMode != PlayerPrefs.GetInt("eightspawners")) {
+            _intSpawnMode = PlayerPrefs.GetInt("eightspawners");
             AudioBandVisualiser._intPathing = _intSpawnMode;
-        // }
+        }
 // [0]2x Colors, [1]4x Colors
         if (_intPlayerMode != PlayerPrefs.GetInt("dualcolor"))
             _intPlayerMode = PlayerPrefs.GetInt("dualcolor");

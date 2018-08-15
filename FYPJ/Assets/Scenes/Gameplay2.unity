@@ -1352,6 +1352,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d786924f870d6544892bc4fc544f3d6c, type: 2}
   getSavedSong: 1
   defaultSong: {fileID: 8300000, guid: 7eaf25fbb517c234fa67e1aabf42a56e, type: 3}
+  songtitle: 
 --- !u!82 &280549401 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82135228435029284, guid: 9e54ad60725570a41b513a50164b90cc,
@@ -2498,6 +2499,7 @@ Prefab:
     - {fileID: 114874416851816164, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
     - {fileID: 114125175569078342, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
     - {fileID: 114742424696051194, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
+    - {fileID: 114901257580179236, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &546259695
@@ -3248,35 +3250,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4935857316371212, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4260504350228882, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4675266482947972, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4194906883277738, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.75
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4790212144026606, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.25
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4184214104849896, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.25
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4469619849183930, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4721291208617066, guid: c601c861779a2de4fbc184736d602842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c601c861779a2de4fbc184736d602842, type: 2}

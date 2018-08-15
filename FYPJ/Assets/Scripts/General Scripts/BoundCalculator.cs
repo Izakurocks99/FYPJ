@@ -44,20 +44,12 @@ public class BoundCalculator : MonoBehaviour {
 
 	void Spawn8x () {
 		GameObject go0 = Instantiate(_goPrefab, _vec3Points[0] + new Vector3(+1.0f, +0.0f, 0.0f), Quaternion.identity);
-		// go0.name = "go0";
-		GameObject go5 = Instantiate(_goPrefab, _vec3Points[0] + new Vector3(+0.0f, -1.0f, 0.0f), Quaternion.identity);
-		// go5.name = "go5";
-		GameObject go1 = Instantiate(_goPrefab, _vec3Points[1] + new Vector3(+0.0f, -1.0f, 0.0f), Quaternion.identity);
-		// go1.name = "go1";
+		GameObject go5 = Instantiate(_goPrefab, _vec3Points[0] + new Vector3(+0.5f, -1.0f, 0.0f), Quaternion.identity);
+		GameObject go1 = Instantiate(_goPrefab, _vec3Points[1] + new Vector3(-0.5f, -1.0f, 0.0f), Quaternion.identity);
 		GameObject go4 = Instantiate(_goPrefab, _vec3Points[1] + new Vector3(-1.0f, +0.0f, 0.0f), Quaternion.identity);
-		// go4.name = "go4";
-		GameObject go2 = Instantiate(_goPrefab, _vec3Points[2] + new Vector3(+0.0f, +1.0f, 0.0f), Quaternion.identity);
-		// go2.name = "go2";
+		GameObject go2 = Instantiate(_goPrefab, _vec3Points[2] + new Vector3(+0.5f, +1.0f, 0.0f), Quaternion.identity);
 		GameObject go7 = Instantiate(_goPrefab, _vec3Points[2] + new Vector3(+1.0f, +0.0f, 0.0f), Quaternion.identity);
-		// go7.name = "go7";
 		GameObject go3 = Instantiate(_goPrefab, _vec3Points[3] + new Vector3(-1.0f, +0.0f, 0.0f), Quaternion.identity);
-		// go3.name = "go3";
-		GameObject go6 = Instantiate(_goPrefab, _vec3Points[3] + new Vector3(+0.0f, +1.0f, 0.0f), Quaternion.identity);
-		// go6.name = "go6";
+		GameObject go6 = Instantiate(_goPrefab, _vec3Points[3] + new Vector3(-0.5f, +1.0f, 0.0f), Quaternion.identity);
 	}
 }

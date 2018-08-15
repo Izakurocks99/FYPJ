@@ -69,7 +69,7 @@ public class DiscoBeatSpawner : MonoBehaviour {
             {
                 _ftY = Mathf.Lerp(-0.25f, 0.25f, Mathf.PingPong(Time.time, 1));
                 if (_intCount == 0) {
-                    _intCount = Random.Range(15, 21);
+                    _intCount = Random.Range(5, 11);
                     _ftWait = 4.0f / _intCount;
                 }
                 GenerateDrag();

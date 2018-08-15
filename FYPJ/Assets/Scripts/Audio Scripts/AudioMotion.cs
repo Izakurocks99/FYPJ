@@ -115,13 +115,13 @@ public class AudioMotion : MonoBehaviour
                 if (bounds != null && bounds.gameObject.activeSelf == true) {
                     switch (_intDespawner) {
                         case 0: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0] + new Vector3(+1.0f, +0.0f, 0.0f);} break;
-                        case 5: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0] + new Vector3(+0.0f, -1.0f, 0.0f);} break;
-                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1] + new Vector3(+0.0f, -1.0f, 0.0f);} break;
+                        case 5: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[0] + new Vector3(+0.5f, -1.0f, 0.0f);} break;
+                        case 1: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1] + new Vector3(-0.5f, -1.0f, 0.0f);} break;
                         case 4: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[1] + new Vector3(-1.0f, +0.0f, 0.0f);} break;
-                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2] + new Vector3(+0.0f, +1.0f, 0.0f);} break;
+                        case 2: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2] + new Vector3(+0.5f, +1.0f, 0.0f);} break;
                         case 7: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[2] + new Vector3(+1.0f, +0.0f, 0.0f);} break;
                         case 3: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3] + new Vector3(-1.0f, +0.0f, 0.0f);} break;
-                        case 6: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3] + new Vector3(+0.0f, +1.0f, 0.0f);} break;
+                        case 6: {_vec3Parse = bounds.GetComponent<BoundCalculator>()._vec3Points[3] + new Vector3(-0.5f, +1.0f, 0.0f);} break;
                         default: break;
                     }
 
