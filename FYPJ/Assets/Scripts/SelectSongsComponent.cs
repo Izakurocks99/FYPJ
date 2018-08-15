@@ -99,8 +99,8 @@ public class SelectSongsComponent : MonoBehaviour
                 tutCheck = currCD;
             else
             {
-                tut = false;
-                FindObjectOfType<TutorialScript>().NextImage(3);
+                if (FindObjectOfType<TutorialScript>().NextImage(3))
+                    tut = false;
             }
         }
     }

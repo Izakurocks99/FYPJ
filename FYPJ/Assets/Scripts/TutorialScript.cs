@@ -32,7 +32,7 @@ public class TutorialScript : MonoBehaviour {
         }
     }
 
-    public void NextImage(int nextImage)
+    public bool NextImage(int nextImage)
     {
         if (currImage == nextImage - 1)
         {
