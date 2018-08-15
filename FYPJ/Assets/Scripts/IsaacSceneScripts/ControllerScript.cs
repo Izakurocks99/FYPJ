@@ -367,13 +367,15 @@ public class ControllerScript : MonoBehaviour
             {
                 heldObject = highlightedObject;
                 heldObject.GetComponent<CDscript>().Hold(this.transform);
+                if(tutorial)
                 tutorial.NextImage(3);
             }
 
             if (currStick)
             {
                 currStick.ChangeStickColor(secondaryControllerColor);
-                tutorial.NextImage(2);
+                if (tutorial)
+                    tutorial.NextImage(2);
             }
         }
 
@@ -410,11 +412,14 @@ public class ControllerScript : MonoBehaviour
 
         if(button == controlsScript.toggleTutorialButton)
         {
-            tutorial.gameObject.SetActive(!tutorial.gameObject.activeInHierarchy);
-            if (tutorial.gameObject.activeInHierarchy)
-                PlayerPrefs.SetInt("showtutorial", 1);
-            else
-                PlayerPrefs.SetInt("showtutorial", 0);
+            if (tutorial)
+            {
+                tutorial.gameObject.SetActive(!tutorial.gameObject.activeInHierarchy);
+                if (tutorial.gameObject.activeInHierarchy)
+                    PlayerPrefs.SetInt("showtutorial", 1);
+                else
+                    PlayerPrefs.SetInt("showtutorial", 0);
+            }
         }
     }
 
