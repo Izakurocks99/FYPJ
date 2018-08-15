@@ -175,7 +175,7 @@ public class AudioBandVisualiser : MonoBehaviour
 
     void InstantiateBeat()
     {
-        // if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
+        if (_goPlayer.GetComponent<PlayerStats>()._intSpawnPoint == 0)
         {
             if ((_ftTime += 1 * Time.deltaTime) >= _ftBPM)
             {
