@@ -99,7 +99,7 @@ public class SelectSongsComponent : MonoBehaviour
                 tutCheck = currCD;
             else
             {
-                if (FindObjectOfType<TutorialScript>().NextImage(3))
+                if (FindObjectOfType<TutorialScript>().NextImage(4))
                     tut = false;
             }
         }
@@ -206,7 +206,7 @@ public class SelectSongsComponent : MonoBehaviour
 
         selectedCD = currCD;
 
-        FindObjectOfType<TutorialScript>().NextImage(4);
+        FindObjectOfType<TutorialScript>().NextImage(5);
 
         if (showDifficulty)
             difficultyMenu.SetActive(true);
