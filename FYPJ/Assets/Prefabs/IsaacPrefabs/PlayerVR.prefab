@@ -36,11 +36,7 @@ GameObject:
   - component: {fileID: 4005964131436880}
   - component: {fileID: 82355384081527758}
   - component: {fileID: 114415314368126838}
-  - component: {fileID: 114558341694621924}
-  - component: {fileID: 114465115683295112}
-  - component: {fileID: 114874416851816164}
-  - component: {fileID: 114125175569078342}
-  - component: {fileID: 114901257580179236}
+  - component: {fileID: 114248341269056908}
   m_Layer: 0
   m_Name: AudioPlayer
   m_TagString: Untagged
@@ -95,9 +91,6 @@ GameObject:
   - component: {fileID: 33292536774066668}
   - component: {fileID: 23476175243166878}
   - component: {fileID: 114017636491437980}
-  - component: {fileID: 114742424696051194}
-  - component: {fileID: 114435169230784292}
-  - component: {fileID: 114357369835100420}
   - component: {fileID: 114395156231185582}
   - component: {fileID: 114801182822959516}
   m_Layer: 0
@@ -173,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1431771651348726
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1865843819008326
 GameObject:
   m_ObjectHideFlags: 1
@@ -1133,20 +1126,6 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
---- !u!114 &114125175569078342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086425456098126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 0}
-  _goLParent: {fileID: 0}
-  _goCenter: {fileID: 0}
 --- !u!114 &114158375274430462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1177,6 +1156,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primaryController: {fileID: 4023597115986606}
   secondaryController: {fileID: 4433692009796266}
+--- !u!114 &114248341269056908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086425456098126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goRParent: {fileID: 0}
+  _goLParent: {fileID: 0}
+  _goCenter: {fileID: 0}
 --- !u!114 &114259566225162534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1252,21 +1245,6 @@ MonoBehaviour:
   contrastThreshold: 0.0511
   relativeThreshold: 0.166
   subpixelBlending: 0.75
---- !u!114 &114357369835100420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230345193009564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vec3Points: []
-  _vec3Center: {x: 0, y: 0, z: 0}
-  _ftXRadius: 0
-  _ftYRadius: 0
 --- !u!114 &114395156231185582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1278,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goPrefab: {fileID: 1942790255191666, guid: 7de3149a1f507894c9f3d71abd6165c4, type: 2}
   _vec3Points: []
   _vec3Center: {x: 0, y: 0, z: 0}
   _ftXRadius: 0
@@ -1294,8 +1273,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSampler: {fileID: 0}
-  _ftDelay: 1
+  _ftDelay: 4
   _goPlayer: {fileID: 1494724157195762}
+  _ftDisplay:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &114419325811002024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1338,21 +1326,6 @@ MonoBehaviour:
   verticleSize: 0.3
   distFromPlayer: 2.0615528
   areaScale: 0.3
---- !u!114 &114435169230784292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230345193009564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vec3Points: []
-  _vec3Center: {x: 0, y: 0, z: 0}
-  _ftXRadius: 0
-  _ftYRadius: 0
 --- !u!114 &114461290512821106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1369,20 +1342,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114465115683295112
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086425456098126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 0}
-  _goLParent: {fileID: 0}
-  _goCenter: {fileID: 0}
 --- !u!114 &114494095444750558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1424,20 +1383,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114558341694621924
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086425456098126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 0}
-  _goLParent: {fileID: 0}
-  _goCenter: {fileID: 0}
 --- !u!114 &114585539358131206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1506,21 +1451,6 @@ MonoBehaviour:
   playerHeight: 0.5
   player: {fileID: 1431771651348726}
   movementMarker: {fileID: 1255490191866326}
---- !u!114 &114742424696051194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1230345193009564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _vec3Points: []
-  _vec3Center: {x: 0, y: 0, z: 0}
-  _ftXRadius: 0
-  _ftYRadius: 0
 --- !u!114 &114801182822959516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1532,6 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60e8722fa6321741a24c23888f87e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _goPrefab: {fileID: 0}
   _vec3Points: []
   _vec3Center: {x: 0, y: 0, z: 0}
   _ftXRadius: 0
@@ -1582,34 +1513,6 @@ MonoBehaviour:
   movementScript: {fileID: 114693331640450212}
   calibrateScript: {fileID: 114427599000826744}
   tutorial: {fileID: 0}
---- !u!114 &114874416851816164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086425456098126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 0}
-  _goLParent: {fileID: 0}
-  _goCenter: {fileID: 0}
---- !u!114 &114901257580179236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1086425456098126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 0}
-  _goLParent: {fileID: 0}
-  _goCenter: {fileID: 0}
 --- !u!114 &114921227057595974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1637,7 +1540,7 @@ MonoBehaviour:
   interactButton: 5
   resetSceneButton: 2
   dropStickButton: 0
-  togglePointerButton: 1
+  togglePointerButton: 0
   calibrateButton: 3
   resetScoreButton: 0
   swapSticksButton: 0
