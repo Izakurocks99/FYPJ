@@ -2398,11 +2398,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114415314368126838, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-        type: 2}
-      propertyPath: _audioSampler
-      value: 
-      objectReference: {fileID: 528620578}
     - target: {fileID: 114419325811002024, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
         type: 2}
       propertyPath: _goSpeaker.Array.data[0]
@@ -2423,83 +2418,27 @@ Prefab:
       propertyPath: _hypeManagerObj
       value: 
       objectReference: {fileID: 1202511130}
-    - target: {fileID: 114703742712923034, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+    - target: {fileID: 114415314368126838, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
         type: 2}
       propertyPath: _audioSampler
       value: 
       objectReference: {fileID: 528620578}
-    - target: {fileID: 1816367430886880, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1945234538084296, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1638420661385120, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1586028231839598, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1818056733603700, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1407408248764056, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230345193009564, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114415314368126838, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+    - target: {fileID: 114248341269056908, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
         type: 2}
-      propertyPath: _goPlayer
+      propertyPath: _goRParent
       value: 
-      objectReference: {fileID: 1046849135}
-    - target: {fileID: 82355384081527758, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+      objectReference: {fileID: 1907105452}
+    - target: {fileID: 114248341269056908, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
         type: 2}
-      propertyPath: m_Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82355384081527758, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-        type: 2}
-      propertyPath: m_audioClip
+      propertyPath: _goLParent
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114308148537980674, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
+      objectReference: {fileID: 1907105451}
+    - target: {fileID: 114248341269056908, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
         type: 2}
-      propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428272458282138, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114415314368126838, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-        type: 2}
-      propertyPath: _ftDelay
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114395156231185582, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
-        type: 2}
-      propertyPath: _goPrefab
+      propertyPath: _goCenter
       value: 
-      objectReference: {fileID: 1942790255191666, guid: 7de3149a1f507894c9f3d71abd6165c4,
-        type: 2}
-    m_RemovedComponents:
-    - {fileID: 114435169230784292, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114357369835100420, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114558341694621924, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114465115683295112, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114874416851816164, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114125175569078342, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114742424696051194, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
-    - {fileID: 114901257580179236, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
+      objectReference: {fileID: 1907105450}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59c733d1749cfae4ab9b47f1c31b43a7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &546259695
@@ -3548,20 +3487,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1086425456098126, guid: 59c733d1749cfae4ab9b47f1c31b43a7,
     type: 2}
   m_PrefabInternal: {fileID: 538639981}
---- !u!114 &911272034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 911272030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb90c1c0c2a433e4ab641af13260c4f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _goRParent: {fileID: 1907105452}
-  _goLParent: {fileID: 1907105451}
-  _goCenter: {fileID: 1907105450}
 --- !u!4 &920143276 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4347401402319922, guid: 8f63fa17e0afa3a4db6daeb826aad4cc,
