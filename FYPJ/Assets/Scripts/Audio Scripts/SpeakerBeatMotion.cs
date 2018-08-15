@@ -81,11 +81,12 @@ public class SpeakerBeatMotion : MonoBehaviour {
 	void TransitBeat() {
         _ftTime += Time.deltaTime / _ftTimeToTravel;
         Vector3 _vec3Heading = _vec3Area - _tfThis.position;
-        if (!(_vec3Heading.sqrMagnitude < 0.1f * 0.1f))
+        if (!(_vec3Heading.sqrMagnitude < 0.2f * 0.2f))
             _tfThis.position = Vector3.Lerp(_tfThis.transform.position, _vec3Area, _ftTime);
         else {
             _ftTime = 0.0f;
             collisionScript.Decay();
+            Dissolve();
             OnReturn();
         }
     }
@@ -109,7 +110,7 @@ public class SpeakerBeatMotion : MonoBehaviour {
 
     void Dissolve()
     {
-        dissolveTimer += Time.deltaTime;
+        dissolveTimer += Time.deltaTime * 5;
         float currentTime = dissolveTimer / dissolveTime;
         if (currentTime > 1)
         {

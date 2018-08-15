@@ -156,7 +156,7 @@ public sealed class AudianceManager : MonoBehaviour {
                         int platformIndex = 0;
                         if (setActive)
                         {
-                            Debug.Log("SPAWNING");
+                            // Debug.Log("SPAWNING");
                             float scale = (float)currentlyActiveAmount / (float)MaxAudianceAmount;
 
                             float platformIndicator = Random.Range(0f, SpawnChance);
